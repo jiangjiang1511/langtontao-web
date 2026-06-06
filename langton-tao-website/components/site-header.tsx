@@ -1,108 +1,85 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
-import { ContactDialog } from '@/components/contact-dialog'
+import { siteNav } from '@/lib/site-nav'
 import { cn } from '@/lib/utils'
-
-const navLinks = [
-  { href: '/', label: '首页' },
-  { href: '/hebi', label: '何必家办' },
-  { href: '/heyi', label: '何以为家' },
-]
+import { ContactTrigger } from '@/components/contact-trigger'
+import { Button } from '@/components/ui/button'
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false)
   const pathname = usePathname()
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 h-[64px] border-b border-[#E8E4DE] bg-[#FAF8F5]/80 backdrop-blur-md md:h-[72px]">
-      <div className="mx-auto flex h-full max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Wordmark */}
-        <Link href="/" className="font-serif text-[20px] font-semibold text-foreground">
+    <header className="sticky top-0 z-50 h-16 border-b-2 border-pop-black bg-pop-white/90 backdrop-blur-md md:h-[72px]">
+      <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link
+          href="/"
+          className="text-lg font-black tracking-tight text-pop-black"
+        >
           朗敦道
         </Link>
 
-        {/* Center nav - hidden on mobile */}
-        <nav className="hidden items-center gap-8 md:flex" aria-label="主导航">
-          {navLinks.map((link) => (
+        <nav className="hidden items-center gap-6 md:flex" aria-label="主导航">
+          {siteNav.map((item) => (
             <Link
-              key={link.href}
-              href={link.href}
+              key={item.href}
+              href={item.href}
               className={cn(
-                'relative py-1 text-[15px] text-foreground transition-colors hover:text-accent',
-                pathname === link.href &&
-                  'after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-accent'
+                'text-sm font-bold text-pop-black/70 transition-colors hover:text-pop-black',
+                pathname === item.href &&
+                  'text-pop-black underline decoration-pop-yellow decoration-4 underline-offset-4'
               )}
             >
-              {link.label}
+              {item.label}
             </Link>
           ))}
         </nav>
 
-        {/* Right side */}
-        <div className="flex items-center gap-3">
-          <ContactDialog>
-            <Button className="hidden h-[40px] bg-primary px-5 text-[14px] text-primary-foreground hover:bg-primary/90 md:inline-flex">
-              预约咨询
-            </Button>
-          </ContactDialog>
-
-          {/* Mobile menu */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            aria-label="打开菜单"
-            onClick={() => setOpen(true)}
-          >
-            <Menu className="h-5 w-5" />
-          </Button>
-          
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetContent side="right" className="w-[300px] bg-background p-6">
-              <SheetTitle className="sr-only">导航菜单</SheetTitle>
-              <div className="flex flex-col gap-6">
-                <div className="flex items-center justify-between">
-                  <span className="font-serif text-[20px] font-semibold">朗敦道</span>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setOpen(false)}
-                    aria-label="关闭菜单"
-                  >
-                    <X className="h-5 w-5" />
-                  </Button>
-                </div>
-                <nav className="flex flex-col gap-4" aria-label="移动端导航">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setOpen(false)}
-                      className={cn(
-                        'py-2 text-[17px] text-foreground transition-colors hover:text-accent',
-                        pathname === link.href && 'text-accent'
-                      )}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </nav>
-                <ContactDialog>
-                  <Button className="h-[48px] w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                    预约咨询
-                  </Button>
-                </ContactDialog>
-              </div>
-            </SheetContent>
-          </Sheet>
+        <div className="hidden md:block">
+          <ContactTrigger size="default">预约咨询</ContactTrigger>
         </div>
+
+        <Button
+          variant="ghost"
+          size="sm"
+          className="md:hidden"
+          aria-label={mobileOpen ? '关闭菜单' : '打开菜单'}
+          onClick={() => setMobileOpen((v) => !v)}
+        >
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </Button>
       </div>
+
+      {mobileOpen && (
+        <div className="border-t-2 border-pop-black bg-pop-white px-4 py-4 md:hidden">
+          <nav className="flex flex-col gap-3" aria-label="移动端导航">
+            {siteNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className={cn(
+                  'text-base font-bold text-pop-black',
+                  pathname === item.href && 'underline decoration-pop-yellow decoration-4'
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <ContactTrigger
+              className="mt-2 w-full"
+              size="lg"
+              onClick={() => setMobileOpen(false)}
+            >
+              预约咨询
+            </ContactTrigger>
+          </nav>
+        </div>
+      )}
     </header>
   )
 }

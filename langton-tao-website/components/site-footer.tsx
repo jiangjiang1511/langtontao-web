@@ -1,71 +1,58 @@
 import Link from 'next/link'
-
-const footerLinks = [
-  { href: '/', label: '首页' },
-  { href: '/hebi', label: '何必家办' },
-  { href: '/heyi', label: '何以为家' },
-]
+import { footerSpotlightNav, siteNav } from '@/lib/site-nav'
 
 export function SiteFooter() {
   return (
-    <footer className="min-h-[320px] bg-primary py-12 text-white/80 md:py-16">
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-3 md:gap-8">
-          {/* Col 1: Logo & tagline */}
-          <div className="space-y-4">
-            <Link href="/" className="font-serif text-[24px] font-semibold text-white">
-              朗敦道
-            </Link>
-            <p className="max-w-[280px] text-[14px] leading-relaxed text-white/70">
-              为第二代华人财富传承提供系统解决方案
-            </p>
-          </div>
-
-          {/* Col 2: Links */}
-          <div>
-            <h3 className="mb-4 text-[14px] font-semibold uppercase tracking-wider text-white">
-              导航
-            </h3>
-            <nav className="flex flex-col gap-3" aria-label="页脚导航">
-              {footerLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-[14px] text-white/70 transition-colors hover:text-white"
-                >
-                  {link.label}
-                </Link>
+    <footer className="min-h-[320px] border-t-2 border-pop-black bg-pop-black text-pop-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3 md:py-16 lg:px-8">
+        <div>
+          <p className="text-lg font-black">朗敦道</p>
+          <p className="mt-3 max-w-[280px] text-sm font-bold leading-relaxed text-pop-white/80">
+            为第二代华人财富传承提供系统解决方案
+          </p>
+        </div>
+        <div>
+          <p className="text-sm font-black text-pop-yellow">导航</p>
+          <div className="mt-3 grid grid-cols-2 gap-x-8">
+            <ul className="space-y-2">
+              {siteNav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm font-bold text-pop-white/80 hover:text-pop-yellow"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
               ))}
-            </nav>
-          </div>
-
-          {/* Col 3: Compliance */}
-          <div>
-            <h3 className="mb-4 text-[14px] font-semibold uppercase tracking-wider text-white">
-              合规声明
-            </h3>
-            <p className="max-w-[280px] text-[12px] leading-relaxed text-white/60">
-              本站内容仅供教育与交流，不构成投资建议。
-            </p>
+            </ul>
+            <ul className="space-y-2">
+              {footerSpotlightNav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm font-bold text-pop-white/80 hover:text-pop-yellow"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-
-        {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
-          <p className="text-[13px] text-white/50">© 2026 朗敦道</p>
-          <div className="flex gap-6">
-            <Link
-              href="#"
-              className="text-[13px] text-white/50 transition-colors hover:text-white/70"
-            >
-              Terms
-            </Link>
-            <Link
-              href="#"
-              className="text-[13px] text-white/50 transition-colors hover:text-white/70"
-            >
-              Privacy
-            </Link>
+        <div>
+          <p className="text-sm font-black text-pop-yellow">合规声明</p>
+          <p className="mt-3 text-xs font-bold leading-relaxed text-pop-white/70">
+            本站内容仅供教育与交流，不构成投资建议。
+          </p>
+        </div>
+      </div>
+      <div className="border-t-2 border-pop-white/20">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs font-bold text-pop-white/60 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+          <p>© 2026 LANGTON TAO · ALL RIGHTS</p>
+          <div className="flex gap-4">
+            <span>Terms</span>
+            <span>Privacy</span>
           </div>
         </div>
       </div>
