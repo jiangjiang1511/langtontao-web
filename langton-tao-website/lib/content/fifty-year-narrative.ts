@@ -1,5 +1,5 @@
 export const fiftyYearPageTitle =
-  '朗敦道TAO定律——穿越周期的50年' as const
+  '朗敦道TAO定律——穿越周期100年' as const
 
 export type FiftyYearProduct = {
   label: string
