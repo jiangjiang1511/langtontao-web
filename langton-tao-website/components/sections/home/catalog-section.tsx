@@ -1,6 +1,6 @@
-import Link from 'next/link'
 import { bookshelf } from '@/lib/content/home-sections'
 import { HorizontalScroll } from '@/components/shared/horizontal-scroll'
+import { FlipBookCard } from '@/components/sections/home/flip-book-card'
 import { Eyebrow, SectionSurface, SectionTitle } from '@/components/layout/section-surface'
 import { PillLink } from '@/components/ui/pill-link'
 
@@ -14,30 +14,16 @@ export function CatalogSection() {
             朗敦道书架
           </SectionTitle>
           <p className="mt-3 text-sm font-bold text-[color:var(--section-muted)]">
-            点击书籍，查看过往每月读书的相关活动
+            悬停翻开金句，点击查看围读详情
           </p>
         </div>
         <PillLink href="/education#reading" variant="outline">
           查看更多
         </PillLink>
       </div>
-      <HorizontalScroll className="mt-8">
+      <HorizontalScroll className="mt-8 gap-8 py-12 md:gap-10 md:py-14">
         {bookshelf.map((book) => (
-          <Link
-            key={`${book.title}-${book.date}`}
-            href="/education#reading"
-            className="pop-card w-[220px] shrink-0 snap-start rounded-lg border-2 border-pop-black bg-pop-paper p-5 md:w-[260px]"
-          >
-            <p className="text-sm font-black leading-snug text-pop-black">
-              {book.title}
-            </p>
-            <p className="mt-3 text-sm font-bold text-[color:var(--section-muted)]">
-              {book.author}
-            </p>
-            <p className="mt-2 text-xs font-bold text-[color:var(--section-muted)]">
-              {book.date}
-            </p>
-          </Link>
+          <FlipBookCard key={book.id} book={book} />
         ))}
       </HorizontalScroll>
     </SectionSurface>

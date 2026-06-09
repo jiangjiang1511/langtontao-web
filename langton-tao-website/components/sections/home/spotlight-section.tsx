@@ -17,7 +17,7 @@ export function SpotlightSection() {
           {spotlightStory.subtitle}
         </p>
         <Link
-          href="/cases"
+          href="/community"
           className="mt-6 inline-block text-sm font-black text-pop-black hover:underline"
         >
           阅读更多 →

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 640" fill="none">
+  <rect width="1600" height="640" fill="#0c4a6e"/>
+  <path d="M0 300 Q400 200 800 320 T1600 280 L1600 640 L0 640 Z" fill="#0369a1" opacity="0.7"/>
+  <path d="M0 380 Q300 320 700 400 T1600 360 L1600 640 L0 640 Z" fill="#082f49" opacity="0.8"/>
+  <text x="80" y="120" fill="#fef08a" font-family="system-ui,sans-serif" font-size="48" font-weight="700">�*w</text>
+  <text x="80" y="170" fill="#ffffff" font-family="system-ui,sans-serif" font-size="24" opacity="0.7">HM� � ��b</text>
+</svg>

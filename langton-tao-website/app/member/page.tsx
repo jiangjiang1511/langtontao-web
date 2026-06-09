@@ -18,7 +18,7 @@ import {
 export const metadata: Metadata = {
   title: '会员及私董会 | 朗敦道 Langton Tao',
   description:
-    '朗敦道 MFO 会员体系：从认知定投到家庭风控、数字资产与私董会圈层，递进式权益陪伴家族传承。',
+    '朗敦道 MFO 会员体系：从认知定投到财富大健康体检、数字资产与私董会圈层，递进式权益陪伴家族传承。',
 }
 
 export default function MemberPage() {

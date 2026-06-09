@@ -221,73 +221,9 @@ export const memberStories = [
   },
 ] as const
 
-export const bookshelf = [
-  {
-    title: '拥抱不确定性，做好人生决策。',
-    author: 'Annie Duke',
-    date: '2024年10月',
-  },
-  {
-    title: '真正的财富不只是金钱',
-    author: 'Naval Ravikant',
-    date: '2023年11月',
-  },
-  {
-    title: '向内看，知行合一',
-    author: '度阴山',
-    date: '2024年08月',
-  },
-  {
-    title: '浅薄时代，个人成功的关键能力',
-    author: 'Cal Newport',
-    date: '2024年12月',
-  },
-  {
-    title: '一条少有人走的——无路之路',
-    author: 'Paul Millerd',
-    date: '2024年05月',
-  },
-  {
-    title: '克服本能带来的障碍',
-    author: 'Shane Parrish',
-    date: '2023年12月',
-  },
-] as const
+export { bookshelf, type BookshelfItem, type BookshelfPhase } from '@/lib/content/bookshelf'
 
-export const upcomingEvents = [
-  {
-    type: '线下见面会',
-    title: '超级英雄探索之旅 · 麦理浩径段徒步',
-    date: '2026年6月15日',
-    imageClass: 'bg-gradient-to-br from-zinc-700 to-pop-black',
-  },
-  {
-    type: '线上读书会',
-    title: '六月主题共读《反脆弱》',
-    date: '2026年6月1日',
-    imageClass: 'bg-gradient-to-br from-pop-yellow/80 to-amber-200',
-  },
-  {
-    type: '沙龙',
-    title: '财富夜话：二代传承与跨境架构',
-    date: '2026年5月28日',
-    imageClass: 'bg-gradient-to-br from-zinc-500 to-zinc-800',
-  },
-] as const
-
-export const networkCities = [
-  '北京',
-  '上海',
-  '香港',
-  '台北',
-  '新加坡',
-  '温哥华',
-  '法兰克福',
-  '湾区',
-] as const
-
-export const networkStat =
-  '在世界各地的 8+ 个城市举办线下聚会与沙龙，一体双跨网络持续扩展。'
+export { getUpcomingEventsPreview } from '@/lib/content/community-page'
 
 export const spotlightStory = {
   quote:

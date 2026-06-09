@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 640" fill="none">
+  <rect width="1600" height="640" fill="#78350f"/>
+  <rect x="200" y="180" width="280" height="360" fill="#92400e" opacity="0.5"/>
+  <rect x="600" y="120" width="320" height="420" fill="#b45309" opacity="0.4"/>
+  <rect x="1050" y="200" width="350" height="340" fill="#d97706" opacity="0.35"/>
+  <text x="80" y="120" fill="#fef08a" font-family="system-ui,sans-serif" font-size="48" font-weight="700">Zf</text>
+  <text x="80" y="170" fill="#ffffff" font-family="system-ui,sans-serif" font-size="24" opacity="0.7">HM� � ��b</text>
+</svg>

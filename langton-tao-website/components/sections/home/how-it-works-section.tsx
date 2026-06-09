@@ -30,7 +30,7 @@ export function HowItWorksSection() {
       </div>
       <div className="mt-10">
         <Button variant="default" asChild>
-          <Link href="/member">了解会员</Link>
+          <Link href="/member2">了解会员</Link>
         </Button>
       </div>
     </SectionSurface>

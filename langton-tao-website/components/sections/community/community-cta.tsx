@@ -1,16 +1,32 @@
-'use client'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
-import { ContactTrigger } from '@/components/contact-trigger'
-
-export function CommunityCta() {
+export function CommunityCta({
+  variant = 'light',
+}: {
+  variant?: 'light' | 'dark'
+}) {
   return (
-    <div className="mt-12 rounded-xl border border-zinc-200 bg-white p-8 text-center">
-      <p className="text-lg font-semibold text-zinc-900">
+    <div
+      className={cn(
+        'mt-12 rounded-lg border-2 p-8 text-center shadow-pop-black',
+        variant === 'dark'
+          ? 'border-pop-yellow bg-pop-black'
+          : 'border-pop-black bg-pop-paper'
+      )}
+    >
+      <p
+        className={cn(
+          'text-lg font-black',
+          variant === 'dark' ? 'text-pop-white' : 'text-pop-black'
+        )}
+      >
         找到适合你的会员档位
       </p>
-      <ContactTrigger intent="了解会员" className="mt-6">
-        了解会员
-      </ContactTrigger>
+      <Button variant="default" size="lg" className="mt-6" asChild>
+        <Link href="/member2">了解会员</Link>
+      </Button>
     </div>
   )
 }

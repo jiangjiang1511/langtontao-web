@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="溪河家族案例封面">
+  <rect width="800" height="600" fill="#f2f2f0"/>
+  <rect x="40" y="40" width="720" height="520" fill="#fff" stroke="#000" stroke-width="4"/>
+  <rect x="40" y="40" width="720" height="12" fill="#000"/>
+  <text x="64" y="260" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="56" font-weight="900">溪河</text>
+  <text x="64" y="340" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="32" font-weight="900">跨境架构</text>
+  <text x="64" y="420" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="24" font-weight="700">内地 + 香港</text>
+  <rect x="640" y="480" width="120" height="80" fill="#ffe600" stroke="#000" stroke-width="3"/>
+</svg>

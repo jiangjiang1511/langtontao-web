@@ -310,7 +310,7 @@ export function LangtonCtaSection() {
       <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
         <ContactTrigger size="lg">预约咨询</ContactTrigger>
         <Link
-          href="/community"
+          href="/member2"
           className="inline-flex h-12 items-center justify-center rounded-full border-2 border-pop-black bg-pop-white px-8 text-base font-bold"
         >
           了解会员

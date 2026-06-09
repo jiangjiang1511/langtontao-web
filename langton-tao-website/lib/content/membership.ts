@@ -50,9 +50,8 @@ export const membershipTiers: MembershipTier[] = [
         items: [
           '闭门财商沙龙/财富夜话（会员价）',
           '财富读书会（线上）',
-          '哪咤航海（会员价）',
-          '麦理浩径超级英雄之旅（1次）',
-          '24节气的具身认知定投',
+          '哪咤航海帆船航海（会员价）',
+          '麦理浩径超级英雄之旅（1次）——24节气的具身认知定投',
         ],
       },
       {
@@ -69,14 +68,13 @@ export const membershipTiers: MembershipTier[] = [
     id: 'plus',
     anchor: 'tier-plus',
     title: '朗敦道MFO会员 Plus',
-    tagline: '家庭风控体系 + 数字资产 IP 定投',
+    tagline: '财富大健康体检 + 数字资产 IP 定投',
     includesLabel: '含会员全部权益',
     contactIntent: '会员 Plus',
-    benefitCount: 3,
+    benefitCount: 2,
     groups: [
-      { title: '财富大健康体检', items: [] },
       {
-        title: '家庭风控体系',
+        title: '财富大健康体检',
         items: [
           '家庭需求/风险敞口定位：资产结构、行业特性、财富阶段不同，风险完全不同',
           '家庭已有保障梳理：以防家人不知情、理赔无头绪，风控成了一纸空文',
@@ -108,14 +106,13 @@ export const membershipTiers: MembershipTier[] = [
     groups: [
       {
         title: '家办事业合伙人',
-        items: ['团队合作，收益共享', '个人收益最大化', '管道收入'],
+        items: ['团队共建，收益共享', '个人收益最大化', '管道收入'],
       },
       { title: 'CRM 管理系统', items: [] },
       {
         title: '数字资产赋能',
         items: [
-          'TEDx 个人专场——全球知名品牌，跨境数字IP资产记录',
-          '完成麦理浩径十段挑战，在巅峰分享个人故事',
+          '完成麦理浩径十段挑战，在巅峰分享个人故事——TEDx 个人专场（全球知名品牌，跨境数字IP资产记录）',
           '一对一专属IP资产梳理，三个月IP梳理陪跑',
           '三条个人叙事专属定制视频——个人IP数字资产三部曲',
         ],

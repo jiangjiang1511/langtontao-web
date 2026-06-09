@@ -12,7 +12,9 @@ export const siteNav = [
 /** 页脚右列：顶部不展示的重点页面 */
 export const footerSpotlightNav = [
   { href: '/langton', label: '关于朗敦道' },
+  { href: '/home-backup', label: '首页备份' },
   { href: '/member', label: '会员' },
+  { href: '/member2', label: '会员2' },
 ] as const
 
 export const contactIntents = [

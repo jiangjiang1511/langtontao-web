@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Anna 故事封面">
+  <rect width="800" height="600" fill="#000"/>
+  <rect x="40" y="40" width="720" height="520" fill="#ffe600" stroke="#000" stroke-width="4"/>
+  <rect x="40" y="40" width="120" height="12" fill="#000"/>
+  <text x="64" y="280" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="72" font-weight="900">AN</text>
+  <text x="64" y="420" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="28" font-weight="900">社群 · 传承路径</text>
+  <rect x="40" y="548" width="720" height="12" fill="#000"/>
+</svg>

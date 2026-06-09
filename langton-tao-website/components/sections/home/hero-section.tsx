@@ -43,7 +43,7 @@ export function HeroSection() {
               </span>
             </Link>
             <span className="mt-3 block text-xl font-black leading-snug sm:text-2xl md:text-3xl lg:text-[2rem]">
-              ——为华人财富传承提供系统解决方案
+              ——为华人家庭理财提供系统解决方案
             </span>
           </h1>
 
@@ -54,7 +54,7 @@ export function HeroSection() {
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center lg:mt-8">
               <Button variant="default" size="lg" asChild>
-                <Link href="/member">加入我们</Link>
+                <Link href="/member2">加入我们</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a href="#upcoming-events">查看活动日历</a>

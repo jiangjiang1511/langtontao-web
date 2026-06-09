@@ -1,11 +1,13 @@
 import Link from 'next/link'
-import { upcomingEvents } from '@/lib/content/home-sections'
+import { getUpcomingEventsPreview } from '@/lib/content/community-page'
 import { ScribbleAccent } from '@/components/decorative/scribble-accent'
 import { PillLink } from '@/components/ui/pill-link'
 import { Eyebrow, SectionSurface, SectionTitle } from '@/components/layout/section-surface'
 import { cn } from '@/lib/utils'
 
 export function UpcomingEventsSection() {
+  const upcomingEvents = getUpcomingEventsPreview(3)
+
   return (
     <SectionSurface
       id="upcoming-events"
@@ -23,15 +25,15 @@ export function UpcomingEventsSection() {
           </div>
           <ScribbleAccent side="right" />
         </div>
-        <PillLink href="/community" variant="dark">
+        <PillLink href="/community#millionaire-plan" variant="dark">
           查看全部
         </PillLink>
       </div>
 
       <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {upcomingEvents.map((event) => (
-          <li key={event.title}>
-            <Link href="/community" className="group block">
+          <li key={event.id}>
+            <Link href="/community#millionaire-plan" className="group block">
               <div
                 className={cn(
                   'aspect-[4/3] overflow-hidden rounded-2xl border-2 border-pop-black',

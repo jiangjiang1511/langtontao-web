@@ -1,0 +1,87 @@
+[
+  {
+    "slug": "civilization-value-investing",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "millionaire-next-door",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "your-money-or-your-life",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "psychology-of-money",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "early-retirement-extreme",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "economics-of-money",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "random-walk-wall-street",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "americana",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "big-short",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "devil-take-hindmost",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "lords-of-finance",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "common-sense-investing",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "millionaire-teacher",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "simple-path-to-wealth",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "invested",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "one-up-on-wall-street",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  },
+  {
+    "slug": "intelligent-investor",
+    "ok": false,
+    "reason": "TypeError: fetch failed"
+  }
+]

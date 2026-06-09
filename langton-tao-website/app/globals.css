@@ -148,3 +148,214 @@ body {
 .shadow-pop-yellow {
   box-shadow: 4px 4px 0 0 var(--pop-yellow);
 }
+
+.home2-stage[data-visible='false'] .home2-stage-copy {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.home2-stage[data-visible='true'] .home2-stage-copy {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home2-marquee {
+  animation: home2-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.home2-marquee--delay {
+  animation-delay: 0.12s;
+}
+
+@keyframes home2-rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home2-marquee,
+  .home2-marquee--delay {
+    animation: none;
+  }
+
+  .home2-stage[data-visible='false'] .home2-stage-copy,
+  .home2-stage[data-visible='true'] .home2-stage-copy {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Flip book — WHAT WE READ shelf */
+.book-scene {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  overflow: visible;
+}
+
+.book-stack {
+  overflow: visible;
+  transform-style: preserve-3d;
+  border: 2px solid var(--pop-black);
+  border-radius: 4px;
+  box-shadow: 4px 4px 0 0 var(--pop-black);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.book-scene:hover .book-stack,
+.book-scene:focus-visible .book-stack {
+  box-shadow: 6px 6px 0 0 var(--pop-black);
+  transform: translateY(-3px);
+}
+
+.book-flipper {
+  position: relative;
+  height: 252px;
+  transform-style: preserve-3d;
+  perspective: 760px;
+  perspective-origin: 0% 50%;
+}
+
+@media (min-width: 768px) {
+  .book-flipper {
+    height: 294px;
+    perspective: 820px;
+  }
+}
+
+.book-inside {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 14px;
+  background: var(--pop-paper);
+  border-radius: 2px;
+  transform: translateZ(-6px) scale(0.965);
+  transform-origin: left center;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.06);
+}
+
+.book-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  transform-style: preserve-3d;
+  transform-origin: 0% 50%;
+  transform: translateZ(4px);
+  transition:
+    transform 0.72s cubic-bezier(0.25, 0.85, 0.35, 1),
+    filter 0.72s cubic-bezier(0.25, 0.85, 0.35, 1);
+  backface-visibility: hidden;
+}
+
+.book-cover-face {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+  backface-visibility: hidden;
+  transform: translateZ(1px);
+}
+
+.book-spine {
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: 3;
+  width: 8px;
+  background: linear-gradient(
+    90deg,
+    rgb(0 0 0 / 0.55) 0%,
+    rgb(0 0 0 / 0.2) 55%,
+    rgb(255 255 255 / 0.08) 100%
+  );
+  border-radius: 2px 0 0 2px;
+  transform: translateZ(2px);
+  pointer-events: none;
+}
+
+.book-cover-edge {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: 2;
+  width: 3px;
+  background: linear-gradient(
+    90deg,
+    rgb(0 0 0 / 0.08) 0%,
+    rgb(255 255 255 / 0.35) 100%
+  );
+  transform: translateZ(1px);
+  pointer-events: none;
+}
+
+.book-inside-quote {
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.55;
+  color: var(--pop-black);
+}
+
+.book-inside-meta {
+  margin-top: 10px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgb(0 0 0 / 0.65);
+}
+
+.book-inside-phase {
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(0 0 0 / 0.45);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .book-scene:hover .book-cover,
+  .book-scene:focus-visible .book-cover {
+    transform: rotateY(-80deg) translateZ(16px);
+    filter: drop-shadow(-10px 8px 14px rgb(0 0 0 / 0.22));
+  }
+}
+
+.book-scene--navigating .book-cover {
+  transform: rotateY(-80deg) translateZ(16px);
+  filter: drop-shadow(-10px 8px 14px rgb(0 0 0 / 0.22));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-cover {
+    transition: none;
+  }
+
+  .book-stack {
+    transition: none;
+  }
+
+  .book-scene:hover .book-stack,
+  .book-scene:focus-visible .book-stack {
+    transform: none;
+  }
+
+  .book-scene:hover .book-cover,
+  .book-scene:focus-visible .book-cover,
+  .book-scene--navigating .book-cover {
+    transform: translateZ(4px);
+    filter: none;
+  }
+}

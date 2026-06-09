@@ -19,7 +19,7 @@ export function StoriesSection() {
       </blockquote>
 
       <div className="mt-8 flex justify-center">
-        <PillLink href="/community" variant="dark">
+        <PillLink href="/cases" variant="dark">
           会员故事
         </PillLink>
       </div>
