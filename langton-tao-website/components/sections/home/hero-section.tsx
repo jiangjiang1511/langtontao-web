@@ -54,7 +54,7 @@ export function HeroSection() {
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center lg:mt-8">
               <Button variant="default" size="lg" asChild>
-                <Link href="/member2">加入我们</Link>
+                <Link href="/member">加入我们</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a href="#upcoming-events">查看活动日历</a>

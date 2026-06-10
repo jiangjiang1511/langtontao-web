@@ -4,6 +4,21 @@ export const superheroJourneyIntro = {
   lead: '徒步、游学与航海——三条具身路径，让身体与认知同步定投。与社群成员一起，在挑战与远行中书写家族同频的超级英雄叙事。',
 } as const
 
+export const communityJoinCtas = {
+  afterHero: {
+    title: '加入我们',
+    tagline: '与社群同频，在具身挑战与远行中开启认知定投。',
+    ctaLabel: '加入我们',
+    ctaHref: '/member',
+  },
+  beforeMillionaire: {
+    title: '加入我们',
+    tagline: '进入朗敦道生态，参与财商沙龙、读书会与线上课。',
+    ctaLabel: '加入我们',
+    ctaHref: '/member',
+  },
+} as const
+
 export const superheroPrograms = [
   {
     id: 'maclehose',

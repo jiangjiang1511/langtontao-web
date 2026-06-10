@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { CaseStoryDetail } from '@/components/sections/cases/case-story-detail'
-import { caseStories, getCaseStory } from '@/lib/content/cases'
+import { Cases2Detail } from '@/components/sections/cases2/cases2-detail'
+import { caseStories, getCaseStory } from '@/lib/content/cases2-page'
+import '@/styles/jarsy-v2.css'
 
 type PageProps = {
   params: Promise<{ slug: string }>
@@ -35,5 +36,5 @@ export default async function CaseStoryPage({ params }: PageProps) {
     notFound()
   }
 
-  return <CaseStoryDetail story={story} />
+  return <Cases2Detail story={story} />
 }

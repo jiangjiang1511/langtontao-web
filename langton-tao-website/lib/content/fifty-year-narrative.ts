@@ -40,7 +40,7 @@ export const fiftyYearStages: FiftyYearStage[] = [
       },
       {
         label: '加入朗敦道会员，一起 all in here，努力创业，赚取人生本金。',
-        href: '/member2',
+        href: '/member',
       },
       {
         label:

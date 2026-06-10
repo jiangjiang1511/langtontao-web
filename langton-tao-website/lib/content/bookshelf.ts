@@ -13,11 +13,22 @@ export type BookshelfItem = {
   href: string
 }
 
+export const phaseOrder: BookshelfPhase[] = [
+  'awakening',
+  'foundation',
+  'weapon',
+  'dragon',
+]
+
 const phaseLabels: Record<BookshelfPhase, string> = {
   awakening: '第一阶段 · 觉醒',
   foundation: '第二阶段 · 基石',
   weapon: '第三阶段 · 利剑',
   dragon: '第四阶段 · 屠龙',
+}
+
+export function getPhaseLabel(phase: BookshelfPhase): string {
+  return phaseLabels[phase]
 }
 
 function book(
@@ -156,12 +167,12 @@ export const bookshelf: BookshelfItem[] = [
   }),
   book({
     id: 'millionaire-teacher',
-    title: '老师的理财课',
+    title: '财富自由笔记',
     author: 'Andrew Hallam',
     englishTitle: 'The Millionaire Teacher',
     phase: 'weapon',
     quote: '普通人也能成为百万富翁，关键是纪律、低成本与长期主义。',
-    coverSrc: '/books/millionaire-teacher.svg',
+    coverSrc: '/books/millionaire-teacher.jpg',
   }),
   book({
     id: 'simple-path-to-wealth',
@@ -200,3 +211,7 @@ export const bookshelf: BookshelfItem[] = [
     coverSrc: '/books/intelligent-investor.jpg',
   }),
 ]
+
+export function getBooksByPhase(phase: BookshelfPhase): BookshelfItem[] {
+  return bookshelf.filter((book) => book.phase === phase)
+}

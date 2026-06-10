@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
-import { CommunityMembershipSection } from '@/components/sections/community/community-membership-section'
-import { MillionairePlanSection } from '@/components/sections/community/millionaire-plan-section'
-import { SuperheroJourneySection } from '@/components/sections/community/superhero-journey-section'
+import { Community2EventsHub } from '@/components/sections/community2/community2-events-hub'
+import { Community2HeroSection } from '@/components/sections/community2/community2-hero-section'
+import { Community2HowToJoinSection } from '@/components/sections/community2/community2-how-to-join-section'
+import { Community2JoinBand } from '@/components/sections/community2/community2-join-band'
+import { Community2ProgramsSection } from '@/components/sections/community2/community2-programs-section'
+import './community.css'
 
 export const metadata: Metadata = {
   title: '社群 | 朗敦道 Langton Tao',
@@ -11,12 +14,12 @@ export const metadata: Metadata = {
 
 export default function CommunityPage() {
   return (
-    <>
-      <SuperheroJourneySection />
-
-      <MillionairePlanSection />
-
-      <CommunityMembershipSection />
-    </>
+    <div className="community2-page bg-white text-zinc-950">
+      <Community2HeroSection />
+      <Community2ProgramsSection />
+      <Community2EventsHub />
+      <Community2HowToJoinSection />
+      <Community2JoinBand />
+    </div>
   )
 }

@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { siteNav } from '@/lib/site-nav'
 import { cn } from '@/lib/utils'
-import { ContactTrigger } from '@/components/contact-trigger'
 import { Button } from '@/components/ui/button'
 
 export function SiteHeader() {
@@ -40,7 +39,9 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden md:block">
-          <ContactTrigger size="default">预约咨询</ContactTrigger>
+          <Button size="default" asChild>
+            <Link href="/member">加入我们</Link>
+          </Button>
         </div>
 
         <Button
@@ -70,13 +71,11 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <ContactTrigger
-              className="mt-2 w-full"
-              size="lg"
-              onClick={() => setMobileOpen(false)}
-            >
-              预约咨询
-            </ContactTrigger>
+            <Button className="mt-2 w-full" size="lg" asChild>
+              <Link href="/member" onClick={() => setMobileOpen(false)}>
+                加入我们
+              </Link>
+            </Button>
           </nav>
         </div>
       )}

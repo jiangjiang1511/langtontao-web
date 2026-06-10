@@ -14,7 +14,7 @@ export function CatalogSection() {
             朗敦道书架
           </SectionTitle>
           <p className="mt-3 text-sm font-bold text-[color:var(--section-muted)]">
-            悬停翻开金句，点击查看围读详情
+            悬停或点击书籍，查看朗敦道选书金句
           </p>
         </div>
         <PillLink href="/education#reading" variant="outline">
@@ -23,7 +23,7 @@ export function CatalogSection() {
       </div>
       <HorizontalScroll className="mt-8 gap-8 py-12 md:gap-10 md:py-14">
         {bookshelf.map((book) => (
-          <FlipBookCard key={book.id} book={book} />
+          <FlipBookCard key={book.id} book={book} navigateOnClick={false} />
         ))}
       </HorizontalScroll>
     </SectionSurface>

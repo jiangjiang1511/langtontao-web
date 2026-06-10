@@ -89,6 +89,9 @@ export function FlipBookCard({
       <p className="mt-3 line-clamp-2 text-xs font-black leading-snug text-pop-black">
         {book.title}
       </p>
+      <p className="mt-1 text-[10px] font-bold text-pop-black/55">
+        {book.author} · {book.phaseLabel}
+      </p>
     </button>
   )
 }

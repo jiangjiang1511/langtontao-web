@@ -24,7 +24,7 @@ export function JoinCtaSection() {
           生态入局——开启认知定投
         </p>
         <Button variant="default" size="lg" className="mt-8" asChild>
-          <Link href="/member2">了解会员</Link>
+          <Link href="/member">了解会员</Link>
         </Button>
       </div>
     </SectionSurface>
