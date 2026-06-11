@@ -73,7 +73,7 @@ export function Coffee2TopicsWaterfall() {
 
       <nav
         aria-label="熊比特咖啡议题导航"
-        className="c2-topic-nav sticky top-16 z-10 border-b border-zinc-200 bg-white/95 py-3 backdrop-blur-sm"
+        className="c2-topic-nav sticky top-[4.5rem] z-10 border-b border-zinc-200 bg-white/95 py-3 backdrop-blur-sm md:top-20"
       >
         <div className="mx-auto flex max-w-7xl flex-wrap gap-2 px-4 sm:px-6 lg:px-8">
           {coffee2Topics.map((topic) => (

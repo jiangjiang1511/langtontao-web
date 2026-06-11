@@ -1,7 +1,7 @@
 import { fiftyYearPageTitle } from '@/lib/content/fifty-year-narrative'
 
 export function Home2HeroSection() {
-  const [line1, line2] = fiftyYearPageTitle.split('——')
+  const [line1, line2] = fiftyYearPageTitle.split('：')
 
   return (
     <section
@@ -15,7 +15,7 @@ export function Home2HeroSection() {
             className="home2-marquee text-[clamp(2.75rem,9vw,7rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-zinc-950"
             aria-hidden
           >
-            {line1}——
+            {line1}：
           </p>
           <p
             className="home2-marquee home2-marquee--delay text-[clamp(2.75rem,9vw,7rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-zinc-950"

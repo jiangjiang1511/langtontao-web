@@ -1,19 +1,29 @@
-/** 顶部导航栏（页脚左列与之保持一致） */
-export const siteNav = [
-  { href: '/', label: '首页' },
-  { href: '/education', label: '教育' },
-  { href: '/community', label: '社群' },
-  { href: '/coffee', label: '熊比特咖啡' },
-  { href: '/cases', label: '案例' },
-  { href: '/checkup', label: '体检' },
-  { href: '/faq', label: 'FAQ' },
-] as const
+export type SiteNavItem = {
+  href: string
+  label: string
+  featured?: boolean
+}
 
-/** 页脚右列：顶部不展示的重点页面 */
+/** 顶栏：熊比特 → TAO（突出）→ 朗敦道 */
+export const siteNav: SiteNavItem[] = [
+  { href: '/coffee', label: '熊比特咖啡' },
+  { href: '/', label: 'TAO定律', featured: true },
+  { href: '/langtontao', label: '朗敦道' },
+]
+
+/** 页脚左列：TAO → 朗敦道 → 熊比特（自上而下） */
+export const footerSiteNav: SiteNavItem[] = [
+  { href: '/', label: 'TAO定律' },
+  { href: '/langtontao', label: '朗敦道' },
+  { href: '/coffee', label: '熊比特咖啡' },
+]
+
+/** 页脚右列：在现有条目基础上增补，暂不删除 dev/备份链接 */
 export const footerSpotlightNav = [
   { href: '/langton', label: '关于朗敦道' },
+  { href: '/faq', label: 'FAQ' },
+  { href: '/member', label: '加入我们' },
   { href: '/home-backup', label: '首页备份' },
-  { href: '/member', label: '会员' },
   { href: '/test', label: 'Test' },
 ] as const
 

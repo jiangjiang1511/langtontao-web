@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -8,77 +9,111 @@ import { siteNav } from '@/lib/site-nav'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 
+function isNavActive(pathname: string, href: string) {
+  if (href === '/') return pathname === '/'
+  return pathname === href || pathname.startsWith(`${href}/`)
+}
+
 export function SiteHeader() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 h-16 border-b-2 border-pop-black bg-pop-white/90 backdrop-blur-md md:h-[72px]">
-      <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link
-          href="/"
-          className="text-lg font-black tracking-tight text-pop-black"
-        >
-          朗敦道
-        </Link>
+    <header className="pointer-events-none fixed inset-x-0 top-3 z-50 flex justify-center px-4 sm:top-4 sm:px-6">
+      <div className="pointer-events-auto w-full max-w-4xl">
+        <div className="site-header-capsule flex h-12 items-center justify-between gap-2 rounded-full border border-zinc-200/80 bg-white/95 px-3 shadow-[0_4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md md:h-14 md:gap-4 md:px-5">
+          <Link
+            href="/langton"
+            className="flex shrink-0 items-center"
+            aria-label="关于朗敦道"
+          >
+            <Image
+              src="/logo.svg"
+              alt=""
+              width={36}
+              height={36}
+              className="h-8 w-8 md:h-9 md:w-9"
+              priority
+            />
+          </Link>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label="主导航">
-          {siteNav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                'text-sm font-bold text-pop-black/70 transition-colors hover:text-pop-black',
-                pathname === item.href &&
-                  'text-pop-black underline decoration-pop-yellow decoration-4 underline-offset-4'
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="hidden md:block">
-          <Button size="default" asChild>
-            <Link href="/member">加入我们</Link>
-          </Button>
-        </div>
-
-        <Button
-          variant="ghost"
-          size="sm"
-          className="md:hidden"
-          aria-label={mobileOpen ? '关闭菜单' : '打开菜单'}
-          onClick={() => setMobileOpen((v) => !v)}
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </Button>
-      </div>
-
-      {mobileOpen && (
-        <div className="border-t-2 border-pop-black bg-pop-white px-4 py-4 md:hidden">
-          <nav className="flex flex-col gap-3" aria-label="移动端导航">
+          <nav
+            className="hidden items-center gap-5 md:flex lg:gap-7"
+            aria-label="主导航"
+          >
             {siteNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setMobileOpen(false)}
                 className={cn(
-                  'text-base font-bold text-pop-black',
-                  pathname === item.href && 'underline decoration-pop-yellow decoration-4'
+                  'whitespace-nowrap transition-colors',
+                  item.featured
+                    ? 'text-base font-black text-zinc-950 md:text-lg'
+                    : 'text-sm font-bold text-zinc-600 hover:text-zinc-950',
+                  isNavActive(pathname, item.href) &&
+                    (item.featured
+                      ? 'underline decoration-pop-yellow decoration-4 underline-offset-4'
+                      : 'text-zinc-950 underline decoration-zinc-300 decoration-2 underline-offset-4')
                 )}
               >
                 {item.label}
               </Link>
             ))}
-            <Button className="mt-2 w-full" size="lg" asChild>
-              <Link href="/member" onClick={() => setMobileOpen(false)}>
-                加入我们
-              </Link>
-            </Button>
           </nav>
+
+          <div className="flex shrink-0 items-center gap-1 md:gap-2">
+            <Button
+              size="sm"
+              className="hidden rounded-full px-4 md:inline-flex"
+              asChild
+            >
+              <Link href="/member">加入我们</Link>
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden"
+              aria-label={mobileOpen ? '关闭菜单' : '打开菜单'}
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((v) => !v)}
+            >
+              {mobileOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
+            </Button>
+          </div>
         </div>
-      )}
+
+        {mobileOpen && (
+          <div className="site-header-capsule mt-2 rounded-2xl border border-zinc-200/80 bg-white/95 p-4 shadow-[0_4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md md:hidden">
+            <nav className="flex flex-col gap-3" aria-label="移动端导航">
+              {siteNav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(
+                    'font-bold text-zinc-950',
+                    item.featured ? 'text-lg font-black' : 'text-base',
+                    isNavActive(pathname, item.href) &&
+                      'underline decoration-pop-yellow decoration-4'
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Button className="mt-1 w-full rounded-full" size="lg" asChild>
+                <Link href="/member" onClick={() => setMobileOpen(false)}>
+                  加入我们
+                </Link>
+              </Button>
+            </nav>
+          </div>
+        )}
+      </div>
     </header>
   )
 }

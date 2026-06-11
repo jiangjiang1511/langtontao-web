@@ -54,7 +54,7 @@ export function Cases2Detail({ story }: { story: CaseStory }) {
                 <span />
               )}
               <Link
-                href="/cases"
+                href="/langtontao#checkup-cases"
                 className="c2-btn-secondary text-center text-sm"
               >
                 返回案例

@@ -6,8 +6,15 @@ import {
   fiftyYearPageTitle,
   fiftyYearStages,
   type FiftyYearProduct,
+  type FiftyYearProductSubItem,
   type FiftyYearStage,
 } from '@/lib/content/fifty-year-narrative'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 import { cn } from '@/lib/utils'
 
 const stageVisuals = [
@@ -44,17 +51,62 @@ function StageVisual({
         <p className="mt-2 text-2xl font-semibold leading-tight tracking-tight text-zinc-900 md:text-3xl">
           {stage.theme}
         </p>
-        {stage.keywords && stage.keywords.length > 0 ? (
-          <p className="mt-3 text-xs font-medium tracking-wide text-zinc-600">
-            {stage.keywords.join(' · ')}
-          </p>
-        ) : null}
       </div>
     </div>
   )
 }
 
-function ProductItem({ product }: { product: FiftyYearProduct }) {
+function SubItemList({ items }: { items: FiftyYearProductSubItem[] }) {
+  return (
+    <ul className="space-y-2 pt-1">
+      {items.map((item) => (
+        <li key={item.label}>
+          {item.href ? (
+            <Link
+              href={item.href}
+              className="text-sm text-zinc-600 transition-colors hover:text-zinc-950"
+            >
+              {item.label}
+            </Link>
+          ) : (
+            <span className="text-sm text-zinc-600">{item.label}</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function ProductItem({
+  product,
+  accordionId,
+}: {
+  product: FiftyYearProduct
+  accordionId: string
+}) {
+  const hasSubItems = product.subItems && product.subItems.length > 0
+
+  if (hasSubItems) {
+    return (
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value={accordionId} className="border-l border-zinc-300 border-b-0 pl-4">
+          <AccordionTrigger className="py-2 text-sm font-medium text-zinc-800 hover:no-underline md:text-base [&>svg]:text-zinc-500">
+            {product.label}
+          </AccordionTrigger>
+          <AccordionContent className="pb-2">
+            <SubItemList items={product.subItems!} />
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    )
+  }
+
+  const className = cn(
+    product.featured
+      ? 'rounded-2xl border-2 border-zinc-900 bg-zinc-950 px-5 py-4 text-base font-semibold leading-relaxed text-white md:text-lg'
+      : 'border-l border-zinc-300 pl-4 text-sm leading-relaxed text-zinc-700 md:text-base'
+  )
+
   const content = (
     <>
       {product.featured ? (
@@ -66,21 +118,39 @@ function ProductItem({ product }: { product: FiftyYearProduct }) {
     </>
   )
 
-  const className = cn(
-    product.featured
-      ? 'rounded-2xl border-2 border-zinc-900 bg-zinc-950 px-5 py-4 text-base font-semibold leading-relaxed text-white md:text-lg'
-      : 'border-l border-zinc-300 pl-4 text-sm leading-relaxed text-zinc-700 md:text-base'
-  )
-
   if (product.href) {
     return (
-      <Link href={product.href} className={cn(className, 'block transition-opacity hover:opacity-90')}>
+      <Link
+        href={product.href}
+        className={cn(className, 'block transition-opacity hover:opacity-90')}
+      >
         {content}
       </Link>
     )
   }
 
   return <div className={className}>{content}</div>
+}
+
+function ProductList({
+  products,
+  idPrefix,
+}: {
+  products: FiftyYearProduct[]
+  idPrefix: string
+}) {
+  return (
+    <ul className="mt-4 space-y-3">
+      {products.map((product, index) => (
+        <li key={`${idPrefix}-${product.label}-${index}`}>
+          <ProductItem
+            product={product}
+            accordionId={`${idPrefix}-product-${index}`}
+          />
+        </li>
+      ))}
+    </ul>
+  )
 }
 
 function StagePanel({
@@ -133,21 +203,8 @@ function StagePanel({
             id={`${stage.id}-theme`}
             className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-zinc-950 md:text-4xl lg:text-[2.75rem]"
           >
-            主题：{stage.theme}
+            {stage.theme}
           </h2>
-
-          {stage.keywords && stage.keywords.length > 0 ? (
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {stage.keywords.map((keyword) => (
-                <li
-                  key={keyword}
-                  className="rounded-full border border-zinc-300 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-700"
-                >
-                  {keyword}
-                </li>
-              ))}
-            </ul>
-          ) : null}
 
           {stage.body ? (
             <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-600 md:text-lg">
@@ -160,13 +217,7 @@ function StagePanel({
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
                 产品
               </p>
-              <ul className="mt-4 space-y-3">
-                {stage.products.map((product) => (
-                  <li key={product.label}>
-                    <ProductItem product={product} />
-                  </li>
-                ))}
-              </ul>
+              <ProductList products={stage.products} idPrefix={stage.id} />
             </div>
           ) : null}
 
@@ -175,9 +226,17 @@ function StagePanel({
               <p className="text-xs font-medium uppercase tracking-[0.15em] text-zinc-500">
                 {stage.transition.heading}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-700 md:text-base">
-                {stage.transition.body}
-              </p>
+              {stage.transition.body ? (
+                <p className="mt-3 text-sm leading-relaxed text-zinc-700 md:text-base">
+                  {stage.transition.body}
+                </p>
+              ) : null}
+              {stage.transition.items && stage.transition.items.length > 0 ? (
+                <ProductList
+                  products={stage.transition.items}
+                  idPrefix={`${stage.id}-transition`}
+                />
+              ) : null}
             </div>
           ) : null}
         </div>

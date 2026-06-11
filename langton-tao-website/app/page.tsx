@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
-import { Home2CtaSection } from '@/components/sections/home2/home2-cta-section'
-import { Home2HeroSection } from '@/components/sections/home2/home2-hero-section'
-import { Home2NarrativeSection } from '@/components/sections/home2/home2-narrative-section'
-import { fiftyYearPageTitle } from '@/lib/content/fifty-year-narrative'
+import { JarsyJoinBand } from '@/components/jarsy/jarsy-join-band'
+import { HomeJarsyHero } from '@/components/sections/home-jarsy/home-jarsy-hero'
+import { HomeJarsyStageNav } from '@/components/sections/home-jarsy/home-jarsy-stage-nav'
+import { HomeJarsyStages } from '@/components/sections/home-jarsy/home-jarsy-stages'
+import {
+  fiftyYearPageTitle,
+  homeJarsyJoinBand,
+} from '@/lib/content/home-jarsy-page'
+import './home.css'
 
 export const metadata: Metadata = {
   title: '朗敦道 Langton Tao | VFO/MFO Leader in China',
@@ -11,10 +16,17 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="home2-page bg-white text-zinc-950">
-      <Home2HeroSection />
-      <Home2NarrativeSection />
-      <Home2CtaSection />
+    <div className="home-jarsy-page jarsy-v2-page">
+      <HomeJarsyHero />
+      <HomeJarsyStageNav />
+      <HomeJarsyStages />
+      <JarsyJoinBand
+        id="home-jarsy-join-band-title"
+        statement={homeJarsyJoinBand.statement}
+        tagline={homeJarsyJoinBand.tagline}
+        ctaLabel={homeJarsyJoinBand.ctaLabel}
+        ctaHref={homeJarsyJoinBand.ctaHref}
+      />
     </div>
   )
 }

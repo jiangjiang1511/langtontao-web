@@ -17,7 +17,7 @@ export const coffee2Topics = coffeeWaterfallSections.filter(
 export const coffee2Hero = {
   eyebrow: coffeePageHero.eyebrow,
   titleLines: ['熊比特', '咖啡'] as const,
-  tagline: coffeePageHero.tagline,
+  tagline: '熊比特：聊聊人生大事',
   lead: coffeePageHero.paragraphs[0],
   cta: {
     ctaLabel: '加入我们',
@@ -31,9 +31,9 @@ export const coffee2Philosophy = {
 
 export const coffee2TopicsMeta = {
   eyebrow: 'Coffee Chat · Topics',
-  title: '五维议题',
-  subtitle: '一杯咖啡诚实拆解',
-  lead: '投资、保全、化债、传承——可在像喝咖啡一样自然的节奏里被诚实拆解；一段交谈，提前思考十年后的路。',
+  title: '四件事',
+  subtitle: '在周期共识之上诚实拆解',
+  lead: '投资、保全、化债、传承——在康波与朱格拉的坐标系里，用 Coffee Chat 把四件事讲清楚，提前思考十年后的路。',
 } as const
 
 export const coffee2JoinBand = {

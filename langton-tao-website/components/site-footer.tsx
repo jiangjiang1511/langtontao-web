@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { footerSpotlightNav, siteNav } from '@/lib/site-nav'
+import { footerSiteNav, footerSpotlightNav } from '@/lib/site-nav'
 
 export function SiteFooter() {
   return (
@@ -15,7 +15,7 @@ export function SiteFooter() {
           <p className="text-sm font-black text-pop-yellow">导航</p>
           <div className="mt-3 grid grid-cols-2 gap-x-8">
             <ul className="space-y-2">
-              {siteNav.map((item) => (
+              {footerSiteNav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}

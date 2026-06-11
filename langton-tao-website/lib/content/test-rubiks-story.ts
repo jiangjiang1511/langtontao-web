@@ -157,16 +157,19 @@ function formatStageBody(stage: FiftyYearStage): string {
 
   if (stage.body) parts.push(stage.body)
 
-  if (stage.keywords && stage.keywords.length > 0) {
-    parts.push(stage.keywords.join(' · '))
-  }
-
   if (stage.products && stage.products.length > 0) {
     parts.push(stage.products.map((product) => product.label).join('\n'))
   }
 
   if (stage.transition) {
-    parts.push(`${stage.transition.heading}\n${stage.transition.body}`)
+    const transitionParts = [stage.transition.heading]
+    if (stage.transition.body) transitionParts.push(stage.transition.body)
+    if (stage.transition.items?.length) {
+      transitionParts.push(
+        stage.transition.items.map((product) => product.label).join('\n')
+      )
+    }
+    parts.push(transitionParts.join('\n'))
   }
 
   return parts.join('\n\n')

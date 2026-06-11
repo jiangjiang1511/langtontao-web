@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className="min-h-screen antialiased">
         <ContactProvider>
           <SiteHeader />
-          <main>{children}</main>
+          <main className="pt-[4.5rem] md:pt-20">{children}</main>
           <SiteFooter />
           <Toaster position="top-center" richColors />
         </ContactProvider>
