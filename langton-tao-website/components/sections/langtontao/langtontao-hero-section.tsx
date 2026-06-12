@@ -8,7 +8,7 @@ export function LangtontaoHeroSection() {
       className="border-b border-zinc-200 bg-white"
       aria-labelledby="langtontao-hero-title"
     >
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 pt-24 pb-16 sm:px-6 md:pt-28 md:pb-20 lg:px-8">
         <JarsyReveal eager>
           <p className="c2-eyebrow">{langtontaoHero.eyebrow}</p>
         </JarsyReveal>

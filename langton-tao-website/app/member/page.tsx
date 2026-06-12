@@ -3,94 +3,63 @@ import { MembershipBenefitBars } from '@/components/sections/membership-v2/membe
 import { MembershipBoardSection } from '@/components/sections/membership-v2/membership-board-section'
 import { MembershipComparisonTable } from '@/components/sections/membership-v2/membership-comparison-table'
 import { MembershipPricingOverview } from '@/components/sections/membership-v2/membership-pricing-overview'
-import { SectionSurface, SectionTitle } from '@/components/layout/section-surface'
-import { Button } from '@/components/ui/button'
+import { MembershipV2HeroSection } from '@/components/sections/membership-v2/membership-v2-hero-section'
 import { membershipV2Hero } from '@/lib/content/membership-v2'
+import '@/styles/jarsy-v2.css'
 
 export const metadata: Metadata = {
-  title: '会员体系 | 朗敦道 Langton Tao',
+  title: '加入我们 | 朗敦道 Langton Tao',
   description:
     '消费Cosco，家办好事多。开启人生认知定投，掌握普通人的投资学，推开门打开更大的世界。',
 }
 
 export default function MemberPage() {
   return (
-    <>
-      <SectionSurface
-        theme="paper"
-        className="pt-24 md:pt-28"
-        aria-labelledby="member-hero-title"
+    <div className="jarsy-v2-page bg-white text-zinc-950">
+      <MembershipV2HeroSection />
+
+      <section
+        className="border-b border-zinc-200 py-16 md:py-24"
+        aria-labelledby="tier-overview-heading"
       >
-        <article className="mx-auto max-w-3xl overflow-hidden rounded-lg border-2 border-pop-black bg-pop-white shadow-pop-black">
-          <header className="border-b-2 border-pop-black bg-pop-black px-6 py-4 md:px-10 md:py-5">
-            <p className="text-center text-sm font-black leading-snug text-pop-yellow md:text-base">
-              {membershipV2Hero.slogan}
-            </p>
-          </header>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="sr-only" id="tier-overview-heading">
+            会员档位总览
+          </p>
+          <MembershipPricingOverview />
+        </div>
+      </section>
 
-          <div className="px-6 py-8 text-center md:px-12 md:py-12">
-            <p className="inline-block border-b-2 border-pop-yellow pb-2 text-sm font-black uppercase tracking-[0.28em] text-pop-black md:text-base">
-              {membershipV2Hero.eyebrow}
-            </p>
+      <section
+        className="border-b border-zinc-200 bg-zinc-50 py-16 md:py-24"
+        aria-labelledby="tier-benefits-heading"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="sr-only" id="tier-benefits-heading">
+            权益详情
+          </p>
+          <MembershipBenefitBars />
+        </div>
+      </section>
 
-            <h1
-              id="member-hero-title"
-              className="text-display mx-auto mt-8 flex flex-col gap-4 md:mt-10 md:gap-6 lg:gap-7"
-            >
-              {membershipV2Hero.titleLines.map((line) => (
-                <span
-                  key={line}
-                  className="block text-[2rem] leading-[1.1] md:text-[2.75rem] lg:text-[3.25rem]"
-                >
-                  {line}
-                </span>
-              ))}
-            </h1>
+      <section
+        className="border-b border-zinc-200 py-16 md:py-24"
+        aria-labelledby="plan-compare"
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <MembershipComparisonTable />
+        </div>
+      </section>
 
-            <div className="mx-auto mt-8 max-w-xl border-t-2 border-pop-black/10 pt-8 md:mt-10">
-              <p className="bg-pop-yellow/40 px-4 py-3 text-base font-black leading-snug text-pop-black md:text-lg">
-                {membershipV2Hero.subtitle}
-              </p>
-            </div>
-          </div>
-        </article>
-      </SectionSurface>
-
-      <SectionSurface theme="white" aria-labelledby="tier-overview-heading">
-        <p className="sr-only" id="tier-overview-heading">
-          会员档位总览
-        </p>
-        <MembershipPricingOverview />
-      </SectionSurface>
-
-      <SectionSurface theme="paper" aria-labelledby="tier-benefits-heading">
-        <p className="sr-only" id="tier-benefits-heading">
-          权益详情
-        </p>
-        <MembershipBenefitBars />
-      </SectionSurface>
-
-      <SectionSurface theme="white" aria-labelledby="plan-compare">
-        <MembershipComparisonTable />
-      </SectionSurface>
-
-      <SectionSurface theme="paper" narrow className="py-8 md:py-10">
-        <p className="text-center text-xs font-bold text-[color:var(--section-muted)]">
-          {membershipV2Hero.disclaimer}
-        </p>
-      </SectionSurface>
+      <section className="border-b border-zinc-200 py-10 md:py-12">
+        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <p className="text-xs font-medium leading-relaxed text-zinc-500 md:text-sm">
+            {membershipV2Hero.disclaimer}
+          </p>
+        </div>
+      </section>
 
       <MembershipBoardSection />
-
-      <SectionSurface theme="yellow" narrow className="text-center">
-        <SectionTitle display>找到适合你的会员档位</SectionTitle>
-        <p className="mt-4 text-sm font-bold text-pop-black/70">
-          预约咨询，我们将根据家族阶段推荐会员、Plus、Pro 或私董会方案。
-        </p>
-        <Button variant="dark" size="lg" className="mt-8" asChild>
-          <a href="#tier-overview">开启会员之旅</a>
-        </Button>
-      </SectionSurface>
-    </>
+    </div>
   )
 }

@@ -4,7 +4,7 @@ import { coffee2Cycles } from '@/lib/content/coffee-manifesto'
 export function Coffee2CyclesSection() {
   return (
     <section
-      id="coffee-cycles"
+      id="coffee-cycles-reading"
       className="scroll-mt-28 border-b border-zinc-200 bg-zinc-50 py-16 md:py-24"
       aria-labelledby="coffee2-cycles-title"
     >

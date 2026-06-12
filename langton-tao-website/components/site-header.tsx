@@ -20,25 +20,25 @@ export function SiteHeader() {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-3 z-50 flex justify-center px-4 sm:top-4 sm:px-6">
-      <div className="pointer-events-auto w-full max-w-4xl">
-        <div className="site-header-capsule flex h-12 items-center justify-between gap-2 rounded-full border border-zinc-200/80 bg-white/95 px-3 shadow-[0_4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md md:h-14 md:gap-4 md:px-5">
+      <div className="pointer-events-auto w-fit max-w-[calc(100vw-2rem)]">
+        <div className="site-header-capsule flex h-12 items-center justify-between gap-1.5 rounded-full border border-zinc-200/80 bg-white/95 px-2.5 shadow-[0_4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md md:h-14 md:gap-3 md:px-4">
           <Link
             href="/langton"
-            className="flex shrink-0 items-center"
+            className="flex shrink-0 items-center overflow-hidden rounded-full border-2 border-pop-black transition-all hover:-translate-y-0.5 hover:shadow-pop-yellow active:scale-[0.98]"
             aria-label="关于朗敦道"
           >
             <Image
-              src="/logo.svg"
+              src="/static/LLT-logo.jpg"
               alt=""
               width={36}
               height={36}
-              className="h-8 w-8 md:h-9 md:w-9"
+              className="h-8 w-8 rounded-full object-cover md:h-9 md:w-9"
               priority
             />
           </Link>
 
           <nav
-            className="hidden items-center gap-5 md:flex lg:gap-7"
+            className="hidden items-center gap-4 md:flex lg:gap-5"
             aria-label="主导航"
           >
             {siteNav.map((item) => (

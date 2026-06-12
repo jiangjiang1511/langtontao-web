@@ -41,7 +41,6 @@
   top: 50%;
   z-index: 40;
   width: 2.75rem;
-  transform: translateY(-50%);
   max-height: min(78vh, 520px);
   overflow-y: auto;
   padding: 0.875rem 0.375rem;
@@ -51,6 +50,19 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgb(0 0 0 / 0.08);
   scrollbar-width: none;
+  opacity: 0;
+  transform: translateY(-50%) translateX(-1.5rem);
+  pointer-events: none;
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.home-jarsy-stage-nav--visible {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+  pointer-events: auto;
 }
 
 .home-jarsy-stage-nav::-webkit-scrollbar {
@@ -234,6 +246,22 @@
   .home-jarsy-step:hover,
   .home-jarsy-insurer-tile {
     transform: none;
+  }
+
+  .home-jarsy-stage-nav {
+    transition: none;
+    transform: translateY(-50%);
+  }
+
+  .home-jarsy-stage-nav--visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .home-jarsy-stage-nav:not(.home-jarsy-stage-nav--visible) {
+    opacity: 0;
+    visibility: hidden;
   }
 
   .home-jarsy-center-motion[data-visible='false'],

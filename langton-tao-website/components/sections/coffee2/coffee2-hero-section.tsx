@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { Coffee2HeroOrbitBackground } from '@/components/sections/coffee2/coffee2-hero-orbit-background'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import { coffee2Hero } from '@/lib/content/coffee2-page'
 
@@ -6,10 +6,12 @@ export function Coffee2HeroSection() {
   return (
     <section
       id="coffee2-hero"
-      className="scroll-mt-20 border-b border-zinc-200"
+      className="relative scroll-mt-20 overflow-visible border-b-0 bg-white"
       aria-labelledby="coffee2-hero-title"
     >
-      <div className="mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col justify-end px-4 pb-16 pt-28 sm:px-6 md:min-h-[calc(100svh-4.5rem)] md:pb-24 md:pt-32 lg:px-8">
+      <Coffee2HeroOrbitBackground />
+
+      <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col justify-end px-4 pb-10 pt-28 sm:px-6 md:min-h-[calc(100svh-4.5rem)] md:pb-12 md:pt-32 lg:px-8">
         <Coffee2Reveal eager delay={0}>
           <p className="c2-eyebrow">{coffee2Hero.eyebrow}</p>
         </Coffee2Reveal>
@@ -43,17 +45,6 @@ export function Coffee2HeroSection() {
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-600 md:text-lg">
             {coffee2Hero.lead}
           </p>
-        </Coffee2Reveal>
-
-        <Coffee2Reveal eager delay={260}>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link href={coffee2Hero.cta.ctaHref} className="c2-btn-primary">
-              {coffee2Hero.cta.ctaLabel}
-            </Link>
-            <Link href="#coffee-topics" className="c2-btn-secondary">
-              探索议题
-            </Link>
-          </div>
         </Coffee2Reveal>
       </div>
     </section>

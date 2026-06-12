@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Coffee2CyclesSection } from '@/components/sections/coffee2/coffee2-cycles-section'
 import { Coffee2HeroSection } from '@/components/sections/coffee2/coffee2-hero-section'
+import { Coffee2TimelineSection } from '@/components/sections/coffee2/coffee2-timeline-section'
 import { Coffee2JoinBand } from '@/components/sections/coffee2/coffee2-join-band'
 import { Coffee2LifeEventsSection } from '@/components/sections/coffee2/coffee2-life-events-section'
 import { Coffee2ManifestoSection } from '@/components/sections/coffee2/coffee2-manifesto-section'
@@ -20,6 +21,7 @@ export default function CoffeePage() {
   return (
     <div className="coffee2-page bg-white text-zinc-950">
       <Coffee2HeroSection />
+      <Coffee2TimelineSection />
       <Coffee2ManifestoSection />
       <Coffee2LifeEventsSection />
       <Coffee2TenTopicsSection />

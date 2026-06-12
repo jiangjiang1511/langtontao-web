@@ -7,8 +7,29 @@ import { cn } from '@/lib/utils'
 
 export function HomeJarsyStageNav() {
   const [activeId, setActiveId] = useState(fiftyYearStages[0]?.id ?? 'day-1')
+  const [navVisible, setNavVisible] = useState(false)
 
   useEffect(() => {
+    const hero = document.getElementById('hero')
+    if (!hero) return
+
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => {
+        setNavVisible(!entry.isIntersecting)
+      },
+      {
+        rootMargin: '-8% 0px -35% 0px',
+        threshold: [0, 0.08, 0.2],
+      }
+    )
+
+    heroObserver.observe(hero)
+    return () => heroObserver.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!navVisible) return
+
     const sections = fiftyYearStages
       .map((stage) => document.getElementById(stage.id))
       .filter((element): element is HTMLElement => element !== null)
@@ -33,10 +54,18 @@ export function HomeJarsyStageNav() {
 
     sections.forEach((section) => observer.observe(section))
     return () => observer.disconnect()
-  }, [])
+  }, [navVisible])
 
   return (
-    <nav aria-label="TAO 定律阶段导航" className="home-jarsy-stage-nav">
+    <nav
+      aria-label="TAO 定律阶段导航"
+      aria-hidden={navVisible ? undefined : true}
+      data-visible={navVisible ? 'true' : 'false'}
+      className={cn(
+        'home-jarsy-stage-nav',
+        navVisible && 'home-jarsy-stage-nav--visible'
+      )}
+    >
       <ol className="home-jarsy-stage-nav__list">
         {fiftyYearStages.map((stage) => {
           const isActive = activeId === stage.id

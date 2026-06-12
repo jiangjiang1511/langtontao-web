@@ -17,10 +17,12 @@ import {
 } from '@/lib/content/membership-v2'
 import { cn } from '@/lib/utils'
 
-/** 移动端计划对比仅展示三档；私董会由下方独立 section 承接 */
 const mobileTierColumnOrder = tierColumnOrder.filter(
   (tierId) => tierId !== 'board'
 )
+
+const tierCtaClass =
+  'mt-3 w-full max-w-[120px] rounded-full border-0 bg-white text-xs font-semibold text-zinc-950 shadow-none hover:bg-zinc-100 hover:translate-y-0 hover:shadow-none'
 
 function ComparisonCellValue({
   value,
@@ -34,13 +36,13 @@ function ComparisonCellValue({
   if (value === true) {
     return (
       <span className="inline-flex items-center justify-center">
-        <Check className={cn(iconClass, 'text-pop-black')} aria-label="包含" />
+        <Check className={cn(iconClass, 'text-zinc-950')} aria-label="包含" />
       </span>
     )
   }
   if (value === false) {
     return (
-      <span className="inline-flex items-center justify-center text-pop-black/30">
+      <span className="inline-flex items-center justify-center text-zinc-300">
         <Minus className={cn(iconClass)} aria-label="不包含" />
       </span>
     )
@@ -48,7 +50,7 @@ function ComparisonCellValue({
   return (
     <span
       className={cn(
-        'font-black text-pop-black',
+        'font-semibold text-zinc-950',
         compact ? 'text-xs' : 'text-sm'
       )}
     >
@@ -60,12 +62,8 @@ function ComparisonCellValue({
 function BoardMysteryCell({ compact = false }: { compact?: boolean }) {
   if (compact) {
     return (
-      <span className="relative inline-flex items-center justify-center overflow-hidden rounded border border-pop-black/30 bg-pop-black px-2 py-0.5">
-        <span
-          className="absolute inset-0 bg-[repeating-linear-gradient(-45deg,rgba(255,230,0,0.25)_0px,rgba(255,230,0,0.25)_6px,transparent_6px,transparent_12px)]"
-          aria-hidden
-        />
-        <span className="relative z-10 text-[10px] font-black uppercase tracking-wider text-pop-yellow">
+      <span className="relative inline-flex items-center justify-center overflow-hidden rounded-full border border-zinc-700 bg-zinc-900 px-2 py-0.5">
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
           邀请制
         </span>
       </span>
@@ -73,12 +71,8 @@ function BoardMysteryCell({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <div className="relative flex min-h-[52px] items-center justify-center overflow-hidden rounded border-2 border-pop-black/20 bg-pop-black px-2 py-3">
-      <div
-        className="absolute inset-0 bg-[repeating-linear-gradient(-45deg,rgba(255,230,0,0.25)_0px,rgba(255,230,0,0.25)_8px,transparent_8px,transparent_16px)]"
-        aria-hidden
-      />
-      <span className="relative z-10 text-[10px] font-black uppercase tracking-wider text-pop-yellow">
+    <div className="flex min-h-[52px] items-center justify-center rounded-xl border border-zinc-700 bg-zinc-900 px-2 py-3">
+      <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
         邀请制
       </span>
     </div>
@@ -91,12 +85,12 @@ function TierColumnHeader({ tierId }: { tierId: MembershipTierId }) {
 
   return (
     <>
-      <p className="text-sm font-black">{tierColumnLabels[tierId]}</p>
+      <p className="text-sm font-semibold">{tierColumnLabels[tierId]}</p>
       <ContactTrigger
         intent={isBoard ? '私董会' : (tier?.contactIntent ?? '了解会员')}
         size="sm"
-        variant="default"
-        className="mt-3 w-full max-w-[120px] text-xs"
+        variant="dark"
+        className={tierCtaClass}
       >
         {isBoard ? '私董会咨询' : '预约咨询'}
       </ContactTrigger>
@@ -110,11 +104,11 @@ function ComparisonTableDesktop({
   categories: typeof membershipV2FullComparison
 }) {
   return (
-    <div className="hidden overflow-x-auto rounded-lg border-2 border-pop-black md:block">
+    <div className="hidden overflow-x-auto rounded-2xl border border-zinc-200 md:block">
       <table className="w-full min-w-[860px] border-collapse text-left">
         <thead>
-          <tr className="border-b-2 border-pop-black bg-pop-black text-pop-white">
-            <th className="min-w-[220px] px-4 py-4 text-sm font-black">
+          <tr className="border-b border-zinc-800 bg-zinc-950 text-white">
+            <th className="min-w-[220px] px-4 py-4 text-sm font-semibold">
               权益项目
             </th>
             {tierColumnOrder.map((tierId) => {
@@ -136,10 +130,10 @@ function ComparisonTableDesktop({
         <tbody>
           {categories.map((category) => (
             <Fragment key={category.title}>
-              <tr className="border-b border-pop-black/15 bg-pop-yellow/30">
+              <tr className="border-b border-zinc-200 bg-zinc-50">
                 <td
                   colSpan={5}
-                  className="px-4 py-3 text-sm font-black uppercase tracking-wide"
+                  className="px-4 py-3 text-sm font-semibold uppercase tracking-wide text-zinc-700"
                 >
                   {category.title}
                 </td>
@@ -147,9 +141,9 @@ function ComparisonTableDesktop({
               {category.rows.map((row) => (
                 <tr
                   key={row.label}
-                  className="border-b border-pop-black/10 bg-pop-white even:bg-pop-paper/50"
+                  className="border-b border-zinc-100 bg-white even:bg-zinc-50/50"
                 >
-                  <td className="px-4 py-3 text-sm font-bold text-pop-black/80">
+                  <td className="px-4 py-3 text-sm text-zinc-700">
                     {row.label}
                   </td>
                   {tierColumnOrder.map((tierId) => (
@@ -157,7 +151,7 @@ function ComparisonTableDesktop({
                       key={`${row.label}-${tierId}`}
                       className={cn(
                         'px-3 py-3 text-center',
-                        tierId === 'board' && 'bg-zinc-100/80'
+                        tierId === 'board' && 'bg-zinc-50'
                       )}
                     >
                       {tierId === 'board' ? (
@@ -215,21 +209,21 @@ function TierBenefitItemRow({
   return (
     <li
       className={cn(
-        'flex gap-2 text-xs font-bold leading-snug md:text-sm',
-        mystery ? 'text-pop-white/85' : 'text-pop-black/80'
+        'flex gap-2 text-xs leading-snug md:text-sm',
+        mystery ? 'text-zinc-300' : 'text-zinc-700'
       )}
     >
       <Check
         className={cn(
           'mt-0.5 h-4 w-4 shrink-0',
-          mystery ? 'text-pop-yellow' : 'text-pop-black'
+          mystery ? 'text-zinc-400' : 'text-zinc-950'
         )}
         aria-hidden
       />
       <span>
         {label}
         {detail ? (
-          <span className={mystery ? 'text-pop-yellow' : 'text-pop-black'}>
+          <span className={mystery ? 'text-zinc-400' : 'text-zinc-950'}>
             {' '}
             · {detail}
           </span>
@@ -249,16 +243,16 @@ function MobileTierBenefitBox({
   return (
     <div
       className={cn(
-        'rounded-lg border-2 p-3',
+        'rounded-xl border p-3',
         mystery
-          ? 'border-pop-yellow/40 bg-zinc-900'
-          : 'border-pop-black bg-pop-paper/50'
+          ? 'border-zinc-700 bg-zinc-900'
+          : 'border-zinc-200 bg-zinc-50'
       )}
     >
       <p
         className={cn(
-          'text-xs font-black uppercase tracking-wide',
-          mystery ? 'text-pop-yellow' : 'text-pop-black'
+          'text-xs font-semibold uppercase tracking-wide',
+          mystery ? 'text-zinc-400' : 'text-zinc-700'
         )}
       >
         {category.title}
@@ -283,6 +277,9 @@ function ComparisonTableMobile({
 }: {
   categories: typeof membershipV2FullComparison
 }) {
+  const mobileCtaClass =
+    'w-full rounded-full border-0 bg-zinc-950 font-semibold text-white shadow-none hover:bg-zinc-800 hover:translate-y-0 hover:shadow-none'
+
   return (
     <div className="space-y-4 md:hidden">
       {mobileTierColumnOrder.map((tierId) => {
@@ -293,24 +290,21 @@ function ComparisonTableMobile({
         const benefitCategories = buildTierBenefitCategories(categories, tierId)
 
         return (
-          <article
-            key={tierId}
-            className="flex flex-col rounded-lg border-2 border-pop-black bg-pop-white p-5 shadow-pop-black"
-          >
-            <p className="text-xs font-black uppercase tracking-widest text-pop-black/50">
+          <article key={tierId} className="c2-card flex flex-col p-5">
+            <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
               {card.shortName}
             </p>
-            <h3 className="mt-2 text-lg font-black leading-tight">
+            <h3 className="mt-2 text-lg font-semibold leading-tight text-zinc-950">
               {card.title}
             </h3>
-            <p className="mt-2 text-sm font-bold leading-snug text-pop-black/70">
+            <p className="mt-2 text-sm leading-snug text-zinc-600">
               {card.tagline}
             </p>
 
             {card.includesLabel ? (
-              <span className="mt-3 inline-flex w-fit items-center gap-1.5 rounded border border-pop-black/25 bg-pop-paper px-2 py-1 text-xs font-bold leading-snug text-pop-black/70">
+              <span className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-2 py-1 text-xs leading-snug text-zinc-600">
                 <Check
-                  className="h-4 w-4 shrink-0 text-pop-black/50"
+                  className="h-4 w-4 shrink-0 text-zinc-500"
                   aria-hidden
                 />
                 {card.includesLabel}
@@ -319,9 +313,9 @@ function ComparisonTableMobile({
 
             <ContactTrigger
               intent={card.contactIntent}
-              variant="default"
+              variant="dark"
               size="lg"
-              className="mt-4 w-full"
+              className={mobileCtaClass}
             >
               预约咨询
             </ContactTrigger>
@@ -361,10 +355,12 @@ export function MembershipComparisonTable() {
     : membershipV2CollapsedComparison
 
   return (
-    <div id="plan-compare" className="scroll-mt-24">
+    <div id="plan-compare" className="scroll-mt-28">
       <div>
-        <h2 className="text-display text-3xl md:text-4xl">计划对比</h2>
-        <p className="mt-2 text-sm font-bold text-[color:var(--section-muted)]">
+        <h2 className="c2-display text-3xl text-zinc-950 md:text-4xl">
+          计划对比
+        </h2>
+        <p className="mt-2 text-sm text-zinc-600 md:text-base">
           <span className="md:hidden">三层会员权益完整对比</span>
           <span className="hidden md:inline">
             {expanded
@@ -381,10 +377,10 @@ export function MembershipComparisonTable() {
       <div className="mt-6 hidden justify-center md:flex">
         <Button
           type="button"
-          variant={expanded ? 'outline' : 'default'}
+          variant="outline"
           size="lg"
           onClick={() => setExpanded((v) => !v)}
-          className="gap-2"
+          className="gap-2 rounded-full border-zinc-300 bg-white font-semibold text-zinc-950 hover:bg-zinc-50"
         >
           {expanded ? '收起对比表格' : '查看完整会员权益对比'}
           <ChevronDown

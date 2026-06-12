@@ -102,6 +102,15 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
 }
 
+.jarsy-v2-page .member-tier-board {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.jarsy-v2-page .member-tier-board:hover {
+  transform: translateY(-3px);
+  box-shadow: 6px 6px 0 0 #ffe600;
+}
+
 .jarsy-v2-page .c2-chip {
   display: inline-flex;
   align-items: center;
@@ -136,6 +145,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .jarsy-v2-page .c2-card:hover,
+  .jarsy-v2-page .member-tier-board:hover,
   .jarsy-v2-page .c2-btn-cta-emphasis:hover {
     transform: none;
   }
