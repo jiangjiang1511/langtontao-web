@@ -17,7 +17,7 @@ export const coffee2Topics = coffeeWaterfallSections.filter(
 export const coffee2Hero = {
   eyebrow: coffeePageHero.eyebrow,
   titleLines: ['熊比特', '咖啡'] as const,
-  tagline: '熊比特：聊聊人生大事',
+  tagline: '一杯咖啡：聊聊人生大事',
   lead: coffeePageHero.paragraphs[0],
   cta: {
     ctaLabel: '加入我们',
