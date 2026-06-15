@@ -1,50 +1,12 @@
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
-import {
-  coffee2TopicMeta,
-  type Coffee2TopicId,
-  type CoffeeBlock,
-  type CoffeeWaterfallSection,
-} from '@/lib/content/coffee2-page'
-import { cn } from '@/lib/utils'
+import type { CoffeeBlock } from '@/lib/content/coffee2-page'
 
-type TopicSectionProps = {
-  topic: CoffeeWaterfallSection & { id: Coffee2TopicId }
-  index: number
-}
-
-function TopicHeader({
-  topic,
-}: {
-  topic: TopicSectionProps['topic']
-}) {
-  const meta = coffee2TopicMeta[topic.id]
-
-  return (
-    <Coffee2Reveal
-      className="grid gap-6 md:grid-cols-[minmax(0,14rem)_1fr] md:gap-12"
-    >
-      <div>
-        <p className="c2-topic-number">{meta.number}</p>
-        <h2
-          id={`coffee-section-${topic.id}`}
-          className="mt-4 text-3xl font-semibold tracking-tight text-zinc-950 md:text-4xl"
-        >
-          {topic.title}
-        </h2>
-      </div>
-      <p className="self-end text-base leading-relaxed text-zinc-600 md:text-lg">
-        {meta.summary}
-      </p>
-    </Coffee2Reveal>
-  )
-}
-
-function InvestContent({ blocks }: { blocks: CoffeeBlock[] }) {
+export function InvestContent({ blocks }: { blocks: CoffeeBlock[] }) {
   const itemsBlock = blocks.find((block) => block.type === 'items')
   if (!itemsBlock || itemsBlock.type !== 'items') return null
 
   return (
-    <div className="mt-10 grid gap-4 sm:grid-cols-2">
+    <div className="mt-8 grid gap-4 sm:grid-cols-2">
       {itemsBlock.items.map((item, itemIndex) => (
         <Coffee2Reveal
           key={item}
@@ -54,9 +16,9 @@ function InvestContent({ blocks }: { blocks: CoffeeBlock[] }) {
           <p className="text-xs font-medium uppercase tracking-widest text-zinc-400">
             0{itemIndex + 1}
           </p>
-          <h3 className="mt-4 text-2xl font-semibold tracking-tight text-zinc-950 md:text-3xl">
+          <h4 className="mt-4 text-2xl font-semibold tracking-tight text-zinc-950 md:text-3xl">
             {item}
-          </h3>
+          </h4>
           <p className="mt-3 text-sm leading-relaxed text-zinc-500">
             在 Coffee Chat 中拆解路径、交换判断与实操心得。
           </p>
@@ -66,12 +28,12 @@ function InvestContent({ blocks }: { blocks: CoffeeBlock[] }) {
   )
 }
 
-function PreservationContent({ blocks }: { blocks: CoffeeBlock[] }) {
+export function PreservationContent({ blocks }: { blocks: CoffeeBlock[] }) {
   const introBlock = blocks.find((block) => block.type === 'insuranceIntro')
   const insurersBlock = blocks.find((block) => block.type === 'insurers')
 
   return (
-    <div className="mt-10 grid gap-6 lg:grid-cols-2 lg:gap-8">
+    <div className="mt-8 grid gap-6 lg:grid-cols-2 lg:gap-8">
       {introBlock?.type === 'insuranceIntro' ? (
         <Coffee2Reveal delay={80} className="c2-card p-6 md:p-8">
           <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
@@ -103,9 +65,7 @@ function PreservationContent({ blocks }: { blocks: CoffeeBlock[] }) {
           <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
             {insurersBlock.title}
           </p>
-          <p className="mt-2 text-sm text-zinc-500">
-            合作保司与渠道网络
-          </p>
+          <p className="mt-2 text-sm text-zinc-500">合作保司与渠道网络</p>
           <div className="mt-6 flex flex-wrap gap-2">
             {insurersBlock.names.map((name) => (
               <span key={name} className="c2-chip bg-white">
@@ -119,11 +79,11 @@ function PreservationContent({ blocks }: { blocks: CoffeeBlock[] }) {
   )
 }
 
-function DebtContent({ blocks }: { blocks: CoffeeBlock[] }) {
+export function DebtContent({ blocks }: { blocks: CoffeeBlock[] }) {
   const placeholder = blocks.find((block) => block.type === 'placeholder')
 
   return (
-    <Coffee2Reveal delay={80} className="mt-10">
+    <Coffee2Reveal delay={80} className="mt-8">
       <div className="c2-debt-empty mx-auto max-w-2xl px-8 py-16 text-center md:py-20">
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
           Coming Soon
@@ -141,11 +101,11 @@ function DebtContent({ blocks }: { blocks: CoffeeBlock[] }) {
   )
 }
 
-function LegacyContent({ blocks }: { blocks: CoffeeBlock[] }) {
+export function LegacyContent({ blocks }: { blocks: CoffeeBlock[] }) {
   const subTopics = blocks.filter((block) => block.type === 'subTopic')
 
   return (
-    <div className="mt-10 grid gap-4 md:grid-cols-2 md:gap-6">
+    <div className="mt-8 grid gap-4 md:grid-cols-2 md:gap-6">
       {subTopics.map((block, blockIndex) => {
         if (block.type !== 'subTopic') return null
 
@@ -158,9 +118,9 @@ function LegacyContent({ blocks }: { blocks: CoffeeBlock[] }) {
             className="scroll-mt-28 c2-legacy-card p-6 md:p-8"
           >
             <div className="flex items-start justify-between gap-4">
-              <h3 className="text-xl font-semibold text-zinc-950 md:text-2xl">
+              <h4 className="text-xl font-semibold text-zinc-950 md:text-2xl">
                 {block.title}
-              </h3>
+              </h4>
               {block.note ? (
                 <span className="shrink-0 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-medium text-zinc-500">
                   {block.note}
@@ -177,29 +137,5 @@ function LegacyContent({ blocks }: { blocks: CoffeeBlock[] }) {
         )
       })}
     </div>
-  )
-}
-
-export function Coffee2TopicSection({ topic, index }: TopicSectionProps) {
-  return (
-    <section
-      id={topic.id}
-      className={cn(
-        'scroll-mt-28 border-t border-zinc-200 py-12 md:py-16',
-        index % 2 === 1 ? 'bg-zinc-50/80' : 'bg-white'
-      )}
-      aria-labelledby={`coffee-section-${topic.id}`}
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <TopicHeader topic={topic} />
-
-        {topic.id === 'invest' ? <InvestContent blocks={topic.blocks} /> : null}
-        {topic.id === 'preservation' ? (
-          <PreservationContent blocks={topic.blocks} />
-        ) : null}
-        {topic.id === 'debt' ? <DebtContent blocks={topic.blocks} /> : null}
-        {topic.id === 'legacy' ? <LegacyContent blocks={topic.blocks} /> : null}
-      </div>
-    </section>
   )
 }

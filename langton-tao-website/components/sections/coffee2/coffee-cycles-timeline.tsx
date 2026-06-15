@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { CoffeeCycleIntroCard } from '@/components/sections/coffee2/coffee-cycle-intro-card'
-import { HomeJarsyCenterMotionItem } from '@/components/sections/home-jarsy/home-jarsy-center-motion-item'
 import { useCenterZoneVisible } from '@/components/sections/home-jarsy/use-center-zone-visible'
 import {
   buildSnapPoints,
@@ -32,7 +31,7 @@ const cycleLabelMap = Object.fromEntries(
   coffeeCyclesTimeline.cycles.map((cycle) => [cycle.id, cycle.label])
 ) as Record<string, string>
 
-const INTRO_MOTION_TOTAL = coffeeCyclesTimeline.cycles.length + 1
+const INTRO_MOTION_TOTAL = coffeeCyclesTimeline.cycles.length
 
 export function CoffeeCyclesTimeline() {
   const endYear = getTimelineEndYear()
@@ -163,27 +162,14 @@ export function CoffeeCyclesTimeline() {
 
   return (
     <div className="coffee-cycles-timeline mb-0">
-      <div ref={introRef}>
-        <div className="mx-auto max-w-4xl text-center">
-          <HomeJarsyCenterMotionItem
-            as="h3"
-            id="coffee-cycles-timeline-title"
-            visible={introVisible}
-            index={0}
-            total={INTRO_MOTION_TOTAL}
-            className="c2-display text-[clamp(2.5rem,8vw,5.5rem)] text-zinc-950"
-          >
-            {coffeeCyclesTimeline.chart.title}
-          </HomeJarsyCenterMotionItem>
-        </div>
-
-        <div className="coffee-cycle-intro-grid mt-6 grid gap-4 md:mt-8 md:grid-cols-2 md:gap-5">
+      <div ref={introRef} className="coffee-cycles-timeline__intro">
+        <div className="coffee-cycle-intro-grid grid gap-4 md:grid-cols-2 md:gap-5">
           {coffeeCyclesTimeline.cycles.map((cycle, index) => (
             <CoffeeCycleIntroCard
               key={cycle.id}
               cycle={cycle}
               visible={introVisible}
-              index={index + 1}
+              index={index}
               total={INTRO_MOTION_TOTAL}
             />
           ))}

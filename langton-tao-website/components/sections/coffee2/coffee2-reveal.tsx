@@ -31,11 +31,13 @@ export function Coffee2Reveal({
   ...props
 }: Coffee2RevealProps) {
   const [element, setElement] = useState<HTMLElement | null>(null)
-  const [visible, setVisible] = useState(eager)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     if (eager) {
-      const frame = requestAnimationFrame(() => setVisible(true))
+      const frame = requestAnimationFrame(() => {
+        setVisible(true)
+      })
       return () => cancelAnimationFrame(frame)
     }
 

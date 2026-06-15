@@ -60,7 +60,13 @@ export function CoffeeCycleIntroCard({
         'coffee-cycle-intro-card rounded-xl border p-5 md:p-6',
         !canHover && expanded && 'coffee-cycle-intro-card--expanded'
       )}
-      style={{ '--cycle-accent': cycle.color } as CSSProperties}
+      style={
+        {
+          '--cycle-accent': cycle.color,
+          '--c2-reveal-delay': `${index * 240}ms`,
+          '--c2-exit-delay': `${(total - 1 - index) * 240}ms`,
+        } as CSSProperties
+      }
     >
       <div
         className={cn(

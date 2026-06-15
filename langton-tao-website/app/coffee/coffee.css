@@ -24,6 +24,112 @@
   color: var(--c2-muted);
 }
 
+.coffee2-hero__headline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: visible;
+  max-width: none;
+}
+
+.coffee2-hero__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1em;
+  width: 100%;
+  overflow: visible;
+}
+
+.coffee2-hero__title-line--1 {
+  max-width: 48rem;
+  font-size: clamp(2.25rem, 6vw, 4.75rem);
+}
+
+.coffee2-hero__title-line--2 {
+  font-size: clamp(3rem, 9vw, 7rem);
+}
+
+.coffee2-hero__logo {
+  display: block;
+  height: auto;
+}
+
+/* Pull logo up by half its rendered height (width × aspect ratio). */
+.coffee2-hero__logo-reveal {
+  margin-top: calc(-0.75 * min(100%, 14rem) * 480 / 1582);
+}
+
+@media (min-width: 768px) {
+  .coffee2-hero__logo-reveal {
+    margin-top: calc(-0.75 * 18rem * 480 / 1582);
+  }
+}
+
+.coffee2-hero__content .c2-reveal[data-visible='false'] {
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+}
+
+.coffee2-hero__content .c2-reveal[data-visible='true'] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--c2-reveal-delay, 0ms);
+}
+
+.coffee2-hero__title-typewriter {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  overflow: visible;
+}
+
+.coffee2-hero__title-typewriter-char {
+  display: inline-block;
+  opacity: 0;
+}
+
+.coffee2-hero__title-typewriter-char--visible {
+  opacity: 1;
+}
+
+.coffee2-hero__title-typewriter-cursor {
+  display: inline-block;
+  width: 0.055em;
+  height: 0.82em;
+  margin-left: 0.05em;
+  vertical-align: -0.06em;
+  background: currentColor;
+  opacity: 0;
+}
+
+.coffee2-hero__title-typewriter-cursor--visible {
+  opacity: 1;
+  animation: coffee2-typewriter-cursor-blink 0.9s step-end infinite;
+}
+
+@keyframes coffee2-typewriter-cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.coffee2-hero__cta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .coffee2-hero__cta {
+    margin-top: 3rem;
+  }
+}
+
 .coffee2-page .c2-btn-primary {
   display: inline-flex;
   align-items: center;
@@ -186,6 +292,21 @@
     transform: none;
     transition: none;
   }
+
+  .coffee2-hero__content .c2-reveal[data-visible='false'],
+  .coffee2-hero__content .c2-reveal[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .coffee2-hero__content .coffee2-hero__title-typewriter-char,
+  .coffee2-hero__content .coffee2-hero__title-typewriter-char--visible,
+  .coffee2-hero__content .coffee2-hero__title-typewriter-cursor,
+  .coffee2-hero__content .coffee2-hero__title-typewriter-cursor--visible {
+    opacity: 1;
+    animation: none;
+  }
 }
 
 .coffee2-page .c2-reveal[data-visible='false'] {
@@ -240,6 +361,16 @@
   transition-delay: var(--c2-exit-delay, 0ms);
 }
 
+.coffee-cycles-timeline__intro {
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .coffee-cycles-timeline__intro {
+    margin-top: 4.5rem;
+  }
+}
+
 .coffee-cycle-intro-grid {
   width: 100%;
   max-width: 36rem;
@@ -259,10 +390,20 @@
   background: #09090b;
   border-color: #27272a;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.coffee-cycle-intro-card.home-jarsy-center-motion {
   transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
     background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--c2-exit-delay, 0ms);
+}
+
+.coffee-cycle-intro-card.home-jarsy-center-motion[data-visible='true'] {
+  transition-delay: var(--c2-reveal-delay, 0ms);
 }
 
 .coffee-cycle-intro-card::before {
@@ -894,10 +1035,828 @@
   }
 }
 
+/* Jarsy-style backed panels */
+.coffee2-backed-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coffee2-backed-panel__shell {
+  overflow: hidden;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.coffee2-backed-panel__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.125rem;
+  margin: 0;
+  padding: 14px 20px;
+  border-bottom: 2px solid var(--c2-fg);
+  background: var(--pop-yellow);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--c2-fg);
+  line-height: 1.35;
+  text-align: center;
+}
+
+.coffee2-backed-panel__title-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.375rem;
+  width: 100%;
+  text-align: center;
+}
+
+.coffee2-backed-panel__title-sep {
+  font-weight: 700;
+  opacity: 0.45;
+}
+
+.coffee2-backed-panel__title-en {
+  font-size: 0.8125em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  opacity: 0.72;
+}
+
+.coffee2-backed-panel--stack-middle .coffee2-backed-panel__title-en,
+.coffee2-backed-panel--stack-bottom:not(.coffee2-backed-panel--title-jarsy)
+  .coffee2-backed-panel__title-en {
+  opacity: 0.78;
+}
+
+.coffee2-backed-panel--title-jarsy .coffee2-backed-panel__title-en {
+  opacity: 0.65;
+}
+
+.coffee2-backed-panel--stack-middle .coffee2-backed-panel__title,
+.coffee2-backed-panel--stack-bottom:not(.coffee2-backed-panel--title-jarsy)
+  .coffee2-backed-panel__title {
+  background: var(--c2-fg);
+  color: #ffffff;
+  border-bottom-color: var(--pop-yellow);
+}
+
+
+.coffee2-backed-panel--title-jarsy .coffee2-backed-panel__title {
+  padding: 14px 20px;
+  border-bottom: 1px solid #e4e4e7;
+  background: #ffffff;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: #a1a1aa;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.coffee2-life-events-nav__header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .coffee2-life-events-nav__header {
+    margin-bottom: 3rem;
+  }
+}
+
+.coffee2-life-events-nav__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coffee2-life-events-nav__row--3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.coffee2-life-events-nav__row--2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.coffee2-life-events-nav__cell {
+  height: 100%;
+}
+
+.coffee2-life-events-nav__cell .coffee2-life-event-card {
+  height: 100%;
+}
+
+.coffee2-life-events-sticky-nav {
+  top: calc(0.75rem + 3rem + 0.5rem);
+  opacity: 0;
+  transform: translateY(-0.75rem);
+  transition:
+    opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 768px) {
+  .coffee2-life-events-sticky-nav {
+    top: calc(1rem + 3.5rem + 0.625rem);
+  }
+}
+
+.coffee2-life-events-sticky-nav--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.coffee2-life-events-sticky-nav__shell {
+  overflow: hidden;
+  border: 1px solid rgb(228 228 231 / 0.85);
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.95);
+  box-shadow: 0 4px 24px rgb(0 0 0 / 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.coffee2-life-events-sticky-nav__track {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  overflow-x: auto;
+  padding: 0.3125rem;
+  scrollbar-width: none;
+}
+
+.coffee2-life-events-sticky-nav__track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .coffee2-life-events-sticky-nav__track {
+    gap: 0.375rem;
+    padding: 0.375rem;
+  }
+}
+
+.coffee2-life-events-sticky-nav__link {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.375rem;
+  border-radius: 9999px;
+  padding: 0.4375rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #52525b;
+  text-decoration: none;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+@media (min-width: 768px) {
+  .coffee2-life-events-sticky-nav__link {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.875rem;
+  }
+}
+
+.coffee2-life-events-sticky-nav__link:hover {
+  color: #09090b;
+  background: #fafafa;
+}
+
+.coffee2-life-events-sticky-nav__link--active {
+  color: #09090b;
+  background: #ffffff;
+  box-shadow:
+    inset 0 0 0 1px #e4e4e7,
+    0 0 0 2px rgb(255 230 0 / 0.45);
+}
+
+.coffee2-life-events-sticky-nav__number {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #d4d4d8;
+}
+
+.coffee2-life-events-sticky-nav__link--active .coffee2-life-events-sticky-nav__number {
+  color: #a1a1aa;
+}
+
+.coffee2-life-events-sticky-nav__title {
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .coffee2-life-events-nav__row--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .coffee2-life-events-nav__row--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: calc((100% - 24px) * 2 / 3 + 12px);
+    margin-inline: auto;
+  }
+}
+
+.coffee2-life-event-card {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 148px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 0.625rem;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid #e4e4e7;
+  background: #ffffff;
+  padding: 16px 20px;
+  text-align: left;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.coffee2-life-event-card::before {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+}
+
+.coffee2-life-event-card--life-living::before {
+  top: 0;
+  right: 16px;
+  left: 16px;
+  height: 3px;
+  border-radius: 0 0 2px 2px;
+  background: var(--pop-yellow);
+}
+
+.coffee2-life-event-card--life-retirement {
+  background: #fafafa;
+}
+
+.coffee2-life-event-card--life-education {
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.08),
+    2px 2px 0 0 rgb(255 230 0 / 0.28);
+}
+
+.coffee2-life-event-card--life-marriage::before {
+  top: 14px;
+  bottom: 14px;
+  left: 0;
+  width: 3px;
+  background: var(--pop-yellow);
+}
+
+.coffee2-life-event-card--life-legacy::before {
+  top: 0;
+  right: 16px;
+  left: 16px;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: var(--c2-fg);
+}
+
+.coffee2-life-event-card--life-legacy {
+  border-color: #d4d4d8;
+}
+
+a.coffee2-life-event-card--link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.coffee2-life-event-card__meta {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.coffee2-life-event-card__number {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #d4d4d8;
+}
+
+.coffee2-life-event-card__tag {
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d4d4d8;
+}
+
+.coffee2-life-event-card__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #09090b;
+}
+
+.coffee2-life-event-card__summary {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.45;
+  color: #71717a;
+}
+
+.coffee2-life-event-section__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.coffee2-life-event-section__title {
+  font-size: clamp(2.75rem, 8vw, 5.25rem);
+  line-height: 0.95;
+}
+
+.coffee2-life-event-section__title-mark {
+  display: inline-block;
+  padding: 0.06em 0.14em 0.1em;
+  background: var(--pop-yellow);
+  box-shadow: 4px 4px 0 0 var(--c2-fg);
+}
+
+.coffee2-life-event-section__subtitle {
+  margin-top: 1.25rem;
+  max-width: 36rem;
+  font-size: clamp(1.125rem, 2.5vw, 1.625rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+  color: #27272a;
+}
+
+@media (min-width: 768px) {
+  .coffee2-life-event-section__subtitle {
+    margin-top: 1.5rem;
+  }
+}
+
+.coffee2-life-event-section__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.625;
+  color: #52525b;
+}
+
+@media (min-width: 768px) {
+  .coffee2-life-event-section__body {
+    margin-top: 1.75rem;
+    gap: 1.125rem;
+    font-size: 1.125rem;
+  }
+}
+
+.coffee2-life-event-section__body p {
+  margin: 0;
+}
+
+.coffee2-glossary-term {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  vertical-align: baseline;
+}
+
+.coffee2-glossary-term__label {
+  background: linear-gradient(
+    transparent 58%,
+    rgb(255 230 0 / 0.55) 58%,
+    rgb(255 230 0 / 0.55) 92%,
+    transparent 92%
+  );
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-bottom: 1px dashed #a1a1aa;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.coffee2-glossary-term:hover .coffee2-glossary-term__label,
+.coffee2-glossary-term:focus-visible .coffee2-glossary-term__label {
+  color: #09090b;
+  border-bottom-color: #09090b;
+}
+
+.coffee2-glossary-term:focus-visible {
+  outline: none;
+}
+
+.coffee2-glossary-term:focus-visible .coffee2-glossary-term__label {
+  outline: 2px solid var(--pop-yellow);
+  outline-offset: 2px;
+}
+
+.coffee2-glossary-term__marker {
+  margin-left: 0.12em;
+  font-size: 0.62em;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  vertical-align: super;
+  color: #71717a;
+}
+
+.coffee2-glossary-term:hover .coffee2-glossary-term__marker,
+.coffee2-glossary-term:focus-visible .coffee2-glossary-term__marker {
+  color: #09090b;
+}
+
+.coffee2-glossary-dialog__article {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.coffee2-glossary-dialog__definition {
+  margin: 0;
+  padding-left: 0.875rem;
+  border-left: 3px solid var(--pop-yellow);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #27272a;
+}
+
+.coffee2-glossary-dialog__section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.coffee2-glossary-dialog__section + .coffee2-glossary-dialog__section {
+  padding-top: 1.25rem;
+  border-top: 1px solid #e4e4e7;
+}
+
+.coffee2-glossary-dialog__section-title {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.coffee2-glossary-dialog__text {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #52525b;
+}
+
+.coffee2-glossary-dialog__text + .coffee2-glossary-dialog__text {
+  margin-top: 0.125rem;
+}
+
+.coffee2-glossary-dialog__list {
+  margin: 0;
+  padding-left: 1.125rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #52525b;
+}
+
+.coffee2-glossary-dialog__list li + li {
+  margin-top: 0.5rem;
+}
+
+.coffee2-glossary-dialog__list li::marker {
+  color: #d4d4d8;
+}
+
+@media (min-width: 768px) {
+  .coffee2-life-event-card {
+    min-height: 156px;
+    padding: 18px 22px;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .coffee2-life-event-card:hover {
+    transform: scale(1.03);
+    border-color: #d4d4d8;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  }
+
+  .coffee2-life-event-card--life-education:hover {
+    box-shadow:
+      0 10px 28px rgba(0, 0, 0, 0.08),
+      3px 3px 0 0 rgb(255 230 0 / 0.34);
+  }
+
+  .coffee2-life-event-card--life-legacy:hover {
+    border-color: #a1a1aa;
+  }
+
+  .coffee2-life-event-card__title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .coffee2-backed-panel__title {
+    padding: 16px 24px;
+    font-size: 1.125rem;
+  }
+
+  .coffee2-backed-panel--title-jarsy .coffee2-backed-panel__title {
+    padding: 16px 24px;
+    font-size: 1.125rem;
+  }
+}
+
+.coffee2-backed-panel__body {
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .coffee2-backed-panel__body {
+    padding: 20px 24px 24px;
+  }
+}
+
+.coffee2-manifesto-panel__logos {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .coffee2-manifesto-panel__logos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.coffee2-collaboration-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .coffee2-collaboration-cta {
+    margin-top: 5rem;
+    gap: 2.25rem;
+  }
+}
+
+.coffee2-collaboration-cta__copy {
+  display: flex;
+  max-width: 48rem;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.coffee2-collaboration-cta__action {
+  display: flex;
+  justify-content: center;
+}
+
+.coffee2-page .coffee2-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 11rem;
+  border-radius: 9999px;
+  border: 2px solid var(--c2-fg);
+  padding: 0.875rem 2.25rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  background: var(--c2-fg);
+  box-shadow: 4px 4px 0 0 var(--pop-yellow);
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+.coffee2-page .coffee2-cta-button:hover {
+  background: var(--pop-yellow);
+  color: var(--c2-fg);
+  border-color: var(--c2-fg);
+  box-shadow: 4px 4px 0 0 var(--c2-fg);
+  transform: translate(-2px, -2px);
+}
+
+.coffee2-page .coffee2-cta-button:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 0 var(--c2-fg);
+}
+
+.coffee2-backed-logo-card {
+  display: flex;
+  min-height: 155px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  border: 1px solid #e4e4e7;
+  background: #ffffff;
+  padding: 16px 24px;
+}
+
+.coffee2-backed-logo-card__image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 5.5rem;
+  object-fit: contain;
+}
+
+.coffee2-tenets-marquee {
+  --coffee2-tenets-marquee-duration: 60s;
+  margin-inline: -4px;
+}
+
+.coffee2-tenets-marquee__track .animate-marquee {
+  animation-duration: var(--coffee2-tenets-marquee-duration);
+  gap: 12px;
+}
+
+.coffee2-tenets-marquee:hover .coffee2-tenets-marquee__track .animate-marquee {
+  animation-play-state: paused;
+}
+
+.coffee2-tenet-card {
+  display: flex;
+  width: 320px;
+  aspect-ratio: 3 / 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  border-radius: 12px;
+  border: 1px solid #e4e4e7;
+  background: #ffffff;
+  padding: 12px 14px;
+  text-align: left;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.coffee2-tenet-card:hover {
+  transform: translateY(-2px);
+  border-color: #d4d4d8;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.coffee2-tenet-card__head {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.coffee2-tenet-card__lead {
+  display: flex;
+  min-width: 0;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.coffee2-tenet-card__number {
+  flex-shrink: 0;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #a1a1aa;
+}
+
+.coffee2-tenet-card__verse {
+  flex-shrink: 0;
+  max-width: 42%;
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #d4d4d8;
+  line-height: 1.25;
+  text-align: right;
+}
+
+.coffee2-tenet-card__title {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #09090b;
+}
+
+.coffee2-tenet-card__summary {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.coffee2-tenet-card__summary-line {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: #52525b;
+}
+
+.coffee2-tenet-dialog {
+  inset: 0;
+  width: min(32rem, calc(100% - 2rem));
+  height: fit-content;
+  max-height: 85vh;
+  margin: auto;
+  border-width: 1px;
+  border-color: #e4e4e7;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+  transform-origin: center center;
+}
+
+.coffee2-tenet-dialog[data-state='open'] {
+  animation: coffee2-tenet-dialog-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.coffee2-tenet-dialog[data-state='closed'] {
+  animation: coffee2-tenet-dialog-out 0.2s ease forwards;
+}
+
+@keyframes coffee2-tenet-dialog-in {
+  from {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes coffee2-tenet-dialog-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .coffee2-hero-orbit__ring {
     animation: none !important;
     transform: rotate(var(--ring-static-rotate, 0deg));
+  }
+
+  .coffee2-tenets-marquee__track .animate-marquee {
+    animation: none;
+    transform: none;
   }
 
   .home-jarsy-center-motion[data-visible='false'],
@@ -913,5 +1872,33 @@
 
   .coffee-cycles-timeline__cursor {
     animation: none;
+  }
+
+  .coffee2-tenet-card:hover {
+    transform: none;
+  }
+
+  .coffee2-life-event-card:hover {
+    transform: none;
+  }
+
+  .coffee2-page .coffee2-cta-button:hover,
+  .coffee2-page .coffee2-cta-button:active {
+    transform: none;
+  }
+
+  .coffee2-tenet-dialog[data-state='open'],
+  .coffee2-tenet-dialog[data-state='closed'] {
+    animation: none;
+  }
+
+  .coffee2-life-events-sticky-nav {
+    transform: none;
+    transition: none;
+  }
+
+  .coffee2-life-events-sticky-nav:not(.coffee2-life-events-sticky-nav--visible) {
+    opacity: 0;
+    pointer-events: none;
   }
 }

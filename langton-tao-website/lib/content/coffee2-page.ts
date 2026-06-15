@@ -1,7 +1,8 @@
 import { coffeePageHero } from '@/lib/content/coffee-page'
+import type { Coffee2GlossarySegment } from '@/lib/content/coffee-glossary'
+import type { Coffee2LifeEventId } from '@/lib/content/coffee-manifesto'
 import {
   coffeeWaterfallSections,
-  type CoffeeBlock,
   type CoffeeWaterfallSection,
 } from '@/lib/content/coffee'
 
@@ -10,15 +11,30 @@ export type { CoffeeBlock, CoffeeWaterfallSection } from '@/lib/content/coffee'
 
 export type Coffee2TopicId = 'invest' | 'preservation' | 'debt' | 'legacy'
 
+export const coffee2LifeEventTopicIds: Partial<
+  Record<Coffee2LifeEventId, readonly Coffee2TopicId[]>
+> = {
+  'life-living': ['invest', 'preservation', 'debt'],
+  'life-legacy': ['legacy'],
+}
+
 export const coffee2Topics = coffeeWaterfallSections.filter(
   (section) => section.id !== 'network'
 ) as Array<CoffeeWaterfallSection & { id: Coffee2TopicId }>
 
 export const coffee2Hero = {
-  eyebrow: coffeePageHero.eyebrow,
-  titleLines: ['熊比特', '咖啡'] as const,
-  tagline: '一杯咖啡：聊聊人生大事',
-  lead: coffeePageHero.paragraphs[0],
+  logoSrc: '/static/bearbit-coffee-logo.png',
+  logoAlt: '熊比特咖啡 Schumpeter Coffee',
+  titleLine1: '一杯咖啡',
+  titleLine2: '聊聊人生大事',
+  lead: [
+    { type: 'term', id: 'bearbit' },
+    {
+      type: 'text',
+      value:
+        '与朗敦道在同一件事上相遇：相信一杯咖啡、一段诚实对话，比任何预设答案更接近真实判断。如果你也在想周期、家庭与人生大事，欢迎来坐一会儿——带上你的问题，也听听不同的版本。',
+    },
+  ] satisfies readonly Coffee2GlossarySegment[],
   cta: {
     ctaLabel: '加入我们',
     ctaHref: '/member',
@@ -63,35 +79,6 @@ export const coffee2TopicMeta: Record<
     number: '04',
     summary: '税务 CRS 与身份规划——传承周期的关键子题，与生态伙伴协同交付。',
   },
-}
-
-function countBlocks(blocks: CoffeeBlock[]): number {
-  return blocks.reduce((total, block) => {
-    switch (block.type) {
-      case 'items':
-      case 'insuranceIntro':
-        return total + block.items.length
-      case 'insurers':
-        return total + block.names.length
-      case 'subTopic':
-      case 'highlight':
-        return total + 1
-      case 'placeholder':
-        return total + 1
-      default:
-        return total
-    }
-  }, 0)
-}
-
-export function getCoffee2TopicCounts(): Record<Coffee2TopicId, number> {
-  return coffee2Topics.reduce(
-    (counts, section) => {
-      counts[section.id as Coffee2TopicId] = countBlocks(section.blocks)
-      return counts
-    },
-    {} as Record<Coffee2TopicId, number>
-  )
 }
 
 export function getCoffee2TopicById(id: Coffee2TopicId) {
