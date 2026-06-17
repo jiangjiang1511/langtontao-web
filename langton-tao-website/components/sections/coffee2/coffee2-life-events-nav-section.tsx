@@ -9,10 +9,12 @@ export function Coffee2LifeEventsNavSection() {
   return (
     <section
       id="coffee-life-events"
-      className="coffee2-life-events-nav scroll-mt-28 border-b border-zinc-200 py-16 md:py-24"
+      className="coffee2-life-events-nav scroll-mt-28 pt-6 pb-16 md:pt-8 md:pb-24"
       aria-labelledby="coffee2-life-events-nav-title"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Coffee2LifeEventsNavGrid events={coffee2LifeEvents} />
+
         <Coffee2Reveal className="coffee2-life-events-nav__header">
           <p className="c2-eyebrow">{coffee2LifeEventsSectionMeta.eyebrow}</p>
           <h2
@@ -24,9 +26,12 @@ export function Coffee2LifeEventsNavSection() {
           <p className="mt-2 text-2xl font-semibold tracking-tight text-zinc-400 md:text-3xl">
             {coffee2LifeEventsSectionMeta.subtitle}
           </p>
+          <div className="coffee2-life-events-nav__lead mt-6 space-y-4 text-base leading-relaxed text-zinc-600 md:text-lg">
+            {coffee2LifeEventsSectionMeta.lead.split('\n\n').map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
         </Coffee2Reveal>
-
-        <Coffee2LifeEventsNavGrid events={coffee2LifeEvents} />
       </div>
     </section>
   )

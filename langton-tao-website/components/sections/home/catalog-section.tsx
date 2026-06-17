@@ -17,7 +17,7 @@ export function CatalogSection() {
             悬停或点击书籍，查看朗敦道选书金句
           </p>
         </div>
-        <PillLink href="/education#reading" variant="outline">
+        <PillLink href="/coffee#reading" variant="outline">
           查看更多
         </PillLink>
       </div>

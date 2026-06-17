@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { JarsyJoinBand } from '@/components/jarsy/jarsy-join-band'
+import { Coffee2TimelineSection } from '@/components/sections/coffee2/coffee2-timeline-section'
 import { HomeJarsyHero } from '@/components/sections/home-jarsy/home-jarsy-hero'
 import { HomeJarsyStageNav } from '@/components/sections/home-jarsy/home-jarsy-stage-nav'
 import { HomeJarsyStages } from '@/components/sections/home-jarsy/home-jarsy-stages'
@@ -18,6 +19,7 @@ export default function HomePage() {
   return (
     <div className="home-jarsy-page jarsy-v2-page">
       <HomeJarsyHero />
+      <Coffee2TimelineSection placement="after-hero" />
       <HomeJarsyStageNav />
       <HomeJarsyStages />
       <JarsyJoinBand

@@ -52,6 +52,13 @@ export const coffee2TopicsMeta = {
   lead: '投资、保全、化债、传承——在康波与朱格拉的坐标系里，用 Coffee Chat 把四件事讲清楚，提前思考十年后的路。',
 } as const
 
+export const coffee2EventsMeta = {
+  eyebrow: 'WHAT WE DO',
+  title: '活动',
+  tagline: '具身认知定投',
+  lead: '读书为活着、养老、教育、婚姻、传承五件人生大事搭好共通语言，活动把它带回真实场域——线上课、财富沙龙与具身探索，让家人与社群在关系里把判断说到底、把议题练成共同体技艺。',
+} as const
+
 export const coffee2JoinBand = {
   statement: '加入朗敦道，开启人生认知定投',
   tagline: '与社群同频，在 Coffee Chat 中交换观点与心得。',

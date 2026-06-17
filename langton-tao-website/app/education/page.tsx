@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { JarsyJoinBand } from '@/components/jarsy/jarsy-join-band'
 import { Education2EnglishSection } from '@/components/sections/education2/education2-english-section'
 import { Education2HeroSection } from '@/components/sections/education2/education2-hero-section'
-import { Education2ReadingSection } from '@/components/sections/education2/education2-reading-section'
 import {
   education2EnglishJoin,
   education2Hero,
@@ -19,7 +18,6 @@ export default function EducationPage() {
   return (
     <div className="jarsy-v2-page bg-white text-zinc-950">
       <Education2HeroSection />
-      <Education2ReadingSection />
       <JarsyJoinBand
         id="education-reading-join"
         statement={education2JoinBand.statement}

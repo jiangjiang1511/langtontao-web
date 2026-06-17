@@ -1,13 +1,11 @@
 import type { Metadata } from 'next'
 import { JarsyJoinBand } from '@/components/jarsy/jarsy-join-band'
-import { Community2EventsHub } from '@/components/sections/community2/community2-events-hub'
 import { Community2HeroSection } from '@/components/sections/community2/community2-hero-section'
 import { Community2HowToJoinSection } from '@/components/sections/community2/community2-how-to-join-section'
 import { Community2JoinBand } from '@/components/sections/community2/community2-join-band'
 import { Community2ProgramsSection } from '@/components/sections/community2/community2-programs-section'
 import { Education2EnglishSection } from '@/components/sections/education2/education2-english-section'
 import { Education2HeroSection } from '@/components/sections/education2/education2-hero-section'
-import { Education2ReadingSection } from '@/components/sections/education2/education2-reading-section'
 import { LangtontaoCheckupCasesSection } from '@/components/sections/langtontao/langtontao-checkup-cases-section'
 import { LangtontaoHeroSection } from '@/components/sections/langtontao/langtontao-hero-section'
 import { LangtontaoSectionNav } from '@/components/sections/langtontao/langtontao-section-nav'
@@ -34,7 +32,6 @@ export default function LangtontaoPage() {
 
       <section id="education" className="scroll-mt-28">
         <Education2HeroSection />
-        <Education2ReadingSection />
         <JarsyJoinBand
           id="langtontao-education-reading-join"
           statement={education2JoinBand.statement}
@@ -55,7 +52,6 @@ export default function LangtontaoPage() {
       <section id="community" className="scroll-mt-28">
         <Community2HeroSection />
         <Community2ProgramsSection />
-        <Community2EventsHub />
         <Community2HowToJoinSection />
         <Community2JoinBand />
       </section>

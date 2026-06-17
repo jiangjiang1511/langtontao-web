@@ -41,7 +41,7 @@ function book(
     ...item,
     phaseLabel: item.phaseLabel ?? phaseLabels[item.phase],
     coverAlt: `${item.title}封面`,
-    href: item.href ?? '/langtontao#reading',
+    href: item.href ?? '/coffee#reading',
   }
 }
 

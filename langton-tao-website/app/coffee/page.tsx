@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
 import { Coffee2HeroSection } from '@/components/sections/coffee2/coffee2-hero-section'
-import { Coffee2TimelineSection } from '@/components/sections/coffee2/coffee2-timeline-section'
 import { Coffee2JoinBand } from '@/components/sections/coffee2/coffee2-join-band'
 import { Coffee2CollaborationSection } from '@/components/sections/coffee2/coffee2-collaboration-section'
+import { Coffee2ManifestoGallerySection } from '@/components/sections/coffee2/coffee2-manifesto-gallery-section'
+import { Coffee2PillarsSection } from '@/components/sections/coffee2/coffee2-pillars-section'
 import { Coffee2LifeEventsStickyNav } from '@/components/sections/coffee2/coffee2-life-events-sticky-nav'
 import { Coffee2LifeEventsContent } from '@/components/sections/coffee2/coffee2-life-events-content'
 import { Coffee2LifeEventsNavSection } from '@/components/sections/coffee2/coffee2-life-events-nav-section'
 import { Coffee2NetworkSection } from '@/components/sections/coffee2/coffee2-network-section'
+import { Community2EventsHub } from '@/components/sections/community2/community2-events-hub'
+import { Education2ReadingSection } from '@/components/sections/education2/education2-reading-section'
 import './coffee.css'
 
 export const metadata: Metadata = {
@@ -20,9 +23,12 @@ export default function CoffeePage() {
     <div className="coffee2-page bg-white text-zinc-950">
       <Coffee2LifeEventsStickyNav />
       <Coffee2HeroSection />
-      <Coffee2TimelineSection />
-      <Coffee2CollaborationSection />
       <Coffee2LifeEventsNavSection />
+      <Coffee2PillarsSection />
+      <Coffee2ManifestoGallerySection />
+      <Education2ReadingSection />
+      <Community2EventsHub />
+      <Coffee2CollaborationSection />
       <Coffee2LifeEventsContent />
       <Coffee2NetworkSection />
       <Coffee2JoinBand />

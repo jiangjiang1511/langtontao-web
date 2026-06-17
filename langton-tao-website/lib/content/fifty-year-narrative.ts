@@ -65,22 +65,22 @@ const superheroJourneyProduct: FiftyYearProduct = {
 const readingClubProduct: FiftyYearProduct = {
   label: '读书会',
   variant: 'accordion',
-  href: '/langtontao#reading',
+  href: '/coffee#reading',
   subItems: [
-    { label: '读书', href: '/langtontao#reading' },
-    { label: '早会', href: '/langtontao#millionaire-plan' },
-    { label: '打卡', href: '/langtontao#millionaire-plan' },
+    { label: '读书', href: '/coffee#reading' },
+    { label: '早会', href: '/coffee#millionaire-plan' },
+    { label: '打卡', href: '/coffee#millionaire-plan' },
   ],
 }
 
 const wealthSalonProduct: FiftyYearProduct = {
   label: '财富沙龙',
   variant: 'accordion',
-  href: '/langtontao#millionaire-plan',
+  href: '/coffee#millionaire-plan',
   subItems: [
-    { label: '闭门会议', href: '/langtontao#millionaire-plan' },
-    { label: '选股', href: '/langtontao#millionaire-plan' },
-    { label: '投资探讨', href: '/langtontao#millionaire-plan' },
+    { label: '闭门会议', href: '/coffee#millionaire-plan' },
+    { label: '选股', href: '/coffee#millionaire-plan' },
+    { label: '投资探讨', href: '/coffee#millionaire-plan' },
   ],
 }
 
@@ -88,40 +88,9 @@ export const fiftyYearStages: FiftyYearStage[] = [
   {
     id: 'day-1',
     periodLabel: '第一天',
-    theme: '锻造超级个体',
-    body: '人生第一天，你就是自己最值得 All in 的资产。卸下债务包袱，扎根劳动创造，All in here！赚取本金！',
-    products: [
-      {
-        label: '成家立业',
-        variant: 'featureBlock',
-        summary:
-          '在结婚、生子等人生大事中夯实家庭基础，让家庭结构成为你最稳固的起跑线。',
-        visualClass:
-          'bg-gradient-to-br from-rose-100 via-orange-50 to-amber-50',
-        subItems: [{ label: '结婚' }, { label: '生子' }],
-      },
-      {
-        label: '卸下包袱',
-        variant: 'featureBlock',
-        summary:
-          '卸下债务包袱，重新上路。先修复现金流，再谈增长与配置。',
-        visualClass:
-          'bg-gradient-to-br from-sky-100 via-blue-50 to-zinc-100',
-        subItems: [{ label: '化债', href: '/coffee#debt' }],
-      },
-      {
-        label: '学好英语',
-        variant: 'featureBlock',
-        summary:
-          '语言是跨境认知与机会的通行证。朗敦道智能英语，为留学与全球布局打底。',
-        visualClass:
-          'bg-gradient-to-br from-violet-100 via-indigo-50 to-zinc-100',
-        href: '/langtontao#english',
-        subItems: [
-          { label: '朗敦道智能英语', href: '/langtontao#english' },
-        ],
-      },
-    ],
+    theme: '成为超级个体',
+    body: '人生第一天，你拥有最高的期权价值。趁还能犯错、还能推倒重来，All in here，成为不可替代的超级个体。',
+    products: [],
     transition: {
       heading: '如何进入第二天',
       items: [
@@ -129,7 +98,7 @@ export const fiftyYearStages: FiftyYearStage[] = [
         {
           label: '千万富翁养成计划',
           variant: 'linkCard',
-          href: '/langtontao#millionaire-plan',
+          href: '/coffee#millionaire-plan',
         },
       ],
     },

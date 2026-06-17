@@ -3,27 +3,15 @@
 import { Community2EventCard } from '@/components/sections/community2/community2-event-card'
 import { Community2Reveal } from '@/components/sections/community2/community2-reveal'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { coffee2EventsMeta } from '@/lib/content/coffee2-page'
 import {
   filterMillionairePlanEvents,
-  getMillionairePlanCategoryCounts,
   millionairePlanFilters,
-  millionairePlanMeta,
   type MillionairePlanFilterId,
 } from '@/lib/content/community2-page'
 import { cn } from '@/lib/utils'
 
-const categoryLabels: Record<
-  Exclude<MillionairePlanFilterId, 'upcoming'>,
-  string
-> = {
-  'online-course': '线上课',
-  salon: '财富沙龙',
-  reading: '读书会',
-}
-
 export function Community2EventsHub() {
-  const counts = getMillionairePlanCategoryCounts()
-
   return (
     <section
       id="millionaire-plan"
@@ -31,47 +19,20 @@ export function Community2EventsHub() {
       aria-labelledby="community2-events-title"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <Community2Reveal>
-          <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="c2-eyebrow">{millionairePlanMeta.eyebrow}</p>
-              <h2
-                id="community2-events-title"
-                className="c2-display mt-4 text-4xl text-zinc-950 md:text-5xl"
-              >
-                {millionairePlanMeta.title}
-              </h2>
-              <p className="mt-2 text-2xl font-semibold tracking-tight text-zinc-400 md:text-3xl">
-                财商认知定投
-              </p>
-              <p className="mt-6 text-base leading-relaxed text-zinc-600 md:text-lg">
-                {millionairePlanMeta.lead}
-              </p>
-            </div>
-
-            <ul className="flex flex-wrap gap-3 lg:max-w-md lg:justify-end">
-              {(
-                Object.entries(categoryLabels) as [
-                  Exclude<MillionairePlanFilterId, 'upcoming'>,
-                  string,
-                ][]
-              ).map(([key, label], index) => (
-                <Community2Reveal
-                  key={key}
-                  as="li"
-                  delay={index * 70}
-                  className="rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3 text-center"
-                >
-                  <p className="text-2xl font-semibold leading-none text-zinc-950">
-                    {counts[key]}
-                  </p>
-                  <p className="mt-1 text-[10px] font-medium uppercase tracking-widest text-zinc-500">
-                    {label}
-                  </p>
-                </Community2Reveal>
-              ))}
-            </ul>
-          </div>
+        <Community2Reveal className="max-w-2xl">
+          <p className="c2-eyebrow">{coffee2EventsMeta.eyebrow}</p>
+          <h2
+            id="community2-events-title"
+            className="c2-display mt-4 text-4xl text-zinc-950 md:text-5xl"
+          >
+            {coffee2EventsMeta.title}
+          </h2>
+          <p className="mt-4 text-xl font-semibold tracking-tight text-zinc-500 md:text-2xl">
+            {coffee2EventsMeta.tagline}
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-zinc-600 md:text-lg">
+            {coffee2EventsMeta.lead}
+          </p>
         </Community2Reveal>
 
         <Community2Reveal delay={120} className="mt-12">

@@ -31,7 +31,7 @@ export function JarsyReveal({
   ...props
 }: JarsyRevealProps) {
   const [element, setElement] = useState<HTMLElement | null>(null)
-  const [visible, setVisible] = useState(eager)
+  const [visible, setVisible] = useState(false)
 
   useEffect(() => {
     if (eager) {

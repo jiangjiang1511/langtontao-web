@@ -38,7 +38,7 @@ export function Education2HeroSection() {
             <Link href={education2Hero.cta.ctaHref} className="c2-btn-primary">
               {education2Hero.cta.ctaLabel}
             </Link>
-            <Link href="#reading" className="c2-btn-secondary">
+            <Link href="/coffee#reading" className="c2-btn-secondary">
               探索读书
             </Link>
           </div>

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Community2EventsHub } from '@/components/sections/community2/community2-events-hub'
 import { Community2HeroSection } from '@/components/sections/community2/community2-hero-section'
 import { Community2HowToJoinSection } from '@/components/sections/community2/community2-how-to-join-section'
 import { Community2JoinBand } from '@/components/sections/community2/community2-join-band'
@@ -17,7 +16,6 @@ export default function CommunityPage() {
     <div className="community2-page bg-white text-zinc-950">
       <Community2HeroSection />
       <Community2ProgramsSection />
-      <Community2EventsHub />
       <Community2HowToJoinSection />
       <Community2JoinBand />
     </div>

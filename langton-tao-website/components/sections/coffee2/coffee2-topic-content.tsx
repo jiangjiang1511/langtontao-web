@@ -1,4 +1,5 @@
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
+import { Coffee2PreservationInsurerHub } from '@/components/sections/coffee2/coffee2-preservation-insurer-hub'
 import type { CoffeeBlock } from '@/lib/content/coffee2-page'
 
 export function InvestContent({ blocks }: { blocks: CoffeeBlock[] }) {
@@ -30,10 +31,9 @@ export function InvestContent({ blocks }: { blocks: CoffeeBlock[] }) {
 
 export function PreservationContent({ blocks }: { blocks: CoffeeBlock[] }) {
   const introBlock = blocks.find((block) => block.type === 'insuranceIntro')
-  const insurersBlock = blocks.find((block) => block.type === 'insurers')
 
   return (
-    <div className="mt-8 grid gap-6 lg:grid-cols-2 lg:gap-8">
+    <div className="mt-8 grid min-w-0 gap-6 lg:grid-cols-2 lg:gap-8">
       {introBlock?.type === 'insuranceIntro' ? (
         <Coffee2Reveal delay={80} className="c2-card p-6 md:p-8">
           <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
@@ -57,24 +57,9 @@ export function PreservationContent({ blocks }: { blocks: CoffeeBlock[] }) {
         </Coffee2Reveal>
       ) : null}
 
-      {insurersBlock?.type === 'insurers' ? (
-        <Coffee2Reveal
-          delay={160}
-          className="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 md:p-8"
-        >
-          <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
-            {insurersBlock.title}
-          </p>
-          <p className="mt-2 text-sm text-zinc-500">合作保司与渠道网络</p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {insurersBlock.names.map((name) => (
-              <span key={name} className="c2-chip bg-white">
-                {name}
-              </span>
-            ))}
-          </div>
-        </Coffee2Reveal>
-      ) : null}
+      <div className="min-w-0 w-full max-w-full overflow-hidden lg:col-span-2">
+        <Coffee2PreservationInsurerHub revealDelay={160} />
+      </div>
     </div>
   )
 }

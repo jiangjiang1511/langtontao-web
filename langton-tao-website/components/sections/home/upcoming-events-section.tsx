@@ -25,7 +25,7 @@ export function UpcomingEventsSection() {
           </div>
           <ScribbleAccent side="right" />
         </div>
-        <PillLink href="/community#millionaire-plan" variant="dark">
+        <PillLink href="/coffee#millionaire-plan" variant="dark">
           查看全部
         </PillLink>
       </div>
@@ -33,7 +33,7 @@ export function UpcomingEventsSection() {
       <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {upcomingEvents.map((event) => (
           <li key={event.id}>
-            <Link href="/community#millionaire-plan" className="group block">
+            <Link href="/coffee#millionaire-plan" className="group block">
               <div
                 className={cn(
                   'aspect-[4/3] overflow-hidden rounded-2xl border-2 border-pop-black',

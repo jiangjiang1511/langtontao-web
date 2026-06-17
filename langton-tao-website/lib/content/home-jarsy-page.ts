@@ -2,8 +2,9 @@ import { fiftyYearPageTitle } from '@/lib/content/fifty-year-narrative'
 
 export const homeJarsyHero = {
   eyebrow: '朗敦道 · LangtonTAO',
-  titleLines: ['朗敦道TAO 定律', '从人生第一天', '到家族一百年'] as const,
-  lead: '人生第一天，你就是自己最值得 All in 的资产。卸下债务包袱，扎根劳动创造，All in here！赚取本金！',
+  title: 'TAO定律',
+  subtitle: '从人生第一天到家族一百年',
+  lead: '人生第一天，你拥有最高的期权价值。趁还能犯错、还能推倒重来，All in here，成为不可替代的超级个体。',
   cta: {
     primaryLabel: '加入我们',
     primaryHref: '/member',

@@ -199,6 +199,8 @@ export const coffee2LifeEventsSectionMeta = {
   eyebrow: 'Life Events · 人生大事',
   title: '五件人生大事',
   subtitle: 'Five Life Events',
+  lead:
+    '活着、养老、教育、婚姻、传承——表面是五张不同的牌，底层却是同一张家庭资产负债表在五段人生相位里的敞口。朗敦道用周期共识与 TAO 路径把它们串起来：不追逐每一个波段拐点，但持续追问——我们处于哪一段长波？现金流、购买力、代际承诺、关系结构与传承治理，能否在同一架构里同频迭代？\n\n熊比特咖啡是这个追问的交谈场景。复杂议题不必在饭桌上匆匆收场——先在同频对话里建立诚实判断，再谈配置与交付。若你愿意把一次上桌延续为长期陪跑，认知定投与具身探索，是让这张地图真正走得下去的两翼。',
 } as const
 
 export type Coffee2BackedPanelTitle =

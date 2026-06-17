@@ -1,7 +1,19 @@
 import Link from 'next/link'
 import { JarsyReveal } from '@/components/jarsy/jarsy-reveal'
+import { Coffee2TypewriterReveal } from '@/components/sections/coffee2/coffee2-typewriter-reveal'
 import { homeJarsyHero } from '@/lib/content/home-jarsy-page'
-import { fiftyYearPageTitle } from '@/lib/content/fifty-year-narrative'
+
+const HERO_STAGGER = {
+  eyebrow: 0,
+  subtitle: 120,
+  lead: 280,
+  cta: 440,
+} as const
+
+const HERO_TITLE_TYPEWRITER = {
+  baseDelay: 580,
+  charStagger: 150,
+} as const
 
 export function HomeJarsyHero() {
   return (
@@ -10,34 +22,32 @@ export function HomeJarsyHero() {
       className="scroll-mt-20 border-b border-zinc-200"
       aria-labelledby="home-jarsy-hero-title"
     >
-      <div className="mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col items-center justify-end px-4 pb-16 pt-28 text-center sm:px-6 md:min-h-[calc(100svh-4.5rem)] md:pb-24 md:pt-32 lg:px-8">
-        <JarsyReveal eager delay={0}>
+      <div className="home-jarsy-hero__content mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col items-center justify-end px-4 pb-16 pt-28 text-center sm:px-6 md:min-h-[calc(100svh-4.5rem)] md:pb-24 md:pt-32 lg:px-8">
+        <JarsyReveal eager delay={HERO_STAGGER.eyebrow} className="order-1">
           <p className="c2-eyebrow normal-case">{homeJarsyHero.eyebrow}</p>
         </JarsyReveal>
 
-        <JarsyReveal eager delay={80} className="mt-6 w-full overflow-hidden">
-          {homeJarsyHero.titleLines.map((line) => (
-            <p
-              key={line}
-              className="c2-display text-[clamp(2.75rem,9vw,7rem)] text-zinc-950"
-              aria-hidden
-            >
-              {line}
-            </p>
-          ))}
+        <JarsyReveal eager delay={HERO_STAGGER.subtitle} className="order-3 mt-4 w-full md:mt-6">
+          <p
+            className="home-jarsy-hero-subtitle text-xl font-semibold tracking-tight text-zinc-400 md:text-2xl lg:text-3xl"
+            aria-hidden
+          >
+            {homeJarsyHero.subtitle}
+          </p>
         </JarsyReveal>
 
         <h1 id="home-jarsy-hero-title" className="sr-only">
-          {fiftyYearPageTitle}
+          {homeJarsyHero.title}
+          {homeJarsyHero.subtitle}
         </h1>
 
-        <JarsyReveal eager delay={160}>
+        <JarsyReveal eager delay={HERO_STAGGER.lead} className="order-4">
           <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-zinc-600 md:text-lg">
             {homeJarsyHero.lead}
           </p>
         </JarsyReveal>
 
-        <JarsyReveal eager delay={240}>
+        <JarsyReveal eager delay={HERO_STAGGER.cta} className="order-5">
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Link href={homeJarsyHero.cta.primaryHref} className="c2-btn-primary">
               {homeJarsyHero.cta.primaryLabel}
@@ -50,6 +60,16 @@ export function HomeJarsyHero() {
             </Link>
           </div>
         </JarsyReveal>
+
+        <div className="home-jarsy-hero__title-wrap order-2 mt-6 w-full" aria-hidden>
+          <Coffee2TypewriterReveal
+            eager
+            text={homeJarsyHero.title}
+            baseDelay={HERO_TITLE_TYPEWRITER.baseDelay}
+            charStagger={HERO_TITLE_TYPEWRITER.charStagger}
+            className="home-jarsy-hero-title c2-display mx-auto block text-[clamp(4rem,14vw,10rem)] text-zinc-950"
+          />
+        </div>
       </div>
     </section>
   )
