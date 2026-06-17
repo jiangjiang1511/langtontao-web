@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "sync:static": "rm -rf public/static && mkdir -p public/static && cp -R static/* public/static/",
-    "prebuild": "npm run sync:static",
     "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
