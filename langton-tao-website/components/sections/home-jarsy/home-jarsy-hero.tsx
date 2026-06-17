@@ -47,18 +47,10 @@ export function HomeJarsyHero() {
           </p>
         </JarsyReveal>
 
-        <JarsyReveal eager delay={HERO_STAGGER.cta} className="order-5">
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link href={homeJarsyHero.cta.primaryHref} className="c2-btn-primary">
-              {homeJarsyHero.cta.primaryLabel}
-            </Link>
-            <Link
-              href={homeJarsyHero.cta.secondaryHref}
-              className="c2-btn-secondary"
-            >
-              {homeJarsyHero.cta.secondaryLabel}
-            </Link>
-          </div>
+        <JarsyReveal eager delay={HERO_STAGGER.cta} className="order-5 home-jarsy-hero__cta">
+          <Link href={homeJarsyHero.cta.primaryHref} className="coffee2-cta-button">
+            {homeJarsyHero.cta.primaryLabel}
+          </Link>
         </JarsyReveal>
 
         <div className="home-jarsy-hero__title-wrap order-2 mt-6 w-full" aria-hidden>

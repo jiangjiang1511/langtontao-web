@@ -30,6 +30,54 @@
   line-height: 1.2;
 }
 
+.home-jarsy-hero__cta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .home-jarsy-hero__cta {
+    margin-top: 3rem;
+  }
+}
+
+.home-jarsy-page .coffee2-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 11rem;
+  border-radius: 9999px;
+  border: 2px solid var(--c2-fg);
+  padding: 0.875rem 2.25rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  background: var(--c2-fg);
+  box-shadow: 4px 4px 0 0 var(--pop-yellow);
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+.home-jarsy-page .coffee2-cta-button:hover {
+  background: var(--pop-yellow);
+  color: var(--c2-fg);
+  border-color: var(--c2-fg);
+  box-shadow: 4px 4px 0 0 var(--c2-fg);
+  transform: translate(-2px, -2px);
+}
+
+.home-jarsy-page .coffee2-cta-button:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 0 var(--c2-fg);
+}
+
 .home-jarsy-hero__content .c2-reveal[data-visible='false'] {
   opacity: 0;
   transform: translateY(40px) scale(0.96);
@@ -98,6 +146,11 @@
 
   .home-jarsy-hero__content .coffee2-hero__title-typewriter-cursor {
     display: none;
+  }
+
+  .home-jarsy-page .coffee2-cta-button:hover,
+  .home-jarsy-page .coffee2-cta-button:active {
+    transform: none;
   }
 }
 

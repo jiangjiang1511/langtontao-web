@@ -91,7 +91,7 @@ export const coffee2ManifestoImages: readonly Coffee2ManifestoImage[] = [
       y: '2%',
       rotate: -3,
       scale: 0.94,
-      zIndex: 5,
+      zIndex: 8,
       width: 'clamp(6.5rem, 15.5vw, 10rem)',
     },
     scatter: {
@@ -99,7 +99,7 @@ export const coffee2ManifestoImages: readonly Coffee2ManifestoImage[] = [
       top: '30%',
       rotate: 5,
       scale: 1,
-      zIndex: 3,
+      zIndex: 8,
       width: 'clamp(11rem, 25vw, 18.5rem)',
     },
   },

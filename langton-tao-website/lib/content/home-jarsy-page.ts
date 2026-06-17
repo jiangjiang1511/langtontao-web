@@ -8,8 +8,6 @@ export const homeJarsyHero = {
   cta: {
     primaryLabel: '加入我们',
     primaryHref: '/member',
-    secondaryLabel: '探索路径',
-    secondaryHref: '#day-1',
   },
 } as const
 
