@@ -75,5 +75,5 @@ export const coffee2HeroOrbitRings = coffee2LifeEvents.map((event, index) => ({
 export const COFFEE2_HERO_ORBIT = {
   viewBoxSize: 400,
   center: 200,
-  coffeeSrc: '/static/schumpeter-coffee.jpg',
+  coffeeSrc: '/assets/schumpeter-coffee.jpg',
 } as const

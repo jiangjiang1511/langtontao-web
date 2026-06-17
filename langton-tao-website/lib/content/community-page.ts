@@ -61,7 +61,11 @@ export const superheroPrograms = [
   },
 ] as const
 
-export type MillionaireEventCategory = 'online-course' | 'salon' | 'reading'
+export type MillionaireEventCategory =
+  | 'online-course'
+  | 'salon'
+  | 'reading'
+  | 'education-salon'
 
 export type MillionairePlanFilterId = 'upcoming' | MillionaireEventCategory
 
@@ -74,13 +78,46 @@ export type MillionaireEvent = {
   isPast: boolean
   status?: 'open' | 'full'
   imageClass: string
-  coverSrc?: string
+  coverSrc: string
+  href: string
+}
+
+const assetsBase = '/assets'
+const eventCoverBase = `${assetsBase}/bearbitcoffee/event-cover`
+
+const defaultEventImageClass =
+  'bg-gradient-to-br from-zinc-400 to-zinc-600' as const
+
+function eventCoverByMiniProgramId(id: number) {
+  return `${eventCoverBase}/event-${id}.jpg`
+}
+
+type MillionaireEventSeed = {
+  miniProgramId: number
+  title: string
+  href: string
+  category: MillionaireEventCategory
+  typeLabel: string
+}
+
+function buildMillionaireEvent(seed: MillionaireEventSeed): MillionaireEvent {
+  return {
+    id: `event-${seed.miniProgramId}`,
+    category: seed.category,
+    typeLabel: seed.typeLabel,
+    title: seed.title,
+    date: '详见小程序',
+    isPast: false,
+    imageClass: defaultEventImageClass,
+    coverSrc: eventCoverByMiniProgramId(seed.miniProgramId),
+    href: seed.href,
+  }
 }
 
 export const millionairePlanMeta = {
   eyebrow: '财商定投 · MILLIONAIRE PLAN',
   title: '千万富翁养成计划',
-  lead: '线上课、财富沙龙与读书会——三条财商认知路径，按主题筛选活动，查看分享与参与方式。',
+  lead: '线上课、财富沙龙、教育沙龙与读书会——按主题筛选活动，查看分享与参与方式。',
 } as const
 
 export const millionairePlanFilters: {
@@ -90,83 +127,102 @@ export const millionairePlanFilters: {
   { id: 'upcoming', label: '即将开始' },
   { id: 'online-course', label: '线上课' },
   { id: 'salon', label: '财富沙龙' },
+  { id: 'education-salon', label: '教育沙龙' },
   { id: 'reading', label: '读书会' },
 ]
 
 export const millionairePlanEvents: MillionaireEvent[] = [
-  {
-    id: 'salon-succession-2026',
-    category: 'salon',
-    typeLabel: '财富沙龙',
-    title: '财富夜话：二代传承与跨境架构',
-    date: '2026年5月28日',
-    isPast: false,
-    imageClass: 'bg-gradient-to-br from-zinc-500 to-zinc-800',
-  },
-  {
-    id: 'reading-antifragile-2026',
-    category: 'reading',
-    typeLabel: '读书会',
-    title: '六月主题共读《反脆弱》',
-    date: '2026年6月1日',
-    isPast: false,
-    imageClass: 'bg-gradient-to-br from-pop-yellow/80 to-amber-200',
-  },
-  {
-    id: 'online-course-risk-101',
+  buildMillionaireEvent({
+    miniProgramId: 152,
+    title: '选对升学赛道，听招生主任说真话：香港本科升学闭门沙',
+    href: 'https://wxaurl.cn/5pvPh65SDop',
+    category: 'education-salon',
+    typeLabel: '教育沙龙',
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 149,
+    title: '八部委联合出手，千万港美股账户迎来生死大考',
+    href: 'https://wxaurl.cn/TQ4r0wbOMVc',
     category: 'online-course',
     typeLabel: '线上课',
-    title: '家族风控体系 101',
-    date: '2026年7月5日',
-    isPast: false,
-    imageClass: 'bg-gradient-to-br from-sky-200 to-blue-400',
-  },
-  {
-    id: 'online-course-cognition-2026',
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 151,
+    title: '用一趟环球旅程，换一张直通海外名校的美高学籍',
+    href: 'https://wxaurl.cn/tgCpL3bIQZg',
+    category: 'education-salon',
+    typeLabel: '教育沙龙',
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 146,
+    title: '站在时代风口，拿捏未来财富机遇——香帅共潮生・香港专场',
+    href: 'https://wxaurl.cn/dexWGoZbPoo',
+    category: 'salon',
+    typeLabel: '财富沙龙',
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 142,
+    title: '表哥春季私董会—多元私人财富管理闭门交流会',
+    href: 'https://wxaurl.cn/iiFSJhSdBMe',
+    category: 'salon',
+    typeLabel: '财富沙龙',
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 141,
+    title: '娃哈哈信托启示录：海外信托与家族财富传承',
+    href: 'https://wxaurl.cn/U6cpwRtABwm',
     category: 'online-course',
     typeLabel: '线上课',
-    title: '财商认知定投入门工作坊',
-    date: '2026年6月22日',
-    isPast: false,
-    imageClass: 'bg-gradient-to-br from-amber-100 to-pop-yellow',
-  },
-  {
-    id: 'salon-shanghai-meetup-full',
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 139,
+    title: '全球布局 稳守丰盈',
+    href: 'https://wxaurl.cn/HXm2ZS6Ljjg',
+    category: 'online-course',
+    typeLabel: '线上课',
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 137,
+    title: '做好全球资产配置让财富源远流长',
+    href: 'https://wxaurl.cn/2MrCiZhoSUu',
+    category: 'online-course',
+    typeLabel: '线上课',
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 136,
+    title: '太保大讲堂——新时代家庭财富的确定性布局',
+    href: 'https://wxaurl.cn/AqwOd2lSrFj',
     category: 'salon',
     typeLabel: '财富沙龙',
-    title: '「已满」上海线下 Meetup：卓越的方式',
-    date: '2026年6月6日',
-    isPast: false,
-    status: 'full',
-    imageClass: 'bg-gradient-to-br from-teal-700 to-emerald-900',
-  },
-  {
-    id: 'reading-dip-2026',
-    category: 'reading',
-    typeLabel: '读书会',
-    title: '2026年6月读书会《The Dip》',
-    date: '2026年6月1日',
-    isPast: false,
-    imageClass: 'bg-gradient-to-br from-orange-200 to-rose-300',
-  },
-  {
-    id: 'past-year-end-2025',
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 114,
+    title: '高考低分逆袭之路讲座',
+    href: 'https://wxaurl.cn/NmUMp2iD0xc',
+    category: 'education-salon',
+    typeLabel: '教育沙龙',
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 112,
+    title: '花卉小镇英语角',
+    href: 'https://wxaurl.cn/rLDzpxFVdrc',
+    category: 'education-salon',
+    typeLabel: '教育沙龙',
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 106,
+    title: '《但愿人长久》观影·漫谈夜',
+    href: 'https://wxaurl.cn/2csoKw0hybj',
     category: 'salon',
     typeLabel: '财富沙龙',
-    title: '2025 年终财富复盘沙龙',
-    date: '2025年12月20日',
-    isPast: true,
-    imageClass: 'bg-gradient-to-br from-zinc-400 to-zinc-600',
-  },
-  {
-    id: 'past-reading-2025',
-    category: 'reading',
-    typeLabel: '读书会',
-    title: '十二月共读《纳瓦尔宝典》',
-    date: '2025年12月1日',
-    isPast: true,
-    imageClass: 'bg-gradient-to-br from-violet-300 to-indigo-500',
-  },
+  }),
+  buildMillionaireEvent({
+    miniProgramId: 100,
+    title: '一期一会：不用主动开口，3招让客户主动来买单！',
+    href: 'https://wxaurl.cn/iJyZsxomgBk',
+    category: 'salon',
+    typeLabel: '财富沙龙',
+  }),
 ]
 
 export function isMillionaireEventOpenForRegistration(
@@ -194,6 +250,9 @@ export function getMillionairePlanCategoryCounts() {
     ).length,
     salon: millionairePlanEvents.filter((event) => event.category === 'salon')
       .length,
+    'education-salon': millionairePlanEvents.filter(
+      (event) => event.category === 'education-salon'
+    ).length,
     reading: millionairePlanEvents.filter(
       (event) => event.category === 'reading'
     ).length,

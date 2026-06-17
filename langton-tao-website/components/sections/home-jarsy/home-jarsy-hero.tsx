@@ -6,8 +6,9 @@ import { homeJarsyHero } from '@/lib/content/home-jarsy-page'
 const HERO_STAGGER = {
   eyebrow: 0,
   subtitle: 120,
-  lead: 280,
-  cta: 440,
+  formula: 200,
+  lead: 320,
+  cta: 460,
 } as const
 
 const HERO_TITLE_TYPEWRITER = {
@@ -41,13 +42,44 @@ export function HomeJarsyHero() {
           {homeJarsyHero.subtitle}
         </h1>
 
-        <JarsyReveal eager delay={HERO_STAGGER.lead} className="order-4">
+        <JarsyReveal eager delay={HERO_STAGGER.formula} className="order-4 mt-6 w-full md:mt-8">
+          <div
+            className="home-jarsy-hero-formula"
+            aria-label={`${homeJarsyHero.formula.result}等于${homeJarsyHero.formula.terms.join('加')}乘以${homeJarsyHero.formula.multiplier}`}
+          >
+            <span className="home-jarsy-hero-formula__result">{homeJarsyHero.formula.result}</span>
+            <span className="home-jarsy-hero-formula__eq" aria-hidden>
+              =
+            </span>
+            <span className="home-jarsy-hero-formula__group">
+              <span className="home-jarsy-hero-formula__paren" aria-hidden>
+                (
+              </span>
+              <span className="home-jarsy-hero-formula__term">{homeJarsyHero.formula.terms[0]}</span>
+              <span className="home-jarsy-hero-formula__op" aria-hidden>
+                +
+              </span>
+              <span className="home-jarsy-hero-formula__term">{homeJarsyHero.formula.terms[1]}</span>
+              <span className="home-jarsy-hero-formula__paren" aria-hidden>
+                )
+              </span>
+            </span>
+            <span className="home-jarsy-hero-formula__op home-jarsy-hero-formula__op--times" aria-hidden>
+              ×
+            </span>
+            <span className="home-jarsy-hero-formula__multiplier">
+              {homeJarsyHero.formula.multiplier}
+            </span>
+          </div>
+        </JarsyReveal>
+
+        <JarsyReveal eager delay={HERO_STAGGER.lead} className="order-5">
           <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-zinc-600 md:text-lg">
             {homeJarsyHero.lead}
           </p>
         </JarsyReveal>
 
-        <JarsyReveal eager delay={HERO_STAGGER.cta} className="order-5 home-jarsy-hero__cta">
+        <JarsyReveal eager delay={HERO_STAGGER.cta} className="order-6 home-jarsy-hero__cta">
           <Link href={homeJarsyHero.cta.primaryHref} className="coffee2-cta-button">
             {homeJarsyHero.cta.primaryLabel}
           </Link>

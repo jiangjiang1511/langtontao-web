@@ -28,7 +28,7 @@ export function SiteHeader() {
             aria-label="关于朗敦道"
           >
             <Image
-              src="/static/LLT-logo.jpg"
+              src="/assets/LLT-logo.jpg"
               alt=""
               width={36}
               height={36}

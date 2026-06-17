@@ -4,7 +4,12 @@ export const homeJarsyHero = {
   eyebrow: '朗敦道 · LangtonTAO',
   title: 'TAO定律',
   subtitle: '从人生第一天到家族一百年',
-  lead: '人生第一天，你拥有最高的期权价值。趁还能犯错、还能推倒重来，All in here，成为不可替代的超级个体。',
+  lead: '如果把人生分为第一天，第二天，第三天，TAO定律想和你聊聊穿越周期，看见关系，开启具身认知，拥抱物理AI的新时代，去探索生命的英雄旅程。',
+  formula: {
+    result: '人生财富',
+    terms: ['周期韧性', '关系深度'] as const,
+    multiplier: '具身认知',
+  },
   cta: {
     primaryLabel: '加入我们',
     primaryHref: '/member',

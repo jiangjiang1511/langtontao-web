@@ -1,15 +1,25 @@
+import Image from 'next/image'
 import type { MillionaireEvent } from '@/lib/content/community-page'
 import { cn } from '@/lib/utils'
 
 export function Community2EventCard({ event }: { event: MillionaireEvent }) {
-  return (
-    <article className="c2-card flex flex-col overflow-hidden">
+  const content = (
+    <>
       <div
         className={cn(
-          'relative aspect-[4/3] w-full',
+          'relative aspect-square w-full',
           !event.coverSrc && event.imageClass
         )}
       >
+        {event.coverSrc ? (
+          <Image
+            src={event.coverSrc}
+            alt={event.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 50vw, 33vw"
+          />
+        ) : null}
         {event.status === 'full' ? (
           <span className="absolute right-3 top-3 rounded-full bg-zinc-950 px-3 py-1 text-xs font-medium text-white">
             已满
@@ -28,6 +38,24 @@ export function Community2EventCard({ event }: { event: MillionaireEvent }) {
 
         <p className="mt-auto pt-4 text-sm text-zinc-500">{event.date}</p>
       </div>
-    </article>
+    </>
+  )
+
+  if (event.href) {
+    return (
+      <a
+        href={event.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="c2-card flex flex-col overflow-hidden transition-shadow hover:border-zinc-300 hover:shadow-md"
+        aria-label={`${event.title}：打开小程序详情`}
+      >
+        {content}
+      </a>
+    )
+  }
+
+  return (
+    <article className="c2-card flex flex-col overflow-hidden">{content}</article>
   )
 }

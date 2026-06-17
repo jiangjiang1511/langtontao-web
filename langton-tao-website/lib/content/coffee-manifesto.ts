@@ -217,14 +217,14 @@ export const coffee2Manifesto = {
   },
   brandLogos: [
     {
-      src: '/static/bearbit-coffee-logo.png',
+      src: '/assets/bearbit-coffee-logo.png',
       alt: '熊比特咖啡 Schumpeter Coffee',
       width: 1582,
       height: 480,
       variant: 'light' as const,
     },
     {
-      src: '/static/decameroncoffee-logo.png',
+      src: '/assets/decameroncoffee-logo.png',
       alt: 'DECAMERON COFFEE 十日谈',
       width: 800,
       height: 400,

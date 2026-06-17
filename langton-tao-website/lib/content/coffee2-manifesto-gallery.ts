@@ -36,7 +36,7 @@ export const coffee2ManifestoGalleryMeta = {
 export const coffee2ManifestoImages: readonly Coffee2ManifestoImage[] = [
   {
     id: 'manifesto-1',
-    src: '/static/bearbitcoffee/manifesto/manifesto-1.jpg',
+    src: '/assets/bearbitcoffee/manifesto/manifesto-1.jpg',
     alt: '熊比特咖啡 manifesto 1',
     width: 1707,
     height: 1280,
@@ -59,7 +59,7 @@ export const coffee2ManifestoImages: readonly Coffee2ManifestoImage[] = [
   },
   {
     id: 'manifesto-2',
-    src: '/static/bearbitcoffee/manifesto/manifesto-2.jpg',
+    src: '/assets/bearbitcoffee/manifesto/manifesto-2.jpg',
     alt: '熊比特咖啡 manifesto 2',
     width: 6000,
     height: 4000,
@@ -82,7 +82,7 @@ export const coffee2ManifestoImages: readonly Coffee2ManifestoImage[] = [
   },
   {
     id: 'manifesto-3',
-    src: '/static/bearbitcoffee/manifesto/manifesto-3.jpg',
+    src: '/assets/bearbitcoffee/manifesto/manifesto-3.jpg',
     alt: '熊比特咖啡 manifesto 3',
     width: 1896,
     height: 1280,
@@ -105,7 +105,7 @@ export const coffee2ManifestoImages: readonly Coffee2ManifestoImage[] = [
   },
   {
     id: 'manifesto-4',
-    src: '/static/bearbitcoffee/manifesto/manifesto-4.jpg',
+    src: '/assets/bearbitcoffee/manifesto/manifesto-4.jpg',
     alt: '熊比特咖啡 manifesto 4',
     width: 1443,
     height: 1082,
@@ -128,7 +128,7 @@ export const coffee2ManifestoImages: readonly Coffee2ManifestoImage[] = [
   },
   {
     id: 'manifesto-5',
-    src: '/static/bearbitcoffee/manifesto/manifesto-5.jpg',
+    src: '/assets/bearbitcoffee/manifesto/manifesto-5.jpg',
     alt: '熊比特咖啡 manifesto 5',
     width: 1440,
     height: 1080,
@@ -151,7 +151,7 @@ export const coffee2ManifestoImages: readonly Coffee2ManifestoImage[] = [
   },
   {
     id: 'manifesto-6',
-    src: '/static/bearbitcoffee/manifesto/manifesto-6.jpg',
+    src: '/assets/bearbitcoffee/manifesto/manifesto-6.jpg',
     alt: '熊比特咖啡 manifesto 6',
     width: 1440,
     height: 1080,
@@ -174,7 +174,7 @@ export const coffee2ManifestoImages: readonly Coffee2ManifestoImage[] = [
   },
   {
     id: 'manifesto-7',
-    src: '/static/bearbitcoffee/manifesto/manifesto-7.jpg',
+    src: '/assets/bearbitcoffee/manifesto/manifesto-7.jpg',
     alt: '熊比特咖啡 manifesto 7',
     width: 1279,
     height: 1706,

@@ -66,7 +66,7 @@ export function Community2EventsHub() {
                     className="mt-8"
                   >
                     {events.length > 0 ? (
-                      <ul className="grid gap-6 md:grid-cols-2 lg:gap-8">
+                      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
                         {events.map((event, eventIndex) => (
                           <Community2Reveal
                             key={event.id}
@@ -86,6 +86,17 @@ export function Community2EventsHub() {
                 )
               })}
             </Tabs>
+
+            <div className="mt-10 flex justify-center border-t border-zinc-200 pt-10">
+              <a
+                href={coffee2EventsMeta.moreEventsHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="coffee2-cta-button"
+              >
+                {coffee2EventsMeta.moreEventsLabel}
+              </a>
+            </div>
           </div>
         </Community2Reveal>
       </div>

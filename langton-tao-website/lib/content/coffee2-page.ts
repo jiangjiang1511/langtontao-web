@@ -23,7 +23,7 @@ export const coffee2Topics = coffeeWaterfallSections.filter(
 ) as Array<CoffeeWaterfallSection & { id: Coffee2TopicId }>
 
 export const coffee2Hero = {
-  logoSrc: '/static/bearbit-coffee-logo.png',
+  logoSrc: '/assets/bearbit-coffee-logo.png',
   logoAlt: '熊比特咖啡 Schumpeter Coffee',
   titleLine1: '一杯咖啡',
   titleLine2: '聊聊人生大事',
@@ -56,7 +56,9 @@ export const coffee2EventsMeta = {
   eyebrow: 'WHAT WE DO',
   title: '活动',
   tagline: '具身认知定投',
-  lead: '读书为活着、养老、教育、婚姻、传承五件人生大事搭好共通语言，活动把它带回真实场域——线上课、财富沙龙与具身探索，让家人与社群在关系里把判断说到底、把议题练成共同体技艺。',
+  lead: '读书为活着、养老、教育、婚姻、传承五件人生大事搭好共通语言，活动把它带回真实场域——线上课、财富沙龙、教育沙龙与读书会，让家人与社群在关系里把判断说到底、把议题练成共同体技艺。',
+  moreEventsLabel: '更多活动',
+  moreEventsHref: 'https://wxaurl.cn/WUntmc7J4at',
 } as const
 
 export const coffee2JoinBand = {

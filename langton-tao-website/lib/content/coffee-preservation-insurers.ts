@@ -139,7 +139,7 @@ const insurerCopyById: Record<string, InsurerCopy> = {
 const fwdFeaturedArticle: CoffeePreservationArticle = {
   id: 'fwd-article-richard-li',
   title: '李泽楷，华人家族第二代的完美典范——从"薅李家羊毛"到家族传承',
-  coverSrc: '/static/fuwei/fuwei-cover1.jpg',
+  coverSrc: '/assets/fuwei/fuwei-cover1.jpg',
   coverAlt: '富卫产品背后的商业观察文章封面',
   tags: ['家族传承', '富卫', '商业观察'],
   href: 'https://mp.weixin.qq.com/s/F6WChaheUpmJXlE_4jOgtw',
