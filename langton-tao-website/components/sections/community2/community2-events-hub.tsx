@@ -67,14 +67,10 @@ export function Community2EventsHub() {
                   >
                     {events.length > 0 ? (
                       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-                        {events.map((event, eventIndex) => (
-                          <Community2Reveal
-                            key={event.id}
-                            as="li"
-                            delay={eventIndex * 60}
-                          >
+                        {events.map((event) => (
+                          <li key={event.id}>
                             <Community2EventCard event={event} />
-                          </Community2Reveal>
+                          </li>
                         ))}
                       </ul>
                     ) : (

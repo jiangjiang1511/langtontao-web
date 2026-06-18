@@ -1,6 +1,7 @@
 'use client'
 
 import {
+  useEffect,
   useRef,
   useState,
   type MouseEvent as ReactMouseEvent,
@@ -17,7 +18,6 @@ type DragState = {
   startScrollLeft: number
   dragged: boolean
   pointerId: number
-  captureTarget: HTMLDivElement | null
 }
 
 export function DraggableScrollRow({
@@ -38,42 +38,51 @@ export function DraggableScrollRow({
   const suppressClickRef = useRef(false)
   const [isDragging, setIsDragging] = useState(false)
 
-  const finishDrag = (
-    event: ReactPointerEvent<HTMLDivElement>,
-    didDrag: boolean
-  ) => {
-    const drag = dragRef.current
-    if (!drag) return
+  useEffect(() => {
+    const onWindowPointerMove = (event: PointerEvent) => {
+      const drag = dragRef.current
+      const viewport = viewportElementRef.current
+      if (!drag || !viewport || event.pointerId !== drag.pointerId) return
 
-    if (drag.captureTarget) {
-      drag.captureTarget.releasePointerCapture(drag.pointerId)
+      const distance = Math.abs(event.clientX - drag.startX)
+      if (!drag.dragged) {
+        if (distance < DRAG_THRESHOLD_PX) return
+        drag.dragged = true
+        setIsDragging(true)
+      }
+
+      event.preventDefault()
+      const delta = drag.startX - event.clientX
+      viewport.scrollLeft = drag.startScrollLeft + delta
     }
 
-    dragRef.current = null
-    if (didDrag) {
-      suppressClickRef.current = true
+    const onWindowPointerEnd = (event: PointerEvent) => {
+      const drag = dragRef.current
+      if (!drag || event.pointerId !== drag.pointerId) return
+
+      if (drag.dragged) {
+        suppressClickRef.current = true
+      }
+
+      dragRef.current = null
+      setIsDragging(false)
     }
-    setIsDragging(false)
-  }
 
-  const beginDrag = (
-    event: ReactPointerEvent<HTMLDivElement>,
-    drag: DragState
-  ) => {
-    const viewport = viewportElementRef.current
-    if (!viewport) return
+    window.addEventListener('pointermove', onWindowPointerMove)
+    window.addEventListener('pointerup', onWindowPointerEnd)
+    window.addEventListener('pointercancel', onWindowPointerEnd)
 
-    const distance = Math.abs(event.clientX - drag.startX)
-    if (distance < DRAG_THRESHOLD_PX) return
-
-    drag.dragged = true
-    drag.captureTarget = viewport
-    viewport.setPointerCapture(event.pointerId)
-    setIsDragging(true)
-  }
+    return () => {
+      window.removeEventListener('pointermove', onWindowPointerMove)
+      window.removeEventListener('pointerup', onWindowPointerEnd)
+      window.removeEventListener('pointercancel', onWindowPointerEnd)
+    }
+  }, [])
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (event.button !== 0 && event.pointerType !== 'touch') return
+    // Touch uses native horizontal scroll (touch-action: pan-x on the viewport).
+    if (event.pointerType === 'touch') return
+    if (event.button !== 0) return
 
     const viewport = viewportElementRef.current
     if (!viewport) return
@@ -83,29 +92,7 @@ export function DraggableScrollRow({
       startScrollLeft: viewport.scrollLeft,
       dragged: false,
       pointerId: event.pointerId,
-      captureTarget: null,
     }
-  }
-
-  const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
-    const drag = dragRef.current
-    const viewport = viewportElementRef.current
-    if (!drag || !viewport) return
-
-    if (!drag.dragged) {
-      beginDrag(event, drag)
-    }
-
-    if (!drag.dragged) return
-
-    const delta = drag.startX - event.clientX
-    viewport.scrollLeft = drag.startScrollLeft + delta
-  }
-
-  const onPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
-    const drag = dragRef.current
-    if (!drag) return
-    finishDrag(event, drag.dragged)
   }
 
   const onClickCapture = (event: ReactMouseEvent<HTMLDivElement>) => {
@@ -132,9 +119,6 @@ export function DraggableScrollRow({
         className
       )}
       onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerCancel={onPointerUp}
       onClickCapture={onClickCapture}
     >
       <div className={cn('reading-bookshelf__track flex w-max', trackClassName)}>

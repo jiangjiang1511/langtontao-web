@@ -10,6 +10,24 @@ import {
 } from 'react'
 import { cn } from '@/lib/utils'
 
+const REVEAL_FALLBACK_MS = 1500
+
+function isInViewport(element: HTMLElement) {
+  const rect = element.getBoundingClientRect()
+  const viewportHeight =
+    window.innerHeight || document.documentElement.clientHeight
+
+  return rect.height > 0 && rect.top < viewportHeight && rect.bottom > 0
+}
+
+function getRevealRootMargin() {
+  if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+    return '0px'
+  }
+
+  return '-8% 0px -10% 0px'
+}
+
 type Community2RevealProps = {
   children: ReactNode
   className?: string
@@ -41,23 +59,53 @@ export function Community2Reveal({
 
     if (!element) return
 
+    let cancelled = false
+    let revealed = false
+
+    const markVisible = () => {
+      if (cancelled || revealed) return
+      revealed = true
+      setVisible(true)
+      if (once) observer.disconnect()
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setVisible(true)
-          if (once) observer.disconnect()
+          markVisible()
         } else if (!once) {
+          revealed = false
           setVisible(false)
         }
       },
       {
-        rootMargin: '-8% 0px -10% 0px',
+        rootMargin: getRevealRootMargin(),
         threshold,
       }
     )
 
     observer.observe(element)
-    return () => observer.disconnect()
+
+    if (isInViewport(element)) {
+      markVisible()
+    }
+
+    const frame = requestAnimationFrame(() => {
+      if (!cancelled && isInViewport(element)) {
+        markVisible()
+      }
+    })
+
+    const fallback = setTimeout(() => {
+      markVisible()
+    }, REVEAL_FALLBACK_MS)
+
+    return () => {
+      cancelled = true
+      cancelAnimationFrame(frame)
+      clearTimeout(fallback)
+      observer.disconnect()
+    }
   }, [eager, once, threshold, element])
 
   const style = {

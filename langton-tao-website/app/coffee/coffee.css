@@ -238,6 +238,10 @@
   padding-bottom: 20px;
 }
 
+.reading-bookshelf__viewport .book-scene {
+  touch-action: pan-x;
+}
+
 @media (min-width: 768px) {
   .reading-bookshelf__viewport {
     min-height: 540px;
@@ -1890,6 +1894,7 @@ a.coffee2-life-event-card--link {
 .coffee2-draggable-marquee--scroll {
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
 }
 
 .coffee2-draggable-marquee--scroll::-webkit-scrollbar {
