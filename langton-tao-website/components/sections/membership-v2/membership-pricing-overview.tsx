@@ -1,4 +1,5 @@
 import { ContactTrigger } from '@/components/contact-trigger'
+import { MembershipJoinLink } from '@/components/sections/membership-v2/membership-join-link'
 import {
   membershipBoardSection,
   membershipPricingOverview,
@@ -74,20 +75,29 @@ export function MembershipPricingOverview() {
             </div>
           )}
 
-          <ContactTrigger
-            intent={tier.contactIntent}
-            variant={tier.mystery ? 'default' : 'dark'}
-            size="lg"
-            className={cn(
-              ctaBase,
-              'mt-4',
-              tier.mystery
-                ? '!border-2 !border-pop-black !bg-pop-yellow !font-black !text-pop-black hover:!-translate-y-0.5 hover:!bg-pop-yellow hover:!shadow-[4px_4px_0_0_#09090b]'
-                : 'bg-zinc-950 text-white hover:bg-zinc-800'
-            )}
-          >
-            {tier.mystery ? '私董会咨询' : '预约咨询'}
-          </ContactTrigger>
+          {tier.mystery ? (
+            <ContactTrigger
+              intent={tier.contactIntent}
+              variant="default"
+              size="lg"
+              className={cn(
+                ctaBase,
+                'mt-4',
+                '!border-2 !border-pop-black !bg-pop-yellow !font-black !text-pop-black hover:!-translate-y-0.5 hover:!bg-pop-yellow hover:!shadow-[4px_4px_0_0_#09090b]'
+              )}
+            >
+              私董会咨询
+            </ContactTrigger>
+          ) : (
+            <MembershipJoinLink
+              variant="dark"
+              size="lg"
+              className={cn(
+                ctaBase,
+                'mt-4 bg-zinc-950 text-white hover:bg-zinc-800'
+              )}
+            />
+          )}
 
           <ul className="mt-5 flex-1 space-y-2">
             {tier.includesLabel ? (

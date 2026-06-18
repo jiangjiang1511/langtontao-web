@@ -43,6 +43,10 @@ export const membershipV2Hero = {
   disclaimer: '价格不公开展示，预约咨询了解详情。可随时沟通调整方案。',
 } as const
 
+/** 小程序 pages/tabbar/member（wx-url-link 生成） */
+export const membershipJoinHref = 'https://wxaurl.cn/sGbYdhsrLOl'
+export const membershipJoinLabel = '加入会员' as const
+
 export const membershipBoardSection = {
   eyebrow: '权益详情',
   title: '私董会',

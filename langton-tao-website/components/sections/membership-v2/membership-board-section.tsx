@@ -1,4 +1,4 @@
-import { ContactTrigger } from '@/components/contact-trigger'
+import { MembershipJoinLink } from '@/components/sections/membership-v2/membership-join-link'
 import { membershipBoardSection } from '@/lib/content/membership-v2'
 
 const ctaClass =
@@ -44,14 +44,7 @@ export function MembershipBoardSection() {
           </div>
         </div>
 
-        <ContactTrigger
-          intent={membershipBoardSection.contactIntent}
-          variant="dark"
-          size="lg"
-          className={ctaClass}
-        >
-          预约咨询
-        </ContactTrigger>
+        <MembershipJoinLink variant="dark" size="lg" className={ctaClass} />
       </div>
     </section>
   )

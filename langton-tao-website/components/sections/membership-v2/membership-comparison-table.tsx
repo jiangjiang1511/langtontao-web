@@ -3,11 +3,11 @@
 import { Fragment, useState } from 'react'
 import { Check, ChevronDown, Minus } from 'lucide-react'
 import { ContactTrigger } from '@/components/contact-trigger'
+import { MembershipJoinLink } from '@/components/sections/membership-v2/membership-join-link'
 import { Button } from '@/components/ui/button'
 import type { MembershipTierId } from '@/lib/content/membership'
 import {
   membershipPricingOverview,
-  membershipTierSections,
   membershipV2CollapsedComparison,
   membershipV2FullComparison,
   tierColumnLabels,
@@ -80,20 +80,23 @@ function BoardMysteryCell({ compact = false }: { compact?: boolean }) {
 }
 
 function TierColumnHeader({ tierId }: { tierId: MembershipTierId }) {
-  const tier = membershipTierSections.find((t) => t.id === tierId)
   const isBoard = tierId === 'board'
 
   return (
     <>
       <p className="text-sm font-semibold">{tierColumnLabels[tierId]}</p>
-      <ContactTrigger
-        intent={isBoard ? '私董会' : (tier?.contactIntent ?? '了解会员')}
-        size="sm"
-        variant="dark"
-        className={tierCtaClass}
-      >
-        {isBoard ? '私董会咨询' : '预约咨询'}
-      </ContactTrigger>
+      {isBoard ? (
+        <ContactTrigger
+          intent="私董会"
+          size="sm"
+          variant="dark"
+          className={tierCtaClass}
+        >
+          私董会咨询
+        </ContactTrigger>
+      ) : (
+        <MembershipJoinLink size="sm" variant="dark" className={tierCtaClass} />
+      )}
     </>
   )
 }
@@ -311,14 +314,11 @@ function ComparisonTableMobile({
               </span>
             ) : null}
 
-            <ContactTrigger
-              intent={card.contactIntent}
+            <MembershipJoinLink
               variant="dark"
               size="lg"
               className={mobileCtaClass}
-            >
-              预约咨询
-            </ContactTrigger>
+            />
 
             <div className="mt-5 space-y-3">
               {benefitCategories.map((category) => (
