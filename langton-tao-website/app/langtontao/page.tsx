@@ -17,6 +17,7 @@ import {
   langtontaoJoinBand,
   langtontaoPageMeta,
 } from '@/lib/content/langtontao-page'
+import '@/app/coffee/coffee.css'
 import '@/styles/jarsy-v2.css'
 
 export const metadata: Metadata = {
