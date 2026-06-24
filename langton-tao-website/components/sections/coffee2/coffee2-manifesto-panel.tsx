@@ -8,6 +8,7 @@ export function Coffee2ManifestoPanel() {
       title={coffee2Manifesto.panelTitle}
       ariaLabelledBy="coffee2-manifesto-panel-title"
       stackPosition="top"
+      panelVariant="minimal"
     >
       <div className="coffee2-manifesto-panel__logos">
         {coffee2Manifesto.brandLogos.map((logo) => (

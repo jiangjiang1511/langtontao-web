@@ -1,5 +1,7 @@
 'use client'
 
+import { Coffee2DisplayTypewriter } from '@/components/sections/coffee2/coffee2-display-typewriter'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Community2EventCard } from '@/components/sections/community2/community2-event-card'
 import { Community2Reveal } from '@/components/sections/community2/community2-reveal'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -25,14 +27,19 @@ export function Community2EventsHub() {
             id="community2-events-title"
             className="c2-display mt-4 text-4xl text-zinc-950 md:text-5xl"
           >
-            {coffee2EventsMeta.title}
+            <Coffee2DisplayTypewriter
+              text={coffee2EventsMeta.title}
+              charStagger={120}
+            />
           </h2>
-          <p className="mt-4 text-xl font-semibold tracking-tight text-zinc-500 md:text-2xl">
-            {coffee2EventsMeta.tagline}
-          </p>
-          <p className="mt-4 text-base leading-relaxed text-zinc-600 md:text-lg">
-            {coffee2EventsMeta.lead}
-          </p>
+          <Coffee2AnnotatedText
+            text={coffee2EventsMeta.tagline}
+            className="mt-4 text-xl font-semibold tracking-tight text-zinc-500 md:text-2xl"
+          />
+          <Coffee2AnnotatedText
+            text={coffee2EventsMeta.lead}
+            className="mt-4 text-base leading-relaxed text-zinc-600 md:text-lg"
+          />
         </Community2Reveal>
 
         <Community2Reveal delay={120} className="mt-12">
@@ -66,7 +73,7 @@ export function Community2EventsHub() {
                     className="mt-8"
                   >
                     {events.length > 0 ? (
-                      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+                      <ul className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
                         {events.map((event) => (
                           <li key={event.id}>
                             <Community2EventCard event={event} />

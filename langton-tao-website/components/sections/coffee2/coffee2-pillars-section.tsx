@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import Link from 'next/link'
+import { Coffee2AnnotatedCopyBlock } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import {
   coffee2PillarCards,
@@ -31,9 +32,11 @@ export function Coffee2PillarsSection() {
                 >
                   <span className="coffee2-pillar-card__number">{card.number}</span>
                   <h3 className="coffee2-pillar-card__title">{card.title}</h3>
-                  <p className="coffee2-pillar-card__description">
-                    {card.description}
-                  </p>
+                  <Coffee2AnnotatedCopyBlock
+                    block={card.description}
+                    className="coffee2-pillar-card__description"
+                    as="span"
+                  />
                   <span className="coffee2-pillar-card__cta" aria-hidden>
                     探索
                   </span>

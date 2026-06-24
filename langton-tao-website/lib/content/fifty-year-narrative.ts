@@ -92,7 +92,7 @@ export const fiftyYearStages: FiftyYearStage[] = [
     body: '人生第一天，你拥有最高的期权价值。趁还能犯错、还能推倒重来，All in here，成为不可替代的超级个体。',
     products: [],
     transition: {
-      heading: '如何进入第二天',
+      heading: '如何进入第二天？',
       items: [
         superheroJourneyProduct,
         {
@@ -107,7 +107,7 @@ export const fiftyYearStages: FiftyYearStage[] = [
     id: 'day-2',
     periodLabel: '第二天',
     theme: '成为超级英雄',
-    body: '第二天的起点，是让钱开始为你工作。当现金流挣脱财富重力，财富不再是汗水的重复兑换，而是远见的提前布局。问题是，你会看多远！',
+    body: '当现金流挣脱财富重力，你正式跨过第一天与第二天的边界——从此为家族掌舵，以周期为罗盘，行稳致远。',
     products: [superheroJourneyProduct],
     transition: null,
   },

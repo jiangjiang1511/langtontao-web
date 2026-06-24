@@ -1,5 +1,6 @@
 'use client'
 
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import type { Coffee2Tenet } from '@/lib/content/coffee-manifesto'
 import { cn } from '@/lib/utils'
 
@@ -37,12 +38,19 @@ export function Coffee2TenetMarqueeCard({
       </div>
       <div className="coffee2-tenet-card__summary">
         {lines.length > 2 ? (
-          <p className="coffee2-tenet-card__summary-line">{lines.join(' · ')}</p>
+          <Coffee2AnnotatedText
+            as="span"
+            text={lines.join(' · ')}
+            className="coffee2-tenet-card__summary-line block"
+          />
         ) : (
           lines.map((line) => (
-            <p key={line} className="coffee2-tenet-card__summary-line">
-              {line}
-            </p>
+            <Coffee2AnnotatedText
+              key={line}
+              as="span"
+              text={line}
+              className="coffee2-tenet-card__summary-line block"
+            />
           ))
         )}
       </div>

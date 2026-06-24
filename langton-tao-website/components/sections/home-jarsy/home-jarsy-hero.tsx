@@ -1,18 +1,20 @@
 import Link from 'next/link'
 import { JarsyReveal } from '@/components/jarsy/jarsy-reveal'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Coffee2TypewriterReveal } from '@/components/sections/coffee2/coffee2-typewriter-reveal'
+import { HomeJarsyHeroFormulaOrbit } from '@/components/sections/home-jarsy/home-jarsy-hero-formula-orbit'
+import { FORMULA_ARIA_LABEL } from '@/lib/content/home-jarsy-hero-formula'
 import { homeJarsyHero } from '@/lib/content/home-jarsy-page'
 
 const HERO_STAGGER = {
   eyebrow: 0,
   subtitle: 120,
-  formula: 200,
-  lead: 320,
-  cta: 460,
+  lead: 240,
+  cta: 380,
 } as const
 
 const HERO_TITLE_TYPEWRITER = {
-  baseDelay: 580,
+  baseDelay: 500,
   charStagger: 150,
 } as const
 
@@ -20,80 +22,60 @@ export function HomeJarsyHero() {
   return (
     <section
       id="hero"
-      className="scroll-mt-20 border-b border-zinc-200"
+      className="relative scroll-mt-20 overflow-hidden border-b border-zinc-200"
       aria-labelledby="home-jarsy-hero-title"
+      aria-label={FORMULA_ARIA_LABEL}
     >
-      <div className="home-jarsy-hero__content mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col items-center justify-end px-4 pb-16 pt-28 text-center sm:px-6 md:min-h-[calc(100svh-4.5rem)] md:pb-24 md:pt-32 lg:px-8">
-        <JarsyReveal eager delay={HERO_STAGGER.eyebrow} className="order-1">
-          <p className="c2-eyebrow normal-case">{homeJarsyHero.eyebrow}</p>
-        </JarsyReveal>
+      <HomeJarsyHeroFormulaOrbit />
 
-        <JarsyReveal eager delay={HERO_STAGGER.subtitle} className="order-3 mt-4 w-full md:mt-6">
-          <p
-            className="home-jarsy-hero-subtitle text-xl font-semibold tracking-tight text-zinc-400 md:text-2xl lg:text-3xl"
-            aria-hidden
-          >
-            {homeJarsyHero.subtitle}
-          </p>
-        </JarsyReveal>
+      <div className="home-jarsy-hero__content mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col px-4 pb-16 pt-28 text-center sm:px-6 md:min-h-[calc(100svh-4.5rem)] md:pb-24 md:pt-32 lg:px-8">
+        <div className="home-jarsy-hero__top">
+          <JarsyReveal eager delay={HERO_STAGGER.eyebrow}>
+            <p className="c2-eyebrow normal-case">{homeJarsyHero.eyebrow}</p>
+          </JarsyReveal>
+
+          <div className="home-jarsy-hero__title-wrap mt-4 w-full md:mt-5" aria-hidden>
+            <Coffee2TypewriterReveal
+              eager
+              text={homeJarsyHero.title}
+              baseDelay={HERO_TITLE_TYPEWRITER.baseDelay}
+              charStagger={HERO_TITLE_TYPEWRITER.charStagger}
+              className="home-jarsy-hero-title c2-display mx-auto block text-[clamp(4rem,14vw,10rem)] text-zinc-950"
+            />
+          </div>
+        </div>
+
+        <div className="home-jarsy-hero__spacer" aria-hidden />
+
+        <div className="home-jarsy-hero__bottom">
+          <JarsyReveal eager delay={HERO_STAGGER.subtitle} className="w-full">
+            <p
+              className="home-jarsy-hero-subtitle text-xl font-semibold tracking-tight text-zinc-400 md:text-2xl lg:text-3xl"
+              aria-hidden
+            >
+              {homeJarsyHero.subtitle}
+            </p>
+          </JarsyReveal>
+
+          <JarsyReveal eager delay={HERO_STAGGER.lead}>
+            <Coffee2AnnotatedText
+              text={homeJarsyHero.lead}
+              className="home-jarsy-hero-lead mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-600 md:mt-6 md:text-lg"
+            />
+          </JarsyReveal>
+
+          <JarsyReveal eager delay={HERO_STAGGER.cta} className="home-jarsy-hero__cta">
+            <Link href={homeJarsyHero.cta.primaryHref} className="coffee2-cta-button">
+              {homeJarsyHero.cta.primaryLabel}
+            </Link>
+          </JarsyReveal>
+        </div>
 
         <h1 id="home-jarsy-hero-title" className="sr-only">
           {homeJarsyHero.title}
           {homeJarsyHero.subtitle}
+          {FORMULA_ARIA_LABEL}
         </h1>
-
-        <JarsyReveal eager delay={HERO_STAGGER.formula} className="order-4 mt-6 w-full md:mt-8">
-          <div
-            className="home-jarsy-hero-formula"
-            aria-label={`${homeJarsyHero.formula.result}等于${homeJarsyHero.formula.terms.join('加')}乘以${homeJarsyHero.formula.multiplier}`}
-          >
-            <span className="home-jarsy-hero-formula__result">{homeJarsyHero.formula.result}</span>
-            <span className="home-jarsy-hero-formula__eq" aria-hidden>
-              =
-            </span>
-            <span className="home-jarsy-hero-formula__group">
-              <span className="home-jarsy-hero-formula__paren" aria-hidden>
-                (
-              </span>
-              <span className="home-jarsy-hero-formula__term">{homeJarsyHero.formula.terms[0]}</span>
-              <span className="home-jarsy-hero-formula__op" aria-hidden>
-                +
-              </span>
-              <span className="home-jarsy-hero-formula__term">{homeJarsyHero.formula.terms[1]}</span>
-              <span className="home-jarsy-hero-formula__paren" aria-hidden>
-                )
-              </span>
-            </span>
-            <span className="home-jarsy-hero-formula__op home-jarsy-hero-formula__op--times" aria-hidden>
-              ×
-            </span>
-            <span className="home-jarsy-hero-formula__multiplier">
-              {homeJarsyHero.formula.multiplier}
-            </span>
-          </div>
-        </JarsyReveal>
-
-        <JarsyReveal eager delay={HERO_STAGGER.lead} className="order-5">
-          <p className="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-zinc-600 md:text-lg">
-            {homeJarsyHero.lead}
-          </p>
-        </JarsyReveal>
-
-        <JarsyReveal eager delay={HERO_STAGGER.cta} className="order-6 home-jarsy-hero__cta">
-          <Link href={homeJarsyHero.cta.primaryHref} className="coffee2-cta-button">
-            {homeJarsyHero.cta.primaryLabel}
-          </Link>
-        </JarsyReveal>
-
-        <div className="home-jarsy-hero__title-wrap order-2 mt-6 w-full" aria-hidden>
-          <Coffee2TypewriterReveal
-            eager
-            text={homeJarsyHero.title}
-            baseDelay={HERO_TITLE_TYPEWRITER.baseDelay}
-            charStagger={HERO_TITLE_TYPEWRITER.charStagger}
-            className="home-jarsy-hero-title c2-display mx-auto block text-[clamp(4rem,14vw,10rem)] text-zinc-950"
-          />
-        </div>
       </div>
     </section>
   )

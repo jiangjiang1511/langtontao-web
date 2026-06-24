@@ -7,10 +7,16 @@ import { Coffee2PillarsSection } from '@/components/sections/coffee2/coffee2-pil
 import { Coffee2LifeEventsStickyNav } from '@/components/sections/coffee2/coffee2-life-events-sticky-nav'
 import { Coffee2LifeEventsContent } from '@/components/sections/coffee2/coffee2-life-events-content'
 import { Coffee2LifeEventsNavSection } from '@/components/sections/coffee2/coffee2-life-events-nav-section'
-import { Coffee2NetworkSection } from '@/components/sections/coffee2/coffee2-network-section'
 import { Community2EventsHub } from '@/components/sections/community2/community2-events-hub'
 import { Education2ReadingSection } from '@/components/sections/education2/education2-reading-section'
 import './coffee.css'
+import './debt-section.css'
+import './alliance-section.css'
+import './retirement-section.css'
+import './invest-modules.css'
+import './education-section.css'
+import './child-cost-section.css'
+import './legacy-section.css'
 
 export const metadata: Metadata = {
   title: '熊比特咖啡 | 朗敦道 Langton Tao',
@@ -30,7 +36,6 @@ export default function CoffeePage() {
       <Community2EventsHub />
       <Coffee2CollaborationSection />
       <Coffee2LifeEventsContent />
-      <Coffee2NetworkSection />
       <Coffee2JoinBand />
     </div>
   )

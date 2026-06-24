@@ -2,6 +2,7 @@
 
 import { useMarqueeDragGuard } from '@/components/shared/draggable-marquee'
 import type { CoffeePreservationInsurer } from '@/lib/content/coffee-preservation-insurers'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { cn } from '@/lib/utils'
 
 type Coffee2PreservationInsurerMarqueeCardProps = {
@@ -42,7 +43,11 @@ export function Coffee2PreservationInsurerMarqueeCard({
         </div>
         <span className="coffee2-preservation-insurer-card__tag">合作保司</span>
       </div>
-      <p className="coffee2-preservation-insurer-card__summary">{summary}</p>
+      <Coffee2AnnotatedText
+        text={summary}
+        className="coffee2-preservation-insurer-card__summary"
+        as="span"
+      />
     </button>
   )
 }

@@ -3,6 +3,8 @@
 import { Fragment, useState } from 'react'
 import { Check, ChevronDown, Minus } from 'lucide-react'
 import { ContactTrigger } from '@/components/contact-trigger'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
+import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import { MembershipJoinLink } from '@/components/sections/membership-v2/membership-join-link'
 import { Button } from '@/components/ui/button'
 import type { MembershipTierId } from '@/lib/content/membership'
@@ -54,7 +56,7 @@ function ComparisonCellValue({
         compact ? 'text-xs' : 'text-sm'
       )}
     >
-      {value}
+      <Coffee2AnnotatedText as="span" text={value} />
     </span>
   )
 }
@@ -107,7 +109,7 @@ function ComparisonTableDesktop({
   categories: typeof membershipV2FullComparison
 }) {
   return (
-    <div className="hidden overflow-x-auto rounded-2xl border border-zinc-200 md:block">
+    <div className="member-compare-shell hidden overflow-x-auto md:block">
       <table className="w-full min-w-[860px] border-collapse text-left">
         <thead>
           <tr className="border-b border-zinc-800 bg-zinc-950 text-white">
@@ -147,7 +149,7 @@ function ComparisonTableDesktop({
                   className="border-b border-zinc-100 bg-white even:bg-zinc-50/50"
                 >
                   <td className="px-4 py-3 text-sm text-zinc-700">
-                    {row.label}
+                    <Coffee2AnnotatedText as="span" text={row.label} />
                   </td>
                   {tierColumnOrder.map((tierId) => (
                     <td
@@ -224,11 +226,11 @@ function TierBenefitItemRow({
         aria-hidden
       />
       <span>
-        {label}
+        <Coffee2AnnotatedText as="span" text={label} />
         {detail ? (
           <span className={mystery ? 'text-zinc-400' : 'text-zinc-950'}>
             {' '}
-            · {detail}
+            · <Coffee2AnnotatedText as="span" text={detail} />
           </span>
         ) : null}
       </span>
@@ -281,7 +283,7 @@ function ComparisonTableMobile({
   categories: typeof membershipV2FullComparison
 }) {
   const mobileCtaClass =
-    'w-full rounded-full border-0 bg-zinc-950 font-semibold text-white shadow-none hover:bg-zinc-800 hover:translate-y-0 hover:shadow-none'
+    'coffee2-cta-button w-full border-0 shadow-none hover:shadow-none'
 
   return (
     <div className="space-y-4 md:hidden">
@@ -356,19 +358,21 @@ export function MembershipComparisonTable() {
 
   return (
     <div id="plan-compare" className="scroll-mt-28">
-      <div>
-        <h2 className="c2-display text-3xl text-zinc-950 md:text-4xl">
-          计划对比
-        </h2>
-        <p className="mt-2 text-sm text-zinc-600 md:text-base">
-          <span className="md:hidden">三层会员权益完整对比</span>
-          <span className="hidden md:inline">
-            {expanded
-              ? '四层会员权益完整对比'
-              : '普通会员核心权益对比（展开查看 Plus / Pro 进阶明细）'}
-          </span>
-        </p>
-      </div>
+      <Coffee2Reveal>
+        <div>
+          <h2 className="c2-display text-3xl text-zinc-950 md:text-4xl">
+            计划对比
+          </h2>
+          <p className="mt-2 text-sm text-zinc-600 md:text-base">
+            <span className="md:hidden">三层会员权益完整对比</span>
+            <span className="hidden md:inline">
+              {expanded
+                ? '四层会员权益完整对比'
+                : '普通会员核心权益对比（展开查看 Plus / Pro 进阶明细）'}
+            </span>
+          </p>
+        </div>
+      </Coffee2Reveal>
 
       <div className="mt-8">
         <ComparisonTable desktopCategories={categories} />
@@ -377,10 +381,10 @@ export function MembershipComparisonTable() {
       <div className="mt-6 hidden justify-center md:flex">
         <Button
           type="button"
-          variant="outline"
+          variant="ghost"
           size="lg"
           onClick={() => setExpanded((v) => !v)}
-          className="gap-2 rounded-full border-zinc-300 bg-white font-semibold text-zinc-950 hover:bg-zinc-50"
+          className="c2-btn-secondary gap-2"
         >
           {expanded ? '收起对比表格' : '查看完整会员权益对比'}
           <ChevronDown

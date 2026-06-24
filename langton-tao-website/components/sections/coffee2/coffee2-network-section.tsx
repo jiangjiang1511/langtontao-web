@@ -1,3 +1,5 @@
+import { Coffee2DisplayTypewriter } from '@/components/sections/coffee2/coffee2-display-typewriter'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import {
   coffeeNetworkHubs,
@@ -26,14 +28,15 @@ export function Coffee2NetworkSection() {
             id="coffee2-network-title"
             className="c2-display mt-4 text-4xl text-zinc-950 md:text-5xl"
           >
-            一体双跨
+            <Coffee2DisplayTypewriter text="一体双跨" charStagger={120} />
           </h2>
           <p className="mt-4 text-xl font-semibold tracking-tight text-zinc-500 md:text-2xl">
             {coffeeNetworkMeta.subtitle}
           </p>
-          <p className="mt-6 text-base leading-relaxed text-zinc-600 md:text-lg">
-            {coffeeNetworkMeta.definition}
-          </p>
+          <Coffee2AnnotatedText
+            text={coffeeNetworkMeta.definition}
+            className="mt-6 text-base leading-relaxed text-zinc-600 md:text-lg"
+          />
         </Coffee2Reveal>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-8">
@@ -44,9 +47,10 @@ export function Coffee2NetworkSection() {
             <h3 className="mt-2 text-lg font-semibold text-zinc-950 md:text-xl">
               {mainlandHub.title}
             </h3>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-              {mainlandHub.summary}
-            </p>
+            <Coffee2AnnotatedText
+              text={mainlandHub.summary}
+              className="mt-3 text-sm leading-relaxed text-zinc-600"
+            />
             <ul className="mt-4 space-y-2 border-t border-zinc-100 pt-4">
               {mainlandHub.bullets.map((item, bulletIndex) => (
                 <Coffee2Reveal
@@ -76,9 +80,10 @@ export function Coffee2NetworkSection() {
                 {hongkongHub.badge}
               </p>
             ) : null}
-            <p className="mt-4 text-sm leading-relaxed text-zinc-300">
-              {hongkongHub.summary}
-            </p>
+            <Coffee2AnnotatedText
+              text={hongkongHub.summary}
+              className="mt-4 text-sm leading-relaxed text-zinc-300"
+            />
             <ul className="mt-4 space-y-2">
               {hongkongHub.bullets.map((item) => (
                 <li key={item} className="text-sm text-zinc-200">
@@ -114,9 +119,10 @@ export function Coffee2NetworkSection() {
                       >
                         {partner.title}
                       </h4>
-                      <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">
-                        {partner.summary}
-                      </p>
+                      <Coffee2AnnotatedText
+                        text={partner.summary}
+                        className="mt-1.5 text-sm leading-relaxed text-zinc-400"
+                      />
                     </Coffee2Reveal>
                   ))}
                 </ul>

@@ -137,7 +137,10 @@ export const coffee2TenTopics: readonly Coffee2Tenet[] = [
   },
 ]
 
-import type { Coffee2SectionCopyBlock } from '@/lib/content/coffee-glossary'
+import {
+  toAnnotatedCopyBlock,
+  type Coffee2SectionCopyBlock,
+} from '@/lib/content/coffee-glossary'
 
 export const coffee2LifeEvents = [
   {
@@ -162,27 +165,31 @@ export const coffee2LifeEvents = [
   },
   {
     number: '02',
-    id: 'life-retirement',
-    title: '养老',
-    summary: '长寿风险与购买力——提前布局，避免「钱还在、日子难」的错位。',
+    id: 'life-alliance',
+    title: '联盟',
+    summary:
+      '从独行到同盟——伴侣、合伙人、公司与挚友，共享利益，共担风险。',
   },
   {
     number: '03',
     id: 'life-education',
     title: '教育',
-    summary: '代际承诺与全球视野——读书、英语与升学路径的系统选择。',
+    summary:
+      '一切为了孩子——「育」在成家与优生优育，「教」在学识、价值观与视野的传承。',
   },
   {
     number: '04',
-    id: 'life-marriage',
-    title: '婚姻',
-    summary: '关系结构改变资产负债表——婚育、再婚与家庭形态的敞口管理。',
+    id: 'life-retirement',
+    title: '养老',
+    summary: '长寿风险与购买力——提前布局，避免「钱还在、日子难」的错位。',
   },
   {
     number: '05',
     id: 'life-legacy',
     title: '传承',
-    summary: '治理、信托与受益人——让财富在代际间可执行、可同频地传递。',
+    summary: toAnnotatedCopyBlock(
+      '治理、信托与受益人——让财富在代际间可执行、可同频地传递。'
+    ),
   },
 ] as const
 
@@ -200,7 +207,7 @@ export const coffee2LifeEventsSectionMeta = {
   title: '五件人生大事',
   subtitle: 'Five Life Events',
   lead:
-    '活着、养老、教育、婚姻、传承——表面是五张不同的牌，底层却是同一张家庭资产负债表在五段人生相位里的敞口。朗敦道用周期共识与 TAO 路径把它们串起来：不追逐每一个波段拐点，但持续追问——我们处于哪一段长波？现金流、购买力、代际承诺、关系结构与传承治理，能否在同一架构里同频迭代？\n\n熊比特咖啡是这个追问的交谈场景。复杂议题不必在饭桌上匆匆收场——先在同频对话里建立诚实判断，再谈配置与交付。若你愿意把一次上桌延续为长期陪跑，认知定投与具身探索，是让这张地图真正走得下去的两翼。',
+    '活着、联盟、教育、养老、传承——表面是五张不同的牌，底层却是同一张家庭资产负债表在五段人生相位里的敞口。朗敦道用周期共识与 TAO 路径把它们串起来：不追逐每一个波段拐点，但持续追问——我们处于哪一段长波？现金流、购买力、代际承诺、关系结构与传承治理，能否在同一架构里同频迭代？\n\n熊比特咖啡是这个追问的交谈场景。复杂议题不必在饭桌上匆匆收场——先在同频对话里建立诚实判断，再谈配置与交付。若你愿意把一次上桌延续为长期陪跑，认知定投与具身探索，是让这张地图真正走得下去的两翼。',
 } as const
 
 export type Coffee2BackedPanelTitle =

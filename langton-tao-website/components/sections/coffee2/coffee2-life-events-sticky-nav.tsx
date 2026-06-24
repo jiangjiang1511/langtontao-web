@@ -9,6 +9,11 @@ import {
 import { cn } from '@/lib/utils'
 
 const NAV_GRID_ID = 'coffee-life-events-nav-grid'
+const COFFEE_STICKY_NAV_TOP = {
+  id: 'coffee-top',
+  href: '#coffee2-hero',
+  title: '一杯咖啡',
+} as const
 
 export function Coffee2LifeEventsStickyNav() {
   const [visible, setVisible] = useState(false)
@@ -88,6 +93,20 @@ export function Coffee2LifeEventsStickyNav() {
     >
       <div className="coffee2-life-events-sticky-nav__shell max-w-[calc(100vw-2rem)]">
         <div className="coffee2-life-events-sticky-nav__track">
+          <Link
+            href={COFFEE_STICKY_NAV_TOP.href}
+            className="coffee2-life-events-sticky-nav__link coffee2-life-events-sticky-nav__link--top"
+          >
+            <span className="coffee2-life-events-sticky-nav__title">
+              {COFFEE_STICKY_NAV_TOP.title}
+            </span>
+          </Link>
+
+          <span
+            className="coffee2-life-events-sticky-nav__divider"
+            aria-hidden
+          />
+
           {coffee2LifeEvents.map((event) => {
             const isActive = activeId === event.id
 

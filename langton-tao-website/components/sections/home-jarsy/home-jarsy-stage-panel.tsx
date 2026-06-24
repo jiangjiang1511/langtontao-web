@@ -1,4 +1,5 @@
 import { HomeJarsyDayOnePanel } from '@/components/sections/home-jarsy/home-jarsy-day-one-panel'
+import { HomeJarsyDayTwoPanel } from '@/components/sections/home-jarsy/home-jarsy-day-two-panel'
 import { HomeJarsyFeatureBlocks } from '@/components/sections/home-jarsy/home-jarsy-feature-blocks'
 import { HomeJarsyProductList } from '@/components/sections/home-jarsy/home-jarsy-product-module'
 import { HomeJarsyStageHeader } from '@/components/sections/home-jarsy/home-jarsy-stage-header'
@@ -15,6 +16,11 @@ export function HomeJarsyStagePanel({ stage, index }: HomeJarsyStagePanelProps) 
   if (stage.id === 'day-1') {
     return <HomeJarsyDayOnePanel stage={stage} index={index} />
   }
+
+  if (stage.id === 'day-2') {
+    return <HomeJarsyDayTwoPanel stage={stage} index={index} />
+  }
+
   return (
     <section
       id={stage.id}

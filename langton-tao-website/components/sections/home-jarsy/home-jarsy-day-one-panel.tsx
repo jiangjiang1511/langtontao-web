@@ -1,5 +1,6 @@
 'use client'
 
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { DayOneBubbleGroup } from '@/components/sections/home-jarsy/day-one-bubble-group'
 import { HomeJarsyCenterMotionItem } from '@/components/sections/home-jarsy/home-jarsy-center-motion-item'
 import { HomeJarsyStageHeader } from '@/components/sections/home-jarsy/home-jarsy-stage-header'
@@ -105,9 +106,12 @@ export function HomeJarsyDayOnePanel({ stage, index }: HomeJarsyDayOnePanelProps
             className="day-one-closing"
           >
             {dayOneNarrative.closing.map((line, i) => (
-              <p key={i} className="day-one-closing__line">
-                {line}
-              </p>
+              <Coffee2AnnotatedText
+                key={i}
+                className="day-one-closing__line"
+                text={line}
+                as="p"
+              />
             ))}
           </HomeJarsyCenterMotionItem>
         </div>

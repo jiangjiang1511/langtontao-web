@@ -83,3 +83,38 @@ export const architectureContent = {
 export const langtonCta = {
   title: '开启你的家族传承系统',
 } as const
+
+export const langtonBusinessLead =
+  '为第二代华人财富传承提供系统解决方案，以保险保全、理财配置与财富健康体检为核心，并连接升学、游学与辅助生殖等关键节点。朗敦道不是通往财富的街，而是陪你提前思考十年后的路。'
+
+export const langtonHero = {
+  eyebrow: '朗敦道 · Langton Tao',
+  title: 'LangtonTAO',
+  tagline: 'VFO/MFO Leader in China',
+  lead: '为华人财富传承提供系统解决方案。人生认知定投计划，普通人的诚实投资学。',
+  cta: {
+    label: '了解我们的使命',
+    href: '#mission',
+    description: '穿越周期 · 问道 · 保全 · 增长 · 同频 · 传承',
+  },
+} as const
+
+export const langtonSectionNav = [
+  { id: 'mission', label: '使命' },
+  { id: 'about', label: '我们是什么' },
+  { id: 'problems', label: '解决问题' },
+  { id: 'serve', label: '服务对象' },
+  { id: 'tools', label: '家办工具' },
+  { id: 'features', label: '特色' },
+  { id: 'architecture', label: '架构' },
+  { id: 'network', label: '一体双跨' },
+] as const
+
+export const langtonJoinBand = {
+  statement: langtonCta.title,
+  tagline:
+    '与朗敦道同频，在周期共识之上搭建可执行的家族传承系统。',
+  ctaLabel: '加入我们',
+  ctaHref: '/member',
+  contactLabel: '预约咨询',
+} as const

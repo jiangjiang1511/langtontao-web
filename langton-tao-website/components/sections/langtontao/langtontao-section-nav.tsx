@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 
 export function LangtontaoSectionNav() {
   const [activeId, setActiveId] = useState<string>(
-    langtontaoSectionNav[0]?.id ?? 'education'
+    langtontaoSectionNav[0]?.id ?? 'why-mfo'
   )
 
   useEffect(() => {

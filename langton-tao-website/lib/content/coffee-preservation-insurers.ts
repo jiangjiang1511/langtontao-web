@@ -1,8 +1,8 @@
 import { taoInsurerNames } from '@/lib/content/fifty-year-narrative'
 
 export const coffeePreservationInsurerPanelTitle = {
-  zh: '合作保司与渠道网络',
-  en: 'Partner Insurers & Channels',
+  zh: '精选保司与渠道网络',
+  en: 'Curated Insurers & Channels',
 } as const
 
 export type CoffeePreservationArticle = {

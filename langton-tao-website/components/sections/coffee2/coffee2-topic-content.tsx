@@ -1,30 +1,17 @@
+'use client'
+
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import { Coffee2PreservationInsurerHub } from '@/components/sections/coffee2/coffee2-preservation-insurer-hub'
+import { Coffee2PreservationIntroGrid } from '@/components/sections/coffee2/coffee2-preservation-intro-grid'
+import { WealthAccumulationExplorer } from '@/components/sections/coffee2/wealth-accumulation-explorer'
+import { DebtSurveySection } from '@/components/sections/coffee2/debt-survey-section'
+import { DebtTopicCardsSection } from '@/components/sections/coffee2/debt-topic-cards-section'
 import type { CoffeeBlock } from '@/lib/content/coffee2-page'
 
-export function InvestContent({ blocks }: { blocks: CoffeeBlock[] }) {
-  const itemsBlock = blocks.find((block) => block.type === 'items')
-  if (!itemsBlock || itemsBlock.type !== 'items') return null
-
+export function InvestContent({ blocks: _blocks }: { blocks: CoffeeBlock[] }) {
   return (
-    <div className="mt-8 grid gap-4 sm:grid-cols-2">
-      {itemsBlock.items.map((item, itemIndex) => (
-        <Coffee2Reveal
-          key={item}
-          delay={itemIndex * 80}
-          className="c2-invest-card group p-6 md:p-8"
-        >
-          <p className="text-xs font-medium uppercase tracking-widest text-zinc-400">
-            0{itemIndex + 1}
-          </p>
-          <h4 className="mt-4 text-2xl font-semibold tracking-tight text-zinc-950 md:text-3xl">
-            {item}
-          </h4>
-          <p className="mt-3 text-sm leading-relaxed text-zinc-500">
-            在 Coffee Chat 中拆解路径、交换判断与实操心得。
-          </p>
-        </Coffee2Reveal>
-      ))}
+    <div className="mt-8 space-y-16 md:space-y-20">
+      <WealthAccumulationExplorer />
     </div>
   )
 }
@@ -33,56 +20,24 @@ export function PreservationContent({ blocks }: { blocks: CoffeeBlock[] }) {
   const introBlock = blocks.find((block) => block.type === 'insuranceIntro')
 
   return (
-    <div className="mt-8 grid min-w-0 gap-6 lg:grid-cols-2 lg:gap-8">
+    <div className="mt-8 space-y-8">
       {introBlock?.type === 'insuranceIntro' ? (
-        <Coffee2Reveal delay={80} className="c2-card p-6 md:p-8">
-          <p className="text-xs font-medium uppercase tracking-widest text-zinc-500">
-            保险认知
-          </p>
-          <ol className="mt-6 space-y-4">
-            {introBlock.items.map((item, itemIndex) => (
-              <li
-                key={item}
-                className="flex gap-4 border-b border-zinc-100 pb-4 last:border-0 last:pb-0"
-              >
-                <span className="text-sm font-semibold tabular-nums text-zinc-300">
-                  {String(itemIndex + 1).padStart(2, '0')}
-                </span>
-                <span className="text-base leading-relaxed text-zinc-800">
-                  {item}
-                </span>
-              </li>
-            ))}
-          </ol>
-        </Coffee2Reveal>
+        <Coffee2PreservationIntroGrid items={introBlock.items} />
       ) : null}
 
-      <div className="min-w-0 w-full max-w-full overflow-hidden lg:col-span-2">
+      <div className="min-w-0 w-full max-w-full overflow-hidden">
         <Coffee2PreservationInsurerHub revealDelay={160} />
       </div>
     </div>
   )
 }
 
-export function DebtContent({ blocks }: { blocks: CoffeeBlock[] }) {
-  const placeholder = blocks.find((block) => block.type === 'placeholder')
-
+export function DebtContent() {
   return (
-    <Coffee2Reveal delay={80} className="mt-8">
-      <div className="c2-debt-empty mx-auto max-w-2xl px-8 py-16 text-center md:py-20">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
-          Coming Soon
-        </p>
-        <p className="mt-4 text-lg font-medium text-zinc-600">
-          {placeholder?.type === 'placeholder'
-            ? placeholder.text
-            : '内容待补充'}
-        </p>
-        <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-          化债议题将在后续 Coffee Chat 中逐步展开。
-        </p>
-      </div>
-    </Coffee2Reveal>
+    <div className="debt-content mt-10 space-y-16 md:mt-12 md:space-y-20">
+      <DebtTopicCardsSection />
+      <DebtSurveySection />
+    </div>
   )
 }
 

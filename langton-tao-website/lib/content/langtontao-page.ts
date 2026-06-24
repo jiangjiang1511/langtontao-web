@@ -1,15 +1,17 @@
+import { langtonBusinessLead } from '@/lib/content/langton-page'
+
 export const langtontaoPageMeta = {
   title: '朗敦道',
   description:
-    '朗敦道业务总览：教育、超级英雄之旅与财富健康体检，及全球资产配置、保全、婚姻、教育、养老等专业内容与工具。',
+    '新型联合家族办公室（MFO）——何必家办、何以为家、何为香港，为华人家族提供跨越周期的传承系统解决方案。',
 } as const
 
 export const langtontaoHero = {
   logoSrc: '/assets/langtontao/langtontao-logo.png',
   logoAlt: '朗敦道 Langton Tao',
   title: '朗敦道',
-  tagline: '全球资产配置与保全，贯穿婚姻、教育、养老',
-  lead: '读书与英语打开认知；超级英雄之旅与千万富翁养成计划建立同频；财富大健康体检与溪河案例让家庭敞口可年检、可实证。朗敦道在此提供可参与的业务入口，以及覆盖人生关键议题的专业内容与工具。',
+  tagline: '保全 · 增长 · 传承——穿越周期的财富架构',
+  lead: langtonBusinessLead,
   cta: {
     label: '关于朗敦道',
     href: '/langton',
@@ -18,20 +20,21 @@ export const langtontaoHero = {
 } as const
 
 export const langtontaoSectionNav = [
-  { id: 'education', label: '教育' },
-  { id: 'community', label: '社群' },
-  { id: 'checkup-cases', label: '体检·案例' },
+  { id: 'why-mfo', label: '何必家办' },
+  { id: 'panic-wealth', label: '惊慌·财富' },
+  { id: 'beautiful', label: '漂亮·业务' },
+  { id: 'hong-kong', label: '香港' },
 ] as const
+
+export const langtontaoJoinBand = {
+  statement: '加入朗敦道，开启人生认知定投',
+  tagline: '从何必家办到何为香港，找到适合你的传承系统入口。',
+  ctaLabel: '加入我们',
+  ctaHref: '/member',
+} as const
 
 export const langtontaoCheckupCasesIntro = {
   eyebrow: 'Checkup · Cases',
   title: '财富大健康体检 · 溪河案例',
-  lead: '先年检家庭敞口与结构，再用真实案例看见问题如何被识别、拆解与修复——体检与案例是同一套传承叙事的两面。',
-} as const
-
-export const langtontaoJoinBand = {
-  statement: '加入朗敦道，开启人生认知定投',
-  tagline: '从教育同频到财富体检，找到适合你的业务入口。',
-  ctaLabel: '加入我们',
-  ctaHref: '/member',
+  lead: '先年检家庭敞口与结构，再用真实案例看见问题如何被识别、拆解与修复。',
 } as const

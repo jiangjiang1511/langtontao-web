@@ -377,6 +377,17 @@
   margin-top: 1.5rem;
 }
 
+.coffee-cycles-timeline-section--in-day-two {
+  margin-top: 2.5rem;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .coffee-cycles-timeline-section--in-day-two {
+    margin-top: 3rem;
+  }
+}
+
 @media (min-width: 768px) {
   .coffee-cycles-timeline-section--after-hero .coffee-cycles-timeline__intro {
     margin-top: 2rem;

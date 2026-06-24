@@ -1,16 +1,16 @@
-export type DayOneSubsection = {
-  title: string
-  paragraphs: string[]
-}
+import type {
+  NarrativeBubble,
+  NarrativeSubsection,
+} from '@/lib/content/narrative-bubble'
 
-export type DayOneBubble = {
-  id: string
-  label: string
-  hook?: string
-  summary: string
-  subsections?: DayOneSubsection[]
-  body?: string
-  href?: string
+export type DayOneSubsection = NarrativeSubsection
+export type DayOneBubble = NarrativeBubble
+
+export const dayOneAccentMap: Record<string, string> = {
+  'scarce-resource': '#f59e0b',
+  mediocristan: '#a1a1aa',
+  extremistan: '#ffe600',
+  'every-day-is-day-one': '#fb7185',
 }
 
 export type DayOneStep = {

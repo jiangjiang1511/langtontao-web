@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { networkColumns } from '@/lib/content/home-sections'
 import {
   networkPageHero,
@@ -29,9 +30,10 @@ export default function NetworkPage() {
         <SectionTitle id="network-page-title" display>
           {networkPageHero.title}
         </SectionTitle>
-        <p className="mt-6 max-w-2xl text-base font-bold leading-relaxed text-[color:var(--section-muted)] md:text-lg">
-          {networkPageHero.subtitle}
-        </p>
+        <Coffee2AnnotatedText
+          text={networkPageHero.subtitle}
+          className="mt-6 max-w-2xl text-base font-bold leading-relaxed text-[color:var(--section-muted)] md:text-lg"
+        />
       </SectionSurface>
 
       <SectionSurface theme="paper" aria-labelledby="network-hubs-title">
@@ -49,9 +51,10 @@ export default function NetworkPage() {
               <h3 className="mt-2 text-2xl font-black md:text-3xl">
                 {hub.address}
               </h3>
-              <p className="mt-3 text-sm font-bold leading-relaxed text-pop-black/70">
-                {hub.summary}
-              </p>
+              <Coffee2AnnotatedText
+                text={hub.summary}
+                className="mt-3 text-sm font-bold leading-relaxed text-pop-black/70"
+              />
             </article>
           ))}
         </div>
@@ -72,7 +75,7 @@ export default function NetworkPage() {
                     key={item}
                     className="text-sm font-bold text-[color:var(--section-muted)]"
                   >
-                    · {item}
+                    · <Coffee2AnnotatedText as="span" text={item} />
                   </li>
                 ))}
               </ul>
@@ -89,9 +92,10 @@ export default function NetworkPage() {
           >
             {networkSynergy.title}
           </h2>
-          <p className="mt-4 text-base font-bold leading-relaxed text-pop-black/80">
-            {networkSynergy.body}
-          </p>
+          <Coffee2AnnotatedText
+            text={networkSynergy.body}
+            className="mt-4 text-base font-bold leading-relaxed text-pop-black/80"
+          />
         </div>
       </SectionSurface>
     </>

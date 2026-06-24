@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Community2ProgramGallery } from '@/components/sections/community2/community2-program-gallery'
 import { Community2Reveal } from '@/components/sections/community2/community2-reveal'
 import {
@@ -65,9 +66,10 @@ export function Community2ProgramsSection() {
                     >
                       {program.title}
                     </h3>
-                    <p className="mt-4 text-sm leading-relaxed text-zinc-600 sm:text-base">
-                      {program.description}
-                    </p>
+                    <Coffee2AnnotatedText
+                      text={program.description}
+                      className="mt-4 text-sm leading-relaxed text-zinc-600 sm:text-base"
+                    />
                     <ul className="mt-6 flex flex-wrap gap-2">
                       {program.highlights.map((item) => (
                         <li

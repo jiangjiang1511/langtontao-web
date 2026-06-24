@@ -1,6 +1,7 @@
 'use client'
 
 import { HomeJarsyCenterMotionItem } from '@/components/sections/home-jarsy/home-jarsy-center-motion-item'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { useCenterZoneVisible } from '@/components/sections/home-jarsy/use-center-zone-visible'
 import type { FiftyYearStage } from '@/lib/content/fifty-year-narrative'
 
@@ -37,13 +38,16 @@ export function HomeJarsyStageHeader({ stage }: HomeJarsyStageHeaderProps) {
 
       {stage.body ? (
         <HomeJarsyCenterMotionItem
-          as="p"
+          as="div"
           visible={visible}
           index={2}
           total={partCount}
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-600 md:mt-8 md:text-lg"
+          className="mx-auto mt-6 max-w-2xl md:mt-8"
         >
-          {stage.body}
+          <Coffee2AnnotatedText
+            text={stage.body}
+            className="text-base leading-relaxed text-zinc-600 md:text-lg"
+          />
         </HomeJarsyCenterMotionItem>
       ) : null}
     </div>

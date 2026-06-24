@@ -1,0 +1,452 @@
+/* Education gallery + child survey */
+
+.coffee2-page .education-gallery {
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .coffee2-page .education-gallery {
+    margin-bottom: 3.5rem;
+  }
+}
+
+.coffee2-page .education-gallery__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 420px;
+  max-height: min(76vh, 720px);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .coffee2-page .education-gallery__stage {
+    min-height: 520px;
+  }
+}
+
+.coffee2-page .education-gallery__card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  width: var(--edu-gallery-stack-width, clamp(4rem, 10vw, 6.5rem));
+  transform: translate(
+      calc(-50% + var(--edu-gallery-stack-x, 0%)),
+      calc(-50% + var(--edu-gallery-stack-y, 0%))
+    )
+    rotate(var(--edu-gallery-stack-rotate, 0deg))
+    scale(var(--edu-gallery-stack-scale, 1));
+  transform-origin: center center;
+  transition:
+    left 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.78s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.78s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--edu-gallery-stagger, 0ms);
+  will-change: left, top, width, transform;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: var(--edu-gallery-stack-z, 1);
+}
+
+.coffee2-page .education-gallery__card:hover,
+.coffee2-page .education-gallery__card:focus-within {
+  z-index: 40;
+}
+
+.coffee2-page .education-gallery__trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.coffee2-page .education-gallery__trigger:focus-visible {
+  outline: none;
+}
+
+.coffee2-page .education-gallery__trigger:focus-visible .education-gallery__frame {
+  outline: 2px solid #09090b;
+  outline-offset: 3px;
+}
+
+.coffee2-page .education-gallery__stage[data-exploded='true'] .education-gallery__card {
+  left: var(--edu-gallery-scatter-left, 50%);
+  top: var(--edu-gallery-scatter-top, 50%);
+  width: var(--edu-gallery-scatter-width, clamp(6rem, 14vw, 11rem));
+  z-index: var(--edu-gallery-scatter-z, 1);
+  transform: translate(-50%, -50%)
+    rotate(var(--edu-gallery-scatter-rotate, 0deg))
+    scale(var(--edu-gallery-scatter-scale, 1));
+}
+
+.coffee2-page .education-gallery__frame {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border: 1.5px solid #c7d7f0;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  box-shadow:
+    0 1px 2px rgba(30, 58, 95, 0.04),
+    3px 3px 0 0 rgb(255 230 0 / 0.4),
+    0 10px 28px rgba(30, 58, 95, 0.08);
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.coffee2-page .education-gallery__card:hover .education-gallery__frame,
+.coffee2-page .education-gallery__card:focus-within .education-gallery__frame {
+  transform: scale(1.08);
+  box-shadow:
+    0 4px 12px rgba(30, 58, 95, 0.06),
+    4px 4px 0 0 rgb(255 230 0 / 0.5),
+    0 20px 48px rgba(30, 58, 95, 0.12);
+}
+
+.coffee2-page .education-gallery__stage[data-exploded='true']
+  .education-gallery__card
+  .education-gallery__frame {
+  box-shadow:
+    0 2px 4px rgba(30, 58, 95, 0.04),
+    3px 3px 0 0 rgb(255 230 0 / 0.35),
+    0 16px 40px rgba(30, 58, 95, 0.1);
+}
+
+.coffee2-page .education-gallery__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.coffee2-page .education-survey-stage {
+  margin-top: 0;
+}
+
+.coffee2-page .education-survey-stage__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .coffee2-page .education-survey-stage__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 28rem);
+    align-items: start;
+    gap: 3.5rem;
+  }
+}
+
+.coffee2-page .education-survey-stage__reveal.c2-reveal[data-visible='false'],
+.coffee2-page .education-survey-stage__reveal.c2-reveal[data-visible='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+.coffee2-page .education-survey-stage__reveal-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.coffee2-page
+  .education-survey-stage__reveal[data-visible='true']
+  .education-survey-stage__reveal-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0ms;
+}
+
+.coffee2-page
+  .education-survey-stage__reveal[data-visible='true']
+  .education-survey-stage__reveal-item--panel {
+  transition-delay: 200ms;
+}
+
+.coffee2-page .education-survey-stage__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #09090b;
+}
+
+.coffee2-page .education-survey-stage__lead {
+  margin-top: 1rem;
+  max-width: 28rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #71717a;
+}
+
+.coffee2-page .education-survey-stage__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #a1a1aa;
+}
+
+.coffee2-page .education-survey-stage__hint-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: #7c9fd4;
+  box-shadow: 0 0 0 2px rgb(255 230 0 / 0.35);
+}
+
+.coffee2-page .education-survey-stage__panel-wrap {
+  width: 100%;
+  max-width: 28rem;
+  margin-inline: auto;
+}
+
+.coffee2-page .education-survey-navigator {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.coffee2-page .education-survey-navigator__panel {
+  border: 1.5px solid #c7d7f0;
+  border-radius: 1rem;
+  background: linear-gradient(
+    165deg,
+    rgba(237, 242, 252, 0.95) 0%,
+    rgba(255, 255, 255, 0.92) 45%,
+    rgba(245, 248, 255, 0.98) 100%
+  );
+  box-shadow:
+    4px 4px 0 0 rgb(255 230 0 / 0.45),
+    0 16px 40px rgba(30, 58, 95, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1.25rem;
+  min-height: 18rem;
+  animation: education-survey-panel-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes education-survey-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.coffee2-page .education-survey-progress__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.coffee2-page .education-survey-progress__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.coffee2-page .education-survey-progress__count {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #3f4f6b;
+}
+
+.coffee2-page .education-survey-progress__steps {
+  display: flex;
+  gap: 0.35rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coffee2-page .education-survey-progress__step {
+  flex: 1;
+  height: 0.25rem;
+  border-radius: 9999px;
+  background: #d4e0f4;
+  transition: background 0.25s ease;
+}
+
+.coffee2-page .education-survey-progress__step--done,
+.coffee2-page .education-survey-progress__step--active {
+  background: linear-gradient(90deg, #7c9fd4 0%, #ffe600 100%);
+}
+
+.coffee2-page .education-survey-node__prompt {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: #09090b;
+}
+
+.coffee2-page .education-survey-node__sub {
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #71717a;
+}
+
+.coffee2-page .education-survey-node__choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coffee2-page .education-survey-option {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 0.75rem 0.9rem;
+  border: 1.5px solid #d4e0f4;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.85);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.coffee2-page .education-survey-option:hover {
+  border-color: #09090b;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(30, 58, 95, 0.08);
+  transform: translateY(-1px);
+}
+
+.coffee2-page .education-survey-option:focus-visible {
+  outline: 2px solid #09090b;
+  outline-offset: 2px;
+}
+
+.coffee2-page .education-survey-option__label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #09090b;
+}
+
+.coffee2-page .education-survey-option__desc {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: #52525b;
+}
+
+.coffee2-page .education-survey-navigator__footer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.coffee2-page .education-survey-navigator__back {
+  padding: 0.35rem 0;
+  border: 0;
+  background: transparent;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #52525b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.coffee2-page .education-survey-navigator__back:hover {
+  color: #09090b;
+}
+
+.coffee2-page .education-survey-result__headline {
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #09090b;
+}
+
+.coffee2-page .education-survey-result__reflection {
+  margin: 1rem 0 0;
+  padding-left: 1rem;
+  border-left: 4px solid #ffe600;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #3f3f46;
+}
+
+.coffee2-page .education-survey-result__invite {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #71717a;
+}
+
+.coffee2-page .education-survey-result__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1.25rem;
+}
+
+.coffee2-page .education-survey-result__restart {
+  border: 0;
+  background: transparent;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #a1a1aa;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.coffee2-page .education-survey-result__restart:hover {
+  color: #52525b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coffee2-page .education-gallery__card {
+    transition: none;
+  }
+
+  .coffee2-page .education-gallery__card:hover .education-gallery__frame,
+  .coffee2-page .education-gallery__card:focus-within .education-gallery__frame {
+    transform: none;
+  }
+
+  .coffee2-page .education-survey-navigator__panel {
+    animation: none;
+  }
+
+  .coffee2-page .education-survey-option:hover {
+    transform: none;
+  }
+
+  .coffee2-page .education-survey-stage__reveal-item {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}

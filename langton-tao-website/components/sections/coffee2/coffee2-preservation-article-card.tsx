@@ -1,16 +1,19 @@
+'use client'
+
 import Image from 'next/image'
-import Link from 'next/link'
 import type { CoffeePreservationArticle } from '@/lib/content/coffee-preservation-insurers'
 import { cn } from '@/lib/utils'
 
 type Coffee2PreservationArticleCardProps = {
   article: CoffeePreservationArticle
   className?: string
+  onSelect?: (article: CoffeePreservationArticle) => void
 }
 
 export function Coffee2PreservationArticleCard({
   article,
   className,
+  onSelect,
 }: Coffee2PreservationArticleCardProps) {
   const content = (
     <>
@@ -38,22 +41,19 @@ export function Coffee2PreservationArticleCard({
     </>
   )
 
-  if (article.href) {
-    const isExternal = article.href.startsWith('http')
-
+  if (onSelect) {
     return (
-      <Link
-        href={article.href}
+      <button
+        type="button"
         className={cn(
-          'coffee2-preservation-article-card c2-card group block overflow-hidden',
+          'coffee2-preservation-article-card c2-card group block w-full overflow-hidden text-left',
           className
         )}
-        {...(isExternal
-          ? { target: '_blank', rel: 'noopener noreferrer' }
-          : {})}
+        aria-label={`阅读原文：${article.title}`}
+        onClick={() => onSelect(article)}
       >
         {content}
-      </Link>
+      </button>
     )
   }
 

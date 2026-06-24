@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Coffee2DisplayTypewriter } from '@/components/sections/coffee2/coffee2-display-typewriter'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import { coffee2JoinBand } from '@/lib/content/coffee2-page'
 
@@ -14,7 +15,10 @@ export function Coffee2JoinBand() {
             id="coffee2-join-band-title"
             className="c2-display text-3xl text-white md:text-5xl lg:text-6xl"
           >
-            {coffee2JoinBand.statement}
+            <Coffee2DisplayTypewriter
+              text={coffee2JoinBand.statement}
+              charStagger={65}
+            />
           </p>
         </Coffee2Reveal>
         <Coffee2Reveal delay={100} className="c2-reveal-fade">

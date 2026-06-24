@@ -1,0 +1,293 @@
+/* Child cost calculator — mirrors retirement-calc BEM under .coffee2-page */
+
+.coffee2-page .child-calc-section__title,
+.coffee2-page .child-calc-section__hint {
+  font-family: inherit;
+}
+
+.coffee2-page .child-calc-section__hint-dot {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: #fbbf24;
+  animation: child-calc-hint-pulse 2s ease-in-out infinite;
+}
+
+@keyframes child-calc-hint-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.coffee2-page .child-calc__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .coffee2-page .child-calc__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+.coffee2-page .child-calc__panel {
+  border: 1.5px solid #e4e4e7;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  background: #fff;
+}
+
+.coffee2-page .child-calc__panel--result {
+  background: linear-gradient(
+    165deg,
+    #fff 0%,
+    color-mix(in srgb, #fef3c7 18%, #fff) 100%
+  );
+}
+
+.coffee2-page .child-calc__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.coffee2-page .child-calc__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.coffee2-page .child-calc__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #71717a;
+}
+
+.coffee2-page .child-calc__option-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.coffee2-page .child-calc__option-pill {
+  padding: 0.5rem 0.75rem;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #52525b;
+  text-align: left;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.coffee2-page .child-calc__option-pill:hover {
+  border-color: #a1a1aa;
+}
+
+.coffee2-page .child-calc__option-pill--active {
+  border-color: #09090b;
+  color: #09090b;
+  background: #ffe600;
+}
+
+.coffee2-page .child-calc__option-pill:focus-visible {
+  outline: 2px solid #09090b;
+  outline-offset: 2px;
+}
+
+.coffee2-page .child-calc__result-label,
+.coffee2-page .child-calc__lifetime-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #71717a;
+}
+
+.coffee2-page .child-calc__result-value {
+  margin-top: 0.35rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #09090b;
+}
+
+.coffee2-page .child-calc__result-unit {
+  margin-left: 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #71717a;
+}
+
+.coffee2-page .child-calc__lifetime-label {
+  margin-top: 1.25rem;
+}
+
+.coffee2-page .child-calc__lifetime-sublabel {
+  margin-top: 0.15rem;
+  font-size: 0.6875rem;
+  color: #a1a1aa;
+}
+
+.coffee2-page .child-calc__lifetime-value {
+  margin-top: 0.25rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #b45309;
+}
+
+.coffee2-page .child-calc__notes {
+  margin-top: 1rem;
+  padding-left: 1.1rem;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: #71717a;
+  list-style: disc;
+}
+
+.coffee2-page .child-calc__disclaimer {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.6875rem;
+  line-height: 1.55;
+  color: #71717a;
+  background: #fafafa;
+  border: 1px solid #f4f4f5;
+}
+
+/* Fishbone */
+.coffee2-page .child-fishbone__label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.coffee2-page .child-fishbone__spine {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.75rem 0 1rem;
+  padding: 0.65rem 1rem;
+  border-left: 4px solid #09090b;
+  background: color-mix(in srgb, #ffe600 22%, #fff);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.coffee2-page .child-fishbone__spine-head {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #52525b;
+}
+
+.coffee2-page .child-fishbone__spine-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #09090b;
+}
+
+.coffee2-page .child-fishbone__branches {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.coffee2-page .child-fishbone__branch-body {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+@media (max-width: 480px) {
+  .coffee2-page .child-fishbone__branch-body {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
+.coffee2-page .child-fishbone__branch-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #52525b;
+}
+
+.coffee2-page .child-fishbone__bar-track {
+  height: 0.45rem;
+  border-radius: 9999px;
+  background: #f4f4f5;
+  overflow: hidden;
+}
+
+.coffee2-page .child-fishbone__bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.coffee2-page .child-fishbone__branch-amount {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #09090b;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coffee2-page .child-calc-section__hint-dot {
+    animation: none;
+  }
+
+  .coffee2-page .child-fishbone__bar-fill {
+    transition: none;
+  }
+}
+
+/* Share actions */
+.coffee2-page .calc-share-actions {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #e4e4e7;
+}
+
+.coffee2-page .calc-share-actions__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.coffee2-page .calc-share-actions__btn {
+  font-size: 0.75rem;
+  border-color: #d4d4d8 !important;
+  color: #52525b !important;
+  background: #fff !important;
+}
+
+.coffee2-page .calc-share-actions__btn:hover {
+  border-color: #09090b !important;
+  color: #09090b !important;
+  background: #fffbeb !important;
+}
+
+.coffee2-page .calc-share-actions__preview {
+  min-height: 8rem;
+}

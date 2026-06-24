@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { JarsyReveal } from '@/components/jarsy/jarsy-reveal'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +12,20 @@ import {
 } from '@/components/ui/accordion'
 import { faq2Categories } from '@/lib/content/faq2-page'
 import { cn } from '@/lib/utils'
+
+function FaqAnnotatedAnswer({ answer }: { answer: string }) {
+  return (
+    <>
+      {answer.split('\n\n').map((paragraph, index) => (
+        <Coffee2AnnotatedText
+          key={index}
+          text={paragraph}
+          className={index > 0 ? 'mt-4' : undefined}
+        />
+      ))}
+    </>
+  )
+}
 
 export function Faq2CategoriesSection() {
   useEffect(() => {
@@ -85,7 +100,7 @@ export function Faq2CategoriesSection() {
                       {item.question}
                     </AccordionTrigger>
                     <AccordionContent className="c2-faq-content">
-                      {item.answer}
+                      <FaqAnnotatedAnswer answer={item.answer} />
                     </AccordionContent>
                   </AccordionItem>
                 ))}

@@ -32,11 +32,11 @@ export function Community2EventCard({ event }: { event: MillionaireEvent }) {
           {event.typeLabel}
         </span>
 
-        <h3 className="mt-4 text-base font-semibold leading-snug text-zinc-950 md:text-lg">
+        <h3 className="mt-4 text-sm font-semibold leading-snug text-zinc-950 md:text-base">
           {event.title}
         </h3>
 
-        <p className="mt-auto pt-4 text-sm text-zinc-500">{event.date}</p>
+        <p className="mt-auto pt-4 text-xs text-zinc-500">{event.date}</p>
       </div>
     </>
   )

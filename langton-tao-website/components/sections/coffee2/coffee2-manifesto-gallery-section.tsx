@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import { Coffee2ManifestoLightboxDialog } from '@/components/sections/coffee2/coffee2-manifesto-lightbox-dialog'
+import { Coffee2DisplayTypewriter } from '@/components/sections/coffee2/coffee2-display-typewriter'
+import { Coffee2ManifestoLightboxDialog, getGalleryLightboxOrigin, type GalleryLightboxState } from '@/components/sections/coffee2/coffee2-manifesto-lightbox-dialog'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import {
   coffee2ManifestoGalleryMeta,
@@ -37,9 +38,7 @@ function scatterVars(layout: Coffee2ManifestoScatterLayout): CSSProperties {
 export function Coffee2ManifestoGallerySection() {
   const stageRef = useRef<HTMLDivElement | null>(null)
   const [isExploded, setIsExploded] = useState(false)
-  const [selectedImage, setSelectedImage] = useState<Coffee2ManifestoImage | null>(
-    null
-  )
+  const [lightbox, setLightbox] = useState<GalleryLightboxState>(null)
 
   useEffect(() => {
     const stage = stageRef.current
@@ -75,7 +74,10 @@ export function Coffee2ManifestoGallerySection() {
             id="coffee2-manifesto-gallery-title"
             className="c2-display mt-4 text-4xl text-zinc-950 md:text-5xl"
           >
-            {coffee2ManifestoGalleryMeta.title}
+            <Coffee2DisplayTypewriter
+              text={coffee2ManifestoGalleryMeta.title}
+              charStagger={100}
+            />
           </h2>
           <p className="mt-4 text-xl font-semibold tracking-tight text-zinc-500 md:text-2xl">
             {coffee2ManifestoGalleryMeta.tagline}
@@ -106,7 +108,12 @@ export function Coffee2ManifestoGallerySection() {
                 type="button"
                 className="coffee2-manifesto-gallery__trigger"
                 aria-label={`查看大图：${image.alt}`}
-                onClick={() => setSelectedImage(image)}
+                onClick={(event) => {
+                  setLightbox({
+                    image,
+                    origin: getGalleryLightboxOrigin(event.currentTarget),
+                  })
+                }}
               >
                 <div className="coffee2-manifesto-gallery__frame">
                   <Image
@@ -125,8 +132,8 @@ export function Coffee2ManifestoGallerySection() {
       </div>
 
       <Coffee2ManifestoLightboxDialog
-        image={selectedImage}
-        onClose={() => setSelectedImage(null)}
+        lightbox={lightbox}
+        onClose={() => setLightbox(null)}
       />
     </section>
   )

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Community2Reveal } from '@/components/sections/community2/community2-reveal'
 import { community2Hero } from '@/lib/content/community2-page'
 
@@ -11,7 +12,10 @@ export function Community2HeroSection() {
     >
       <div className="mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col justify-end px-4 pb-16 pt-28 sm:px-6 md:min-h-[calc(100svh-4.5rem)] md:pb-24 md:pt-32 lg:px-8">
         <Community2Reveal eager delay={0}>
-          <p className="c2-eyebrow">{community2Hero.eyebrow}</p>
+          <Coffee2AnnotatedText
+            text={community2Hero.eyebrow}
+            className="c2-eyebrow"
+          />
         </Community2Reveal>
 
         <Community2Reveal eager delay={80} className="mt-6 overflow-hidden">

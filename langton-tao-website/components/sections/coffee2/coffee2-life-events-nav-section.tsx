@@ -1,4 +1,8 @@
+'use client'
+
 import { Coffee2LifeEventsNavGrid } from '@/components/sections/coffee2/coffee2-life-events-nav-grid'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
+import { Coffee2DisplayTypewriter } from '@/components/sections/coffee2/coffee2-display-typewriter'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import {
   coffee2LifeEvents,
@@ -21,14 +25,17 @@ export function Coffee2LifeEventsNavSection() {
             id="coffee2-life-events-nav-title"
             className="c2-display mt-4 text-4xl text-zinc-950 md:text-5xl"
           >
-            {coffee2LifeEventsSectionMeta.title}
+            <Coffee2DisplayTypewriter
+              text={coffee2LifeEventsSectionMeta.title}
+              charStagger={110}
+            />
           </h2>
           <p className="mt-2 text-2xl font-semibold tracking-tight text-zinc-400 md:text-3xl">
             {coffee2LifeEventsSectionMeta.subtitle}
           </p>
           <div className="coffee2-life-events-nav__lead mt-6 space-y-4 text-base leading-relaxed text-zinc-600 md:text-lg">
             {coffee2LifeEventsSectionMeta.lead.split('\n\n').map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
+              <Coffee2AnnotatedText key={index} text={paragraph} />
             ))}
           </div>
         </Coffee2Reveal>

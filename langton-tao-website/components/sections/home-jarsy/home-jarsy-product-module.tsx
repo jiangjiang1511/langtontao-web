@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { JarsyReveal } from '@/components/jarsy/jarsy-reveal'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { HomeJarsyInsurerGrid } from '@/components/sections/home-jarsy/home-jarsy-insurer-grid'
 import {
   Accordion,
@@ -29,7 +30,7 @@ function AccordionProduct({
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem value={id} className="border-zinc-200">
         <AccordionTrigger className="c2-faq-trigger justify-center py-4 text-center text-base hover:no-underline [&>svg]:ml-2">
-          {product.label}
+          <Coffee2AnnotatedText as="span" text={product.label} />
         </AccordionTrigger>
         <AccordionContent className="c2-faq-content pb-4 text-center">
           <ul className="space-y-2">
@@ -40,10 +41,10 @@ function AccordionProduct({
                     href={item.href}
                     className="text-zinc-700 transition-colors hover:text-zinc-950"
                   >
-                    {item.label}
+                    <Coffee2AnnotatedText as="span" text={item.label} />
                   </Link>
                 ) : (
-                  <span>{item.label}</span>
+                  <Coffee2AnnotatedText as="span" text={item.label} />
                 )}
               </li>
             ))}
@@ -61,7 +62,7 @@ function LinkCardProduct({ product }: { product: FiftyYearProduct }) {
         进入
       </p>
       <p className="mt-3 text-xl font-semibold tracking-tight text-zinc-950 md:text-2xl">
-        {product.label}
+        <Coffee2AnnotatedText as="span" text={product.label} />
       </p>
     </>
   )
@@ -78,7 +79,11 @@ function LinkCardProduct({ product }: { product: FiftyYearProduct }) {
 }
 
 function PlainProduct({ product }: { product: FiftyYearProduct }) {
-  return <span className="c2-chip">{product.label}</span>
+  return (
+    <span className="c2-chip">
+      <Coffee2AnnotatedText as="span" text={product.label} />
+    </span>
+  )
 }
 
 type HomeJarsyProductModuleProps = {

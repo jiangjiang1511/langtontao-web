@@ -1,6 +1,12 @@
+export type CoffeeInsuranceIntroItem = {
+  id: string
+  title: string
+  summary: string
+}
+
 export type CoffeeInsuranceIntroBlock = {
   type: 'insuranceIntro'
-  items: string[]
+  items: CoffeeInsuranceIntroItem[]
 }
 
 export type CoffeeInsurersBlock = {
@@ -58,12 +64,7 @@ export const coffeeWaterfallSections: CoffeeWaterfallSection[] = [
   {
     id: 'invest',
     title: '投资',
-    blocks: [
-      {
-        type: 'items',
-        items: ['房屋置换', '私募量化'],
-      },
-    ],
+    blocks: [],
   },
   {
     id: 'preservation',
@@ -71,7 +72,26 @@ export const coffeeWaterfallSections: CoffeeWaterfallSection[] = [
     blocks: [
       {
         type: 'insuranceIntro',
-        items: ['什么是保险', '如何理解保险', '为什么要配置保险'],
+        items: [
+          {
+            id: 'insurance-what',
+            title: '什么是保险',
+            summary:
+              '风险转移与契约承诺——把不确定损失，换成可计算的敞口管理。',
+          },
+          {
+            id: 'insurance-how',
+            title: '如何理解保险',
+            summary:
+              '读懂条款、精算与执行——别被销售话术带走，回到工具理性。',
+          },
+          {
+            id: 'insurance-why',
+            title: '为什么要配置保险',
+            summary:
+              '在极端斯坦里，为现金流与家庭责任留一道确定性防火墙。',
+          },
+        ],
       },
       {
         type: 'insurers',
@@ -94,7 +114,7 @@ export const coffeeWaterfallSections: CoffeeWaterfallSection[] = [
   {
     id: 'debt',
     title: '化债',
-    blocks: [{ type: 'placeholder', text: '内容待补充' }],
+    blocks: [],
   },
   {
     id: 'legacy',

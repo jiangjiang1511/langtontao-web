@@ -102,11 +102,13 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
 }
 
-.jarsy-v2-page .member-tier-board {
+.jarsy-v2-page .member-tier-board,
+.coffee2-page.member-page .member-tier-board {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.jarsy-v2-page .member-tier-board:hover {
+.jarsy-v2-page .member-tier-board:hover,
+.coffee2-page.member-page .member-tier-board:hover {
   transform: translateY(-3px);
   box-shadow: 6px 6px 0 0 #ffe600;
 }
@@ -146,6 +148,7 @@
 @media (prefers-reduced-motion: reduce) {
   .jarsy-v2-page .c2-card:hover,
   .jarsy-v2-page .member-tier-board:hover,
+  .coffee2-page.member-page .member-tier-board:hover,
   .jarsy-v2-page .c2-btn-cta-emphasis:hover {
     transform: none;
   }
@@ -190,11 +193,54 @@
 }
 
 .langtontao-hero {
-  overflow: visible;
+  overflow: hidden;
+  height: 100svh;
+  height: 100dvh;
+  min-height: 100svh;
+  min-height: 100dvh;
 }
 
 .langtontao-hero__inner {
   overflow: visible;
+  pointer-events: none;
+  justify-content: flex-end;
+  min-height: 100svh;
+  min-height: 100dvh;
+  padding-top: clamp(4.5rem, 12vh, 6rem);
+  padding-bottom: clamp(1.25rem, 4vh, 2.5rem);
+}
+
+.langtontao-hero__upper {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 auto;
+  min-height: clamp(10rem, 28vh, 16rem);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.langtontao-hero__lower {
+  position: relative;
+  z-index: 12;
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: clamp(0.5rem, 2vh, 1.25rem);
+  isolation: isolate;
+}
+
+.langtontao-hero__lead {
+  margin-inline: auto;
+}
+
+.langtontao-hero__inner a,
+.langtontao-hero__inner button {
+  pointer-events: auto;
 }
 
 .langtontao-hero__logo-slot {
@@ -208,6 +254,223 @@
   width: 100%;
   padding: 0.5rem 0 0.25rem;
   overflow: visible;
+}
+
+.langtontao-hero__logo-slot--layout {
+  min-height: var(--langtontao-logo-size);
+  padding-bottom: 0.25rem;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Langtontao hero — 3D logo orbit background */
+.langtontao-hero-orbit {
+  --langtontao-orbit-anchor-y: clamp(24%, 28vh, 32%);
+
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.langtontao-hero-orbit__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(
+      ellipse 88% 78% at 50% var(--langtontao-orbit-anchor-y),
+      transparent 0%,
+      transparent 74%,
+      rgb(0 0 0 / 0.06) 90%,
+      rgb(0 0 0 / 0.12) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(0 0 0 / 0.14) 0%,
+      rgb(0 0 0 / 0.05) 5%,
+      transparent 12%
+    ),
+    linear-gradient(
+      90deg,
+      rgb(0 0 0 / 0.12) 0%,
+      rgb(0 0 0 / 0.04) 4%,
+      transparent 9%,
+      transparent 91%,
+      rgb(0 0 0 / 0.04) 96%,
+      rgb(0 0 0 / 0.12) 100%
+    );
+}
+
+.langtontao-hero-orbit__stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1500px;
+  perspective-origin: 50% var(--langtontao-orbit-anchor-y);
+}
+
+.langtontao-hero-orbit__logos {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.langtontao-hero-orbit__logo {
+  position: absolute;
+  top: var(--langtontao-orbit-anchor-y);
+  left: 50%;
+  width: clamp(4.75rem, 14vw, 8.5rem);
+  will-change: transform, opacity, filter;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.langtontao-hero-orbit__logo-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.08);
+}
+
+.langtontao-hero-orbit__rings {
+  position: absolute;
+  top: var(--langtontao-orbit-anchor-y);
+  left: 50%;
+  width: min(100vw, 34rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+  opacity: 0.5;
+}
+
+.langtontao-hero-orbit__rings-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.langtontao-hero-orbit__rings-svg circle,
+.langtontao-hero-orbit__rings-svg ellipse {
+  stroke: #d4d4d8;
+  stroke-width: 0.5;
+  fill: none;
+}
+
+.langtontao-hero-orbit__rings-svg line {
+  stroke: #e4e4e7;
+  stroke-width: 0.4;
+}
+
+.langtontao-hero-orbit__rings-svg--1 {
+  animation: langtontao-orbit-ring-1 52s linear infinite;
+  opacity: 0.65;
+}
+
+.langtontao-hero-orbit__rings-svg--2 {
+  animation: langtontao-orbit-ring-2 68s linear infinite reverse;
+  opacity: 0.5;
+}
+
+.langtontao-hero-orbit__rings-svg--3 {
+  animation: langtontao-orbit-ring-3 80s linear infinite;
+  opacity: 0.32;
+}
+
+@keyframes langtontao-orbit-ring-1 {
+  from {
+    transform: rotateX(60deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(60deg) rotateZ(360deg);
+  }
+}
+
+@keyframes langtontao-orbit-ring-2 {
+  from {
+    transform: rotateX(46deg) rotateY(16deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(46deg) rotateY(16deg) rotateZ(-360deg);
+  }
+}
+
+@keyframes langtontao-orbit-ring-3 {
+  from {
+    transform: rotateX(70deg) rotateY(-20deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(70deg) rotateY(-20deg) rotateZ(360deg);
+  }
+}
+
+.langtontao-hero-orbit--glitch {
+  animation: langtontao-orbit-glitch-shake 0.42s steps(6) forwards;
+}
+
+.langtontao-hero-orbit--glitch .langtontao-hero-orbit__stage {
+  filter: contrast(1.4) saturate(1.25);
+}
+
+.langtontao-hero-orbit--glitch .langtontao-hero-orbit__logo-image {
+  filter: contrast(1.2);
+}
+
+.langtontao-hero-orbit__glitch-scan {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: repeating-linear-gradient(
+    0deg,
+    rgb(0 0 0 / 0.07) 0,
+    rgb(0 0 0 / 0.07) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: multiply;
+  animation: langtontao-orbit-glitch-scan 0.42s steps(8) forwards;
+  pointer-events: none;
+}
+
+@keyframes langtontao-orbit-glitch-shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-5px, 2px) skewX(-2deg);
+  }
+  40% {
+    transform: translate(6px, -2px) skewX(3deg);
+  }
+  60% {
+    transform: translate(-4px, 3px);
+  }
+  80% {
+    transform: translate(5px, -2px) skewX(-1deg);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes langtontao-orbit-glitch-scan {
+  0% {
+    opacity: 0.85;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+}
+
+.langtontao-hero-orbit--reduced .langtontao-hero-orbit__rings {
+  opacity: 0.2;
 }
 
 .langtontao-hero__logo-stage {
@@ -311,19 +574,56 @@
 }
 
 .langtontao-hero__title-main {
-  font-size: clamp(2.75rem, 8vw, 5.5rem);
+  font-size: clamp(2.25rem, 6.5vw, 4.75rem);
   line-height: 0.95;
 }
 
 .langtontao-hero__title-sub {
   max-width: 48rem;
   font-size: clamp(1.35rem, 4.2vw, 2.5rem);
-  line-height: 1.1;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
 }
 
 .langtontao-hero__headline,
 .langtontao-hero__cta {
   overflow: visible;
+}
+
+.langtontao-hero__headline {
+  position: relative;
+  z-index: 12;
+  flex-shrink: 0;
+  margin-inline: auto;
+  margin-bottom: clamp(0.5rem, 1.5vh, 1rem);
+  isolation: isolate;
+}
+
+.langtontao-hero__lead-text {
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .langtontao-hero__inner {
+    padding-top: clamp(5.75rem, 15vh, 7.5rem);
+    padding-bottom: clamp(2rem, 5vh, 3.25rem);
+  }
+
+  .langtontao-hero__upper {
+    min-height: clamp(11rem, 30vh, 17rem);
+  }
+
+  .langtontao-hero-orbit {
+    --langtontao-orbit-anchor-y: clamp(24%, 28vh, 32%);
+  }
+
+  .langtontao-hero-orbit__logo {
+    width: clamp(4rem, 10vw, 6.75rem);
+  }
+
+  .langtontao-hero-orbit__rings {
+    width: min(88vw, 28rem);
+  }
 }
 
 .langtontao-hero__inner .c2-reveal[data-visible='false'] {
@@ -497,6 +797,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .langtontao-hero-orbit__rings-svg--1,
+  .langtontao-hero-orbit__rings-svg--2,
+  .langtontao-hero-orbit__rings-svg--3 {
+    animation: none;
+  }
+
   .langtontao-hero__logo-stage {
     animation: none;
     opacity: 1;
@@ -523,7 +829,57 @@
   }
 
   .langtontao-hero__inner {
-    padding-top: 5.5rem;
-    padding-bottom: 3rem;
+    justify-content: flex-start;
+    padding-top: clamp(4.75rem, 11vh, 5.5rem);
+    padding-bottom: clamp(1.5rem, 4vh, 2.25rem);
+    padding-inline: clamp(1.125rem, 5vw, 1.5rem);
+  }
+
+  .langtontao-hero__upper {
+    flex: 0 0 auto;
+    min-height: clamp(4rem, 12vh, 7rem);
+  }
+
+  .langtontao-hero__headline {
+    margin-top: auto;
+    margin-bottom: clamp(0.75rem, 2.5vh, 1.5rem);
+  }
+
+  .langtontao-hero__lower {
+    flex-shrink: 0;
+    margin-bottom: clamp(1rem, 5vh, 2.5rem);
+  }
+
+  .langtontao-hero__title-main {
+    font-size: clamp(3.25rem, 13.5vw, 4.75rem);
+    line-height: 0.92;
+  }
+
+  .langtontao-hero__title-sub {
+    font-size: clamp(1.2rem, 5vw, 1.65rem);
+    line-height: 1.5;
+    padding-inline: clamp(0.5rem, 3vw, 1rem);
+  }
+
+  .langtontao-hero__lead-text {
+    padding-inline: clamp(0.75rem, 4vw, 1.25rem);
+  }
+
+  .langtontao-hero-orbit {
+    --langtontao-orbit-anchor-y: clamp(22%, 26vh, 30%);
+  }
+
+  .langtontao-hero-orbit__logo {
+    width: clamp(5.75rem, 22vw, 8.25rem);
+  }
+
+  .langtontao-hero-orbit__rings {
+    width: min(118vw, 32rem);
+    opacity: 0.48;
+  }
+
+  .langtontao-hero-orbit__stage {
+    transform: scale(1.08);
+    transform-origin: 50% var(--langtontao-orbit-anchor-y);
   }
 }

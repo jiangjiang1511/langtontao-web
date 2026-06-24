@@ -1,0 +1,86 @@
+'use client'
+
+import { ExternalLink } from 'lucide-react'
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
+import type { LegacyTopicArticleContent } from '@/lib/content/legacy-topic-articles'
+
+type LegacyTopicArticleDialogProps = {
+  article: LegacyTopicArticleContent | null
+  onClose: () => void
+}
+
+export function LegacyTopicArticleDialog({
+  article,
+  onClose,
+}: LegacyTopicArticleDialogProps) {
+  return (
+    <Dialog
+      open={article !== null}
+      onOpenChange={(open) => {
+        if (!open) onClose()
+      }}
+    >
+      {article ? (
+        <DialogContent className="legacy-article-dialog inset-0 m-auto flex h-[min(90vh,52rem)] w-[calc(100%-2rem)] max-w-3xl translate-x-0 translate-y-0 flex-col overflow-hidden p-0">
+          <DialogHeader className="shrink-0 border-b border-zinc-200 px-5 py-4 pr-14 text-left">
+            <p className="text-xs font-extrabold uppercase tracking-[0.14em] text-zinc-400">
+              Coffee Chat · 延伸阅读
+            </p>
+            <DialogTitle className="mt-2 text-xl font-semibold text-zinc-950 md:text-2xl">
+              {article.headline}
+            </DialogTitle>
+            <p className="mt-1 text-sm text-zinc-500">
+              来源：{article.outlet}
+              {article.publishedAt ? ` · ${article.publishedAt}` : ''}
+            </p>
+          </DialogHeader>
+
+          <div className="legacy-article-dialog__body min-h-0 flex-1 overflow-y-auto px-5 py-5">
+            {article.lead ? (
+              <p className="legacy-article-dialog__lead text-base leading-relaxed text-zinc-700 md:text-lg">
+                {article.lead}
+              </p>
+            ) : null}
+
+            <div className="legacy-article-dialog__blocks mt-5 space-y-5">
+              {article.blocks.map((block, index) => (
+                <p
+                  key={`p-${index}`}
+                  className="text-sm leading-relaxed text-zinc-600 md:text-base"
+                >
+                  {block.text}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          <div className="legacy-article-dialog__footer flex shrink-0 items-center justify-between gap-3 border-t border-zinc-200 bg-white px-5 py-4">
+            <p className="text-xs text-zinc-500">摘要转载 · 原文见 {article.outlet}</p>
+            <Button type="button" variant="outline" size="sm" asChild>
+              <a
+                href={article.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLink className="h-3.5 w-3.5" />
+                阅读原文
+              </a>
+            </Button>
+          </div>
+
+          <DialogClose
+            className="absolute right-4 top-4 rounded-md border border-zinc-200 p-1 text-zinc-500 hover:bg-zinc-100"
+            aria-label="关闭"
+          />
+        </DialogContent>
+      ) : null}
+    </Dialog>
+  )
+}

@@ -12,6 +12,7 @@ type Coffee2BackedPanelProps = {
   ariaLabelledBy?: string
   stackPosition?: 'top' | 'middle' | 'bottom' | 'solo'
   titleVariant?: 'pop' | 'jarsy'
+  panelVariant?: 'default' | 'minimal'
 }
 
 function resolvePanelTitle(title: Coffee2BackedPanelTitle) {
@@ -31,6 +32,7 @@ export function Coffee2BackedPanel({
   ariaLabelledBy,
   stackPosition = 'solo',
   titleVariant = 'pop',
+  panelVariant = 'default',
 }: Coffee2BackedPanelProps) {
   const { zh, en } = resolvePanelTitle(title)
 
@@ -41,6 +43,7 @@ export function Coffee2BackedPanel({
         'coffee2-backed-panel',
         stackPosition !== 'solo' && `coffee2-backed-panel--stack-${stackPosition}`,
         titleVariant === 'jarsy' && 'coffee2-backed-panel--title-jarsy',
+        panelVariant === 'minimal' && 'coffee2-backed-panel--minimal',
         className
       )}
     >

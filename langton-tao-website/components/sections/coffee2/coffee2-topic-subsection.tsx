@@ -1,3 +1,9 @@
+'use client'
+
+'use client'
+
+import { Coffee2DisplayTypewriter } from '@/components/sections/coffee2/coffee2-display-typewriter'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import {
   DebtContent,
@@ -24,29 +30,34 @@ export function Coffee2TopicSubsection({ topicId }: Coffee2TopicSubsectionProps)
   return (
     <div
       id={topicId}
-      className="scroll-mt-28 border-t border-zinc-200 pt-10 md:pt-12"
+      className="coffee2-living-topic scroll-mt-28 border-t border-zinc-200 pt-10 md:pt-12"
       aria-labelledby={`coffee-subsection-${topicId}`}
     >
-      <Coffee2Reveal className="grid gap-4 md:grid-cols-[minmax(0,10rem)_1fr] md:gap-10">
-        <div>
-          <p className="c2-topic-number text-sm">{meta.number}</p>
-          <h3
-            id={`coffee-subsection-${topicId}`}
-            className="mt-3 text-2xl font-semibold tracking-tight text-zinc-950 md:text-3xl"
-          >
-            {topic.title}
-          </h3>
-        </div>
-        <p className="self-end text-sm leading-relaxed text-zinc-600 md:text-base">
-          {meta.summary}
+      <Coffee2Reveal className="coffee2-living-topic__header">
+        <p className="coffee2-living-topic__eyebrow">
+          <span>{meta.number}</span>
+          <span aria-hidden>·</span>
+          <span>活着</span>
         </p>
+        <h3
+          id={`coffee-subsection-${topicId}`}
+          className="coffee2-living-topic__title"
+        >
+          <span className="coffee2-living-topic__title-mark">
+            <Coffee2DisplayTypewriter text={topic.title} charStagger={90} />
+          </span>
+        </h3>
+        <Coffee2AnnotatedText
+          text={meta.summary}
+          className="coffee2-living-topic__lead"
+        />
       </Coffee2Reveal>
 
       {topicId === 'invest' ? <InvestContent blocks={topic.blocks} /> : null}
       {topicId === 'preservation' ? (
         <PreservationContent blocks={topic.blocks} />
       ) : null}
-      {topicId === 'debt' ? <DebtContent blocks={topic.blocks} /> : null}
+      {topicId === 'debt' ? <DebtContent /> : null}
       {topicId === 'legacy' ? <LegacyContent blocks={topic.blocks} /> : null}
     </div>
   )

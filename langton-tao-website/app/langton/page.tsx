@@ -1,17 +1,20 @@
-import { LangtonBanner } from '@/components/sections/langton/langton-banner'
+import { Coffee2NetworkSection } from '@/components/sections/coffee2/coffee2-network-section'
+import { Langton2HeroSection } from '@/components/sections/langton2/langton2-hero-section'
+import { Langton2InterstitialBand } from '@/components/sections/langton2/langton2-interstitial-band'
+import { Langton2SectionNav } from '@/components/sections/langton2/langton2-section-nav'
 import {
-  LangtonAboutSection,
-  LangtonArchitectureSection,
-  LangtonCtaSection,
-  LangtonFeaturesSection,
-  LangtonMissionSection,
-  LangtonNetworkSection,
-  LangtonProblemsSection,
-  LangtonServeSection,
-  LangtonToolsSection,
-} from '@/components/sections/langton/langton-sections'
+  Langton2AboutSection,
+  Langton2ArchitectureSection,
+  Langton2FeaturesSection,
+  Langton2JoinBand,
+  Langton2MissionSection,
+  Langton2ProblemsSection,
+  Langton2ServeSection,
+  Langton2ToolsSection,
+} from '@/components/sections/langton2/langton2-sections'
 import { langtonMegaBanners } from '@/lib/content/langton-page'
-import { SectionSurface } from '@/components/layout/section-surface'
+import '@/app/coffee/coffee.css'
+import '@/styles/jarsy-v2.css'
 
 export const metadata = {
   title: '朗敦道 | Langton Tao',
@@ -20,59 +23,36 @@ export const metadata = {
 }
 
 export default function LangtonPage() {
-  const [mvv, tools, network, features] = langtonMegaBanners
+  const [mvv, tools, , features] = langtonMegaBanners
 
   return (
-    <>
-      <SectionSurface theme="paper" className="pt-24 md:pt-28" narrow>
-        <p className="text-eyebrow text-[color:var(--section-muted)]">朗敦道</p>
-        <h1 className="text-display mt-4 text-4xl md:text-6xl">
-          LangtonTAO VFO/MFO Leader in China
-        </h1>
-        <p className="mt-6 text-lg font-bold leading-relaxed">
-          ——为华人财富传承提供系统解决方案
-        </p>
-        <p className="mt-4 text-base font-bold text-[color:var(--section-muted)]">
-          人生认知定投计划，普通人的诚实投资学
-        </p>
-      </SectionSurface>
-
-      <LangtonBanner
+    <div className="coffee2-page bg-white text-zinc-950">
+      <Langton2HeroSection />
+      <Langton2SectionNav />
+      <Langton2InterstitialBand
         id="banner-mvv"
         title={mvv.title}
         subtitle={mvv.subtitle}
-        theme="dark"
       />
-      <LangtonMissionSection />
-      <LangtonAboutSection />
-      <LangtonProblemsSection />
-      <LangtonServeSection />
-
-      <LangtonBanner
+      <Langton2MissionSection />
+      <Langton2AboutSection />
+      <Langton2ProblemsSection />
+      <Langton2ServeSection />
+      <Langton2InterstitialBand
         id="banner-tools"
         title={tools.title}
         subtitle={tools.subtitle}
-        theme="yellow"
       />
-      <LangtonToolsSection />
-
-      <LangtonBanner
-        id="banner-network"
-        title={network.title}
-        subtitle={network.subtitle}
-        theme="dark"
-      />
-      <LangtonNetworkSection />
-
-      <LangtonBanner
+      <Langton2ToolsSection />
+      <Langton2InterstitialBand
         id="banner-features"
         title={features.title}
         subtitle={features.subtitle}
-        theme="yellow"
       />
-      <LangtonFeaturesSection />
-      <LangtonArchitectureSection />
-      <LangtonCtaSection />
-    </>
+      <Langton2FeaturesSection />
+      <Langton2ArchitectureSection />
+      <Coffee2NetworkSection />
+      <Langton2JoinBand />
+    </div>
   )
 }

@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "bitcoin",
+    "status": "ok",
+    "points": 126,
+    "cagr": "63.7%",
+    "years": "10.5"
+  },
+  {
+    "slug": "gold",
+    "status": "ok",
+    "points": 126,
+    "cagr": "13.1%",
+    "years": "10.5"
+  },
+  {
+    "slug": "nasdaq",
+    "status": "ok",
+    "points": 126,
+    "cagr": "21.5%",
+    "years": "10.5"
+  },
+  {
+    "slug": "sp500",
+    "status": "ok",
+    "points": 126,
+    "cagr": "15.6%",
+    "years": "10.5"
+  },
+  {
+    "slug": "csi300",
+    "status": "ok",
+    "points": 126,
+    "cagr": "6.3%",
+    "years": "10.4"
+  },
+  {
+    "slug": "us-treasury",
+    "status": "ok",
+    "points": 126,
+    "cagr": "2.3%",
+    "years": "10.4"
+  },
+  {
+    "slug": "bank-deposit",
+    "status": "ok",
+    "points": 126,
+    "cagr": "1.2%",
+    "years": "10.4"
+  }
+]

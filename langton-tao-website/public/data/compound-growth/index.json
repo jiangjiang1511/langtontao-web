@@ -1,0 +1,141 @@
+{
+  "generatedAt": "2026-06-21T10:00:53.848Z",
+  "periodLabel": "过去十年（2016–2026）",
+  "disclaimer": "收益数据基于公开行情或基准利率估算，反映「2016 年买入并持有」的累计回报，仅供教育与交流，不构成投资建议。历史表现不代表未来结果。",
+  "stocks": [
+    {
+      "slug": "bitcoin",
+      "ticker": "BTC",
+      "name": "比特币",
+      "nameEn": "Bitcoin",
+      "market": "US",
+      "currency": "USD",
+      "tagline": "2016 年直接买入比特币",
+      "accent": "#f59e0b",
+      "listedYear": 2016,
+      "stats": {
+        "startCap": 10000,
+        "endCap": 1738930,
+        "cagr": 0.6367446111730639,
+        "years": 10.469541409993155,
+        "startDate": "2016-01-01",
+        "endDate": "2026-06-21"
+      }
+    },
+    {
+      "slug": "gold",
+      "ticker": "GLD",
+      "name": "黄金",
+      "nameEn": "Gold",
+      "market": "US",
+      "currency": "USD",
+      "tagline": "买入 SPDR 黄金 ETF（GLD）",
+      "accent": "#eab308",
+      "listedYear": 2016,
+      "stats": {
+        "startCap": 10000,
+        "endCap": 36196,
+        "cagr": 0.13084336434083843,
+        "years": 10.461327857631758,
+        "startDate": "2016-01-01",
+        "endDate": "2026-06-18"
+      }
+    },
+    {
+      "slug": "nasdaq",
+      "ticker": "QQQ",
+      "name": "纳斯达克100",
+      "nameEn": "Nasdaq-100",
+      "market": "US",
+      "currency": "USD",
+      "tagline": "买入纳斯达克100指数基金（QQQ）",
+      "accent": "#60a5fa",
+      "listedYear": 2016,
+      "stats": {
+        "startCap": 10000,
+        "endCap": 76567,
+        "cagr": 0.21480251021946373,
+        "years": 10.461327857631758,
+        "startDate": "2016-01-01",
+        "endDate": "2026-06-18"
+      }
+    },
+    {
+      "slug": "sp500",
+      "ticker": "SPY",
+      "name": "标普500",
+      "nameEn": "S&P 500",
+      "market": "US",
+      "currency": "USD",
+      "tagline": "买入标普500指数基金（SPY）",
+      "accent": "#22c55e",
+      "listedYear": 2016,
+      "stats": {
+        "startCap": 10000,
+        "endCap": 45723,
+        "cagr": 0.15638482282277,
+        "years": 10.461327857631758,
+        "startDate": "2016-01-01",
+        "endDate": "2026-06-18"
+      }
+    },
+    {
+      "slug": "csi300",
+      "ticker": "510300",
+      "name": "A股大盘",
+      "nameEn": "CSI 300 ETF",
+      "market": "CN",
+      "currency": "CNY",
+      "tagline": "买入沪深300指数基金（510300）",
+      "accent": "#ef4444",
+      "listedYear": 2016,
+      "stats": {
+        "startCap": 10000,
+        "endCap": 18934,
+        "cagr": 0.06340152384197362,
+        "years": 10.38466803559206,
+        "startDate": "2016-01-29",
+        "endDate": "2026-06-18"
+      }
+    },
+    {
+      "slug": "us-treasury",
+      "ticker": "10Y",
+      "name": "美国国债",
+      "nameEn": "US Treasury 10Y",
+      "market": "US",
+      "currency": "USD",
+      "tagline": "2016 年买入 10 年期美债并持有到期",
+      "accent": "#a78bfa",
+      "listedYear": 2016,
+      "stats": {
+        "startCap": 10000,
+        "endCap": 12625,
+        "cagr": 0.022633391748321463,
+        "years": 10.414784394250514,
+        "startDate": "2016-01-01",
+        "endDate": "2026-06-01",
+        "totalReturn": 0.26249999999999996
+      }
+    },
+    {
+      "slug": "bank-deposit",
+      "ticker": "定存",
+      "name": "银行存款",
+      "nameEn": "Bank Deposit",
+      "market": "CN",
+      "currency": "CNY",
+      "tagline": "按一年期定存利率存入中国银行",
+      "accent": "#a1a1aa",
+      "listedYear": 2016,
+      "stats": {
+        "startCap": 10000,
+        "endCap": 11373,
+        "cagr": 0.012429924579735241,
+        "years": 10.414784394250514,
+        "startDate": "2016-01-01",
+        "endDate": "2026-06-01"
+      }
+    }
+  ]
+}

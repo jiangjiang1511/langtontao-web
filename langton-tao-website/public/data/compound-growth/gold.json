@@ -1,0 +1,526 @@
+{
+  "slug": "gold",
+  "ticker": "GLD",
+  "name": "黄金",
+  "nameEn": "Gold",
+  "market": "US",
+  "currency": "USD",
+  "listedYear": 2016,
+  "tagline": "买入 SPDR 黄金 ETF（GLD）",
+  "accent": "#eab308",
+  "dataSource": "SPDR Gold Shares（GLD）月度收盘价，累计收益率",
+  "points": [
+    {
+      "date": "2016-01-01",
+      "marketCap": 10000
+    },
+    {
+      "date": "2016-02-01",
+      "marketCap": 11093
+    },
+    {
+      "date": "2016-03-01",
+      "marketCap": 11000
+    },
+    {
+      "date": "2016-04-01",
+      "marketCap": 11561
+    },
+    {
+      "date": "2016-05-01",
+      "marketCap": 10852
+    },
+    {
+      "date": "2016-06-01",
+      "marketCap": 11825
+    },
+    {
+      "date": "2016-07-01",
+      "marketCap": 12060
+    },
+    {
+      "date": "2016-08-01",
+      "marketCap": 11667
+    },
+    {
+      "date": "2016-09-01",
+      "marketCap": 11748
+    },
+    {
+      "date": "2016-10-01",
+      "marketCap": 11402
+    },
+    {
+      "date": "2016-11-01",
+      "marketCap": 10449
+    },
+    {
+      "date": "2016-12-01",
+      "marketCap": 10249
+    },
+    {
+      "date": "2017-01-01",
+      "marketCap": 10804
+    },
+    {
+      "date": "2017-02-01",
+      "marketCap": 11148
+    },
+    {
+      "date": "2017-03-01",
+      "marketCap": 11101
+    },
+    {
+      "date": "2017-04-01",
+      "marketCap": 11292
+    },
+    {
+      "date": "2017-05-01",
+      "marketCap": 11278
+    },
+    {
+      "date": "2017-06-01",
+      "marketCap": 11035
+    },
+    {
+      "date": "2017-07-01",
+      "marketCap": 11290
+    },
+    {
+      "date": "2017-08-01",
+      "marketCap": 11764
+    },
+    {
+      "date": "2017-09-01",
+      "marketCap": 11368
+    },
+    {
+      "date": "2017-10-01",
+      "marketCap": 11283
+    },
+    {
+      "date": "2017-11-01",
+      "marketCap": 11323
+    },
+    {
+      "date": "2017-12-01",
+      "marketCap": 11561
+    },
+    {
+      "date": "2018-01-01",
+      "marketCap": 11935
+    },
+    {
+      "date": "2018-02-01",
+      "marketCap": 11688
+    },
+    {
+      "date": "2018-03-01",
+      "marketCap": 11762
+    },
+    {
+      "date": "2018-04-01",
+      "marketCap": 11649
+    },
+    {
+      "date": "2018-05-01",
+      "marketCap": 11510
+    },
+    {
+      "date": "2018-06-01",
+      "marketCap": 11094
+    },
+    {
+      "date": "2018-07-01",
+      "marketCap": 10845
+    },
+    {
+      "date": "2018-08-01",
+      "marketCap": 10613
+    },
+    {
+      "date": "2018-09-01",
+      "marketCap": 10543
+    },
+    {
+      "date": "2018-10-01",
+      "marketCap": 10767
+    },
+    {
+      "date": "2018-11-01",
+      "marketCap": 10803
+    },
+    {
+      "date": "2018-12-01",
+      "marketCap": 11337
+    },
+    {
+      "date": "2019-01-01",
+      "marketCap": 11664
+    },
+    {
+      "date": "2019-02-01",
+      "marketCap": 11593
+    },
+    {
+      "date": "2019-03-01",
+      "marketCap": 11408
+    },
+    {
+      "date": "2019-04-01",
+      "marketCap": 11332
+    },
+    {
+      "date": "2019-05-01",
+      "marketCap": 11532
+    },
+    {
+      "date": "2019-06-01",
+      "marketCap": 12454
+    },
+    {
+      "date": "2019-07-01",
+      "marketCap": 12455
+    },
+    {
+      "date": "2019-08-01",
+      "marketCap": 13441
+    },
+    {
+      "date": "2019-09-01",
+      "marketCap": 12985
+    },
+    {
+      "date": "2019-10-01",
+      "marketCap": 13317
+    },
+    {
+      "date": "2019-11-01",
+      "marketCap": 12890
+    },
+    {
+      "date": "2019-12-01",
+      "marketCap": 13361
+    },
+    {
+      "date": "2020-01-01",
+      "marketCap": 13963
+    },
+    {
+      "date": "2020-02-01",
+      "marketCap": 13874
+    },
+    {
+      "date": "2020-03-01",
+      "marketCap": 13843
+    },
+    {
+      "date": "2020-04-01",
+      "marketCap": 14848
+    },
+    {
+      "date": "2020-05-01",
+      "marketCap": 15232
+    },
+    {
+      "date": "2020-06-01",
+      "marketCap": 15649
+    },
+    {
+      "date": "2020-07-01",
+      "marketCap": 17338
+    },
+    {
+      "date": "2020-08-01",
+      "marketCap": 17282
+    },
+    {
+      "date": "2020-09-01",
+      "marketCap": 16561
+    },
+    {
+      "date": "2020-10-01",
+      "marketCap": 16475
+    },
+    {
+      "date": "2020-11-01",
+      "marketCap": 15584
+    },
+    {
+      "date": "2020-12-01",
+      "marketCap": 16677
+    },
+    {
+      "date": "2021-01-01",
+      "marketCap": 16139
+    },
+    {
+      "date": "2021-02-01",
+      "marketCap": 15129
+    },
+    {
+      "date": "2021-03-01",
+      "marketCap": 14957
+    },
+    {
+      "date": "2021-04-01",
+      "marketCap": 15489
+    },
+    {
+      "date": "2021-05-01",
+      "marketCap": 16679
+    },
+    {
+      "date": "2021-06-01",
+      "marketCap": 15487
+    },
+    {
+      "date": "2021-07-01",
+      "marketCap": 15878
+    },
+    {
+      "date": "2021-08-01",
+      "marketCap": 15866
+    },
+    {
+      "date": "2021-09-01",
+      "marketCap": 15355
+    },
+    {
+      "date": "2021-10-01",
+      "marketCap": 15582
+    },
+    {
+      "date": "2021-11-01",
+      "marketCap": 15475
+    },
+    {
+      "date": "2021-12-01",
+      "marketCap": 15985
+    },
+    {
+      "date": "2022-01-01",
+      "marketCap": 15717
+    },
+    {
+      "date": "2022-02-01",
+      "marketCap": 16679
+    },
+    {
+      "date": "2022-03-01",
+      "marketCap": 16891
+    },
+    {
+      "date": "2022-04-01",
+      "marketCap": 16541
+    },
+    {
+      "date": "2022-05-01",
+      "marketCap": 16002
+    },
+    {
+      "date": "2022-06-01",
+      "marketCap": 15751
+    },
+    {
+      "date": "2022-07-01",
+      "marketCap": 15344
+    },
+    {
+      "date": "2022-08-01",
+      "marketCap": 14892
+    },
+    {
+      "date": "2022-09-01",
+      "marketCap": 14462
+    },
+    {
+      "date": "2022-10-01",
+      "marketCap": 14204
+    },
+    {
+      "date": "2022-11-01",
+      "marketCap": 15410
+    },
+    {
+      "date": "2022-12-01",
+      "marketCap": 15862
+    },
+    {
+      "date": "2023-01-01",
+      "marketCap": 16775
+    },
+    {
+      "date": "2023-02-01",
+      "marketCap": 15875
+    },
+    {
+      "date": "2023-03-01",
+      "marketCap": 17131
+    },
+    {
+      "date": "2023-04-01",
+      "marketCap": 17279
+    },
+    {
+      "date": "2023-05-01",
+      "marketCap": 17047
+    },
+    {
+      "date": "2023-06-01",
+      "marketCap": 16669
+    },
+    {
+      "date": "2023-07-01",
+      "marketCap": 17050
+    },
+    {
+      "date": "2023-08-01",
+      "marketCap": 16832
+    },
+    {
+      "date": "2023-09-01",
+      "marketCap": 16031
+    },
+    {
+      "date": "2023-10-01",
+      "marketCap": 17213
+    },
+    {
+      "date": "2023-11-01",
+      "marketCap": 17648
+    },
+    {
+      "date": "2023-12-01",
+      "marketCap": 17875
+    },
+    {
+      "date": "2024-01-01",
+      "marketCap": 17620
+    },
+    {
+      "date": "2024-02-01",
+      "marketCap": 17701
+    },
+    {
+      "date": "2024-03-01",
+      "marketCap": 19235
+    },
+    {
+      "date": "2024-04-01",
+      "marketCap": 19810
+    },
+    {
+      "date": "2024-05-01",
+      "marketCap": 20131
+    },
+    {
+      "date": "2024-06-01",
+      "marketCap": 20104
+    },
+    {
+      "date": "2024-07-01",
+      "marketCap": 21183
+    },
+    {
+      "date": "2024-08-01",
+      "marketCap": 21626
+    },
+    {
+      "date": "2024-09-01",
+      "marketCap": 22727
+    },
+    {
+      "date": "2024-10-01",
+      "marketCap": 23704
+    },
+    {
+      "date": "2024-11-01",
+      "marketCap": 22963
+    },
+    {
+      "date": "2024-12-01",
+      "marketCap": 22640
+    },
+    {
+      "date": "2025-01-01",
+      "marketCap": 24176
+    },
+    {
+      "date": "2025-02-01",
+      "marketCap": 24616
+    },
+    {
+      "date": "2025-03-01",
+      "marketCap": 26942
+    },
+    {
+      "date": "2025-04-01",
+      "marketCap": 28403
+    },
+    {
+      "date": "2025-05-01",
+      "marketCap": 28387
+    },
+    {
+      "date": "2025-06-01",
+      "marketCap": 28502
+    },
+    {
+      "date": "2025-07-01",
+      "marketCap": 28327
+    },
+    {
+      "date": "2025-08-01",
+      "marketCap": 29740
+    },
+    {
+      "date": "2025-09-01",
+      "marketCap": 33237
+    },
+    {
+      "date": "2025-10-01",
+      "marketCap": 34420
+    },
+    {
+      "date": "2025-11-01",
+      "marketCap": 36267
+    },
+    {
+      "date": "2025-12-01",
+      "marketCap": 37056
+    },
+    {
+      "date": "2026-01-01",
+      "marketCap": 41604
+    },
+    {
+      "date": "2026-02-01",
+      "marketCap": 45231
+    },
+    {
+      "date": "2026-03-01",
+      "marketCap": 40233
+    },
+    {
+      "date": "2026-04-01",
+      "marketCap": 39613
+    },
+    {
+      "date": "2026-05-01",
+      "marketCap": 39001
+    },
+    {
+      "date": "2026-06-18",
+      "marketCap": 36196
+    }
+  ],
+  "stats": {
+    "startCap": 10000,
+    "endCap": 36196,
+    "cagr": 0.13084336434083843,
+    "years": 10.461327857631758,
+    "startDate": "2016-01-01",
+    "endDate": "2026-06-18"
+  }
+}

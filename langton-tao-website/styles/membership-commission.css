@@ -1,0 +1,307 @@
+.commission-calculator-page {
+  background:
+    radial-gradient(circle at 15% 10%, rgb(255 230 0 / 0.12), transparent 42%),
+    radial-gradient(circle at 85% 20%, rgb(255 255 255 / 0.06), transparent 38%),
+    #09090b;
+}
+
+.commission-calculator {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgb(63 63 70 / 0.8);
+  background: rgb(24 24 27 / 0.92);
+}
+
+.commission-calculator--standalone {
+  border-color: rgb(255 230 0 / 0.22);
+  box-shadow:
+    0 0 0 1px rgb(255 230 0 / 0.08),
+    0 24px 80px rgb(0 0 0 / 0.45);
+}
+
+.commission-calculator__glow {
+  position: absolute;
+  inset: -40% -20% auto;
+  height: 280px;
+  background: radial-gradient(
+    ellipse at center,
+    rgb(255 230 0 / 0.16),
+    transparent 68%
+  );
+  pointer-events: none;
+}
+
+.commission-calculator__grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0;
+}
+
+@media (min-width: 960px) {
+  .commission-calculator__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+}
+
+.commission-calculator__panel {
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .commission-calculator__panel {
+    padding: 2rem;
+  }
+}
+
+.commission-calculator__panel--inputs {
+  border-bottom: 1px solid rgb(63 63 70 / 0.7);
+}
+
+@media (min-width: 960px) {
+  .commission-calculator__panel--inputs {
+    border-bottom: 0;
+    border-right: 1px solid rgb(63 63 70 / 0.7);
+  }
+}
+
+.commission-calculator__panel--result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+    160deg,
+    rgb(9 9 11 / 0.2),
+    rgb(255 230 0 / 0.06)
+  );
+}
+
+.commission-calculator__hero-copy {
+  margin-bottom: 1.75rem;
+}
+
+.commission-calculator__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(255 230 0 / 0.9);
+}
+
+.commission-calculator__title {
+  margin-top: 0.75rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: #fff;
+}
+
+.commission-calculator__lead {
+  margin-top: 0.75rem;
+  max-width: 34rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgb(161 161 170);
+}
+
+.commission-calculator__fields {
+  display: grid;
+  gap: 1rem;
+}
+
+.commission-calculator__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.commission-calculator__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(161 161 170);
+}
+
+.commission-calculator__select,
+.commission-calculator__input {
+  width: 100%;
+  border-radius: 0.85rem;
+  border: 1px solid rgb(63 63 70);
+  background: rgb(9 9 11 / 0.85);
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.commission-calculator__select:focus,
+.commission-calculator__input:focus {
+  outline: none;
+  border-color: rgb(255 230 0 / 0.65);
+  box-shadow: 0 0 0 3px rgb(255 230 0 / 0.12);
+}
+
+.commission-calculator__hint {
+  font-size: 0.75rem;
+  color: rgb(113 113 122);
+}
+
+.commission-calculator__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.commission-calculator__result-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(161 161 170);
+}
+
+.commission-calculator__result-value {
+  margin-top: 0.5rem;
+  font-size: clamp(2.75rem, 8vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  color: #ffe600;
+  text-shadow: 0 0 40px rgb(255 230 0 / 0.25);
+}
+
+.commission-calculator__result-value--muted {
+  color: rgb(161 161 170);
+  text-shadow: none;
+}
+
+.commission-calculator__result-rule {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.commission-calculator__result-breakdown {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgb(161 161 170);
+}
+
+.commission-calculator__result-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(63 63 70 / 0.7);
+}
+
+.commission-calculator__meta-key {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(113 113 122);
+}
+
+.commission-calculator__meta-val {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.commission-calculator__disclaimer {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgb(113 113 122);
+}
+
+.commission-calculator__disclaimer--warn {
+  color: rgb(250 204 21 / 0.85);
+}
+
+/* Inline variant on light member page */
+.jarsy-v2-page .commission-calculator:not(.commission-calculator--standalone) {
+  border-color: rgb(228 228 231);
+  background: #fff;
+}
+
+.jarsy-v2-page
+  .commission-calculator:not(.commission-calculator--standalone)
+  .commission-calculator__glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgb(255 230 0 / 0.08),
+    transparent 68%
+  );
+}
+
+.jarsy-v2-page
+  .commission-calculator:not(.commission-calculator--standalone)
+  .commission-calculator__panel--inputs {
+  border-color: rgb(228 228 231);
+}
+
+.jarsy-v2-page
+  .commission-calculator:not(.commission-calculator--standalone)
+  .commission-calculator__panel--result {
+  background: linear-gradient(160deg, #fafafa, rgb(255 230 0 / 0.08));
+}
+
+.jarsy-v2-page
+  .commission-calculator:not(.commission-calculator--standalone)
+  .commission-calculator__title,
+.jarsy-v2-page
+  .commission-calculator:not(.commission-calculator--standalone)
+  .commission-calculator__result-rule,
+.jarsy-v2-page
+  .commission-calculator:not(.commission-calculator--standalone)
+  .commission-calculator__meta-val {
+  color: #09090b;
+}
+
+.jarsy-v2-page
+  .commission-calculator:not(.commission-calculator--standalone)
+  .commission-calculator__select,
+.jarsy-v2-page
+  .commission-calculator:not(.commission-calculator--standalone)
+  .commission-calculator__input {
+  border-color: rgb(228 228 231);
+  background: #fff;
+  color: #09090b;
+}
+
+.jarsy-v2-page
+  .commission-calculator:not(.commission-calculator--standalone)
+  .commission-calculator__result-value {
+  color: #09090b;
+  text-shadow: none;
+}
+
+.jarsy-v2-page
+  .commission-calculator:not(.commission-calculator--standalone)
+  .commission-calculator__result-meta {
+  border-color: rgb(228 228 231);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .commission-calculator__result-value {
+    text-shadow: none;
+  }
+}
