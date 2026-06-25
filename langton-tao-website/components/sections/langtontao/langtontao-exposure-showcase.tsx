@@ -71,26 +71,24 @@ export function LangtontaoExposureShowcase() {
       <ul className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.slice(0, 24).map((item, index) => (
           <Coffee2Reveal key={item.id} delay={60 + (index % 6) * 40} as="li">
-            <li>
-              <button
-                type="button"
-                onClick={() =>
-                  setExpanded(expanded === item.id ? null : item.id)
-                }
-                className={cn(
-                  'lt-exposure-card w-full rounded-xl border p-3 text-left transition-shadow',
-                  severityStyles[item.severity],
-                  expanded === item.id && 'ring-2 ring-zinc-950'
-                )}
-              >
-                <p className="text-[10px] font-bold uppercase tracking-widest opacity-70">
-                  {item.category}
-                </p>
-                <p className="mt-1 text-sm font-semibold leading-snug">
-                  {item.label}
-                </p>
-              </button>
-            </li>
+            <button
+              type="button"
+              onClick={() =>
+                setExpanded(expanded === item.id ? null : item.id)
+              }
+              className={cn(
+                'lt-exposure-card w-full rounded-xl border p-3 text-left transition-shadow',
+                severityStyles[item.severity],
+                expanded === item.id && 'ring-2 ring-zinc-950'
+              )}
+            >
+              <p className="text-[10px] font-bold uppercase tracking-widest opacity-70">
+                {item.category}
+              </p>
+              <p className="mt-1 text-sm font-semibold leading-snug">
+                {item.label}
+              </p>
+            </button>
           </Coffee2Reveal>
         ))}
       </ul>

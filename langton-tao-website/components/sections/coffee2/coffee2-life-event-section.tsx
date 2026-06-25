@@ -7,6 +7,7 @@ import {
 } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Coffee2DisplayTypewriter } from '@/components/sections/coffee2/coffee2-display-typewriter'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
+import { Coffee2LifeEventJoinCta } from '@/components/sections/coffee2/coffee2-life-event-join-cta'
 import { Coffee2TopicSubsection } from '@/components/sections/coffee2/coffee2-topic-subsection'
 import { AssetClassesVennSection } from '@/components/sections/coffee2/asset-classes-venn-section'
 import { LegacySection } from '@/components/sections/coffee2/legacy-section'
@@ -16,6 +17,7 @@ import {
   type Coffee2SectionCopyBlock,
 } from '@/lib/content/coffee-glossary'
 import {
+  coffee2LifeEventJoinCtas,
   coffee2LifeEventTopicIds,
 } from '@/lib/content/coffee2-page'
 import { cn } from '@/lib/utils'
@@ -58,6 +60,7 @@ export function Coffee2LifeEventSection({
   index,
 }: Coffee2LifeEventSectionProps) {
   const nestedTopicIds = coffee2LifeEventTopicIds[event.id] ?? []
+  const joinCta = coffee2LifeEventJoinCtas[event.id]
   const { subtitle, body } = getSectionIntro(event)
 
   return (
@@ -145,6 +148,8 @@ export function Coffee2LifeEventSection({
             </div>
           </Coffee2Reveal>
         ) : null}
+
+        {joinCta ? <Coffee2LifeEventJoinCta content={joinCta} /> : null}
       </div>
     </section>
   )

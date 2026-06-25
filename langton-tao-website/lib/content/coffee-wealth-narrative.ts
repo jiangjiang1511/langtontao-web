@@ -12,6 +12,8 @@ export type WealthNarrativeNode = {
   summary?: string
   body?: string
   formula?: string
+  coverSrc?: string
+  posterSrc?: string
   stats?: WealthStatItem[]
   children?: WealthNarrativeNode[]
 }
@@ -34,11 +36,13 @@ export const wealthNarrativeRoot: WealthNarrativeNode = {
         {
           id: 'poverty-norm',
           title: '极度贫穷是常态',
+          coverSrc: '/assets/bearbitcoffee/wealthdelema/wealthdelema-01.jpg',
           body: '在工业革命之前，人类社会的默认状态是物质匮乏。财富积累极其缓慢，代际之间很难出现跃迁——「穷」不是偶然，而是系统缺位时的常态。',
         },
         {
           id: 'malthusian-trap',
           title: '马尔萨斯陷阱',
+          coverSrc: '/assets/bearbitcoffee/wealthdelema/wealthdelema-02.jpg',
           body: '人口增长快于粮食与产出增长，生产力一旦停滞，新增人口就会把人均资源拉回生存线。家庭层面表现为：靠勤劳难以摆脱结构性贫困，除非遭遇技术或制度的外生冲击。',
         },
       ],
@@ -51,6 +55,7 @@ export const wealthNarrativeRoot: WealthNarrativeNode = {
         {
           id: 'bayesian-acceleration',
           title: '贝叶斯式加速',
+          coverSrc: '/assets/bearbitcoffee/wealthdelema/breakthrough-01.jpg',
           summary: '在模糊的【四象】中不断寻找最优解。',
           formula: 'P(A|B) = P(B|A) × P(A) / P(B)',
           body: '财富的演进并非线性，而是基于人类在实践中不断获取新信息、修正先验概率、促成技术与契约系统升级的非线性过程。真正改变命运的，不是更辛苦地重复旧动作，而是一次次系统升级。对家庭财富来说也是一样：旧系统扛不住新摩擦，就必须升级。',
@@ -58,6 +63,7 @@ export const wealthNarrativeRoot: WealthNarrativeNode = {
         {
           id: 'system-upgrade',
           title: '系统升级',
+          coverSrc: '/assets/bearbitcoffee/wealthdelema/breakthrough-02.jpg',
           summary: '能源、信用、组织、技术、金融的连锁跃迁。',
           children: [
             {
@@ -90,6 +96,8 @@ export const wealthNarrativeRoot: WealthNarrativeNode = {
         {
           id: 'wealth-today',
           title: '现在的人类财富系统到了哪一步？',
+          coverSrc: '/assets/bearbitcoffee/wealthdelema/breakthrough-03.jpg',
+          posterSrc: '/assets/bearbitcoffee/wealthdelema/breakthrough-03poster.png',
           summary: '471 万亿宏大叙事——全球资产格局的五块拼图。',
           children: [
             {

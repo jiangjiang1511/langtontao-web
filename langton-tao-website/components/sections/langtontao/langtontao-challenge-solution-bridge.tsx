@@ -45,24 +45,22 @@ export function LangtontaoChallengeSolutionBridgeMobile() {
   return (
     <ul className="space-y-3 md:hidden">
       {langtontaoChallengeSolutionBridge.map((row, index) => (
-        <Coffee2Reveal key={row.challengeId} delay={index * 40} as="li">
-          <li className="c2-card p-4">
-            <p className="text-xs font-bold uppercase text-zinc-500">挑战</p>
-            <p className="mt-1 font-semibold text-zinc-950">{row.challenge}</p>
-            <p className="mt-3 text-xs font-bold uppercase text-zinc-500">理念</p>
-            <p className="mt-1 text-sm text-zinc-600">{row.philosophy}</p>
-            <button
-              type="button"
-              className="coffee2-cta-button mt-4 !min-w-0 !text-xs"
-              onClick={() =>
-                scrollToLangtontaoSolution(row.anchor, {
-                  challenge: row.challengeId,
-                })
-              }
-            >
-              {row.solution}
-            </button>
-          </li>
+        <Coffee2Reveal key={row.challengeId} delay={index * 40} as="li" className="c2-card p-4">
+          <p className="text-xs font-bold uppercase text-zinc-500">挑战</p>
+          <p className="mt-1 font-semibold text-zinc-950">{row.challenge}</p>
+          <p className="mt-3 text-xs font-bold uppercase text-zinc-500">理念</p>
+          <p className="mt-1 text-sm text-zinc-600">{row.philosophy}</p>
+          <button
+            type="button"
+            className="coffee2-cta-button mt-4 !min-w-0 !text-xs"
+            onClick={() =>
+              scrollToLangtontaoSolution(row.anchor, {
+                challenge: row.challengeId,
+              })
+            }
+          >
+            {row.solution}
+          </button>
         </Coffee2Reveal>
       ))}
     </ul>

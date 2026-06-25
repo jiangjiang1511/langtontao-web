@@ -6,20 +6,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import type { Coffee2Tenet } from '@/lib/content/coffee-manifesto'
+import {
+  hasCoffee2TenetDetail,
+  type Coffee2Tenet,
+} from '@/lib/content/coffee-manifesto'
 
 type Coffee2TenetDetailDialogProps = {
   tenet: Coffee2Tenet | null
   onClose: () => void
-}
-
-function hasDetailContent(tenet: Coffee2Tenet) {
-  const { detail } = tenet
-  if (!detail) return false
-  if (detail.intro) return true
-  if (detail.sections?.length) return true
-  if (detail.items?.length) return true
-  return false
 }
 
 export function Coffee2TenetDetailDialog({
@@ -44,7 +38,7 @@ export function Coffee2TenetDetailDialog({
             </DialogTitle>
           </DialogHeader>
 
-          {hasDetailContent(tenet) ? (
+          {hasCoffee2TenetDetail(tenet) ? (
             <div className="space-y-5 text-sm leading-relaxed text-zinc-600">
               {tenet.detail?.intro ? (
                 <p className="text-base text-zinc-700">{tenet.detail.intro}</p>

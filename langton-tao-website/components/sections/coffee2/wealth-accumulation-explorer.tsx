@@ -57,9 +57,10 @@ export function WealthAccumulationExplorer() {
 
   const handleTopicClick = useCallback((node: WealthNarrativeNode) => {
     if (!canOpenWealthTopicModal(node)) return
+    if (modalOpen && activeNode?.id === node.id) return
     setActiveNode(node)
     setModalOpen(true)
-  }, [])
+  }, [modalOpen, activeNode?.id])
 
   const handleModalOpenChange = useCallback((open: boolean) => {
     setModalOpen(open)

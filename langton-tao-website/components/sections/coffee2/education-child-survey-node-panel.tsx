@@ -15,6 +15,8 @@ export function EducationChildSurveyNodePanel({
   onSelect,
   className,
 }: EducationChildSurveyNodePanelProps) {
+  const isRoot = className?.includes('education-survey-node--root')
+
   return (
     <div className={cn('education-survey-node', className)}>
       <header className="education-survey-node__header">
@@ -24,7 +26,13 @@ export function EducationChildSurveyNodePanel({
         ) : null}
       </header>
 
-      <ul className="education-survey-node__choices" role="list">
+      <ul
+        className={cn(
+          'education-survey-node__choices',
+          isRoot && 'education-survey-node__choices--root'
+        )}
+        role="list"
+      >
         {question.options.map((option) => (
           <li key={option.id}>
             <button

@@ -62,11 +62,49 @@ export const coffee2EventsMeta = {
 } as const
 
 export const coffee2JoinBand = {
-  statement: '加入朗敦道，开启人生认知定投',
-  tagline: '与社群同频，在 Coffee Chat 中交换观点与心得。',
+  statement: '人生大事，在关系里认知定投',
+  tagline:
+    '活着、联盟、教育、养老、传承——五张牌你已看过一遍。若你也相信诚实对话比预设答案更值钱，欢迎加入朗敦道，与同道的人把 Coffee Chat 续成长期同行。',
   ctaLabel: '加入我们',
   ctaHref: '/member',
 } as const
+
+export type Coffee2LifeEventJoinCtaContent = {
+  statement: string
+  tagline: string
+  ctaLabel: string
+  ctaHref: string
+}
+
+export const coffee2LifeEventJoinCtas: Partial<
+  Record<Coffee2LifeEventId, Coffee2LifeEventJoinCtaContent>
+> = {
+  'life-living': {
+    statement:
+      '「活着」里最难的，往往不是灾情，而是和家人说不清的账本与安排。',
+    tagline: '在关系里认知定投——一杯咖啡，把投资与保全慢慢聊成共识。',
+    ctaLabel: coffee2JoinBand.ctaLabel,
+    ctaHref: coffee2JoinBand.ctaHref,
+  },
+  'life-alliance': {
+    statement: '联盟的起点，不是签合同，是敢于把期待与底线说给对方听。',
+    tagline: '与同道的人一起认知定投——让信任、利益与风险，在对话里对齐。',
+    ctaLabel: coffee2JoinBand.ctaLabel,
+    ctaHref: coffee2JoinBand.ctaHref,
+  },
+  'life-education': {
+    statement: '教育焦虑背后，常常是两个人对「家的未来」还没聊透。',
+    tagline: '在亲子关系里认知定投——先对齐期待，再谈路径与选择。',
+    ctaLabel: coffee2JoinBand.ctaLabel,
+    ctaHref: coffee2JoinBand.ctaHref,
+  },
+  'life-retirement': {
+    statement: '养老最怕的错位，是两个人对「后半生怎么过」从没认真谈过。',
+    tagline: '在陪伴的关系里认知定投——越早聊，越有余地过好下半程。',
+    ctaLabel: coffee2JoinBand.ctaLabel,
+    ctaHref: coffee2JoinBand.ctaHref,
+  },
+}
 
 export const coffee2TopicMeta: Record<
   Coffee2TopicId,

@@ -2,12 +2,14 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
+import { AssetQuadrantDetailDialog } from '@/components/sections/coffee2/asset-quadrant-detail-dialog'
 import {
   assetBubbleSizeByWeight,
   assetBubbles,
   assetQuadrantAxes,
   assetQuadrants,
   type AssetBubble,
+  type AssetQuadrantId,
 } from '@/lib/content/coffee-asset-classes'
 import { cn } from '@/lib/utils'
 
@@ -55,6 +57,9 @@ export function AssetClassesQuadrantChart({
   const chartRef = useRef<HTMLDivElement | null>(null)
   const stageRef = useRef<HTMLDivElement | null>(null)
   const [isExploded, setIsExploded] = useState(false)
+  const [activeQuadrant, setActiveQuadrant] = useState<AssetQuadrantId | null>(
+    null
+  )
 
   useEffect(() => {
     const frame = stageRef.current
@@ -186,14 +191,31 @@ export function AssetClassesQuadrantChart({
             delay={LEGEND_BASE_DELAY + index * LEGEND_STAGGER}
             className="invest-quadrant__legend-item"
           >
-            <span className="invest-quadrant__legend-accent" aria-hidden />
-            <div className="invest-quadrant__legend-body">
-              <span className="invest-quadrant__legend-label">{quadrant.label}</span>
-              <p className="invest-quadrant__legend-desc">{quadrant.description}</p>
-            </div>
+            <button
+              type="button"
+              className="invest-quadrant__legend-button"
+              onClick={() => setActiveQuadrant(quadrant.id)}
+              aria-haspopup="dialog"
+              aria-label={`查看${quadrant.label}资产列表`}
+            >
+              <span className="invest-quadrant__legend-accent" aria-hidden />
+              <div className="invest-quadrant__legend-body">
+                <span className="invest-quadrant__legend-label">
+                  {quadrant.label}
+                </span>
+                <p className="invest-quadrant__legend-desc">
+                  {quadrant.description}
+                </p>
+              </div>
+            </button>
           </Coffee2Reveal>
         ))}
       </ul>
+
+      <AssetQuadrantDetailDialog
+        quadrantId={activeQuadrant}
+        onClose={() => setActiveQuadrant(null)}
+      />
     </div>
   )
 }

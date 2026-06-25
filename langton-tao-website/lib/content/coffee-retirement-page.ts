@@ -109,7 +109,7 @@ export const retirementSectionMeta = {
   soulNextLabel: '下一题',
   soulCompleteLabel: '完成',
   soulPrevLabel: '上一题',
-  soulTapHint: '点选即下一题',
+  soulTapHint: '进入下一页',
   calcEyebrow: 'Interactive · 费用估算',
   calcTitle: '你的养老，每月要烧多少钱？',
   calcLead:

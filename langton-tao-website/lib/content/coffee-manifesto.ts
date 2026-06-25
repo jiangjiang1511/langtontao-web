@@ -25,6 +25,15 @@ export type Coffee2Tenet = {
   detail: Coffee2TenetDetail | null
 }
 
+export function hasCoffee2TenetDetail(tenet: Coffee2Tenet): boolean {
+  const { detail } = tenet
+  if (!detail) return false
+  if (detail.intro) return true
+  if (detail.sections?.length) return true
+  if (detail.items?.length) return true
+  return false
+}
+
 export const coffee2TenTopics: readonly Coffee2Tenet[] = [
   {
     number: '01',

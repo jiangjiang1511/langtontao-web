@@ -1,7 +1,10 @@
 'use client'
 
 import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
-import type { Coffee2Tenet } from '@/lib/content/coffee-manifesto'
+import {
+  hasCoffee2TenetDetail,
+  type Coffee2Tenet,
+} from '@/lib/content/coffee-manifesto'
 import { cn } from '@/lib/utils'
 
 type Coffee2TenetMarqueeCardProps = {
@@ -21,14 +24,10 @@ export function Coffee2TenetMarqueeCard({
   className,
 }: Coffee2TenetMarqueeCardProps) {
   const lines = formatCardSummary(tenet.cardSummary)
+  const isExpandable = hasCoffee2TenetDetail(tenet)
 
-  return (
-    <button
-      type="button"
-      className={cn('coffee2-tenet-card', className)}
-      onClick={() => onSelect(tenet)}
-      aria-label={`${tenet.number} ${tenet.title}，查看详细说明`}
-    >
+  const content = (
+    <>
       <div className="coffee2-tenet-card__head">
         <div className="coffee2-tenet-card__lead">
           <span className="coffee2-tenet-card__number">{tenet.number}</span>
@@ -54,6 +53,28 @@ export function Coffee2TenetMarqueeCard({
           ))
         )}
       </div>
+    </>
+  )
+
+  if (!isExpandable) {
+    return (
+      <div
+        className={cn('coffee2-tenet-card coffee2-tenet-card--static', className)}
+        aria-label={`${tenet.number} ${tenet.title}`}
+      >
+        {content}
+      </div>
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      className={cn('coffee2-tenet-card', className)}
+      onClick={() => onSelect(tenet)}
+      aria-label={`${tenet.number} ${tenet.title}，查看详细说明`}
+    >
+      {content}
     </button>
   )
 }

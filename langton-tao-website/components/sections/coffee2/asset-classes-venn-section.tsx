@@ -1,11 +1,9 @@
-import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import { AssetClassesQuadrantChart } from '@/components/sections/coffee2/asset-classes-quadrant-chart'
 import { assetClassesSectionMeta } from '@/lib/content/coffee-asset-classes'
 
 const INTRO_EYEBROW_DELAY = 0
 const INTRO_TITLE_DELAY = 140
-const INTRO_LEAD_DELAY = 280
 
 export function AssetClassesVennSection() {
   return (
@@ -23,12 +21,6 @@ export function AssetClassesVennSection() {
           >
             {assetClassesSectionMeta.title}
           </h3>
-        </Coffee2Reveal>
-        <Coffee2Reveal delay={INTRO_LEAD_DELAY}>
-          <Coffee2AnnotatedText
-            text={assetClassesSectionMeta.lead}
-            className="invest-venn-section__intro-lead mt-3 max-w-2xl text-sm leading-relaxed text-zinc-500 md:text-base"
-          />
         </Coffee2Reveal>
       </div>
 

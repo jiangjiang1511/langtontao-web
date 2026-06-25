@@ -159,6 +159,7 @@ export function EducationChildSurveyNavigator({
           />
         ) : (
           <EducationChildSurveyNodePanel
+            className="education-survey-node--root"
             question={{
               id: 'root',
               prompt: rootPanel.prompt,

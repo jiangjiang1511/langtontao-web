@@ -115,7 +115,7 @@ export function LegacySurveyQuestionCard({
           ) : (
             <span />
           )}
-          <span className="text-xs text-zinc-400">点选即下一题</span>
+          <span className="text-xs text-zinc-400">进入下一页</span>
         </div>
       </div>
     </div>

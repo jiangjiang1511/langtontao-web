@@ -5,10 +5,6 @@
   overflow-x: clip;
 }
 
-.invest-venn-section__intro-lead {
-  margin-inline: auto;
-}
-
 .invest-venn-section__chart.invest-quadrant {
   width: 100%;
   --quadrant-scale: 0.55;
@@ -392,6 +388,22 @@
   transform: translateY(-1px);
 }
 
+.invest-quadrant__legend-button {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+}
+
+.invest-quadrant__legend-button:focus-visible {
+  outline: 2px solid var(--iq-black);
+  outline-offset: 2px;
+}
+
 .invest-quadrant__legend-accent {
   position: absolute;
   left: 0;
@@ -418,6 +430,16 @@
   font-size: 0.75rem;
   line-height: 1.55;
   color: #52525b;
+}
+
+.invest-quadrant-dialog {
+  border-radius: 1rem;
+}
+
+.invest-quadrant-dialog__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Wealth accumulation — topic zones + cards */
@@ -538,6 +560,13 @@
   position: relative;
 }
 
+.invest-wealth-topic-card__visual--cover {
+  background-image: var(--wealth-topic-visual-bg), var(--wealth-topic-cover-image);
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+}
+
 .invest-wealth-topic-card__visual::after {
   content: '';
   position: absolute;
@@ -583,6 +612,35 @@
 
 .invest-wealth-topic-modal {
   padding-top: 1.75rem;
+}
+
+.invest-wealth-topic-modal__poster-wrap {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.invest-wealth-topic-modal__poster {
+  display: block;
+  width: 100%;
+  max-height: min(60vh, 32rem);
+  object-fit: contain;
+  border-radius: 0.875rem;
+  border: 2px solid #e4e4e7;
+  background: #09090b;
+}
+
+.invest-wealth-topic-modal__share-band {
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.125rem;
+  border-radius: 0.875rem;
+  border: 2px solid #e4e4e7;
+  background: linear-gradient(145deg, #fffef5 0%, #fff9c4 55%, #ffe60022 100%);
+}
+
+.invest-wealth-topic-modal__share {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 /* Wealth section — stronger staggered entrance */

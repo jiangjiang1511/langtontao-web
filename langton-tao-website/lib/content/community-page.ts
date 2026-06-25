@@ -124,7 +124,7 @@ export const millionairePlanFilters: {
   id: MillionairePlanFilterId
   label: string
 }[] = [
-  { id: 'upcoming', label: '即将开始' },
+  { id: 'upcoming', label: '全部活动' },
   { id: 'online-course', label: '线上课' },
   { id: 'salon', label: '财富沙龙' },
   { id: 'education-salon', label: '教育沙龙' },

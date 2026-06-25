@@ -7,7 +7,7 @@ import type { WealthNarrativeNode } from '@/lib/content/coffee-wealth-narrative'
 import {
   canOpenWealthTopicModal,
   getWealthTopicTeaser,
-  getWealthTopicVisualTheme,
+  getWealthTopicVisualStyle,
 } from '@/lib/content/wealth-topic-utils'
 import { cn } from '@/lib/utils'
 
@@ -26,22 +26,22 @@ export function WealthTopicCard({
 }: WealthTopicCardProps) {
   const interactive = canOpenWealthTopicModal(node)
   const teaser = getWealthTopicTeaser(node)
-  const theme = getWealthTopicVisualTheme(index)
+  const visualStyle = getWealthTopicVisualStyle(index, node.coverSrc)
   const displayIndex = String(index + 1).padStart(2, '0')
-
-  const visualStyle = {
-    '--wealth-topic-visual-bg': theme.background,
-    '--wealth-topic-visual-glyph': theme.glyph,
-  } as CSSProperties
 
   const content = (
     <>
       <div
-        className="invest-wealth-topic-card__visual"
-        style={visualStyle}
+        className={cn(
+          'invest-wealth-topic-card__visual',
+          node.coverSrc && 'invest-wealth-topic-card__visual--cover'
+        )}
+        style={visualStyle as CSSProperties}
         aria-hidden
       >
-        <span className="invest-wealth-topic-card__visual-index">{displayIndex}</span>
+        {!node.coverSrc ? (
+          <span className="invest-wealth-topic-card__visual-index">{displayIndex}</span>
+        ) : null}
       </div>
       <div className="invest-wealth-topic-card__copy">
         <h5 className="invest-wealth-topic-card__title">{node.title}</h5>

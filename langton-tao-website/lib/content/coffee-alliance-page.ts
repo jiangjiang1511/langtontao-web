@@ -53,7 +53,7 @@ export const allianceSurveys: readonly AllianceSurveyDefinition[] = [
     eyebrow: '同盟 · 伴侣',
     title: '家里的账，是同一张吗？',
     hook: '观念、价值观与信息三同频——从伴侣关系里的财务沉默开始问。',
-    hint: '点选即下一题',
+    hint: '进入下一页',
     questions: [
       {
         id: 'partner-dialogue',
@@ -114,7 +114,7 @@ export const allianceSurveys: readonly AllianceSurveyDefinition[] = [
     eyebrow: '同盟 · 合伙人',
     title: '合伙的账，写得清吗？',
     hook: '权责、分红、退出与信息对称——事业同盟的裂缝常从「没说清」开始。',
-    hint: '点选即下一题',
+    hint: '进入下一页',
     questions: [
       {
         id: 'cofounder-liability',
@@ -176,7 +176,7 @@ export const allianceSurveys: readonly AllianceSurveyDefinition[] = [
     eyebrow: '同盟 · 公司',
     title: '公司债，会进家门吗？',
     hook: '家企边界、担保敞口与输血决策——公司往往是家庭资产负债表里的暗线。',
-    hint: '点选即下一题',
+    hint: '进入下一页',
     questions: [
       {
         id: 'company-books',
@@ -238,7 +238,7 @@ export const allianceSurveys: readonly AllianceSurveyDefinition[] = [
     eyebrow: '同盟 · 挚友',
     title: '朋友之间，钱怎么算？',
     hook: '人情与规则、担保与跟投——友谊常在金钱面前接受压力测试。',
-    hint: '点选即下一题',
+    hint: '进入下一页',
     questions: [
       {
         id: 'friend-rules',

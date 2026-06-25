@@ -18,13 +18,10 @@ export function EducationChildSurveyProgress({
   return (
     <div
       className={cn('education-survey-progress', className)}
-      aria-label={`问卷进度 ${current} / ${total}`}
+      aria-label={`对话进度，第 ${current} 步`}
     >
       <div className="education-survey-progress__meta">
-        <span className="education-survey-progress__label">进度</span>
-        <span className="education-survey-progress__count">
-          {current} / {total}
-        </span>
+        <span className="education-survey-progress__label">聊到哪了</span>
       </div>
       <ol className="education-survey-progress__steps" aria-hidden>
         {Array.from({ length: total }, (_, index) => {

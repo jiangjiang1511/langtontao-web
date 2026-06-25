@@ -1,0 +1,10 @@
+{
+  "name": "langton-tao-web-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix langton-tao-website",
+    "build": "npm run build --prefix langton-tao-website",
+    "start": "npm run start --prefix langton-tao-website",
+    "lint": "npm run lint --prefix langton-tao-website"
+  }
+}
