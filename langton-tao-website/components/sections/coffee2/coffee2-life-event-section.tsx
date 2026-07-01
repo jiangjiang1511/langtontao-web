@@ -1,25 +1,17 @@
-import { EducationSection } from '@/components/sections/coffee2/education-section'
-import { AllianceSurveySection } from '@/components/sections/coffee2/alliance-survey-section'
-import { RetirementSection } from '@/components/sections/coffee2/retirement-section'
 import {
   Coffee2AnnotatedParagraph,
   Coffee2AnnotatedText,
 } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Coffee2DisplayTypewriter } from '@/components/sections/coffee2/coffee2-display-typewriter'
-import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
+import { Coffee2LifeEventInteractive } from '@/components/sections/coffee2/coffee2-life-event-interactive'
 import { Coffee2LifeEventJoinCta } from '@/components/sections/coffee2/coffee2-life-event-join-cta'
-import { Coffee2TopicSubsection } from '@/components/sections/coffee2/coffee2-topic-subsection'
-import { AssetClassesVennSection } from '@/components/sections/coffee2/asset-classes-venn-section'
-import { LegacySection } from '@/components/sections/coffee2/legacy-section'
+import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import type { Coffee2LifeEvent } from '@/lib/content/coffee-manifesto'
 import {
   isAnnotatedSectionCopyBlock,
   type Coffee2SectionCopyBlock,
 } from '@/lib/content/coffee-glossary'
-import {
-  coffee2LifeEventJoinCtas,
-  coffee2LifeEventTopicIds,
-} from '@/lib/content/coffee2-page'
+import { coffee2LifeEventJoinCtas } from '@/lib/content/coffee2-page'
 import { cn } from '@/lib/utils'
 
 type Coffee2LifeEventSectionProps = {
@@ -59,7 +51,6 @@ export function Coffee2LifeEventSection({
   event,
   index,
 }: Coffee2LifeEventSectionProps) {
-  const nestedTopicIds = coffee2LifeEventTopicIds[event.id] ?? []
   const joinCta = coffee2LifeEventJoinCtas[event.id]
   const { subtitle, body } = getSectionIntro(event)
 
@@ -108,46 +99,7 @@ export function Coffee2LifeEventSection({
           </div>
         </div>
 
-        {event.id === 'life-living' ? (
-          <div className="mt-16 md:mt-24 lg:mt-32">
-            <AssetClassesVennSection />
-          </div>
-        ) : null}
-
-        {event.id === 'life-living' ? (
-          <div className="coffee2-living-topics mt-16 md:mt-24 lg:mt-32">
-            {nestedTopicIds.map((topicId) => (
-              <Coffee2TopicSubsection key={topicId} topicId={topicId} />
-            ))}
-          </div>
-        ) : null}
-
-        {event.id === 'life-legacy' ? <LegacySection /> : null}
-
-        {event.id === 'life-alliance' ? (
-          <AllianceSurveySection />
-        ) : null}
-
-        {event.id === 'life-retirement' ? (
-          <RetirementSection />
-        ) : null}
-
-        {event.id === 'life-education' ? <EducationSection /> : null}
-
-        {event.id !== 'life-living' &&
-        event.id !== 'life-legacy' &&
-        event.id !== 'life-alliance' &&
-        event.id !== 'life-retirement' &&
-        event.id !== 'life-education' ? (
-          <Coffee2Reveal delay={80} className="mt-10">
-            <div className="c2-debt-empty mx-auto max-w-2xl px-8 py-16 text-center md:py-20">
-              <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
-                Coming Soon
-              </p>
-              <p className="mt-4 text-lg font-medium text-zinc-600">内容待补充</p>
-            </div>
-          </Coffee2Reveal>
-        ) : null}
+        <Coffee2LifeEventInteractive eventId={event.id} />
 
         {joinCta ? <Coffee2LifeEventJoinCta content={joinCta} /> : null}
       </div>

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Toaster } from 'sonner'
+import { RoutePrefetcher } from '@/components/layout/route-prefetcher'
+import { NavigationPendingProvider } from '@/components/navigation/navigation-pending-context'
 import { ContactProvider } from '@/components/providers/contact-provider'
 import { GlossaryProvider } from '@/components/providers/glossary-provider'
 import { StripCursorBrowserRefs } from '@/components/dev/strip-cursor-browser-refs'
@@ -22,18 +24,21 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body className="min-h-screen antialiased">
-        <StripCursorBrowserRefs />
-        <ContactProvider>
-          <GlossaryProvider>
-            <SiteHeader />
-            <main>{children}</main>
-            <SiteFooter />
-            <Toaster position="top-center" richColors />
-            {process.env.NODE_ENV === 'development' ? (
-              <ViewportDebugBadge />
-            ) : null}
-          </GlossaryProvider>
-        </ContactProvider>
+        <NavigationPendingProvider>
+          <StripCursorBrowserRefs />
+          <RoutePrefetcher />
+          <ContactProvider>
+            <GlossaryProvider>
+              <SiteHeader />
+              <main>{children}</main>
+              <SiteFooter />
+              <Toaster position="top-center" richColors />
+              {process.env.NODE_ENV === 'development' ? (
+                <ViewportDebugBadge />
+              ) : null}
+            </GlossaryProvider>
+          </ContactProvider>
+        </NavigationPendingProvider>
       </body>
     </html>
   )

@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import { footerSiteNav, footerSpotlightNav } from '@/lib/site-nav'
+import { FooterNavLinks } from '@/components/navigation/footer-nav-links'
 
 export function SiteFooter() {
   return (
@@ -13,32 +12,7 @@ export function SiteFooter() {
         </div>
         <div>
           <p className="text-sm font-black text-pop-yellow">导航</p>
-          <div className="mt-3 grid grid-cols-2 gap-x-8">
-            <ul className="space-y-2">
-              {footerSiteNav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm font-bold text-pop-white/80 hover:text-pop-yellow"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <ul className="space-y-2">
-              {footerSpotlightNav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-sm font-bold text-pop-white/80 hover:text-pop-yellow"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterNavLinks />
         </div>
         <div>
           <p className="text-sm font-black text-pop-yellow">合规声明</p>

@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { Coffee2LifeEventSection } from '@/components/sections/coffee2/coffee2-life-event-section'
+import { DeferredMount } from '@/components/shared/deferred-mount'
 import { coffee2LifeEvents } from '@/lib/content/coffee-manifesto'
 
 export function Coffee2LifeEventsContent() {
@@ -17,7 +18,13 @@ export function Coffee2LifeEventsContent() {
   return (
     <div id="coffee-life-events-content">
       {coffee2LifeEvents.map((event, index) => (
-        <Coffee2LifeEventSection key={event.id} event={event} index={index} />
+        <DeferredMount
+          key={event.id}
+          anchorId={event.id}
+          minHeight={index === 0 ? '45vh' : '50vh'}
+        >
+          <Coffee2LifeEventSection event={event} index={index} />
+        </DeferredMount>
       ))}
     </div>
   )

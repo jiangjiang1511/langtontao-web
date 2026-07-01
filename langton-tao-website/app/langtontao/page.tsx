@@ -1,13 +1,12 @@
 import { TopicCardHashScrollHost } from '@/hooks/use-topic-card-hash-scroll'
 import type { Metadata } from 'next'
+import dynamic from 'next/dynamic'
 import { JarsyJoinBand } from '@/components/jarsy/jarsy-join-band'
 import { LangtontaoHeroSection } from '@/components/sections/langtontao/langtontao-hero-section'
-import { LangtontaoHomeRootsSection } from '@/components/sections/langtontao/langtontao-home-roots-section'
-import { LangtontaoCheckupMajorSection } from '@/components/sections/langtontao/langtontao-checkup-major-section'
 import { LangtontaoPillarsSection } from '@/components/sections/langtontao/langtontao-pillars-section'
 import { LangtontaoSectionNav } from '@/components/sections/langtontao/langtontao-section-nav'
-import { LangtontaoSuperheroSection } from '@/components/sections/langtontao/langtontao-superhero-section'
-import { LangtontaoYitishuangkuaSection } from '@/components/sections/langtontao/langtontao-yitishuangkua-section'
+import { DeferredMount } from '@/components/shared/deferred-mount'
+import { SectionLoadingFallback } from '@/components/shared/section-loading-fallback'
 import {
   langtontaoJoinBand,
   langtontaoPageMeta,
@@ -21,6 +20,38 @@ export const metadata: Metadata = {
   description: langtontaoPageMeta.description,
 }
 
+const LangtontaoHomeRootsSection = dynamic(
+  () =>
+    import('@/components/sections/langtontao/langtontao-home-roots-section').then(
+      (module) => ({ default: module.LangtontaoHomeRootsSection })
+    ),
+  { loading: () => <SectionLoadingFallback label="加载何以为家…" /> }
+)
+
+const LangtontaoSuperheroSection = dynamic(
+  () =>
+    import('@/components/sections/langtontao/langtontao-superhero-section').then(
+      (module) => ({ default: module.LangtontaoSuperheroSection })
+    ),
+  { loading: () => <SectionLoadingFallback label="加载超级英雄之旅…" /> }
+)
+
+const LangtontaoCheckupMajorSection = dynamic(
+  () =>
+    import('@/components/sections/langtontao/langtontao-checkup-major-section').then(
+      (module) => ({ default: module.LangtontaoCheckupMajorSection })
+    ),
+  { loading: () => <SectionLoadingFallback label="加载财富健康体检…" /> }
+)
+
+const LangtontaoYitishuangkuaSection = dynamic(
+  () =>
+    import('@/components/sections/langtontao/langtontao-yitishuangkua-section').then(
+      (module) => ({ default: module.LangtontaoYitishuangkuaSection })
+    ),
+  { loading: () => <SectionLoadingFallback label="加载一体双跨…" /> }
+)
+
 export default function LangtontaoPage() {
   return (
     <div className="jarsy-v2-page coffee2-page langtontao-page bg-white text-zinc-950">
@@ -28,10 +59,23 @@ export default function LangtontaoPage() {
       <LangtontaoSectionNav />
       <LangtontaoHeroSection />
       <LangtontaoPillarsSection />
-      <LangtontaoHomeRootsSection />
-      <LangtontaoSuperheroSection />
-      <LangtontaoCheckupMajorSection />
-      <LangtontaoYitishuangkuaSection />
+
+      <DeferredMount anchorId="home-roots" minHeight="55vh">
+        <LangtontaoHomeRootsSection />
+      </DeferredMount>
+
+      <DeferredMount anchorId="superhero" minHeight="55vh">
+        <LangtontaoSuperheroSection />
+      </DeferredMount>
+
+      <DeferredMount anchorId="wealth-checkup" minHeight="50vh">
+        <LangtontaoCheckupMajorSection />
+      </DeferredMount>
+
+      <DeferredMount anchorId="yitishuangkua" minHeight="45vh">
+        <LangtontaoYitishuangkuaSection />
+      </DeferredMount>
+
       <JarsyJoinBand
         id="langtontao-join-band"
         statement={langtontaoJoinBand.statement}

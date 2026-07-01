@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
-import { MembershipCommissionSection } from '@/components/sections/membership-v2/membership-commission-section'
-import { MembershipBenefitBars } from '@/components/sections/membership-v2/membership-benefit-bars'
-import { MembershipBoardSection } from '@/components/sections/membership-v2/membership-board-section'
-import { MembershipComparisonTable } from '@/components/sections/membership-v2/membership-comparison-table'
+import dynamic from 'next/dynamic'
+import { DeferredMount } from '@/components/shared/deferred-mount'
+import { SectionLoadingFallback } from '@/components/shared/section-loading-fallback'
 import { MembershipPricingOverview } from '@/components/sections/membership-v2/membership-pricing-overview'
 import { MembershipV2HeroSection } from '@/components/sections/membership-v2/membership-v2-hero-section'
 import { membershipV2Hero } from '@/lib/content/membership-v2'
@@ -16,6 +15,38 @@ export const metadata: Metadata = {
   description:
     '消费Cosco，家办好事多。开启人生认知定投，掌握普通人的投资学，推开门打开更大的世界。',
 }
+
+const MembershipCommissionSection = dynamic(
+  () =>
+    import('@/components/sections/membership-v2/membership-commission-section').then(
+      (module) => ({ default: module.MembershipCommissionSection })
+    ),
+  { loading: () => <SectionLoadingFallback label="加载渠道收益…" /> }
+)
+
+const MembershipBenefitBars = dynamic(
+  () =>
+    import('@/components/sections/membership-v2/membership-benefit-bars').then(
+      (module) => ({ default: module.MembershipBenefitBars })
+    ),
+  { loading: () => <SectionLoadingFallback label="加载权益详情…" /> }
+)
+
+const MembershipComparisonTable = dynamic(
+  () =>
+    import('@/components/sections/membership-v2/membership-comparison-table').then(
+      (module) => ({ default: module.MembershipComparisonTable })
+    ),
+  { loading: () => <SectionLoadingFallback label="加载计划对比…" /> }
+)
+
+const MembershipBoardSection = dynamic(
+  () =>
+    import('@/components/sections/membership-v2/membership-board-section').then(
+      (module) => ({ default: module.MembershipBoardSection })
+    ),
+  { loading: () => <SectionLoadingFallback label="加载私董会…" /> }
+)
 
 export default function MemberPage() {
   return (
@@ -34,28 +65,34 @@ export default function MemberPage() {
         </div>
       </section>
 
-      <MembershipCommissionSection />
+      <DeferredMount anchorId="commission-overview" minHeight="50vh">
+        <MembershipCommissionSection />
+      </DeferredMount>
 
-      <section
-        className="member-section member-section--benefits border-b border-zinc-200 bg-zinc-50 py-12 md:py-16"
-        aria-labelledby="tier-benefits-heading"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="sr-only" id="tier-benefits-heading">
-            权益详情
-          </p>
-          <MembershipBenefitBars />
-        </div>
-      </section>
+      <DeferredMount anchorId="tier-benefits" minHeight="55vh">
+        <section
+          className="member-section member-section--benefits border-b border-zinc-200 bg-zinc-50 py-12 md:py-16"
+          aria-labelledby="tier-benefits-heading"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="sr-only" id="tier-benefits-heading">
+              权益详情
+            </p>
+            <MembershipBenefitBars />
+          </div>
+        </section>
+      </DeferredMount>
 
-      <section
-        className="member-section member-section--compare border-b border-zinc-200 py-16 md:py-24"
-        aria-labelledby="plan-compare"
-      >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <MembershipComparisonTable />
-        </div>
-      </section>
+      <DeferredMount anchorId="plan-compare" minHeight="50vh">
+        <section
+          className="member-section member-section--compare border-b border-zinc-200 py-16 md:py-24"
+          aria-labelledby="plan-compare"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <MembershipComparisonTable />
+          </div>
+        </section>
+      </DeferredMount>
 
       <section className="member-section member-section--disclaimer border-b border-zinc-200 py-10 md:py-12">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
@@ -65,7 +102,9 @@ export default function MemberPage() {
         </div>
       </section>
 
-      <MembershipBoardSection />
+      <DeferredMount anchorId="tier-board" minHeight="40vh">
+        <MembershipBoardSection />
+      </DeferredMount>
     </div>
   )
 }
