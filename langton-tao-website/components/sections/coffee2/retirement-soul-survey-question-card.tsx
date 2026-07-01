@@ -75,10 +75,8 @@ export function RetirementSoulSurveyQuestionCard({
                 <button
                   type="button"
                   className={cn(
-                    'retirement-soul-survey-option w-full rounded-xl border-2 px-4 py-3 text-left text-sm transition-all',
-                    selected
-                      ? 'retirement-soul-survey-option--selected'
-                      : 'border-zinc-200 bg-white hover:border-amber-300',
+                    'c2-pop-option retirement-soul-survey-option w-full px-4 py-3 text-left text-sm',
+                    selected && 'retirement-soul-survey-option--selected',
                     disabled && 'pointer-events-none opacity-60'
                   )}
                   data-selected={selected}
@@ -92,7 +90,7 @@ export function RetirementSoulSurveyQuestionCard({
           })}
         </ul>
 
-        <div className="retirement-chart-card__footer mt-4 shrink-0 border-t border-amber-100 pt-4">
+        <div className="retirement-chart-card__footer mt-4 shrink-0 border-t-2 border-zinc-950 pt-4">
           <div
             className="mb-4 flex justify-center gap-2"
             role="tablist"

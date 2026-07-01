@@ -3,6 +3,8 @@ import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import { Coffee2TypewriterReveal } from '@/components/sections/coffee2/coffee2-typewriter-reveal'
 import { LangtontaoHeroLogoOrbit } from '@/components/sections/langtontao/langtontao-hero-logo-orbit'
 import { langtontaoHero } from '@/lib/content/langtontao-page'
+import { aboutLangtonPageEnabled } from '@/lib/site-nav'
+import { cn } from '@/lib/utils'
 
 export function LangtontaoHeroSection() {
   return (
@@ -49,12 +51,23 @@ export function LangtontaoHeroSection() {
           <Coffee2Reveal eager delay={1480} className="langtontao-hero__cta mt-10 w-full">
             <div className="flex flex-col items-center gap-2">
               <div className="coffee2-page">
-                <Link
-                  href={langtontaoHero.cta.href}
-                  className="coffee2-cta-button"
-                >
-                  {langtontaoHero.cta.label}
-                </Link>
+                {aboutLangtonPageEnabled ? (
+                  <Link
+                    href={langtontaoHero.cta.href}
+                    className="coffee2-cta-button"
+                  >
+                    {langtontaoHero.cta.label}
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    className={cn('coffee2-cta-button', 'cursor-default opacity-60')}
+                    disabled
+                    aria-disabled="true"
+                  >
+                    {langtontaoHero.cta.label}
+                  </button>
+                )}
               </div>
               <p className="text-center text-xs font-medium text-zinc-500">
                 {langtontaoHero.cta.description}

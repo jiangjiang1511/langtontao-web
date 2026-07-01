@@ -23,12 +23,15 @@ export function Coffee2PreservationInsurerHub({
   revealDelay = 160,
 }: Coffee2PreservationInsurerHubProps) {
   const insurers = coffeePreservationInsurers
-  const [selectedInsurerId, setSelectedInsurerId] = useState<string | null>(null)
+  const defaultInsurer = insurers[0] ?? null
+  const [selectedInsurerId, setSelectedInsurerId] = useState<string | null>(
+    () => defaultInsurer?.id ?? null
+  )
   const [displayInsurer, setDisplayInsurer] = useState<CoffeePreservationInsurer | null>(
-    null
+    () => defaultInsurer
   )
   const [swapTarget, setSwapTarget] = useState<CoffeePreservationInsurer | null>(null)
-  const [drawerPhase, setDrawerPhase] = useState<PreservationDrawerPhase>('closed')
+  const [drawerPhase, setDrawerPhase] = useState<PreservationDrawerPhase>('open')
   const swapTargetRef = useRef<CoffeePreservationInsurer | null>(null)
   const reduceMotionRef = useRef(false)
   const transitionGenRef = useRef(0)

@@ -8,6 +8,7 @@ import {
   CENTER_MOTION_STAGGER_MS,
   useCenterZoneVisible,
 } from '@/components/sections/home-jarsy/use-center-zone-visible'
+import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 
 type HomeJarsyFeatureBlocksProps = {
   products: FiftyYearProduct[]
@@ -61,7 +62,7 @@ function FeatureCard({
 
       {product.summary ? (
         <p className="mt-3 text-sm leading-relaxed text-zinc-600 md:mt-4 md:text-base">
-          {product.summary}
+          <Coffee2AnnotatedText text={product.summary} as="span" />
         </p>
       ) : null}
 

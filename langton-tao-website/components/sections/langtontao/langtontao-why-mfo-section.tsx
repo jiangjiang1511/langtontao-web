@@ -1,7 +1,6 @@
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
-import { LangtontaoDecadeWishlistDeck } from '@/components/sections/langtontao/langtontao-decade-wishlist-deck'
+import { LangtontaoDecadeWishlistBook } from '@/components/sections/langtontao/langtontao-decade-wishlist-book'
 import { LangtontaoExposureShowcase } from '@/components/sections/langtontao/langtontao-exposure-showcase'
-import { LangtontaoOpportunityNeeds } from '@/components/sections/langtontao/langtontao-opportunity-needs'
 import {
   langtontaoMfoNeedLines,
   langtontaoWhyMfoMeta,
@@ -28,7 +27,24 @@ export function LangtontaoWhyMfoSection() {
           </p>
         </Coffee2Reveal>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="lt-exposure-showcase-block mt-10">
+          <div className="lt-exposure-showcase__bg" aria-hidden>
+            <div className="lt-exposure-showcase__bg-surface" />
+            <div className="lt-exposure-showcase__glow lt-exposure-showcase__glow--a" />
+            <div className="lt-exposure-showcase__glow lt-exposure-showcase__glow--b" />
+          </div>
+          <h3 className="relative z-10 c2-display text-2xl text-zinc-950 md:text-3xl">
+            家庭风险敞口
+          </h3>
+          <p className="relative z-10 mt-2 text-sm text-zinc-600">
+            系统化识别与管理家庭资产负债表风险——点击分类筛选，在流动画面中查看关注等级。
+          </p>
+          <div className="relative z-10 mt-8">
+            <LangtontaoExposureShowcase />
+          </div>
+        </div>
+
+        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {langtontaoMfoNeedLines.map((line, index) => (
             <Coffee2Reveal key={line.id} delay={80 + index * 60} as="article">
               <article className="c2-card h-full p-5">
@@ -47,33 +63,17 @@ export function LangtontaoWhyMfoSection() {
         </div>
 
         <div className="mt-16">
-          <h3 className="c2-display text-2xl text-zinc-950 md:text-3xl">
-            家庭风险敞口
-          </h3>
-          <p className="mt-2 text-sm text-zinc-600">
-            系统化识别与管理家庭资产负债表风险——点击分类筛选，查看关注等级。
-          </p>
-          <div className="mt-8">
-            <LangtontaoExposureShowcase />
-          </div>
-        </div>
-
-        <div className="mt-16">
-          <LangtontaoOpportunityNeeds />
-        </div>
-
-        <div className="mt-16">
           <Coffee2Reveal>
             <p className="c2-eyebrow">{langtontaoWhyMfoMeta.eyebrow}</p>
             <h3 className="c2-display mt-2 text-2xl text-zinc-950 md:text-3xl">
               家庭十年愿望清单
             </h3>
             <p className="mt-2 text-sm text-zinc-600">
-              财富 · 关系 · 教育 · 传承——勾勒你们家未来十年的优先序。
+              财富 · 关系 · 教育 · 传承——沿时间轴途经节点作答，勾勒未来十年优先序。
             </p>
           </Coffee2Reveal>
           <div className="mt-8">
-            <LangtontaoDecadeWishlistDeck />
+            <LangtontaoDecadeWishlistBook />
           </div>
         </div>
       </div>

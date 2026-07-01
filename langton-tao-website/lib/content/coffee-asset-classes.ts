@@ -8,7 +8,7 @@ export type AssetBubble = {
   id: string
   label: string
   quadrant: AssetQuadrantId
-  /** 常见度 1–5，决定气泡尺寸 */
+  /** 常见度 1–5，决定资产框尺寸 */
   weight: number
   color: string
   /** 在整张图内的相对位置（百分比） */
@@ -26,7 +26,7 @@ export type AssetQuadrant = {
 export const assetClassesSectionMeta = {
   eyebrow: 'Asset Map · 资产地图',
   title: '你的家庭有哪些大类资产？',
-  lead: '家庭在「活着」议题里面对的，不只是股票与房产——还有数字账号、藏品、保险与人脉。四象限气泡图按「常见度」与资产属性分布，一览可能遇到的处置类型。',
+  lead: '家庭在「活着」议题里面对的，不只是股票与房产——还有数字账号、藏品、保险与人脉。四象限资产图按「常见度」与资产属性分布，一览可能遇到的处置类型。',
 } as const
 
 export const assetQuadrantAxes = {
@@ -63,13 +63,16 @@ export const assetQuadrants: AssetQuadrant[] = [
   },
 ]
 
-/** 气泡尺寸：weight → 直径 px */
-export const assetBubbleSizeByWeight: Record<number, number> = {
-  5: 96,
-  4: 80,
-  3: 64,
-  2: 50,
-  1: 40,
+/** 资产框尺寸：weight → 宽/高 px（再按标签长度微调宽度） */
+export const assetTileSizeByWeight: Record<
+  number,
+  { width: number; height: number }
+> = {
+  5: { width: 76, height: 38 },
+  4: { width: 88, height: 38 },
+  3: { width: 80, height: 36 },
+  2: { width: 96, height: 38 },
+  1: { width: 68, height: 34 },
 }
 
 export const assetBubbles: AssetBubble[] = [
@@ -89,7 +92,7 @@ export const assetBubbles: AssetBubble[] = [
     quadrant: 'intangible',
     weight: 1,
     color: '#ddd6fe',
-    x: 8,
+    x: 13,
     y: 32,
   },
   {
@@ -117,7 +120,7 @@ export const assetBubbles: AssetBubble[] = [
     weight: 2,
     color: '#818cf8',
     x: 32,
-    y: 10,
+    y: 14,
   },
   {
     id: 'brand',
@@ -125,7 +128,7 @@ export const assetBubbles: AssetBubble[] = [
     quadrant: 'intangible',
     weight: 2,
     color: '#a5b4fc',
-    x: 6,
+    x: 13,
     y: 18,
   },
   {
@@ -152,7 +155,7 @@ export const assetBubbles: AssetBubble[] = [
     quadrant: 'intangible',
     weight: 3,
     color: '#8b5cf6',
-    x: 12,
+    x: 14,
     y: 24,
   },
 
@@ -164,7 +167,7 @@ export const assetBubbles: AssetBubble[] = [
     weight: 5,
     color: '#38bdf8',
     x: 72,
-    y: 12,
+    y: 14,
   },
   {
     id: 'stocks',
@@ -172,7 +175,7 @@ export const assetBubbles: AssetBubble[] = [
     quadrant: 'financial',
     weight: 5,
     color: '#0ea5e9',
-    x: 88,
+    x: 83,
     y: 22,
   },
   {
@@ -219,8 +222,8 @@ export const assetBubbles: AssetBubble[] = [
     quadrant: 'tangible',
     weight: 1,
     color: '#fde68a',
-    x: 8,
-    y: 88,
+    x: 14,
+    y: 84,
   },
   {
     id: 'jade-curios',
@@ -228,8 +231,8 @@ export const assetBubbles: AssetBubble[] = [
     quadrant: 'tangible',
     weight: 1,
     color: '#fcd34d',
-    x: 22,
-    y: 92,
+    x: 24,
+    y: 86,
   },
   {
     id: 'luxury-goods',
@@ -237,8 +240,8 @@ export const assetBubbles: AssetBubble[] = [
     quadrant: 'tangible',
     weight: 2,
     color: '#fb923c',
-    x: 34,
-    y: 68,
+    x: 40,
+    y: 74,
   },
   {
     id: 'artworks',
@@ -246,8 +249,8 @@ export const assetBubbles: AssetBubble[] = [
     quadrant: 'tangible',
     weight: 2,
     color: '#fdba74',
-    x: 10,
-    y: 78,
+    x: 14,
+    y: 76,
   },
   {
     id: 'limited-editions',
@@ -255,8 +258,8 @@ export const assetBubbles: AssetBubble[] = [
     quadrant: 'tangible',
     weight: 1,
     color: '#fef3c7',
-    x: 28,
-    y: 68,
+    x: 18,
+    y: 60,
   },
   {
     id: 'gold',

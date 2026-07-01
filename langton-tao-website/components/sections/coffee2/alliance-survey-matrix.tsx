@@ -7,7 +7,7 @@ const STAGGER_MS = 140
 
 export function AllianceSurveyMatrix() {
   return (
-    <div className="alliance-survey-matrix">
+    <div className="alliance-survey-matrix c2-pop-collage-bg">
       {allianceSurveys.map((survey, index) => (
         <AllianceSurveyCell
           key={survey.id}

@@ -1,3 +1,5 @@
+import { Fragment } from 'react'
+import { HomeJarsyCenturyBridgeSection } from '@/components/sections/home-jarsy/home-jarsy-century-bridge-section'
 import { HomeJarsyStagePanel } from '@/components/sections/home-jarsy/home-jarsy-stage-panel'
 import {
   fiftyYearPageTitle,
@@ -8,7 +10,10 @@ export function HomeJarsyStages() {
   return (
     <div aria-label={fiftyYearPageTitle}>
       {fiftyYearStages.map((stage, index) => (
-        <HomeJarsyStagePanel key={stage.id} stage={stage} index={index} />
+        <Fragment key={stage.id}>
+          <HomeJarsyStagePanel stage={stage} index={index} />
+          {stage.id === 'day-2' ? <HomeJarsyCenturyBridgeSection /> : null}
+        </Fragment>
       ))}
     </div>
   )

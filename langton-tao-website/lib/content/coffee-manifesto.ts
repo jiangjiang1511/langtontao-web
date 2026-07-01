@@ -182,7 +182,7 @@ export const coffee2LifeEvents = [
   {
     number: '03',
     id: 'life-education',
-    title: '教育',
+    title: '教 · 育',
     summary:
       '一切为了孩子——「育」在成家与优生优育，「教」在学识、价值观与视野的传承。',
   },

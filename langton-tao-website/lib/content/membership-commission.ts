@@ -14,6 +14,8 @@ export type CommissionRule =
       type: 'percent'
       value: number
       note?: string
+      /** Override table cell display (e.g. `50%+`) */
+      display?: string
     }
   | {
       type: 'fixed'
@@ -49,11 +51,11 @@ export const membershipCommissionPayoutModel = [
   },
   {
     title: '团队分润',
-    description: 'Pro 及以上可参与团队业绩分润；私董会圈层引荐另有叠加奖励（占位）。',
+    description: 'Pro 及以上可参与团队业绩分润；私董会圈层引荐另有叠加奖励。',
   },
   {
     title: '结算节奏',
-    description: '占位：成交确认后 T+15 工作日；体检与家办类产品按服务启动节点分批结算。',
+    description: '会员类推荐成交、课程/活动/体检与家办类业务核销后，次月10号前即可申请结算。',
   },
 ] as const
 
@@ -62,92 +64,98 @@ export const membershipCommissionProducts: CommissionProduct[] = [
     id: 'member',
     name: '朗敦道 MFO 会员',
     category: '会员入会',
-    referencePrice: 9800,
-    priceLabel: '¥9,800 / 年（占位）',
+    referencePrice: 298,
+    priceLabel: '¥298 / 年',
     description: '生态入局档，适合首次推荐入会。',
   },
   {
     id: 'plus',
     name: 'MFO 会员 Plus',
     category: '会员入会',
-    referencePrice: 29800,
-    priceLabel: '¥29,800 / 年（占位）',
+    referencePrice: 2980,
+    priceLabel: '¥2,980 / 年',
     description: '含财富大健康体检与 IP 起步陪跑。',
   },
   {
     id: 'pro',
     name: 'MFO 会员 Pro',
     category: '会员入会',
-    referencePrice: 98000,
-    priceLabel: '¥98,000 / 年（占位）',
+    referencePrice: 9800,
+    priceLabel: '¥9,800 / 年',
     description: '家办事业合伙人档，含 CRM 与 IP 三部曲。',
   },
   {
     id: 'health-checkup',
     name: '财富大健康体检',
     category: '家办服务',
-    referencePrice: 18800,
-    priceLabel: '¥18,800 起（占位）',
+    referencePrice: 2980,
+    priceLabel: '¥2,980',
     description: 'Plus 及以上会员包含；亦可单独转介绍。',
   },
   {
     id: 'smart-english',
     name: '智能英语 / 教育产品',
     category: '教育',
-    referencePrice: 12800,
-    priceLabel: '¥12,800 / 年（占位）',
+    referencePrice: 5400,
+    priceLabel: '¥5,400 / 30节',
     description: '英语钥匙计划、智能英语等教育产品线。',
   },
   {
     id: 'board-referral',
     name: '私董会席位引荐',
     category: '私董会',
-    referencePrice: 500000,
-    priceLabel: '面议（占位基准 ¥500,000）',
+    referencePrice: 60000,
+    priceLabel: '¥60,000 起',
     description: '邀请制圈层席位引荐，Pro 与私董会可参与。',
   },
 ]
 
-/** 占位渠道收益矩阵：[推荐人档位][成交产品] */
+/** 渠道收益矩阵：[推荐人档位][成交产品] */
 export const membershipCommissionMatrix: Record<
   MembershipTierId,
   Record<CommissionProductId, CommissionRule>
 > = {
   member: {
-    member: { type: 'percent', value: 0.08, note: '直推 8%' },
-    plus: { type: 'percent', value: 0.06, note: '跨档 6%' },
-    pro: null,
-    'health-checkup': { type: 'percent', value: 0.05, note: '服务 5%' },
-    'smart-english': { type: 'percent', value: 0.06, note: '教育 6%' },
+    member: { type: 'percent', value: 0.05, note: '分享 5%' },
+    plus: { type: 'percent', value: 0.05, note: '分享 5%' },
+    pro: { type: 'percent', value: 0.05, note: '分享 5%' },
+    'health-checkup': { type: 'percent', value: 0.05, note: '分享 5%' },
+    'smart-english': { type: 'percent', value: 0.05, note: '分享 5%' },
     'board-referral': null,
   },
   plus: {
-    member: { type: 'percent', value: 0.1, note: '直推 10%' },
-    plus: { type: 'percent', value: 0.08, note: '同档 8%' },
-    pro: { type: 'percent', value: 0.05, note: '跨档 5%' },
-    'health-checkup': { type: 'percent', value: 0.08, note: '服务 8%' },
-    'smart-english': { type: 'percent', value: 0.08, note: '教育 8%' },
+    member: { type: 'percent', value: 0.12, note: '分享 12%' },
+    plus: { type: 'percent', value: 0.12, note: '分享 12%' },
+    pro: { type: 'percent', value: 0.12, note: '分享 12%' },
+    'health-checkup': { type: 'percent', value: 0.12, note: '分享 12%' },
+    'smart-english': { type: 'percent', value: 0.12, note: '分享 12%' },
     'board-referral': null,
   },
   pro: {
-    member: { type: 'percent', value: 0.12, note: '直推 12%' },
-    plus: { type: 'percent', value: 0.1, note: 'Plus 10%' },
-    pro: { type: 'percent', value: 0.08, note: 'Pro 8%' },
-    'health-checkup': { type: 'percent', value: 0.1, note: '服务 10%' },
-    'smart-english': { type: 'percent', value: 0.1, note: '教育 10%' },
+    member: { type: 'percent', value: 0.2, note: '分享 20%' },
+    plus: { type: 'percent', value: 0.2, note: '分享 20%' },
+    pro: { type: 'percent', value: 0.2, note: '分享 20%' },
+    'health-checkup': { type: 'percent', value: 0.2, note: '分享 20%' },
+    'smart-english': {
+      type: 'percent',
+      value: 0.5,
+      display: '50%+',
+      note: '教育 50%+',
+    },
     'board-referral': { type: 'fixed', value: 5000, note: '引荐奖 ¥5,000' },
   },
   board: {
-    member: { type: 'percent', value: 0.15, note: '直推 15%' },
-    plus: { type: 'percent', value: 0.12, note: 'Plus 12%' },
-    pro: { type: 'percent', value: 0.1, note: 'Pro 10%' },
-    'health-checkup': { type: 'percent', value: 0.12, note: '服务 12%' },
-    'smart-english': { type: 'percent', value: 0.12, note: '教育 12%' },
-    'board-referral': {
+    member: { type: 'percent', value: 0.3, note: '分享 30%' },
+    plus: { type: 'percent', value: 0.3, note: '分享 30%' },
+    pro: {
       type: 'percent',
-      value: 0.03,
-      note: '席位 3%（占位）',
+      value: 0.5,
+      display: '50%+',
+      note: 'Pro 50%+',
     },
+    'health-checkup': { type: 'percent', value: 0.3, note: '分享 30%' },
+    'smart-english': { type: 'percent', value: 0.3, note: '分享 30%' },
+    'board-referral': { type: 'percent', value: 0.2, note: '引荐 20%' },
   },
 }
 
@@ -161,7 +169,7 @@ export const membershipCommissionTierOrder: MembershipTierId[] = [
 export function formatCommissionRule(rule: CommissionRule): string {
   if (!rule) return '—'
   if (rule.type === 'percent') {
-    return `${Math.round(rule.value * 100)}%`
+    return rule.display ?? `${Math.round(rule.value * 100)}%`
   }
   return `¥${rule.value.toLocaleString('zh-CN')}`
 }

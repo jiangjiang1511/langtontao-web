@@ -50,14 +50,38 @@ export function LegacyTopicArticleDialog({
             ) : null}
 
             <div className="legacy-article-dialog__blocks mt-5 space-y-5">
-              {article.blocks.map((block, index) => (
-                <p
-                  key={`p-${index}`}
-                  className="text-sm leading-relaxed text-zinc-600 md:text-base"
-                >
-                  {block.text}
-                </p>
-              ))}
+              {article.blocks.map((block, index) => {
+                if (block.type === 'paragraph') {
+                  return (
+                    <p
+                      key={`p-${index}`}
+                      className="text-sm leading-relaxed text-zinc-600 md:text-base"
+                    >
+                      {block.text}
+                    </p>
+                  )
+                }
+
+                return (
+                  <figure
+                    key={`img-${block.src}`}
+                    className="legacy-article-dialog__figure overflow-hidden rounded-lg border border-zinc-200 bg-zinc-100"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={block.src}
+                      alt={block.alt}
+                      className="legacy-article-dialog__image h-auto w-full object-contain"
+                      loading="lazy"
+                    />
+                    {block.caption ? (
+                      <figcaption className="px-4 py-3 text-xs leading-relaxed text-zinc-500">
+                        {block.caption}
+                      </figcaption>
+                    ) : null}
+                  </figure>
+                )
+              })}
             </div>
           </div>
 

@@ -4,7 +4,7 @@ import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-anno
 import { CoffeeCompoundGrowthSection } from '@/components/sections/coffee2/coffee-compound-growth-section'
 import { Coffee2TimelineSection } from '@/components/sections/coffee2/coffee2-timeline-section'
 import { HomeJarsyCenterMotionItem } from '@/components/sections/home-jarsy/home-jarsy-center-motion-item'
-import { HomeJarsyProductList } from '@/components/sections/home-jarsy/home-jarsy-product-module'
+import { DayOnePathExplorer } from '@/components/sections/home-jarsy/day-one-path-explorer'
 import { HomeJarsyStageHeader } from '@/components/sections/home-jarsy/home-jarsy-stage-header'
 import { NarrativeBubbleGroup } from '@/components/sections/home-jarsy/narrative-bubble-group'
 import { useCenterZoneVisible } from '@/components/sections/home-jarsy/use-center-zone-visible'
@@ -16,6 +16,10 @@ import {
   getDayTwoWhatSection,
 } from '@/lib/content/day-two-narrative'
 import type { FiftyYearStage } from '@/lib/content/fifty-year-narrative'
+import {
+  taoStagePanelClassName,
+  taoStagePanelStyle,
+} from '@/lib/content/tao-stage-visual'
 import { cn } from '@/lib/utils'
 
 type HomeJarsyDayTwoPanelProps = {
@@ -41,9 +45,9 @@ export function HomeJarsyDayTwoPanel({ stage, index }: HomeJarsyDayTwoPanelProps
     <section
       id={stage.id}
       className={cn(
-        'day-two-panel scroll-mt-28 border-t border-zinc-200 py-16 md:py-24 lg:min-h-[85vh] lg:py-28',
-        index % 2 === 1 ? 'bg-zinc-50/80' : 'bg-white'
+        taoStagePanelClassName(stage.id, 'day-two-panel scroll-mt-28 py-16 md:py-24 lg:min-h-[85vh] lg:py-28')
       )}
+      style={taoStagePanelStyle(stage.id)}
       aria-labelledby={`${stage.id}-period`}
     >
       <div className="day-two-panel__glow" aria-hidden />
@@ -90,7 +94,7 @@ export function HomeJarsyDayTwoPanel({ stage, index }: HomeJarsyDayTwoPanelProps
           >
             <NarrativeBubbleGroup
               bubbles={whatSection.bubbles}
-              layout="concept-grid"
+              layout="concept-grid-2-1"
               accentMap={dayTwoAccentMap}
               tablistLabel="什么是第二天"
             />
@@ -127,41 +131,27 @@ export function HomeJarsyDayTwoPanel({ stage, index }: HomeJarsyDayTwoPanelProps
 
         <Coffee2TimelineSection placement="in-day-two" />
 
-        <div ref={superheroRef} className="day-two-section mx-auto mt-20 max-w-5xl md:mt-28">
-          <HomeJarsyCenterMotionItem
-            visible={superheroVisible}
-            index={0}
-            total={1}
-            className="day-two-section__header"
-          >
-            <p className="c2-eyebrow">Superhero · 财富本质</p>
-            <h3 className="day-two-section__title c2-display mt-3 text-2xl text-zinc-950 md:text-4xl">
-              {superheroSection.title}
-            </h3>
-          </HomeJarsyCenterMotionItem>
+        <div className="day-two-section mx-auto mt-20 max-w-5xl md:mt-28">
+          <div ref={superheroRef}>
+            <HomeJarsyCenterMotionItem
+              visible={superheroVisible}
+              index={0}
+              total={1}
+              className="day-two-section__header"
+            >
+              <p className="c2-eyebrow">Superhero · 财富本质</p>
+              <h3 className="day-two-section__title c2-display mt-3 text-2xl text-zinc-950 md:text-4xl">
+                {superheroSection.title}
+              </h3>
+            </HomeJarsyCenterMotionItem>
+          </div>
 
-          <ol className="day-one-timeline mt-12 md:mt-16">
-            {superheroSection.steps.map((step, stepIndex) => (
-              <li key={step.id} className="day-one-timeline__item">
-                <div className="day-one-timeline__marker" aria-hidden>
-                  <span className="day-one-timeline__index">
-                    {String(stepIndex + 1).padStart(2, '0')}
-                  </span>
-                </div>
-
-                <div className="day-one-timeline__card">
-                  <p className="day-one-timeline__title">{step.title}</p>
-                  <NarrativeBubbleGroup
-                    bubbles={step.bubbles}
-                    layout="wrap"
-                    accentMap={dayTwoAccentMap}
-                    tablistLabel="超级英雄主题"
-                    className="mt-5"
-                  />
-                </div>
-              </li>
-            ))}
-          </ol>
+          <DayOnePathExplorer
+            steps={superheroSection.steps}
+            accentMap={dayTwoAccentMap}
+            tablistLabel="超级英雄五步路径"
+            hubVariant="subsection-matrix"
+          />
         </div>
 
         <div ref={closeRef} className="mx-auto mt-20 max-w-3xl md:mt-28">
@@ -181,10 +171,6 @@ export function HomeJarsyDayTwoPanel({ stage, index }: HomeJarsyDayTwoPanelProps
             ))}
           </HomeJarsyCenterMotionItem>
         </div>
-
-        {stage.products && stage.products.length > 0 ? (
-          <HomeJarsyProductList products={stage.products} stageId={stage.id} />
-        ) : null}
       </div>
     </section>
   )

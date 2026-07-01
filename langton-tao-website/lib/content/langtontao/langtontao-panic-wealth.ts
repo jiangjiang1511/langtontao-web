@@ -1,5 +1,18 @@
 import type { LangtontaoChallengeId } from '@/lib/content/langtontao/langtontao-challenge-links'
 
+export const langtontaoPanicMeta = {
+  eyebrow: 'Part II · 何事惊慌',
+  title: '何事惊慌',
+  lead: '放下宏大叙事的执念，从专业视角理解惊慌的源头——就业、资产、供需与国际秩序同时重构时，家庭失去的方向感。',
+} as const
+
+export const langtontaoWealthMeta = {
+  eyebrow: 'Part III · 何为财富',
+  title: '何为财富',
+  lead: '财富在人类文明史中的位置——从极度贫穷的常态，到系统升级与中国国内资产格局，再到家庭积累与传承的时间轴。',
+} as const
+
+/** @deprecated Use langtontaoPanicMeta / langtontaoWealthMeta */
 export const langtontaoPanicWealthMeta = {
   eyebrow: 'Part II · 何以为家',
   title: '何事惊慌 · 何为财富',
@@ -107,8 +120,8 @@ export const langtontaoWealthNodes: PanicWealthNode[] = [
     id: 'wealth-471t',
     section: 'wealth',
     title: '471 万亿宏大叙事',
-    summary: '房地产 · 金融 · 政府债 · 黄金 · 加密——识别时代位置，再谈家庭坐标。',
-    body: '华人家庭今天的选择，发生在约 471 万亿的宏观结构之中。积累与传承不是「选哪个产品」，而是识别时代位置后持续升级家庭操作系统。',
+    summary: '房地产 · 金融 · 政府债 · 黄金 · 加密——在中国国内 471 万亿结构中识别时代位置，再谈家庭坐标。',
+    body: '华人家庭今天的选择，发生在中国约 471 万亿的宏观结构之中。积累与传承不是「选哪个产品」，而是识别时代位置后持续升级家庭操作系统。',
     chartType: 'structure',
     solutionIds: ['global-allocation', 'asset-landslide'],
   },

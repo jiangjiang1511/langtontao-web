@@ -21,7 +21,7 @@ export type WealthNarrativeNode = {
 export const wealthNarrativeSectionMeta = {
   eyebrow: 'Wealth System · 财富系统',
   title: '财富是如何积累与传承的？',
-  lead: '从「人类财富死局」到系统升级，再到今天的全球资产格局——按两大主题分区浏览，点击话题卡片深入了解正文、公式与全球资产拆分。',
+  lead: '从「人类财富死局」到系统升级，再到今天的中国国内资产格局——按两大主题分区浏览，点击话题卡片深入了解正文、公式与国内资产拆分。',
 } as const
 
 export const wealthNarrativeRoot: WealthNarrativeNode = {
@@ -98,12 +98,12 @@ export const wealthNarrativeRoot: WealthNarrativeNode = {
           title: '现在的人类财富系统到了哪一步？',
           coverSrc: '/assets/bearbitcoffee/wealthdelema/breakthrough-03.jpg',
           posterSrc: '/assets/bearbitcoffee/wealthdelema/breakthrough-03poster.png',
-          summary: '471 万亿宏大叙事——全球资产格局的五块拼图。',
+          summary: '471 万亿宏大叙事——中国国内资产格局的五块拼图。',
           children: [
             {
               id: 'global-471t',
               title: '471 万亿宏大叙事',
-              body: '以下为全球财富存量的大致拆分（教育演示口径，非投资建议）。它回答的是：今天的钱，主要压在哪些资产形态上。',
+              body: '以下为中国国内财富存量的大致拆分（教育演示口径，非投资建议）。它回答的是：今天的钱，主要压在国内哪些资产形态上。',
               stats: [
                 {
                   id: 'global-real-estate',

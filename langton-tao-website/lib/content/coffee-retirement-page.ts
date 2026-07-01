@@ -117,11 +117,11 @@ export const retirementSectionMeta = {
   calcHint: '教育用途估算，非投资建议或机构报价',
   calcDisclaimer:
     '本计算器基于发改委 36 城监测数据与公开行业区间建立假设模型，因城市、机构、政策与个人健康状况差异，实际费用可能显著不同。不构成投资建议、保险建议或任何机构的正式报价。',
-  bubblesEyebrow: '关键议题 · 泡泡星座',
+  bubblesEyebrow: '关键议题',
   bubblesTitle: '养老路上，还有哪些坑？',
   bubblesLead:
     '从朗敦道思维导图提炼——长寿、购买力、照护、结构、代际，一张网里的关键节点。',
-  bubblesHint: '点选泡泡，展开议题',
+  bubblesHint: '点击卡片，阅读摘要',
   planningYearsLabel: '规划年限',
   monthlyLabel: '预估月费',
   lifetimeLabel: '规划期总敞口',
@@ -589,3 +589,63 @@ export const retirementBubbles: readonly RetirementBubble[] = [
     weight: 2,
   },
 ]
+
+export type RetirementTopicArticleRef = {
+  title: string
+  outlet: string
+  url: string
+}
+
+export type RetirementTopicCard = {
+  id: string
+  title: string
+  insight: string
+  article: RetirementTopicArticleRef
+}
+
+export type RetirementTopicArticleContent = {
+  id: string
+  headline: string
+  outlet: string
+  sourceUrl: string
+  lead?: string
+  blocks: readonly { type: 'paragraph'; text: string }[]
+}
+
+const RETIREMENT_TOPIC_OUTLET = '熊比特 Coffee Chat'
+const RETIREMENT_TOPIC_SOURCE_URL = '/coffee#life-retirement'
+
+export const retirementTopicCards: readonly RetirementTopicCard[] =
+  retirementBubbles.map((bubble) => ({
+    id: bubble.id,
+    title: bubble.label,
+    insight: bubble.summary,
+    article: {
+      title: bubble.label,
+      outlet: RETIREMENT_TOPIC_OUTLET,
+      url: RETIREMENT_TOPIC_SOURCE_URL,
+    },
+  }))
+
+export function getRetirementTopicCards(): readonly RetirementTopicCard[] {
+  return retirementTopicCards
+}
+
+export function getRetirementTopicArticle(
+  id: string
+): RetirementTopicArticleContent | undefined {
+  const bubble = retirementBubbles.find((item) => item.id === id)
+  if (!bubble) return undefined
+
+  return {
+    id: bubble.id,
+    headline: bubble.label,
+    outlet: RETIREMENT_TOPIC_OUTLET,
+    sourceUrl: RETIREMENT_TOPIC_SOURCE_URL,
+    lead: bubble.summary,
+    blocks: bubble.body
+      .split('\n\n')
+      .filter(Boolean)
+      .map((text) => ({ type: 'paragraph' as const, text })),
+  }
+}

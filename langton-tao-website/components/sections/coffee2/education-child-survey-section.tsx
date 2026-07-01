@@ -7,7 +7,7 @@ import { educationSurveyMeta } from '@/lib/content/coffee-education-survey'
 export function EducationChildSurveySection() {
   return (
     <section
-      className="education-survey-stage"
+      className="education-survey-stage c2-pop-collage-bg c2-pop-accent--education"
       aria-labelledby="education-survey-stage-title"
     >
       <Coffee2Reveal

@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
+import { LangtontaoYitishuangkuaCta } from '@/components/sections/langtontao/langtontao-yitishuangkua-cta'
 import {
   langtontaoHongKongMeta,
   langtontaoHongKongNarrative,
@@ -99,12 +99,10 @@ export function LangtontaoHongKongSection() {
               ))}
             </ul>
 
-            <Link
-              href={langtontaoYitishuangkua.ctaHref}
-              className="c2-btn-cta-emphasis mt-8 inline-flex"
-            >
-              {langtontaoYitishuangkua.ctaLabel}
-            </Link>
+            <LangtontaoYitishuangkuaCta
+              cta={langtontaoYitishuangkua.cta}
+              className="mt-8"
+            />
           </div>
         </Coffee2Reveal>
       </div>

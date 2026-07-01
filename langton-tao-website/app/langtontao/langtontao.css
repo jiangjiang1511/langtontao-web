@@ -1,7 +1,2238 @@
 /* Langtontao page — narrative layout */
+@import '../topic-phone-dialog.css';
 
 .langtontao-page {
   overflow-x: clip;
+}
+
+/* Shared scatter-stage centering (pillars + topic grids) */
+.langtontao-page .lt-scatter-stage-wrap {
+  width: 100%;
+  max-width: 64rem;
+  margin-inline: auto;
+}
+
+/* Pillars — 2×2 scatter stage (manifesto-style entrance) */
+.langtontao-pillars__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 11;
+  min-height: 20rem;
+  max-height: min(62vh, 40rem);
+  margin-block: 0;
+  margin-inline: 0;
+  padding: 0;
+  list-style: none;
+  overflow: visible;
+}
+
+@media (min-width: 640px) {
+  .langtontao-pillars__stage {
+    min-height: 22rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .langtontao-pillars__stage {
+    min-height: 24rem;
+  }
+}
+
+.langtontao-pillars__card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  width: var(--lt-pillar-stack-width, clamp(5.5rem, 13vw, 8rem));
+  transform: translate(
+      calc(-50% + var(--lt-pillar-stack-x, 0%)),
+      calc(-50% + var(--lt-pillar-stack-y, 0%))
+    )
+    rotate(var(--lt-pillar-stack-rotate, 0deg))
+    scale(var(--lt-pillar-stack-scale, 1));
+  transform-origin: center center;
+  transition:
+    left 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.82s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--lt-pillar-stagger, 0ms);
+  will-change: left, top, width, transform;
+  z-index: var(--lt-pillar-stack-z, 1);
+}
+
+.langtontao-pillars__stage[data-exploded='true'] .langtontao-pillars__card {
+  left: var(--lt-pillar-scatter-left, 50%);
+  top: var(--lt-pillar-scatter-top, 50%);
+  width: var(--lt-pillar-scatter-width, clamp(10.5rem, 29vw, 18rem));
+  z-index: var(--lt-pillar-scatter-z, 1);
+  transform: translate(-50%, -50%)
+    rotate(var(--lt-pillar-scatter-rotate, 0deg))
+    scale(var(--lt-pillar-scatter-scale, 1));
+}
+
+.langtontao-pillars__card:hover,
+.langtontao-pillars__card:focus-within {
+  z-index: 20;
+}
+
+.langtontao-page .langtontao-pillars .coffee2-pillar-card {
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+}
+
+.langtontao-page .langtontao-pillars .coffee2-pillar-card__content {
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  padding: 1.125rem;
+}
+
+.langtontao-page .langtontao-pillars .coffee2-pillar-card__content::before {
+  background: linear-gradient(
+    to top,
+    rgb(9 9 11 / 0.94) 0%,
+    rgb(9 9 11 / 0.88) 42%,
+    rgb(9 9 11 / 0.72) 100%
+  );
+}
+
+.langtontao-page .langtontao-pillars .coffee2-pillar-card:hover .coffee2-pillar-card__content::before,
+.langtontao-page .langtontao-pillars .coffee2-pillar-card:focus-visible .coffee2-pillar-card__content::before {
+  background: linear-gradient(
+    to top,
+    rgb(9 9 11 / 0.9) 0%,
+    rgb(9 9 11 / 0.78) 42%,
+    rgb(9 9 11 / 0.58) 100%
+  );
+}
+
+@media (min-width: 640px) {
+  .langtontao-page .langtontao-pillars .coffee2-pillar-card__content {
+    padding: 1.375rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .langtontao-page .langtontao-pillars .coffee2-pillar-card__content {
+    padding: 1.5rem;
+  }
+}
+
+.langtontao-page .langtontao-pillars .coffee2-pillar-card__number {
+  font-size: 0.75rem;
+}
+
+.langtontao-page .langtontao-pillars .coffee2-pillar-card__title {
+  margin-top: 0.5rem;
+  font-size: clamp(1.125rem, 2.6vw, 1.625rem);
+  line-height: 1.05;
+}
+
+.langtontao-page .langtontao-pillars .coffee2-pillar-card__description {
+  max-width: none;
+  margin-top: 0.625rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 640px) {
+  .langtontao-page .langtontao-pillars .coffee2-pillar-card__description {
+    font-size: 0.875rem;
+  }
+}
+
+.langtontao-page .langtontao-pillars .coffee2-pillar-card__cta {
+  margin-top: 0.875rem;
+  font-size: 0.8125rem;
+}
+
+.langtontao-page .langtontao-pillars .coffee2-pillar-card:hover,
+.langtontao-page .langtontao-pillars .coffee2-pillar-card:focus-visible {
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .langtontao-pillars__card {
+    transition: none;
+  }
+}
+
+/* Major sections — four pillars */
+.langtontao-page .lt-major-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.langtontao-page .lt-major-section__decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.langtontao-page .lt-major-section__header {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Heading system: L1 / L2 / L3 ── */
+
+.langtontao-page .lt-heading-l1 {
+  margin-top: 0.75rem;
+  font-family: var(--font-display, inherit);
+  font-size: clamp(2.25rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #09090b;
+}
+
+.langtontao-page .lt-heading-l1__eyebrow {
+  /* inherits .c2-eyebrow when combined */
+}
+
+.langtontao-page .lt-heading-l1__lead {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #52525b;
+}
+
+@media (min-width: 768px) {
+  .langtontao-page .lt-heading-l1__lead {
+    font-size: 1.125rem;
+  }
+}
+
+.langtontao-page .lt-heading-l2 {
+  position: relative;
+  margin-top: 0.5rem;
+  padding-left: 0;
+  font-family: var(--font-display, inherit);
+  font-size: clamp(1.5rem, 3.2vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: #09090b;
+}
+
+.langtontao-page .lt-heading-l2--with-rule {
+  padding-left: 1rem;
+}
+
+.langtontao-page .lt-heading-l2__eyebrow {
+  /* inherits .c2-eyebrow when combined */
+}
+
+.langtontao-page .lt-heading-l2__lead {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #52525b;
+}
+
+@media (min-width: 768px) {
+  .langtontao-page .lt-heading-l2__lead {
+    font-size: 1rem;
+  }
+}
+
+.langtontao-page .lt-heading-l2__rule {
+  position: absolute;
+  left: 0;
+  top: 0.125rem;
+  bottom: 0.125rem;
+  width: 3px;
+  border-radius: 9999px;
+  background: #ffe600;
+}
+
+.langtontao-page .lt-heading-l2--center {
+  text-align: center;
+  padding-left: 0;
+}
+
+.langtontao-page .lt-heading-l2--center .lt-heading-l2__rule {
+  display: none;
+}
+
+.langtontao-page .lt-heading-l2--center .lt-heading-l2__rule--center {
+  display: block;
+  position: static;
+  width: 2.5rem;
+  height: 2px;
+  margin: 0.625rem auto 0;
+}
+
+.langtontao-page .lt-heading-l3 {
+  font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #09090b;
+}
+
+.langtontao-page .lt-heading-l3--center {
+  text-align: center;
+}
+
+/* L2 theme markers */
+.langtontao-page .lt-major-section--home .lt-heading-l2__rule {
+  background: #ffe600;
+}
+
+.langtontao-page .lt-major-section--superhero .lt-heading-l2__rule {
+  top: auto;
+  bottom: auto;
+  height: 3px;
+  width: 2.5rem;
+  top: 0.125rem;
+  bottom: unset;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #ffe600, rgb(255 230 0 / 0.35));
+}
+
+.langtontao-page .lt-major-section--superhero .lt-heading-l2--with-rule {
+  padding-left: 0;
+  padding-top: 0.75rem;
+}
+
+.langtontao-page .lt-major-section--checkup .lt-heading-l2__rule {
+  width: 8px;
+  height: 8px;
+  top: 0.5rem;
+  bottom: auto;
+  border-radius: 9999px;
+  background: #a1a1aa;
+  box-shadow: 12px 0 0 #ffe600;
+}
+
+.langtontao-page .lt-major-section--checkup .lt-heading-l2--with-rule {
+  padding-left: 1.75rem;
+}
+
+.langtontao-page .lt-major-section--checkup .lt-heading-l2--center.lt-heading-l2--with-rule {
+  padding-left: 0;
+  padding-top: 0.75rem;
+}
+
+.langtontao-page .lt-major-section--checkup .lt-heading-l2--center .lt-heading-l2__rule--center {
+  background: linear-gradient(90deg, transparent, #ffe600, transparent);
+}
+
+.langtontao-page .lt-major-section--network .lt-heading-l2,
+.langtontao-page .lt-major-section--network .lt-heading-l3 {
+  color: #ffffff;
+}
+
+.langtontao-page .lt-major-section--network .lt-heading-l2__lead {
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-major-section--network .lt-heading-l2__eyebrow {
+  color: #71717a;
+}
+
+.langtontao-page .lt-major-section--network .lt-heading-l2__rule {
+  top: auto;
+  bottom: -0.375rem;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 0;
+  background: linear-gradient(90deg, #ffe600, rgb(255 230 0 / 0.15));
+}
+
+.langtontao-page .lt-major-section--network .lt-heading-l2--with-rule {
+  padding-left: 0;
+  padding-bottom: 0.75rem;
+}
+
+.langtontao-page .lt-major-section--network .lt-heading-l2--center .lt-heading-l2__rule--center {
+  background: linear-gradient(90deg, transparent, #ffe600, transparent);
+}
+
+/* L1 dark module overrides */
+.langtontao-page .lt-major-section--network .lt-heading-l1,
+.langtontao-page .lt-major-section--network .lt-major-section__header h2.lt-heading-l1 {
+  color: #ffffff;
+}
+
+.langtontao-page .lt-major-section--network .lt-heading-l1__lead,
+.langtontao-page .lt-major-section--network .lt-major-section__header .lt-heading-l1__lead {
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-major-section--network .lt-major-section__header .c2-eyebrow,
+.langtontao-page .lt-major-section--network .lt-heading-l1__eyebrow {
+  color: #71717a;
+}
+
+/* Embedded checkup blocks inside major section */
+.langtontao-page .lt-checkup-embedded {
+  border: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: transparent;
+}
+
+.langtontao-page .lt-checkup-embedded + .lt-checkup-embedded {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid #e4e4e7;
+}
+
+.langtontao-page .lt-checkup-embedded--signup {
+  margin-top: 3rem;
+  border-radius: 1rem;
+  border: 1px solid #27272a;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgb(255 230 0 / 0.08), transparent 55%),
+    #09090b;
+  padding: 2.5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .langtontao-page .lt-checkup-embedded--signup {
+    padding: 3rem 2rem;
+  }
+}
+
+.langtontao-page .lt-checkup-embedded--signup .lt-heading-l2,
+.langtontao-page .lt-checkup-embedded--signup .lt-heading-l2__eyebrow {
+  color: #ffffff;
+}
+
+.langtontao-page .lt-checkup-embedded--signup .lt-heading-l2__eyebrow {
+  color: #71717a;
+}
+
+.langtontao-page .lt-checkup-embedded--signup .lt-heading-l2__lead {
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-checkup-embedded--signup .lt-heading-l2__rule--center {
+  background: linear-gradient(90deg, transparent, #ffe600, transparent);
+}
+
+.langtontao-page .lt-major-section--checkup .lt-checkup-embedded .c2-card {
+  background:
+    linear-gradient(rgb(228 228 231 / 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(228 228 231 / 0.2) 1px, transparent 1px),
+    #ffffff;
+  background-size: 20px 20px, 20px 20px, auto;
+}
+
+/* Compact checkup submodules inside major section */
+.langtontao-page .lt-checkup-major__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.langtontao-page .lt-checkup-major__body > section {
+  width: min(56rem, 100%);
+}
+
+.langtontao-page .lt-checkup-major__body .lt-checkup-embedded--signup {
+  margin-top: 0;
+  width: min(56rem, 100%);
+}
+
+.langtontao-page .lt-checkup-embedded__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(48rem, 100%);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.langtontao-page .lt-checkup-embedded__inner .c2-reveal {
+  width: 100%;
+}
+
+.langtontao-page .lt-checkup-items__grid,
+.langtontao-page .lt-checkup-process__columns,
+.langtontao-page .lt-checkup-cases__grid {
+  width: min(56rem, 100%);
+  margin-inline: auto;
+}
+
+.langtontao-page .lt-checkup-items__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .langtontao-page .lt-checkup-items__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .langtontao-page .lt-checkup-items__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.langtontao-page .lt-checkup-items__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.75rem;
+  background:
+    linear-gradient(rgb(228 228 231 / 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(228 228 231 / 0.2) 1px, transparent 1px),
+    #ffffff;
+  background-size: 20px 20px, 20px 20px, auto;
+  padding: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.langtontao-page .lt-checkup-items__card:hover {
+  border-color: #d4d4d8;
+  box-shadow: 0 4px 16px rgb(9 9 11 / 0.06);
+}
+
+.langtontao-page .lt-checkup-items__card .c2-step-number {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-checkup-items__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #18181b;
+}
+
+.langtontao-page .lt-checkup-items__description {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: #71717a;
+}
+
+@media (min-width: 768px) {
+  .langtontao-page .lt-checkup-items__description {
+    font-size: 0.875rem;
+  }
+}
+
+.langtontao-page .lt-checkup-process__columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .langtontao-page .lt-checkup-process__columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.langtontao-page .lt-checkup-process__timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.langtontao-page .lt-checkup-process__step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  gap: 0.75rem;
+  padding-block: 0.75rem;
+}
+
+.langtontao-page .lt-checkup-process__marker {
+  position: relative;
+  margin-top: 0.35rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 9999px;
+  background: #ffe600;
+  border: 2px solid #18181b;
+  justify-self: center;
+}
+
+.langtontao-page .lt-checkup-process__timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.625rem;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  width: 1px;
+  background: #e4e4e7;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.langtontao-page .lt-checkup-process__timeline {
+  position: relative;
+  padding-left: 0.25rem;
+}
+
+.langtontao-page .lt-checkup-process__content {
+  min-width: 0;
+}
+
+.langtontao-page .lt-checkup-process__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.langtontao-page .lt-checkup-process__number {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-checkup-process__label {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #e4e4e7;
+  border-radius: 9999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #52525b;
+  background: #fafafa;
+}
+
+.langtontao-page .lt-checkup-process__description {
+  margin-top: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #52525b;
+}
+
+.langtontao-page .lt-checkup-cases__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .langtontao-page .lt-checkup-cases__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.625rem;
+  }
+}
+
+.langtontao-page .lt-checkup-cases__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.langtontao-page .lt-checkup-cases__card:hover {
+  border-color: #d4d4d8;
+  box-shadow: 0 6px 20px rgb(9 9 11 / 0.08);
+  transform: translateY(-1px);
+}
+
+.langtontao-page .lt-checkup-cases__media {
+  background: #f4f4f5;
+}
+
+.langtontao-page .lt-checkup-cases__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+}
+
+.langtontao-page .lt-checkup-cases__meta {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-checkup-cases__title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #18181b;
+}
+
+.langtontao-page .lt-checkup-cases__excerpt {
+  flex: 1;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: #71717a;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.langtontao-page .lt-checkup-cases__cta {
+  margin-top: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #18181b;
+}
+
+.langtontao-page .lt-checkup-cases__footer {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.langtontao-page .lt-major-section--home {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgb(255 230 0 / 0.05), transparent 55%),
+    #fafafa;
+}
+
+.langtontao-page .lt-major-section--home .lt-major-section__decor {
+  background:
+    linear-gradient(135deg, transparent 48%, rgb(255 230 0 / 0.08) 48%, rgb(255 230 0 / 0.08) 49%, transparent 49%),
+    linear-gradient(-135deg, transparent 48%, rgb(255 230 0 / 0.06) 48%, rgb(255 230 0 / 0.06) 49%, transparent 49%);
+}
+
+.langtontao-page .lt-major-section--superhero {
+  background:
+    linear-gradient(160deg, rgb(255 230 0 / 0.04), transparent 35%),
+    #ffffff;
+}
+
+.langtontao-page .lt-major-section--superhero .lt-major-section__decor {
+  background-image: repeating-linear-gradient(
+    -12deg,
+    transparent,
+    transparent 18px,
+    rgb(9 9 11 / 0.03) 18px,
+    rgb(9 9 11 / 0.03) 19px
+  );
+}
+
+/* ── Superhero Journey sub-modules ── */
+
+.langtontao-page .lt-superhero-philosophy {
+  position: relative;
+}
+
+.langtontao-page .lt-superhero-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .langtontao-page .lt-superhero-pillars {
+    gap: 4.5rem;
+  }
+}
+
+.langtontao-page .lt-superhero-pillars__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+  list-style: none;
+  padding: 0;
+  margin-inline: 0;
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .langtontao-page .lt-superhero-pillars__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.langtontao-page .lt-superhero-pillars__card {
+  position: relative;
+  height: 100%;
+  border: 1px solid #e4e4e7;
+  border-radius: 1rem;
+  background: #ffffff;
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  overflow: hidden;
+}
+
+.langtontao-page .lt-superhero-pillars__accent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--lt-superhero-accent, #ffe600);
+}
+
+.langtontao-page .lt-superhero-pillars__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #09090b;
+}
+
+.langtontao-page .lt-superhero-pillars__summary {
+  margin-top: 0.625rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #52525b;
+}
+
+.langtontao-page .lt-superhero-program-hub {
+  position: relative;
+}
+
+.langtontao-page .lt-superhero-program-hub__shell {
+  border: 1px solid #e4e4e7;
+  border-radius: 1rem;
+  background: #ffffff;
+  padding: 1rem;
+}
+
+.langtontao-page .lt-superhero-program-hub__layout {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .langtontao-page .lt-superhero-program-hub__layout {
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.langtontao-page .lt-superhero-program-hub__rail-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.langtontao-page .lt-superhero-program-hub__tab {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  padding: 0.75rem 0.875rem;
+  text-align: left;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.22s ease,
+    background-color 0.22s ease;
+}
+
+.langtontao-page .lt-superhero-program-hub__tab.is-active,
+.langtontao-page .lt-superhero-program-hub__tab[data-selected='true'] {
+  border-color: var(--lt-superhero-accent, #09090b);
+  background: #fffef5;
+  box-shadow: inset 0 0 0 1px rgb(255 230 0 / 0.35);
+}
+
+.langtontao-page .lt-superhero-program-hub__tab-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: var(--lt-superhero-accent, #ffe600);
+  animation: lt-superhero-tab-progress var(--lt-superhero-advance-ms, 8000ms) linear forwards;
+}
+
+@keyframes lt-superhero-tab-progress {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.langtontao-page .lt-superhero-program-hub__tab-hook {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-superhero-program-hub__tab-title {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #09090b;
+  line-height: 1.35;
+}
+
+.langtontao-page .lt-superhero-program-hub__stage {
+  border: 1px solid #f4f4f5;
+  border-radius: 0.875rem;
+  background: #fafafa;
+  padding: 1.25rem 1.5rem;
+  min-height: 220px;
+  overflow: hidden;
+}
+
+.langtontao-page .lt-superhero-program-hub__stage-inner--enter {
+  animation: lt-superhero-stage-in 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes lt-superhero-stage-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.langtontao-page .lt-superhero-program-hub__stage-header {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .langtontao-page .lt-superhero-program-hub__stage-header {
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 240px);
+    align-items: start;
+  }
+}
+
+.langtontao-page .lt-superhero-program-hub__stage-eyebrow {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-superhero-program-hub__stage-title {
+  margin-top: 0.375rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #09090b;
+}
+
+.langtontao-page .lt-superhero-program-hub__stage-lead {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #52525b;
+  font-weight: 600;
+}
+
+.langtontao-page .lt-superhero-program-hub__audience {
+  margin-top: 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid #e4e4e7;
+  border-left: 3px solid var(--lt-superhero-accent, #ffe600);
+  background: #ffffff;
+  padding: 0.875rem 1rem;
+}
+
+.langtontao-page .lt-superhero-program-hub__audience-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-superhero-program-hub__audience-text {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #3f3f46;
+}
+
+.langtontao-page .lt-superhero-program-hub__stage-body {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #52525b;
+}
+
+.langtontao-page .lt-superhero-program-hub__highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.langtontao-page .lt-superhero-program-hub__highlights li {
+  border-radius: 9999px;
+  border: 1px solid #e4e4e7;
+  background: #ffffff;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #3f3f46;
+}
+
+.langtontao-page .lt-superhero-expeditions__track {
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px, 320px);
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 1024px) {
+  .langtontao-page .lt-superhero-expeditions__track {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-columns: auto;
+    overflow-x: visible;
+  }
+}
+
+.langtontao-page .lt-superhero-expeditions__card-wrap {
+  scroll-snap-align: start;
+  height: 100%;
+}
+
+.langtontao-page .lt-superhero-expeditions__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #e4e4e7;
+  border-radius: 1rem;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.langtontao-page .lt-superhero-expeditions__card--link {
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.langtontao-page .lt-superhero-expeditions__card--link:hover {
+  border-color: #d4d4d8;
+  box-shadow: 0 4px 14px rgb(9 9 11 / 0.08);
+}
+
+.langtontao-page .lt-superhero-expeditions__status {
+  position: absolute;
+  right: 0.75rem;
+  top: 0.75rem;
+  border-radius: 9999px;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  background: rgb(9 9 11 / 0.72);
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+}
+
+.langtontao-page .lt-superhero-expeditions__status--open {
+  background: rgb(34 197 94 / 0.9);
+}
+
+.langtontao-page .lt-superhero-expeditions__status--upcoming {
+  background: rgb(245 158 11 / 0.92);
+}
+
+.langtontao-page .lt-superhero-expeditions__status--past {
+  background: rgb(113 113 122 / 0.88);
+}
+
+.langtontao-page .lt-superhero-expeditions__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1rem 1.125rem 1.125rem;
+}
+
+.langtontao-page .lt-superhero-expeditions__location {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-superhero-expeditions__title {
+  margin-top: 0.375rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #09090b;
+}
+
+.langtontao-page .lt-superhero-expeditions__summary {
+  margin-top: 0.5rem;
+  flex: 1;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #52525b;
+}
+
+.langtontao-page .lt-superhero-expeditions__date {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: #71717a;
+}
+
+.langtontao-page .lt-superhero-expeditions__empty {
+  border: 1px dashed #d4d4d8;
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 0.7);
+  padding: 1.5rem;
+  font-size: 0.875rem;
+  color: #71717a;
+}
+
+.langtontao-page .lt-superhero-join__body {
+  width: min(56rem, calc(100% - 1.5rem));
+  margin-inline: auto;
+  margin-top: 2.5rem;
+}
+
+.langtontao-page .lt-superhero-join__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.langtontao-page .lt-superhero-join__cta {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.langtontao-page .lt-superhero-join__step {
+  display: grid;
+  gap: 1.25rem;
+  border-top: 1px solid #e4e4e7;
+  padding-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .langtontao-page .lt-superhero-join__step {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 2rem;
+  }
+}
+
+.langtontao-page .lt-superhero-join__step-detail {
+  border: 1px solid #e4e4e7;
+  border-radius: 1rem;
+  background: #fafafa;
+  padding: 1.25rem 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .langtontao-page .lt-superhero-program-hub__tab-progress {
+    animation: none;
+    transform: scaleX(1);
+  }
+
+  .langtontao-page .lt-superhero-program-hub__stage-inner--enter {
+    animation: none;
+  }
+}
+
+.langtontao-page .lt-major-section--checkup {
+  background:
+    radial-gradient(circle at 20% 80%, rgb(255 230 0 / 0.05), transparent 40%),
+    #fafafa;
+}
+
+.langtontao-page .lt-major-section--checkup .lt-major-section__decor {
+  background-image:
+    linear-gradient(rgb(228 228 231 / 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(228 228 231 / 0.35) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(180deg, rgb(0 0 0 / 0.5), transparent 85%);
+}
+
+.langtontao-page .lt-major-section--network {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgb(255 230 0 / 0.1), transparent 55%),
+    #09090b;
+  border-color: #27272a;
+}
+
+.langtontao-page .lt-major-section--network .lt-major-section__decor {
+  background:
+    radial-gradient(circle at 25% 50%, rgb(255 230 0 / 0.08), transparent 35%),
+    radial-gradient(circle at 75% 50%, rgb(255 230 0 / 0.06), transparent 35%);
+}
+
+.langtontao-page .lt-major-section--network .lt-major-section__decor::before,
+.langtontao-page .lt-major-section--network .lt-major-section__decor::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  border: 2px solid rgb(255 230 0 / 0.45);
+  background: #09090b;
+}
+
+.langtontao-page .lt-major-section--network .lt-major-section__decor::before {
+  left: 18%;
+}
+
+.langtontao-page .lt-major-section--network .lt-major-section__decor::after {
+  right: 18%;
+}
+
+/* Beautiful explorer — replaced by philosophy grid + familyos hub */
+.langtontao-page #beautiful .lt-beautiful-philosophy-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .langtontao-page #beautiful .lt-beautiful-philosophy-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+  border: 1px solid rgb(9 9 11 / 0.08);
+  border-radius: 1rem;
+  background: transparent;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+  transform-origin: center center;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  right: 1rem;
+  z-index: 2;
+  height: 2px;
+  border-radius: 9999px;
+  background: var(--philosophy-accent, #ffe600);
+  opacity: 0.92;
+  transition: opacity 0.24s ease;
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card:hover,
+.langtontao-page #beautiful .lt-beautiful-philosophy-card:focus-visible {
+  z-index: 2;
+  transform: scale(1.03);
+  border-color: rgb(9 9 11 / 0.14);
+  box-shadow: 0 14px 36px rgb(0 0 0 / 0.1);
+  outline: none;
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card__surface {
+  position: relative;
+  display: flex;
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: inherit;
+  padding: 1.25rem;
+  background: var(--philosophy-bg, #fffef5);
+  color: var(--philosophy-fg, #09090b);
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card__surface::after {
+  content: '';
+  position: absolute;
+  top: -18%;
+  right: -12%;
+  z-index: 0;
+  width: 58%;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  background: var(--philosophy-accent, #ffe600);
+  opacity: 0.14;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.32s ease;
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card:hover .lt-beautiful-philosophy-card__surface::after,
+.langtontao-page #beautiful .lt-beautiful-philosophy-card:focus-visible .lt-beautiful-philosophy-card__surface::after {
+  transform: scale(1.08);
+  opacity: 0.22;
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card__surface > * {
+  position: relative;
+  z-index: 1;
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card__number {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--philosophy-muted, #71717a);
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card__title {
+  margin-top: 0.625rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--philosophy-fg, #09090b);
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card__description {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--philosophy-muted, #71717a);
+  transition:
+    color 0.24s ease,
+    transform 0.24s ease;
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card:hover .lt-beautiful-philosophy-card__description,
+.langtontao-page #beautiful .lt-beautiful-philosophy-card:focus-visible .lt-beautiful-philosophy-card__description {
+  color: var(--philosophy-fg, #09090b);
+  transform: translateY(-1px);
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card__cta {
+  margin-top: 0.875rem;
+  width: fit-content;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--philosophy-fg, #09090b);
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.24s ease,
+    transform 0.24s ease;
+}
+
+.langtontao-page #beautiful .lt-beautiful-philosophy-card:hover .lt-beautiful-philosophy-card__cta,
+.langtontao-page #beautiful .lt-beautiful-philosophy-card:focus-visible .lt-beautiful-philosophy-card__cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .langtontao-page #beautiful .lt-beautiful-philosophy-card:hover,
+  .langtontao-page #beautiful .lt-beautiful-philosophy-card:focus-visible {
+    transform: none;
+  }
+
+  .langtontao-page #beautiful .lt-beautiful-philosophy-card__cta {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__shell {
+  border: 1px solid #e4e4e7;
+  border-radius: 1rem;
+  background: #ffffff;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__layout {
+  display: grid;
+  gap: 1rem;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__rail {
+  min-width: 0;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__rail-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: min(72vh, 36rem);
+  overflow-y: auto;
+  padding: 0.125rem;
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d8 transparent;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__card {
+  flex: 0 0 auto;
+  aspect-ratio: auto;
+  min-height: 0;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__card-content {
+  min-height: 10.5rem;
+  aspect-ratio: auto;
+  padding: 1rem;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__card-content::before {
+  background: linear-gradient(
+    to top,
+    rgb(9 9 11 / 0.92) 0%,
+    rgb(9 9 11 / 0.72) 45%,
+    rgb(9 9 11 / 0.2) 100%
+  );
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__card:hover .lt-beautiful-familyos-hub__card-content::before,
+.langtontao-page .lt-beautiful-familyos-hub__card:focus-visible .lt-beautiful-familyos-hub__card-content::before {
+  background: linear-gradient(
+    to top,
+    rgb(9 9 11 / 0.88) 0%,
+    rgb(9 9 11 / 0.62) 45%,
+    rgb(9 9 11 / 0.12) 100%
+  );
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__card-branch {
+  margin-top: 0.375rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(250 250 250 / 0.55);
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__card-title {
+  margin-top: 0.375rem;
+  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  line-height: 1.15;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__card-description {
+  margin-top: 0.5rem;
+  max-width: none;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__card .coffee2-pillar-card__cta {
+  margin-top: 0.625rem;
+  font-size: 0.75rem;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__card--selected,
+.langtontao-page .lt-beautiful-familyos-hub__card[data-selected='true'] {
+  box-shadow: inset 0 0 0 2px #ffe600;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__card--selected .lt-beautiful-familyos-hub__card-content,
+.langtontao-page .lt-beautiful-familyos-hub__card[data-selected='true'] .lt-beautiful-familyos-hub__card-content {
+  background-color: rgb(255 254 245 / 0.08);
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__stage {
+  border: 1px solid #f4f4f5;
+  border-radius: 0.875rem;
+  background: #fafafa;
+  padding: 1.25rem 1.5rem;
+  min-height: 220px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__stage-inner--enter {
+  animation: lt-familyos-stage-in 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes lt-familyos-stage-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__stage-eyebrow {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__stage-title {
+  margin-top: 0.375rem;
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #09090b;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__stage-lead {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #52525b;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__detail-section {
+  margin-top: 1.25rem;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__detail-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__detail-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__detail-card {
+  border: 1px solid #e4e4e7;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  padding: 0.875rem 1rem;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__detail-card-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #09090b;
+  line-height: 1.35;
+}
+
+.langtontao-page .lt-beautiful-familyos-hub__detail-card-body {
+  margin-top: 0.375rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: #52525b;
+}
+
+@media (max-width: 767px) {
+  .langtontao-page .lt-beautiful-familyos-hub__shell {
+    padding: 0.75rem 0;
+  }
+
+  .langtontao-page .lt-beautiful-familyos-hub__layout {
+    gap: 0.875rem;
+  }
+
+  .langtontao-page .lt-beautiful-familyos-hub__stage {
+    margin-inline: 0.75rem;
+    padding: 1rem 1.125rem;
+  }
+
+  .langtontao-page .lt-beautiful-familyos-hub__detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .langtontao-page .lt-beautiful-familyos-hub__rail-track {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.625rem;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0.75rem;
+    scrollbar-width: none;
+  }
+
+  .langtontao-page .lt-beautiful-familyos-hub__rail-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .langtontao-page .lt-beautiful-familyos-hub__card {
+    flex: 0 0 min(78vw, 15rem);
+    scroll-snap-align: center;
+  }
+
+  .langtontao-page .lt-beautiful-familyos-hub__card-content {
+    min-height: 11rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .langtontao-page .lt-beautiful-familyos-hub__layout {
+    grid-template-columns: minmax(220px, 18rem) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  .langtontao-page .lt-beautiful-familyos-hub__rail-track {
+    max-width: 18rem;
+    max-height: min(72vh, 36rem);
+  }
+
+  .langtontao-page .lt-beautiful-familyos-hub__stage {
+    min-height: min(72vh, 36rem);
+  }
+
+  .langtontao-page .lt-beautiful-familyos-hub__detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Topic pillar scatter — panic / wealth (matches langtontao-pillars) */
+.langtontao-page .lt-topic-pillars__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 11;
+  min-height: 20rem;
+  max-height: min(62vh, 40rem);
+  margin-block: 0;
+  margin-inline: 0;
+  padding: 0;
+  list-style: none;
+  overflow: visible;
+}
+
+.langtontao-page .lt-topic-pillars__stage[data-count='2'] {
+  aspect-ratio: 16 / 9;
+  min-height: 16rem;
+  max-height: min(44vh, 24rem);
+}
+
+.langtontao-page .lt-topic-pillars__stage[data-count='4'] {
+  aspect-ratio: auto;
+  min-height: calc(2 * clamp(10.5rem, 29vw, 18rem) + 2.75rem);
+  max-height: none;
+}
+
+.langtontao-page .lt-scatter-stage-wrap[data-has-zone-header='true'] .lt-topic-pillars__stage {
+  margin-top: 0.5rem;
+}
+
+.langtontao-page .lt-topic-zone__header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.25rem;
+  text-align: center;
+}
+
+.langtontao-page .lt-topic-zone__title {
+  font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: #09090b;
+}
+
+.langtontao-page .lt-topic-zone__header::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  margin: 0.875rem auto 0;
+  background: #ffe600;
+}
+
+/* Panic channel row — 3-card aligned strip (narrower than scatter grid) */
+.langtontao-page .lt-topic-row-wrap {
+  width: 100%;
+  max-width: 52rem;
+  margin-inline: auto;
+}
+
+.langtontao-page .lt-topic-row-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.875rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+@media (min-width: 640px) {
+  .langtontao-page .lt-topic-row-grid {
+    gap: 1rem;
+  }
+}
+
+.langtontao-page .lt-topic-row-grid__item {
+  margin: 0;
+  min-width: 0;
+}
+
+.langtontao-page .lt-topic-row-grid__reveal {
+  display: block;
+  height: 100%;
+}
+
+.langtontao-page .lt-topic-concept-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  width: 100%;
+  min-height: 9.5rem;
+  padding: 1.25rem 1.25rem 1.375rem;
+  border: 1px solid var(--c2-border, #e4e4e7);
+  border-radius: 1rem;
+  background: #09090b;
+  color: #fafafa;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease,
+    background-color 0.28s ease;
+}
+
+.langtontao-page .lt-topic-concept-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  border-radius: 9999px;
+  background: var(--lt-topic-accent, #ffe600);
+  opacity: 0.95;
+}
+
+.langtontao-page .lt-topic-concept-card:hover,
+.langtontao-page .lt-topic-concept-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: #d4d4d8;
+  background: #ffffff;
+  color: #09090b;
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.08);
+  outline: none;
+}
+
+.langtontao-page .lt-topic-concept-card__index {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgb(250 250 250 / 0.45);
+  transition: color 0.28s ease;
+}
+
+.langtontao-page .lt-topic-concept-card:hover .lt-topic-concept-card__index,
+.langtontao-page .lt-topic-concept-card:focus-visible .lt-topic-concept-card__index {
+  color: var(--lt-topic-accent, #09090b);
+}
+
+.langtontao-page .lt-topic-concept-card__label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .langtontao-page .lt-topic-concept-card__label {
+    font-size: 1.25rem;
+  }
+}
+
+.langtontao-page .lt-topic-concept-card__preview {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgb(250 250 250 / 0.62);
+  transition: color 0.28s ease;
+}
+
+.langtontao-page .lt-topic-concept-card:hover .lt-topic-concept-card__preview,
+.langtontao-page .lt-topic-concept-card:focus-visible .lt-topic-concept-card__preview {
+  color: #71717a;
+}
+
+@media (max-width: 639px) {
+  .langtontao-page .lt-topic-row-grid {
+    grid-template-columns: 1fr;
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .langtontao-page .lt-topic-concept-card {
+    transition: none;
+  }
+
+  .langtontao-page .lt-topic-concept-card:hover,
+  .langtontao-page .lt-topic-concept-card:focus-visible {
+    transform: none;
+  }
+}
+
+.langtontao-page .lt-topic-pillars__stage[data-count='5'] {
+  aspect-ratio: auto;
+  min-height: calc(2 * clamp(10.5rem, 29vw, 18rem) + 3rem);
+  max-height: none;
+}
+
+.langtontao-page .lt-topic-pillars__stage[data-count='6'] {
+  aspect-ratio: auto;
+  min-height: calc(2 * clamp(10.5rem, 29vw, 18rem) + 5rem);
+  max-height: none;
+}
+
+.langtontao-page .lt-topic-pillars__stage[data-count='9'] {
+  aspect-ratio: auto;
+  min-height: calc(3 * clamp(10.5rem, 29vw, 18rem) + 6rem);
+  max-height: none;
+}
+
+@media (min-width: 640px) {
+  .langtontao-page .lt-topic-pillars__stage {
+    min-height: 22rem;
+  }
+
+  .langtontao-page .lt-topic-pillars__stage[data-count='6'] {
+    min-height: calc(2 * clamp(10.5rem, 29vw, 18rem) + 5.5rem);
+  }
+
+  .langtontao-page .lt-topic-pillars__stage[data-count='9'] {
+    min-height: calc(3 * clamp(10.5rem, 29vw, 18rem) + 6.5rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .langtontao-page .lt-topic-pillars__stage {
+    min-height: 24rem;
+  }
+
+  .langtontao-page .lt-topic-pillars__stage[data-count='6'] {
+    min-height: calc(2 * clamp(10.5rem, 29vw, 18rem) + 6rem);
+  }
+
+  .langtontao-page .lt-topic-pillars__stage[data-count='9'] {
+    min-height: calc(3 * clamp(10.5rem, 29vw, 18rem) + 7rem);
+  }
+}
+
+.langtontao-page .lt-topic-pillars__card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  width: var(--lt-pillar-stack-width, clamp(5.5rem, 13vw, 8rem));
+  transform: translate(
+      calc(-50% + var(--lt-pillar-stack-x, 0%)),
+      calc(-50% + var(--lt-pillar-stack-y, 0%))
+    )
+    rotate(var(--lt-pillar-stack-rotate, 0deg))
+    scale(var(--lt-pillar-stack-scale, 1));
+  transform-origin: center center;
+  transition:
+    left 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.82s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.82s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--lt-pillar-stagger, 0ms);
+  will-change: left, top, width, transform;
+  z-index: var(--lt-pillar-stack-z, 1);
+}
+
+.langtontao-page .lt-topic-pillars__stage[data-exploded='true'] .lt-topic-pillars__card {
+  left: var(--lt-pillar-scatter-left, 50%);
+  top: var(--lt-pillar-scatter-top, 50%);
+  width: var(--lt-pillar-scatter-width, clamp(10.5rem, 29vw, 18rem));
+  z-index: var(--lt-pillar-scatter-z, 1);
+  transform: translate(-50%, -50%)
+    rotate(var(--lt-pillar-scatter-rotate, 0deg))
+    scale(var(--lt-pillar-scatter-scale, 1));
+}
+
+.langtontao-page .lt-topic-pillars__card:hover,
+.langtontao-page .lt-topic-pillars__card:focus-within {
+  z-index: 20;
+}
+
+.langtontao-page .lt-topic-pillars__card .coffee2-pillar-card {
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+}
+
+.langtontao-page .lt-topic-pillars__card .coffee2-pillar-card__content {
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  padding: 1.125rem;
+}
+
+.langtontao-page .lt-topic-pillars__card .coffee2-pillar-card__content::before {
+  background: linear-gradient(
+    to top,
+    rgb(9 9 11 / 0.78) 0%,
+    rgb(9 9 11 / 0.38) 48%,
+    rgb(9 9 11 / 0.1) 100%
+  );
+}
+
+.langtontao-page .lt-topic-pillars__card .coffee2-pillar-card:hover .coffee2-pillar-card__content::before,
+.langtontao-page .lt-topic-pillars__card .coffee2-pillar-card:focus-visible .coffee2-pillar-card__content::before {
+  background: linear-gradient(
+    to top,
+    rgb(9 9 11 / 0.72) 0%,
+    rgb(9 9 11 / 0.32) 48%,
+    rgb(9 9 11 / 0.06) 100%
+  );
+}
+
+.langtontao-page .lt-topic-pillars__card .coffee2-pillar-card__number {
+  font-size: 0.75rem;
+}
+
+.langtontao-page .lt-topic-pillars__card .coffee2-pillar-card__title {
+  margin-top: 0.5rem;
+  font-size: clamp(0.9375rem, 2.2vw, 1.375rem);
+  line-height: 1.1;
+}
+
+.langtontao-page .lt-topic-pillars__card .coffee2-pillar-card__description {
+  max-width: none;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+@media (min-width: 640px) {
+  .langtontao-page .lt-topic-pillars__card .coffee2-pillar-card__content {
+    padding: 1.25rem;
+  }
+
+  .langtontao-page .lt-topic-pillars__card .coffee2-pillar-card__description {
+    font-size: 0.8125rem;
+  }
+}
+
+.langtontao-page .lt-topic-pillars__card .coffee2-pillar-card:hover,
+.langtontao-page .lt-topic-pillars__card .coffee2-pillar-card:focus-visible {
+  transform: scale(1.05);
+}
+
+.langtontao-page .lt-topic-modal__formula {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
+  color: #09090b;
+}
+
+.langtontao-page .lt-topic-modal__nested {
+  display: grid;
+  gap: 0.625rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.langtontao-page .lt-topic-modal__nested-item {
+  border: 1px solid #e4e4e7;
+  border-radius: 0.625rem;
+  padding: 0.75rem;
+  background: #fafafa;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .langtontao-page .lt-topic-pillars__card {
+    left: var(--lt-pillar-scatter-left, 50%);
+    top: var(--lt-pillar-scatter-top, 50%);
+    width: var(--lt-pillar-scatter-width, clamp(10.5rem, 29vw, 18rem));
+    transform: translate(-50%, -50%)
+      rotate(var(--lt-pillar-scatter-rotate, 0deg))
+      scale(var(--lt-pillar-scatter-scale, 1));
+    transition: none;
+  }
+}
+
+/* Wishlist — flashcard survey + topic matrix */
+.langtontao-page .lt-wishlist-flashcard-stack {
+  position: relative;
+  min-height: 520px;
+  width: 100%;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card {
+  position: absolute;
+  inset: 0;
+  transform-origin: center 85%;
+  transition:
+    transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.48s ease;
+  pointer-events: none;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card--active {
+  z-index: 10;
+  transform: translateY(0) rotate(0deg) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card[data-stack-slot='0'] {
+  z-index: 1;
+  transform: translateY(20px) rotate(-4deg) scale(0.97);
+  opacity: 0.72;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card[data-stack-slot='1'] {
+  z-index: 2;
+  transform: translateY(12px) rotate(2deg) scale(0.98);
+  opacity: 0.8;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card[data-stack-slot='2'] {
+  z-index: 3;
+  transform: translateY(6px) rotate(-2deg) scale(0.99);
+  opacity: 0.88;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card__face {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  min-height: 500px;
+  border: 2px solid #09090b;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 6px 6px 0 0 #ffe600;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card__face--results {
+  min-height: auto;
+  box-shadow: 4px 4px 0 0 #ffe600;
+}
+
+.langtontao-page .lt-wishlist-flashcard__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.langtontao-page .lt-wishlist-flashcard__options {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d8 transparent;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card:not([data-active='true']) .lt-wishlist-flashcard__inner {
+  visibility: hidden;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card--slide-out {
+  z-index: 11;
+  transform: translateY(42%) rotate(12deg) scale(0.92) !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card--slide-out-back {
+  z-index: 11;
+  transform: translateY(42%) rotate(-12deg) scale(0.92) !important;
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card--stacked-away {
+  opacity: 0.25 !important;
+  transform: translateY(28px) rotate(-3deg) scale(0.94) !important;
+  pointer-events: none;
+}
+
+.langtontao-page .lt-wishlist-flashcard-card--overlay {
+  z-index: 20;
+}
+
+@keyframes lt-wishlist-flashcard-slide-in {
+  from {
+    transform: translateY(16%) rotate(4deg) scale(0.94);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.langtontao-page .lt-wishlist-flashcard-card--slide-in {
+  animation: lt-wishlist-flashcard-slide-in 0.48s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.langtontao-page .lt-wishlist-topic-matrix {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .langtontao-page .lt-wishlist-topic-matrix {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .langtontao-page .lt-wishlist-topic-matrix {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.langtontao-page .lt-wishlist-topic-window {
+  border: 2px solid #e4e4e7;
+  border-radius: 0.875rem;
+  background: #ffffff;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.langtontao-page .lt-wishlist-topic-window[open] {
+  border-color: #09090b;
+  box-shadow: 4px 4px 0 0 #ffe600;
+}
+
+.langtontao-page .lt-wishlist-topic-window__summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.125rem;
+}
+
+.langtontao-page .lt-wishlist-topic-window__summary::-webkit-details-marker {
+  display: none;
+}
+
+.langtontao-page .lt-wishlist-topic-window__label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+}
+
+.langtontao-page .lt-wishlist-topic-window__title {
+  margin-top: 0.375rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #09090b;
+}
+
+.langtontao-page .lt-wishlist-topic-window__teaser {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: #71717a;
+}
+
+.langtontao-page .lt-wishlist-topic-window__body {
+  padding: 0 1.125rem 1.125rem;
+  border-top: 1px solid #f4f4f5;
+}
+
+.langtontao-page .lt-wishlist-topic-window__philosophy {
+  padding-top: 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: #3f3f46;
+}
+
+.langtontao-page .lt-wishlist-topic-window__cta {
+  margin-top: 0.875rem;
+}
+
+@keyframes lt-wishlist-topic-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.langtontao-page .lt-wishlist-topic-window--enter {
+  animation: lt-wishlist-topic-enter 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .langtontao-page .lt-wishlist-flashcard-card {
+    transition: none;
+  }
+
+  .langtontao-page .lt-wishlist-flashcard-card--slide-in {
+    animation: none;
+  }
+
+  .langtontao-page .lt-wishlist-topic-window--enter {
+    animation: none;
+  }
 }
 
 .langtontao-page .lt-section--why-mfo {
@@ -56,6 +2287,308 @@
   box-shadow: 0 4px 16px rgb(0 0 0 / 0.06);
 }
 
+/* Exposure danmaku — full-bleed Pop Art / Collage stage */
+.langtontao-page .lt-exposure-showcase-block {
+  position: relative;
+}
+
+.langtontao-page .lt-exposure-showcase__bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    black 18%,
+    black 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    black 18%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+.langtontao-page .lt-exposure-showcase__bg-surface {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      -3deg,
+      transparent,
+      transparent 18px,
+      rgb(9 9 11 / 0.015) 18px,
+      rgb(9 9 11 / 0.015) 19px
+    ),
+    linear-gradient(180deg, rgb(245 245 245) 0%, rgb(250 250 250) 50%, rgb(245 245 245) 100%);
+}
+
+.langtontao-page .lt-exposure-showcase__bg-surface::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(32deg, rgb(255 230 0 / 0.14) 0%, rgb(255 230 0 / 0.14) 100%) 8% 12% / 72px 18px no-repeat,
+    linear-gradient(-18deg, rgb(255 230 0 / 0.1) 0%, rgb(255 230 0 / 0.1) 100%) 78% 22% / 56px 14px no-repeat,
+    linear-gradient(8deg, rgb(9 9 11 / 0.06) 0%, rgb(9 9 11 / 0.06) 100%) 62% 68% / 48px 12px no-repeat,
+    linear-gradient(-42deg, rgb(255 230 0 / 0.08) 0%, rgb(255 230 0 / 0.08) 100%) 22% 78% / 64px 16px no-repeat;
+  opacity: 0.55;
+}
+
+.langtontao-page .lt-exposure-showcase__glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  pointer-events: none;
+  animation: lt-exposure-blob-float 10s ease-in-out infinite;
+}
+
+.langtontao-page .lt-exposure-showcase__glow--a {
+  top: 28%;
+  left: 18%;
+  width: 200px;
+  height: 200px;
+  background: rgb(255 230 0 / 0.12);
+}
+
+.langtontao-page .lt-exposure-showcase__glow--b {
+  bottom: 12%;
+  right: 14%;
+  width: 240px;
+  height: 240px;
+  background: rgb(9 9 11 / 0.04);
+  animation-delay: -4s;
+}
+
+.langtontao-page .lt-exposure-danmaku-breakout {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.langtontao-page .lt-exposure-danmaku {
+  position: relative;
+  height: min(560px, 48vh);
+  min-height: 480px;
+  overflow: hidden;
+  background: transparent;
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+.langtontao-page .lt-exposure-danmaku--fading {
+  opacity: 0;
+}
+
+.langtontao-page .lt-exposure-danmaku--static {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  background: transparent;
+}
+
+@keyframes lt-exposure-blob-float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(12px, -10px);
+  }
+}
+
+.langtontao-page .lt-exposure-danmaku__stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1200px;
+}
+
+@keyframes lt-exposure-drift {
+  from {
+    transform: translateX(110vw) scale(var(--drift-scale)) rotate(var(--drift-rotate));
+  }
+  to {
+    transform: translateX(-130%) scale(var(--drift-scale)) rotate(var(--drift-rotate));
+  }
+}
+
+.langtontao-page .lt-exposure-danmaku__card {
+  position: absolute;
+  top: var(--drift-top);
+  left: 0;
+  z-index: var(--drift-z);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: min(280px, 42vw);
+  padding: 0.625rem 0.875rem;
+  border: 2px solid #09090b;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 #09090b;
+  text-align: left;
+  white-space: normal;
+  cursor: grab;
+  opacity: var(--drift-opacity);
+  filter: blur(var(--drift-blur));
+  transform-origin: center center;
+  animation: lt-exposure-drift var(--drift-duration) linear infinite;
+  animation-delay: var(--drift-delay);
+  transition:
+    box-shadow 0.2s ease,
+    filter 0.2s ease,
+    opacity 0.2s ease;
+  will-change: transform;
+  touch-action: none;
+}
+
+.langtontao-page .lt-exposure-danmaku__card::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 12px;
+  width: 28px;
+  height: 12px;
+  background: rgb(255 230 0 / 0.55);
+  border: 1px solid rgb(9 9 11 / 0.35);
+  transform: rotate(6deg);
+  pointer-events: none;
+}
+
+.langtontao-page .lt-exposure-danmaku__card--collage-0 {
+  border-radius: 0;
+}
+
+.langtontao-page .lt-exposure-danmaku__card--collage-1 {
+  border-radius: 0.5rem;
+}
+
+.langtontao-page .lt-exposure-danmaku__card--collage-2 {
+  border-radius: 0;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+}
+
+.langtontao-page .lt-exposure-danmaku__card--collage-3 {
+  border-radius: 0.25rem;
+  border-style: dashed;
+}
+
+.langtontao-page .lt-exposure-danmaku__card--severity-high {
+  background: #09090b;
+  color: #fafafa;
+  box-shadow: 4px 4px 0 #ffe600;
+}
+
+.langtontao-page .lt-exposure-danmaku__card--severity-high .lt-exposure-danmaku__card-category {
+  color: #ffe600;
+  opacity: 1;
+}
+
+.langtontao-page .lt-exposure-danmaku__card--severity-medium {
+  background: #ffffff;
+  color: #09090b;
+  box-shadow: 4px 4px 0 #ffe600;
+}
+
+.langtontao-page .lt-exposure-danmaku__card--severity-watch {
+  background: #f4f4f5;
+  color: #3f3f46;
+  border-style: dashed;
+  box-shadow: 3px 3px 0 #09090b;
+}
+
+.langtontao-page .lt-exposure-danmaku__card--severity-watch::before {
+  content: '留意';
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  padding: 0 6px;
+  font-size: 0.5625rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #09090b;
+  background: #ffe600;
+  border: 1px solid #09090b;
+  line-height: 1.4;
+}
+
+.langtontao-page .lt-exposure-danmaku__static-card {
+  position: relative;
+  padding: 0.75rem 1rem;
+  border: 2px solid #09090b;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 #09090b;
+  text-align: left;
+}
+
+.langtontao-page .lt-exposure-danmaku__static-card.lt-exposure-danmaku__card--severity-high {
+  box-shadow: 4px 4px 0 #ffe600;
+}
+
+.langtontao-page .lt-exposure-danmaku__static-card.lt-exposure-danmaku__card--severity-medium {
+  box-shadow: 4px 4px 0 #ffe600;
+}
+
+.langtontao-page .lt-exposure-danmaku__static-card.lt-exposure-danmaku__card--severity-watch {
+  border-style: dashed;
+}
+
+.langtontao-page .lt-exposure-danmaku__card-category {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.langtontao-page .lt-exposure-danmaku__card-label {
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .langtontao-page .lt-exposure-danmaku__card:hover {
+    animation-play-state: paused;
+    z-index: 20;
+    opacity: 1;
+    filter: blur(0);
+    box-shadow: 6px 6px 0 #ffe600;
+    outline: 2px solid #09090b;
+    outline-offset: 2px;
+  }
+}
+
+.langtontao-page .lt-exposure-danmaku__card--active {
+  animation-play-state: paused;
+  z-index: 20;
+  opacity: 1;
+  filter: blur(0);
+  box-shadow: 6px 6px 0 #ffe600;
+  outline: 2px solid #09090b;
+  outline-offset: 2px;
+}
+
+.langtontao-page .lt-exposure-danmaku__card--dragging {
+  z-index: 30;
+  opacity: 1;
+  filter: blur(0);
+  cursor: grabbing;
+  box-shadow: 6px 6px 0 #ffe600;
+  outline: 2px solid #09090b;
+  outline-offset: 2px;
+}
+
 .langtontao-page .lt-structure-bar {
   transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -64,8 +2597,48 @@
   background: rgb(250 250 250);
 }
 
-.langtontao-page .lt-wishlist-deck {
-  min-height: 320px;
+.langtontao-page .lt-wishlist-results {
+  min-height: 0;
+}
+
+.langtontao-page .lt-wishlist-timeline__score-bars {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.langtontao-page .lt-wishlist-timeline__score-row {
+  display: grid;
+  grid-template-columns: 3rem 1fr 2rem;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.langtontao-page .lt-wishlist-timeline__score-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #52525b;
+}
+
+.langtontao-page .lt-wishlist-timeline__score-track {
+  display: block;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: #f4f4f5;
+}
+
+.langtontao-page .lt-wishlist-timeline__score-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #09090b, #ffe600);
+}
+
+.langtontao-page .lt-wishlist-timeline__score-value {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #71717a;
+  text-align: right;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -77,5 +2650,240 @@
 
   .langtontao-page .lt-structure-bar {
     transition: none;
+  }
+
+  .langtontao-page .lt-exposure-showcase__glow {
+    animation: none;
+  }
+
+  .langtontao-page .lt-exposure-danmaku__card {
+    animation: none;
+    position: relative;
+    filter: none;
+    opacity: 1;
+  }
+}
+
+/* ── Langtontao mobile layout tuning ── */
+
+@media (max-width: 767px) {
+  /* Pillars — 2×2 grid with full card copy */
+  .langtontao-pillars__stage {
+    aspect-ratio: auto;
+    min-height: auto;
+    max-height: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .langtontao-pillars__card,
+  .langtontao-pillars__stage[data-exploded='true'] .langtontao-pillars__card {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    transform: none;
+    transition: none;
+    z-index: auto;
+  }
+
+  .langtontao-page .langtontao-pillars .coffee2-pillar-card {
+    aspect-ratio: auto;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .langtontao-page .langtontao-pillars .coffee2-pillar-card__content {
+    aspect-ratio: auto;
+    min-height: 11.5rem;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .langtontao-page .langtontao-pillars .coffee2-pillar-card__title {
+    font-size: 1rem;
+    line-height: 1.15;
+  }
+
+  .langtontao-page .langtontao-pillars .coffee2-pillar-card__description {
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
+
+  .langtontao-page .langtontao-pillars .coffee2-pillar-card__cta {
+    margin-top: 0.625rem;
+    font-size: 0.75rem;
+  }
+
+  /* Panic channel row — compact cards */
+  .langtontao-page .lt-topic-row-grid {
+    gap: 0.625rem;
+  }
+
+  .langtontao-page .lt-topic-concept-card {
+    min-height: 6.5rem;
+    gap: 0.375rem;
+    padding: 0.875rem 1rem 0.9375rem;
+  }
+
+  .langtontao-page .lt-topic-concept-card__label {
+    font-size: 1rem;
+  }
+
+  .langtontao-page .lt-topic-concept-card__preview {
+    font-size: 0.75rem;
+    line-height: 1.45;
+    -webkit-line-clamp: 2;
+  }
+
+  /* Wealth topic pillars — more horizontal spacing */
+  .langtontao-page .lt-topic-pillars__stage[data-exploded='true'] .lt-topic-pillars__card {
+    width: clamp(8.5rem, 36vw, 10.25rem);
+  }
+
+  .langtontao-page .lt-topic-pillars__stage[data-count='2'][data-exploded='true'] .lt-topic-pillars__card:nth-child(1) {
+    left: 26%;
+  }
+
+  .langtontao-page .lt-topic-pillars__stage[data-count='2'][data-exploded='true'] .lt-topic-pillars__card:nth-child(2) {
+    left: 74%;
+  }
+
+  .langtontao-page .lt-topic-pillars__stage[data-count='4'] {
+    min-height: calc(2 * clamp(8.5rem, 36vw, 10.25rem) + 3.75rem);
+  }
+
+  .langtontao-page .lt-topic-pillars__stage[data-count='4'][data-exploded='true'] .lt-topic-pillars__card:nth-child(1) {
+    left: 26%;
+    top: 23%;
+  }
+
+  .langtontao-page .lt-topic-pillars__stage[data-count='4'][data-exploded='true'] .lt-topic-pillars__card:nth-child(2) {
+    left: 74%;
+    top: 23%;
+  }
+
+  .langtontao-page .lt-topic-pillars__stage[data-count='4'][data-exploded='true'] .lt-topic-pillars__card:nth-child(3) {
+    left: 26%;
+    top: 77%;
+  }
+
+  .langtontao-page .lt-topic-pillars__stage[data-count='4'][data-exploded='true'] .lt-topic-pillars__card:nth-child(4) {
+    left: 74%;
+    top: 77%;
+  }
+
+  /* Superhero program hub — compact stage + collapsible gallery */
+  .langtontao-page .lt-superhero-program-hub__shell {
+    padding: 0.75rem;
+  }
+
+  .langtontao-page .lt-superhero-program-hub__stage {
+    padding: 1rem;
+    min-height: 0;
+  }
+
+  .langtontao-page .lt-superhero-program-hub__stage-header {
+    gap: 0.75rem;
+  }
+
+  .langtontao-page .lt-superhero-program-hub__cover {
+    max-height: 9.5rem;
+  }
+
+  .langtontao-page .lt-superhero-program-hub__stage-lead,
+  .langtontao-page .lt-superhero-program-hub__stage-body,
+  .langtontao-page .lt-superhero-program-hub__audience-text {
+    font-size: 0.8125rem;
+    line-height: 1.55;
+  }
+
+  .langtontao-page .c2-gallery-shell {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .langtontao-page .c2-gallery {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .langtontao-page .c2-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .langtontao-page .c2-gallery-item {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .langtontao-page .c2-gallery--preview,
+  .langtontao-page .c2-gallery--expanded {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    overflow: hidden;
+  }
+
+  .langtontao-page .c2-gallery--preview .c2-gallery-item,
+  .langtontao-page .c2-gallery--expanded .c2-gallery-item {
+    width: 100% !important;
+    height: 4.25rem !important;
+  }
+
+  .langtontao-page .c2-gallery-toggle {
+    margin-top: 0.5rem;
+    width: 100%;
+    border: 1px solid #e4e4e7;
+    border-radius: 0.5rem;
+    background: #ffffff;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #52525b;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .langtontao-page .c2-gallery-toggle:hover {
+    border-color: #d4d4d8;
+    background: #fafafa;
+  }
+}
+
+@media (min-width: 768px) {
+  .langtontao-page .c2-gallery-shell {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .langtontao-page .c2-gallery {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .langtontao-page .c2-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .langtontao-page .c2-gallery-item {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .langtontao-page .c2-gallery-toggle {
+    display: none;
   }
 }

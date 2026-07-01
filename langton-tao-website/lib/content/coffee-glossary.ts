@@ -5,25 +5,7 @@ export type Coffee2GlossarySection = {
   bullets?: readonly string[]
 }
 
-export const COFFEE2_GLOSSARY_EXCLUDED_LABELS = [
-  'TAO路径',
-  'TAO 路径',
-  'TAO定律',
-  'TAO 定律',
-  '人生认知定投',
-  '认知定投',
-  '默会知识',
-  '周期共识',
-  '康德拉季耶夫',
-  '康波周期',
-  '康波',
-  '朱格拉周期',
-  '朱格拉',
-  '家族办公室',
-  '新型家办',
-  '家办',
-  '共同体技艺',
-] as const
+export const COFFEE2_GLOSSARY_EXCLUDED_LABELS = [] as const
 
 export const coffee2GlossaryTerms = {
   bearbit: {
@@ -503,6 +485,366 @@ export const coffee2GlossaryTerms = {
       },
     ],
   },
+  taoLaw: {
+    id: 'taoLaw',
+    label: 'TAO定律',
+    shortLabel: 'TAO Law',
+    definition:
+      'TAO定律是朗敦道把宏观判断落到家庭时间轴的框架——从第一天本金到第一百年慈善与传承，核心落在财富三段式。',
+    sections: [
+      {
+        paragraphs: [
+          '「问道」对应穿越周期的 TAO 定律：保全（化债、保险类等）、增长（在正确阶段配置正确工具）、传承（让财富与认知跨代际延续）。',
+          '在百年尺度上，家庭完成的不仅是财富积累，更是可同频、可年检、可传递的代际系统。',
+        ],
+      },
+    ],
+  },
+  taoPath: {
+    id: 'taoPath',
+    label: 'TAO路径',
+    shortLabel: 'TAO Path',
+    definition:
+      'TAO路径是家庭穿越数十年的阶段路线图——从劳动与教育储备，到守本金、压舱石、出花园、信托传承，直至慈善与好祖先。',
+    sections: [
+      {
+        bullets: [
+          '第一天：本金、劳动、教育、化债与同频；',
+          '第二天：守本金、国债储蓄与现金流纪律；',
+          '第十年：压舱石（保险、房产、身份）；',
+          '第三十年至第一百年：信托、养老、黄金锚点与传承。',
+        ],
+      },
+    ],
+  },
+  cognitiveDca: {
+    id: 'cognitiveDca',
+    label: '认知定投',
+    shortLabel: 'Cognitive DCA',
+    definition:
+      '朗敦道所说的「定投」，首先是认知定投，其次才是资金定投——把判断从预测风口转向持续修正阶段与敞口。',
+    sections: [
+      {
+        paragraphs: [
+          '周期会放大贪婪与恐惧；家庭若没有可重复执行的认知纪律，就会在波段里反复做情绪的奴隶。',
+          '认知定投是一场跨越数十年的诚实学习：我处于 TAO 路径的哪一阶段？该守本金、该配压舱石，还是该布局传承？',
+        ],
+      },
+    ],
+  },
+  tacitKnowledge: {
+    id: 'tacitKnowledge',
+    label: '默会知识',
+    shortLabel: 'Tacit Knowledge',
+    definition:
+      '默会知识是真正决定传承能否发生的隐性共识——纸面信托与股权协议只能解决「法律上归谁」。',
+    sections: [
+      {
+        paragraphs: [
+          '朗敦道将其分为心理所有权、金融所有权，以及二者交集处的家族共同利益。',
+          '共读、陪跑、超级英雄之旅与私董会，正是把默会知识从「饭桌上的默契」转化为可传递、可演练的共同体技艺。',
+        ],
+      },
+    ],
+  },
+  cycleConsensus: {
+    id: 'cycleConsensus',
+    label: '周期共识',
+    shortLabel: 'Cycle Consensus',
+    definition:
+      '周期共识是家庭对宏观波段与自身阶段位置的共同理解——避免在短波里追涨杀跌，也避免在长波里忽视换轨。',
+    sections: [
+      {
+        paragraphs: [
+          '基钦、朱格拉、库兹涅茨与康德拉季耶夫周期叠加共振时，需要可年检的结构与同频机制，而非各自解读新闻。',
+        ],
+      },
+    ],
+  },
+  kondratiev: {
+    id: 'kondratiev',
+    label: '康德拉季耶夫',
+    shortLabel: 'Kondratiev Wave',
+    definition:
+      '康德拉季耶夫周期（康波）是约 45–60 年的技术—资本长波——能源、信用与生产率换轨时，财富规则被系统性重写。',
+    sections: [
+      {
+        paragraphs: [
+          '理解康波位置，有助于区分真实系统升级与周期性顺风，避免把长波红利误当作个人能力的永久兑现。',
+        ],
+      },
+    ],
+  },
+  juglar: {
+    id: 'juglar',
+    label: '朱格拉周期',
+    shortLabel: 'Juglar Cycle',
+    definition:
+      '朱格拉周期约 7–11 年，与设备投资、产能扩张与库存周期相关——是产业景气最常见的中波刻度。',
+    sections: [
+      {
+        paragraphs: [
+          '常与库兹涅茨、康波叠加；看见朱格拉，是为了保持配置纪律，而非押注每一个拐点。',
+        ],
+      },
+    ],
+  },
+  familyOffice: {
+    id: 'familyOffice',
+    label: '家办',
+    shortLabel: 'Family Office',
+    definition:
+      '家办不是「资产到了某个数字」之后的奢侈品，而是统摄家庭关系、人脉、重大选择与财富目标的顶层架构。',
+    sections: [
+      {
+        paragraphs: [
+          '新型家办是 AI、专家、具身与商业模式创新的组合拳——从静态仓库变成可触达、可参与、可升级的操作系统。',
+          '价值在于让家庭提前拥有「操作系统」，而不是在拐点叠加时被动救火。',
+        ],
+      },
+    ],
+  },
+  communityCraft: {
+    id: 'communityCraft',
+    label: '共同体技艺',
+    shortLabel: 'Community Craft',
+    definition:
+      '共同体技艺是把默会知识转化为可演练、可传递的家族与社群能力——而非只停留在饭桌默契或口头期待。',
+    sections: [
+      {
+        paragraphs: [
+          '共读、陪跑、私董会、六人茶局与超级英雄之旅，都是把「我们共同保护什么」练成可执行的技艺。',
+        ],
+      },
+    ],
+  },
+  superIndividual: {
+    id: 'superIndividual',
+    label: '超级个体',
+    shortLabel: 'Super Individual',
+    definition:
+      '超级个体是第一天在平均斯坦肉身撞墙、以试错期权撬开极端斯坦大门后，锻造出的不可替代能力组合。',
+    sections: [
+      {
+        paragraphs: [
+          '人生第一天拥有最高的期权价值——趁还能犯错、还能推倒重来，成为不可替代的超级个体，是第二天超级英雄之旅的前置燃料。',
+        ],
+      },
+    ],
+  },
+  superhero: {
+    id: 'superhero',
+    label: '超级英雄',
+    shortLabel: 'Superhero',
+    definition:
+      '超级英雄是第二天觉醒的状态——以认知为铠甲、以周期为罗盘，执掌家族命运的决策者，而非只看数字的旁观者。',
+    sections: [
+      {
+        paragraphs: [
+          '真正的超级英雄从来不是无所不能，而是无比清醒地知道自己的边界——能力圈的大小不重要，知道边界在哪里才最重要。',
+        ],
+      },
+    ],
+  },
+  superheroJourney: {
+    id: 'superheroJourney',
+    label: '超级英雄之旅',
+    shortLabel: 'Superhero Journey',
+    definition:
+      '超级英雄之旅是朗敦道把传承默会知识工具化的具身路径——把「成为好祖先」练成可参与、可演练的旅程。',
+    sections: [
+      {
+        paragraphs: [
+          '在学习类、工具类 OPC 与具身活动层，超级英雄之旅承担把心理所有权与金融所有权对齐的入口角色。',
+        ],
+      },
+    ],
+  },
+  wenDao: {
+    id: 'wenDao',
+    label: '问道',
+    shortLabel: 'Wen Dao',
+    definition:
+      '「问道」是朗敦道家族传承三道主线之一——回答「往哪走」，对应穿越周期的 TAO 定律与财富三段式。',
+    sections: [
+      {
+        paragraphs: [
+          '问道、关系与具身三者缺一则决策必然短视；问道把宏观判断落到家庭可执行的时间轴与阶段选择。',
+        ],
+      },
+    ],
+  },
+  familyOs: {
+    id: 'familyOs',
+    label: 'Family OS',
+    shortLabel: 'Family Operating System',
+    definition:
+      'Family OS 是新型家办的工具类 OPC 中枢——承担宏观经济、顶层架构与风险诊断的数字化操作系统。',
+    sections: [
+      {
+        paragraphs: [
+          '与龙虾助手、数字化业务流、CRM 与分佣体系协同，让家办从静态仓库变成可触达、可参与、可升级的系统。',
+        ],
+      },
+    ],
+  },
+  opc: {
+    id: 'opc',
+    label: 'OPC',
+    shortLabel: 'One Person Company',
+    definition:
+      'OPC（一人公司）在朗敦道架构中指可独立交付专业判断的专家与 AI 分身单元——学习类与工具类 OPC 构成新型家办的能力层。',
+    sections: [
+      {
+        paragraphs: [
+          '顶级赛博顾问（AI 专家分身）与实战操盘专家组，分别提供效率与具身判断，嵌套于教育 × 财富双螺旋。',
+        ],
+      },
+    ],
+  },
+  lobsterAssistant: {
+    id: 'lobsterAssistant',
+    label: '龙虾助手',
+    shortLabel: 'Lobster Assistant',
+    definition:
+      '龙虾助手是 Family OS 的 7×24 数字化入口——把宏观经济、架构咨询与风险诊断延伸到随时可触达的服务界面。',
+    sections: [
+      {
+        paragraphs: [
+          '作为工具类 OPC 的一部分，与数字化业务流、CRM 与会员生态协同，降低家庭孤独决策的成本。',
+        ],
+      },
+    ],
+  },
+  jointMfo: {
+    id: 'jointMfo',
+    label: '联合 MFO',
+    shortLabel: 'Joint MFO',
+    definition:
+      '联合 MFO 是朗敦道会员生态中的多家族办公室协同工具——同时作用于财富表、关系脉与选择根。',
+    sections: [
+      {
+        paragraphs: [
+          '解决的不是「再多一个产品」，而是让家庭在不确定时代拥有可执行的传承系统与专业网络支撑。',
+        ],
+      },
+    ],
+  },
+  sixTea: {
+    id: 'sixTea',
+    label: '六人茶局',
+    shortLabel: 'Six-Person Tea Circle',
+    definition:
+      '六人茶局是朗敦道具身活动层的微型同频场域——小人数、深对话，把判断练成可重复的家庭与社群技艺。',
+    sections: [
+      {
+        paragraphs: [
+          '与线下读书会、投资沙龙、私董会、DOK 新型社交一起，补足「活人感」与关系同频。',
+        ],
+      },
+    ],
+  },
+  privateBoard: {
+    id: 'privateBoard',
+    label: '私董会',
+    shortLabel: 'Private Board',
+    definition:
+      '私董会是朗敦道具身路径中的高信任决策场——在真实对话里拆解复杂议题，把默会知识转化为可演练的治理技艺。',
+    sections: [
+      {
+        paragraphs: [
+          '与超级英雄之旅、共读与陪跑协同，帮助家族在重大节点作出不后悔的决策。',
+        ],
+      },
+    ],
+  },
+  dok: {
+    id: 'dok',
+    label: 'DOK',
+    shortLabel: 'DOK Social',
+    definition:
+      'DOK 是朗敦道的新型社交形态——在具身活动层提供关系同频与「活人感」，补足纯线上与纯产品的空白。',
+    sections: [
+      {
+        paragraphs: [
+          '与六人茶局、私董会、读书会一起，构成新型家办具身活动层的社交基础设施。',
+        ],
+      },
+    ],
+  },
+  dayOne: {
+    id: 'dayOne',
+    label: '第一天',
+    shortLabel: 'Day One',
+    definition:
+      '第一天是 TAO 路径的起点——劳动、教育、化债、会员与同频，在平均斯坦装载跃迁所需的燃料。',
+    sections: [
+      {
+        paragraphs: [
+          '趁还拥有最高期权价值，成为不可替代的超级个体，是第二天觉醒超级英雄的前置条件。',
+        ],
+      },
+    ],
+  },
+  dayTwo: {
+    id: 'dayTwo',
+    label: '第二天',
+    shortLabel: 'Day Two',
+    definition:
+      '第二天是财富积累的分水岭——守本金、资产配置、教育认知、二代传承与人性信仰等重大人生议题集中涌现。',
+    sections: [
+      {
+        paragraphs: [
+          '第二天的人以认知为铠甲、以周期为罗盘，正式觉醒为执掌家族命运的超级英雄。',
+        ],
+      },
+    ],
+  },
+  riskExposure: {
+    id: 'riskExposure',
+    label: '十类风险敞口',
+    shortLabel: 'Ten Risk Exposures',
+    definition:
+      '十类风险敞口是朗敦道对家庭风险地图的系统分类——避免只盯收益而忽视结构性漏损入口。',
+    sections: [
+      {
+        paragraphs: [
+          '与十一类大类资产及一体双跨网络共同构成朗敦道关注的核心问题域，支撑敞口年检与架构迭代。',
+        ],
+      },
+    ],
+  },
+  assetClasses: {
+    id: 'assetClasses',
+    label: '十一类大类资产',
+    shortLabel: 'Eleven Asset Classes',
+    definition:
+      '十一类大类资产是朗敦道四象限框架下的资产全景——帮助家庭在模糊情境中一览属性与配置逻辑，而非单点产品堆砌。',
+    sections: [
+      {
+        paragraphs: [
+          '与十类风险敞口、TAO 路径阶段选择协同，支撑诚实投资学与周期共识下的配置纪律。',
+        ],
+      },
+    ],
+  },
+  wealthMacro471: {
+    id: 'wealthMacro471',
+    label: '471万亿',
+    shortLabel: '¥471T · China Domestic',
+    definition:
+      '约 471 万亿是中国国内的宏观财富结构总量——房地产、金融资产、政府债务、黄金与加密各占不同权重。',
+    sections: [
+      {
+        bullets: [
+          '房地产约 170 万亿（超 36%）——肉身所居与周期风险锚点；',
+          '金融资产/股市约 115 万亿（24%）——流动性与博弈主战场；',
+          '政府债务约 90 万亿——主权信用与杠杆底座；',
+          '黄金与加密各约 3 万亿——跨周期防线与离火时代新工具。',
+        ],
+      },
+    ],
+  },
 } as const
 
 export type Coffee2GlossaryTermId = keyof typeof coffee2GlossaryTerms
@@ -529,6 +871,14 @@ const COFFEE2_GLOSSARY_ALIASES: ReadonlyArray<{
   { label: '信托', id: 'familyTrust' },
   { label: '大通缩', id: 'greatDeflation' },
   { label: '离岸控股', id: 'offshoreStructure' },
+  { label: 'TAO 定律', id: 'taoLaw' },
+  { label: 'TAO 路径', id: 'taoPath' },
+  { label: '人生认知定投', id: 'cognitiveDca' },
+  { label: '康波周期', id: 'kondratiev' },
+  { label: '康波', id: 'kondratiev' },
+  { label: '朱格拉', id: 'juglar' },
+  { label: '家族办公室', id: 'familyOffice' },
+  { label: '新型家办', id: 'familyOffice' },
 ]
 
 type GlossaryMatcher = {

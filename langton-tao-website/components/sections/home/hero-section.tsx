@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { HeroImageFrame } from '@/components/sections/home/hero-image-frame'
+import { aboutLangtonPageEnabled } from '@/lib/site-nav'
 import { cn } from '@/lib/utils'
 
 const storyAvatars = [
@@ -32,16 +33,26 @@ export function HeroSection() {
             id="hero-title"
             className="text-display max-w-3xl text-[3rem] leading-[0.92] text-pop-black sm:text-[3.5rem] md:text-[4rem] lg:text-[4.5rem] xl:text-[5.25rem]"
           >
-            <Link
-              href="/langton"
-              className="group block w-fit rounded-lg border-2 border-transparent px-1 -mx-1 transition-colors hover:border-pop-black hover:bg-pop-yellow focus-visible:border-pop-black focus-visible:bg-pop-yellow focus-visible:outline-none"
-            >
-              <span className="block">朗敦道 LangtonTAO</span>
-              <span className="block">VFO / MFO Leader in China</span>
-              <span className="mt-2 block text-xs font-black uppercase tracking-widest text-pop-black/60 group-hover:text-pop-black sm:mt-3 sm:text-sm">
-                了解朗敦道 →
+            {aboutLangtonPageEnabled ? (
+              <Link
+                href="/langton"
+                className="group block w-fit rounded-lg border-2 border-transparent px-1 -mx-1 transition-colors hover:border-pop-black hover:bg-pop-yellow focus-visible:border-pop-black focus-visible:bg-pop-yellow focus-visible:outline-none"
+              >
+                <span className="block">朗敦道 LangtonTAO</span>
+                <span className="block">VFO / MFO Leader in China</span>
+                <span className="mt-2 block text-xs font-black uppercase tracking-widest text-pop-black/60 group-hover:text-pop-black sm:mt-3 sm:text-sm">
+                  了解朗敦道 →
+                </span>
+              </Link>
+            ) : (
+              <span className="block w-fit px-1 -mx-1">
+                <span className="block">朗敦道 LangtonTAO</span>
+                <span className="block">VFO / MFO Leader in China</span>
+                <span className="mt-2 block text-xs font-black uppercase tracking-widest text-pop-black/60 sm:mt-3 sm:text-sm">
+                  了解朗敦道 →
+                </span>
               </span>
-            </Link>
+            )}
             <span className="mt-3 block text-xl font-black leading-snug sm:text-2xl md:text-3xl lg:text-[2rem]">
               ——为华人家庭理财提供系统解决方案
             </span>

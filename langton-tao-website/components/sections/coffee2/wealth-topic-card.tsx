@@ -9,6 +9,7 @@ import {
   getWealthTopicTeaser,
   getWealthTopicVisualStyle,
 } from '@/lib/content/wealth-topic-utils'
+import { topicCardHash } from '@/lib/topic-share/build-share-url'
 import { cn } from '@/lib/utils'
 
 type WealthTopicCardProps = {
@@ -59,11 +60,11 @@ export function WealthTopicCard({
   return (
     <Coffee2Reveal delay={revealDelay} className="invest-wealth-reveal invest-wealth-topic-card-reveal">
       {!interactive ? (
-        <article className="invest-wealth-topic-card invest-wealth-topic-card--static">
+        <article id={topicCardHash(node.id)} className="invest-wealth-topic-card invest-wealth-topic-card--static">
           {content}
         </article>
       ) : (
-        <article className="invest-wealth-topic-card">
+        <article id={topicCardHash(node.id)} className="invest-wealth-topic-card">
           <button
             type="button"
             className={cn('invest-wealth-topic-card__button')}

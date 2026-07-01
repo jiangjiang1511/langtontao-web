@@ -2,20 +2,34 @@ import { JarsyReveal } from '@/components/jarsy/jarsy-reveal'
 import { checkupServiceProcess } from '@/lib/content/checkup2-page'
 import { cn } from '@/lib/utils'
 
-export function Checkup2ProcessSection() {
+type Checkup2ProcessSectionProps = {
+  variant?: 'page' | 'embedded'
+}
+
+export function Checkup2ProcessSection({ variant = 'page' }: Checkup2ProcessSectionProps) {
+  const embedded = variant === 'embedded'
+
   return (
     <section
       id="checkup-process"
-      className="scroll-mt-20 border-b border-zinc-200 bg-zinc-50/80 py-16 md:py-24"
+      className={cn(
+        'scroll-mt-20',
+        embedded
+          ? 'lt-checkup-embedded'
+          : 'border-b border-zinc-200 bg-zinc-50/80 py-16 md:py-24'
+      )}
       aria-labelledby="checkup2-process-title"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <JarsyReveal className="max-w-2xl">
-          <p className="c2-eyebrow">Process</p>
+      <div className={cn(!embedded && 'mx-auto max-w-7xl px-4 sm:px-6 lg:px-8')}>
+        <JarsyReveal className={embedded ? 'max-w-3xl' : 'max-w-2xl'}>
+          <p className="c2-eyebrow lt-heading-l2__eyebrow">Process</p>
           <h2
             id="checkup2-process-title"
-            className="c2-display mt-4 text-4xl text-zinc-950 md:text-5xl"
+            className={cn(
+              embedded ? 'lt-heading-l2 lt-heading-l2--with-rule' : 'c2-display mt-4 text-4xl text-zinc-950 md:text-5xl'
+            )}
           >
+            {embedded ? <span className="lt-heading-l2__rule" aria-hidden /> : null}
             {checkupServiceProcess.title}
           </h2>
         </JarsyReveal>

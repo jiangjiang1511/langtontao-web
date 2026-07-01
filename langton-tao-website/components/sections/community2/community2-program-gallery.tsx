@@ -13,14 +13,35 @@ import { cn } from '@/lib/utils'
 type Community2ProgramGalleryProps = {
   programTitle: string
   gallery: readonly string[]
+  previewCount?: number
+  collapsible?: boolean
 }
 
 export function Community2ProgramGallery({
   programTitle,
   gallery,
+  previewCount = 3,
+  collapsible = false,
 }: Community2ProgramGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [expanded, setExpanded] = useState(false)
+  const [allowCollapse, setAllowCollapse] = useState(false)
   const isOpen = activeIndex !== null
+  const canCollapse = collapsible && allowCollapse && gallery.length > previewCount
+  const visibleGallery =
+    canCollapse && !expanded ? gallery.slice(0, previewCount) : gallery
+
+  useEffect(() => {
+    setExpanded(false)
+  }, [programTitle, gallery])
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    const sync = () => setAllowCollapse(mq.matches)
+    sync()
+    mq.addEventListener('change', sync)
+    return () => mq.removeEventListener('change', sync)
+  }, [])
 
   const close = useCallback(() => setActiveIndex(null), [])
 
@@ -56,10 +77,16 @@ export function Community2ProgramGallery({
   return (
     <>
       <div className="c2-gallery-shell mt-4">
-        <div className="c2-gallery pb-2">
-          {gallery.map((src, imageIndex) => (
+        <div
+          className={cn(
+            'c2-gallery pb-2',
+            canCollapse && !expanded && 'c2-gallery--preview',
+            canCollapse && expanded && 'c2-gallery--expanded'
+          )}
+        >
+          {visibleGallery.map((src, imageIndex) => (
             <button
-              key={`${programTitle}-${imageIndex}`}
+              key={`${programTitle}-${src}`}
               type="button"
               className={cn(
                 'c2-gallery-item relative h-36 w-[min(72vw,17.5rem)] shrink-0 overflow-hidden rounded-xl border border-zinc-200',
@@ -79,6 +106,16 @@ export function Community2ProgramGallery({
             </button>
           ))}
         </div>
+        {canCollapse ? (
+          <button
+            type="button"
+            className="c2-gallery-toggle"
+            aria-expanded={expanded}
+            onClick={() => setExpanded((value) => !value)}
+          >
+            {expanded ? '收起图集' : `展开全部（${gallery.length} 张）`}
+          </button>
+        ) : null}
       </div>
 
       <Dialog

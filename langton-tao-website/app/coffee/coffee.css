@@ -1839,125 +1839,6 @@ a.coffee2-life-event-card--link {
   margin: 0;
 }
 
-.coffee2-glossary-term {
-  display: inline;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  font: inherit;
-  color: inherit;
-  cursor: pointer;
-  vertical-align: baseline;
-}
-
-.coffee2-glossary-term__label {
-  background: linear-gradient(
-    transparent 58%,
-    rgb(255 230 0 / 0.55) 58%,
-    rgb(255 230 0 / 0.55) 92%,
-    transparent 92%
-  );
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  border-bottom: 1px dashed #a1a1aa;
-  transition:
-    color 0.18s ease,
-    border-color 0.18s ease;
-}
-
-.coffee2-glossary-term:hover .coffee2-glossary-term__label,
-.coffee2-glossary-term:focus-visible .coffee2-glossary-term__label {
-  color: #09090b;
-  border-bottom-color: #09090b;
-}
-
-.coffee2-glossary-term:focus-visible {
-  outline: none;
-}
-
-.coffee2-glossary-term:focus-visible .coffee2-glossary-term__label {
-  outline: 2px solid var(--pop-yellow);
-  outline-offset: 2px;
-}
-
-.coffee2-glossary-term__marker {
-  margin-left: 0.12em;
-  font-size: 0.62em;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  vertical-align: super;
-  color: #71717a;
-}
-
-.coffee2-glossary-term:hover .coffee2-glossary-term__marker,
-.coffee2-glossary-term:focus-visible .coffee2-glossary-term__marker {
-  color: #09090b;
-}
-
-.coffee2-glossary-dialog__article {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.coffee2-glossary-dialog__definition {
-  margin: 0;
-  padding-left: 0.875rem;
-  border-left: 3px solid var(--pop-yellow);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  line-height: 1.6;
-  color: #27272a;
-}
-
-.coffee2-glossary-dialog__section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-}
-
-.coffee2-glossary-dialog__section + .coffee2-glossary-dialog__section {
-  padding-top: 1.25rem;
-  border-top: 1px solid #e4e4e7;
-}
-
-.coffee2-glossary-dialog__section-title {
-  margin: 0;
-  font-size: 0.6875rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #a1a1aa;
-}
-
-.coffee2-glossary-dialog__text {
-  margin: 0;
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: #52525b;
-}
-
-.coffee2-glossary-dialog__text + .coffee2-glossary-dialog__text {
-  margin-top: 0.125rem;
-}
-
-.coffee2-glossary-dialog__list {
-  margin: 0;
-  padding-left: 1.125rem;
-  font-size: 0.875rem;
-  line-height: 1.65;
-  color: #52525b;
-}
-
-.coffee2-glossary-dialog__list li + li {
-  margin-top: 0.5rem;
-}
-
-.coffee2-glossary-dialog__list li::marker {
-  color: #d4d4d8;
-}
-
 @media (min-width: 768px) {
   .coffee2-life-event-card {
     min-height: 156px;
@@ -2266,50 +2147,6 @@ a.coffee2-life-event-card--link {
   font-size: 0.75rem;
   line-height: 1.35;
   color: #52525b;
-}
-
-.coffee2-tenet-dialog {
-  inset: 0;
-  width: min(32rem, calc(100% - 2rem));
-  height: fit-content;
-  max-height: 85vh;
-  margin: auto;
-  border-width: 1px;
-  border-color: #e4e4e7;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
-  transform-origin: center center;
-}
-
-.coffee2-tenet-dialog[data-state='open'] {
-  animation: coffee2-tenet-dialog-in 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.coffee2-tenet-dialog[data-state='closed'] {
-  animation: coffee2-tenet-dialog-out 0.2s ease forwards;
-}
-
-@keyframes coffee2-tenet-dialog-in {
-  from {
-    opacity: 0;
-    transform: scale(0.82);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes coffee2-tenet-dialog-out {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  to {
-    opacity: 0;
-    transform: scale(0.92);
-  }
 }
 
 .coffee2-draggable-marquee {
@@ -2632,11 +2469,6 @@ button.coffee2-preservation-article-card {
   .coffee2-page .coffee2-cta-button:hover,
   .coffee2-page .coffee2-cta-button:active {
     transform: none;
-  }
-
-  .coffee2-tenet-dialog[data-state='open'],
-  .coffee2-tenet-dialog[data-state='closed'] {
-    animation: none;
   }
 
   .coffee2-life-events-sticky-nav {

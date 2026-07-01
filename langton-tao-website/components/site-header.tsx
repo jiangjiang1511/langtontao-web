@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { siteNav } from '@/lib/site-nav'
+import { siteNav, aboutLangtonPageEnabled } from '@/lib/site-nav'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 
@@ -23,9 +23,9 @@ export function SiteHeader() {
       <div className="pointer-events-auto w-fit max-w-[calc(100vw-2rem)]">
         <div className="site-header-capsule flex h-12 items-center justify-between gap-1.5 rounded-full border border-zinc-200/80 bg-white/95 px-2.5 shadow-[0_4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md md:h-14 md:gap-3 md:px-4">
           <Link
-            href="/langton"
+            href={aboutLangtonPageEnabled ? '/langton' : '/langtontao'}
             className="flex shrink-0 items-center overflow-hidden rounded-full border-2 border-pop-black transition-all hover:-translate-y-0.5 hover:shadow-pop-yellow active:scale-[0.98]"
-            aria-label="关于朗敦道"
+            aria-label={aboutLangtonPageEnabled ? '关于朗敦道' : '朗敦道'}
           >
             <Image
               src="/assets/LLT-logo.jpg"

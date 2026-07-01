@@ -7,7 +7,7 @@ import { retirementSectionMeta } from '@/lib/content/coffee-retirement-page'
 export function RetirementSoulQuestions() {
   return (
     <section
-      className="retirement-soul-survey-stage"
+      className="retirement-soul-survey-stage c2-pop-collage-bg c2-pop-accent--retirement"
       aria-labelledby="retirement-soul-survey-title"
     >
       <Coffee2Reveal
@@ -15,7 +15,9 @@ export function RetirementSoulQuestions() {
         className="retirement-soul-survey-stage__grid retirement-soul-survey-stage__reveal"
       >
         <div className="retirement-soul-survey-stage__intro retirement-soul-survey-stage__reveal-item">
-          <p className="c2-eyebrow">{retirementSectionMeta.soulEyebrow}</p>
+          <p className="retirement-soul-survey-stage__eyebrow c2-eyebrow">
+            {retirementSectionMeta.soulEyebrow}
+          </p>
           <h3
             id="retirement-soul-survey-title"
             className="retirement-soul-survey-stage__title"

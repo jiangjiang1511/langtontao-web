@@ -1,11 +1,13 @@
+import { TopicCardHashScrollHost } from '@/hooks/use-topic-card-hash-scroll'
 import type { Metadata } from 'next'
 import { JarsyJoinBand } from '@/components/jarsy/jarsy-join-band'
-import { LangtontaoBeautifulSection } from '@/components/sections/langtontao/langtontao-beautiful-section'
 import { LangtontaoHeroSection } from '@/components/sections/langtontao/langtontao-hero-section'
-import { LangtontaoHongKongSection } from '@/components/sections/langtontao/langtontao-hong-kong-section'
-import { LangtontaoPanicWealthSection } from '@/components/sections/langtontao/langtontao-panic-wealth-section'
+import { LangtontaoHomeRootsSection } from '@/components/sections/langtontao/langtontao-home-roots-section'
+import { LangtontaoCheckupMajorSection } from '@/components/sections/langtontao/langtontao-checkup-major-section'
+import { LangtontaoPillarsSection } from '@/components/sections/langtontao/langtontao-pillars-section'
 import { LangtontaoSectionNav } from '@/components/sections/langtontao/langtontao-section-nav'
-import { LangtontaoWhyMfoSection } from '@/components/sections/langtontao/langtontao-why-mfo-section'
+import { LangtontaoSuperheroSection } from '@/components/sections/langtontao/langtontao-superhero-section'
+import { LangtontaoYitishuangkuaSection } from '@/components/sections/langtontao/langtontao-yitishuangkua-section'
 import {
   langtontaoJoinBand,
   langtontaoPageMeta,
@@ -22,12 +24,14 @@ export const metadata: Metadata = {
 export default function LangtontaoPage() {
   return (
     <div className="jarsy-v2-page coffee2-page langtontao-page bg-white text-zinc-950">
-      <LangtontaoHeroSection />
+      <TopicCardHashScrollHost />
       <LangtontaoSectionNav />
-      <LangtontaoWhyMfoSection />
-      <LangtontaoPanicWealthSection />
-      <LangtontaoBeautifulSection />
-      <LangtontaoHongKongSection />
+      <LangtontaoHeroSection />
+      <LangtontaoPillarsSection />
+      <LangtontaoHomeRootsSection />
+      <LangtontaoSuperheroSection />
+      <LangtontaoCheckupMajorSection />
+      <LangtontaoYitishuangkuaSection />
       <JarsyJoinBand
         id="langtontao-join-band"
         statement={langtontaoJoinBand.statement}

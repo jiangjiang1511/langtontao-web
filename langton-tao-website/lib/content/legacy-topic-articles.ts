@@ -1,4 +1,6 @@
-export type LegacyArticleBlock = { type: 'paragraph'; text: string }
+export type LegacyArticleBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'image'; src: string; alt: string; caption?: string }
 
 export type LegacyTopicArticleContent = {
   id: string
@@ -18,6 +20,12 @@ export const legacyTopicArticles: readonly LegacyTopicArticleContent[] = [
     sourceUrl: 'https://www.jiemian.com/article/2464850.html',
     lead: '李嘉诚曾说：用分家来传承，而不是在自己去世后让下一代用诉讼来分家。',
     blocks: [
+      {
+        type: 'image',
+        src: '/assets/legacy-articles/story-li-trust-third-son/article-cover.jpg',
+        alt: '李嘉诚家族信托结构示意图',
+        caption: '摘自界面新闻：李氏家族信托与长和系资产架构。',
+      },
       {
         type: 'paragraph',
         text: '李氏家族信托包括多个全权信托与单位信托，由受托人代表信托持有长和系资产。受益人包括李泽钜及其妻子子女，以及李泽楷——全家人以信托受益人身份共享家族财富。',
@@ -40,6 +48,12 @@ export const legacyTopicArticles: readonly LegacyTopicArticleContent[] = [
     lead: '万亿财富平稳传承，是个高难度技术活——秘籍往往是家族信托。',
     blocks: [
       {
+        type: 'image',
+        src: '/assets/legacy-articles/story-four-families-succession/article-cover.jpg',
+        alt: '香港四大家族财富传承',
+        caption: '摘自界面新闻：四大家族接班与家族信托布局。',
+      },
+      {
         type: 'paragraph',
         text: '李嘉诚至少设立四支全权信托持有旗下公司股份，并分别指定受益人。把庞大资产注入不同信托，好比把鸡蛋放在不同篮子——某一类资产出险时，整体仍能「不差钱」。',
       },
@@ -60,6 +74,12 @@ export const legacyTopicArticles: readonly LegacyTopicArticleContent[] = [
     sourceUrl: 'https://www.cfwia2020.org/post/%E6%8F%AD%E7%A7%98%EF%BC%9A%E9%A6%99%E6%B8%AF%E3%80%8C%E5%9B%9B%E5%A4%A7%E5%AE%B6%E6%97%8F%E3%80%8D%E5%A6%82%E4%BD%95%E5%81%9A%E8%B2%A1%E5%AF%8C%E5%82%B3%E6%89%BF%EF%BC%9F',
     lead: '受益人名单不是写一次就完——它往往是家族权力与信息同频的晴雨表。',
     blocks: [
+      {
+        type: 'image',
+        src: '/assets/legacy-articles/story-kwok-beneficiary-exclusion/article-cover.jpg',
+        alt: '香港四大家族财富传承与受益人安排',
+        caption: '摘自 CFWIA：四大家族如何做财富传承。',
+      },
       {
         type: 'paragraph',
         text: '新鸿基郭氏兄弟的内斗是反面教材：2010 年郭炳湘被剔除出家族信托受益人名单，当时新鸿基已是市值千亿的地产巨头，除名相当于令其损失上百亿港元级别的家族权益。',
@@ -82,6 +102,12 @@ export const legacyTopicArticles: readonly LegacyTopicArticleContent[] = [
     lead: '人身险是「活文件」，但多数家庭从未按架构迭代同步更新。',
     blocks: [
       {
+        type: 'image',
+        src: '/assets/legacy-articles/story-beneficiary-mismatch/article-cover.png',
+        alt: '家族信托与保单受益人架构',
+        caption: '摘自长安信托消费者保护：李氏信托实现多重隔离。',
+      },
+      {
         type: 'paragraph',
         text: '一位制造业企业主为二代接班筹备多年：股权信托、公司章程、董事会席位都已安排。然而多张保单的受益人仍是配偶与子女个人，与企业债务、信托条款完全脱节。',
       },
@@ -103,6 +129,12 @@ export const legacyTopicArticles: readonly LegacyTopicArticleContent[] = [
     lead: '富不过三代，往往不是子弟败家那么简单——更是家族系统缺席。',
     blocks: [
       {
+        type: 'image',
+        src: '/assets/legacy-articles/story-three-generations/article-cover.jpg',
+        alt: '华人首富家族财富传承',
+        caption: '人民文摘对比洛克菲勒与李嘉诚：家族信托让财富悄然传承。',
+      },
+      {
         type: 'paragraph',
         text: '人民文摘对比洛克菲勒与李嘉诚：洛克菲勒子孙不再经营钢铁帝国，但家族信托让财富悄然传承；邵逸夫因子女无意继承家业而出售 TVB——并非每个富家子弟都想接班。',
       },
@@ -123,6 +155,12 @@ export const legacyTopicArticles: readonly LegacyTopicArticleContent[] = [
     sourceUrl: 'https://www.jiemian.com/article/2464850.html',
     lead: '心理所有权、金融所有权与家族共同利益，往往在三代人里错位。',
     blocks: [
+      {
+        type: 'image',
+        src: '/assets/legacy-articles/story-withdrawer-vs-citizen/article-cover.jpg',
+        alt: '李泽钜与李泽楷：同一父亲，不同传承路径',
+        caption: '摘自界面新闻：李嘉诚家族信托与兄弟分产安排。',
+      },
       {
         type: 'paragraph',
         text: '李泽楷选择另起炉灶，李泽钜接手帝国——同一父亲，不同路径。传承不是复制粘贴，而是让每个人在架构里找到可执行的位子。',

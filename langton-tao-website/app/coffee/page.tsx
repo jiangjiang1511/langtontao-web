@@ -1,3 +1,4 @@
+import { TopicCardHashScrollHost } from '@/hooks/use-topic-card-hash-scroll'
 import type { Metadata } from 'next'
 import { Coffee2HeroSection } from '@/components/sections/coffee2/coffee2-hero-section'
 import { Coffee2JoinBand } from '@/components/sections/coffee2/coffee2-join-band'
@@ -10,6 +11,7 @@ import { Coffee2LifeEventsNavSection } from '@/components/sections/coffee2/coffe
 import { Community2EventsHub } from '@/components/sections/community2/community2-events-hub'
 import { Education2ReadingSection } from '@/components/sections/education2/education2-reading-section'
 import './coffee.css'
+import './coffee-interactive.css'
 import './debt-section.css'
 import './alliance-section.css'
 import './retirement-section.css'
@@ -27,16 +29,17 @@ export const metadata: Metadata = {
 export default function CoffeePage() {
   return (
     <div className="coffee2-page bg-white text-zinc-950">
+      <TopicCardHashScrollHost />
       <Coffee2LifeEventsStickyNav />
       <Coffee2HeroSection />
       <Coffee2LifeEventsNavSection />
+      <Coffee2LifeEventsContent />
+      <Coffee2JoinBand />
       <Coffee2PillarsSection />
       <Coffee2ManifestoGallerySection />
       <Education2ReadingSection />
       <Community2EventsHub />
       <Coffee2CollaborationSection />
-      <Coffee2LifeEventsContent />
-      <Coffee2JoinBand />
     </div>
   )
 }

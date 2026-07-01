@@ -4,6 +4,9 @@ export type SiteNavItem = {
   featured?: boolean
 }
 
+/** Temporarily hide /langton and disable in-page “关于朗敦道” CTAs. */
+export const aboutLangtonPageEnabled = false
+
 /** 顶栏：熊比特 → TAO（突出）→ 朗敦道 */
 export const siteNav: SiteNavItem[] = [
   { href: '/coffee', label: '熊比特咖啡' },
@@ -18,13 +21,10 @@ export const footerSiteNav: SiteNavItem[] = [
   { href: '/coffee', label: '熊比特咖啡' },
 ]
 
-/** 页脚右列：在现有条目基础上增补，暂不删除 dev/备份链接 */
+/** 页脚右列 */
 export const footerSpotlightNav = [
-  { href: '/langton', label: '关于朗敦道' },
   { href: '/faq', label: 'FAQ' },
   { href: '/member', label: '加入我们' },
-  { href: '/home-backup', label: '首页备份' },
-  { href: '/test', label: 'Test' },
 ] as const
 
 export const contactIntents = [

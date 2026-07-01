@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { JarsyReveal } from '@/components/jarsy/jarsy-reveal'
+import { DayOnePathFork } from '@/components/sections/home-jarsy/day-one-path-fork'
 import type { FiftyYearProduct } from '@/lib/content/fifty-year-narrative'
 import { cn } from '@/lib/utils'
 
@@ -74,15 +75,7 @@ export function HomeJarsyTransitionSteps({
       </div>
 
       {leftItem && rightItem ? (
-        <div className="day-one-transition__fork">
-          <TransitionPathCard item={leftItem} index={0} side="left" />
-          <div className="day-one-transition__spine" aria-hidden>
-            <span className="day-one-transition__spine-line" />
-            <span className="day-one-transition__spine-node">或</span>
-            <span className="day-one-transition__spine-line" />
-          </div>
-          <TransitionPathCard item={rightItem} index={1} side="right" />
-        </div>
+        <DayOnePathFork items={items} />
       ) : (
         <div className="day-one-transition__fork day-one-transition__fork--single">
           {items.map((item, index) => (

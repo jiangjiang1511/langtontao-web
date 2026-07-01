@@ -30,45 +30,59 @@ export function AssetQuadrantDetailDialog({
 
   return (
     <Dialog
-      open={quadrant !== null}
+      open={quadrantId !== null}
       onOpenChange={(open) => {
         if (!open) onClose()
       }}
     >
-      {quadrant ? (
-        <DialogContent className="invest-quadrant-dialog inset-0 m-auto h-fit w-[calc(100%-2rem)] max-h-[85vh] max-w-md translate-x-0 translate-y-0 overflow-y-auto border border-zinc-200 bg-white p-6 shadow-xl">
-          <DialogHeader>
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
-              资产类别
-            </p>
-            <DialogTitle className="text-2xl text-zinc-950">
-              {quadrant.label}
-            </DialogTitle>
-          </DialogHeader>
+      <DialogContent
+        overlayClassName="invest-phone-dialog-overlay"
+        className="invest-quadrant-dialog invest-phone-dialog inset-0 m-auto translate-x-0 translate-y-0"
+        aria-describedby={
+          quadrant ? `invest-quadrant-dialog-${quadrant.id}` : undefined
+        }
+        style={
+          quadrant
+            ? ({ '--quadrant-accent': quadrant.accent } as React.CSSProperties)
+            : undefined
+        }
+      >
+        {quadrant ? (
+          <>
+            <div className="invest-phone-dialog__header">
+              <DialogHeader className="space-y-0 text-left">
+                <p className="c2-pop-stamp invest-phone-dialog__eyebrow">资产类别</p>
+                <DialogTitle className="invest-phone-dialog__title">
+                  {quadrant.label}
+                </DialogTitle>
+                <p className="invest-phone-dialog__desc">{quadrant.description}</p>
+              </DialogHeader>
+            </div>
 
-          <p className="mt-2 text-sm leading-relaxed text-zinc-600">
-            {quadrant.description}
-          </p>
-
-          <ul className="invest-quadrant-dialog__list mt-6 space-y-2">
-            {assets.map((asset) => (
-              <li
-                key={asset.id}
-                className="invest-quadrant-dialog__item flex items-center gap-3 rounded-xl border border-zinc-200 bg-zinc-50 px-4 py-3"
-              >
-                <span
-                  className="invest-quadrant-dialog__swatch h-3 w-3 shrink-0 rounded-full"
-                  style={{ backgroundColor: asset.color }}
-                  aria-hidden
-                />
-                <span className="text-sm font-semibold text-zinc-950">
-                  {asset.label}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </DialogContent>
-      ) : null}
+            <div
+              className="invest-phone-dialog__body"
+              id={`invest-quadrant-dialog-${quadrant.id}`}
+            >
+              <ul className="invest-quadrant-dialog__list">
+                {assets.map((asset, index) => (
+                  <li
+                    key={asset.id}
+                    className="invest-quadrant-dialog__item"
+                    style={{ '--item-index': index } as React.CSSProperties}
+                  >
+                    <span
+                      className="invest-quadrant-dialog__swatch"
+                      style={{ backgroundColor: asset.color }}
+                      aria-hidden
+                    />
+                    <span className="invest-quadrant-dialog__label">{asset.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        ) : null}
+      </DialogContent>
     </Dialog>
   )
 }

@@ -93,7 +93,7 @@ export const langtontaoChallengeLinks: LangtontaoChallengeLink[] = [
     challengeId: 'global-allocation',
     solutionAnchor: 'beautiful-allocation',
     ctaLabel: '全球资产配置方案',
-    philosophy: '在 471 万亿宏观结构中定位自家坐标，再谈工具与交付节点。',
+    philosophy: '在中国 471 万亿宏观结构中定位自家坐标，再谈工具与交付节点。',
   },
 ]
 

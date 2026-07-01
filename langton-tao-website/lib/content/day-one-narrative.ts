@@ -2,6 +2,7 @@ import type {
   NarrativeBubble,
   NarrativeSubsection,
 } from '@/lib/content/narrative-bubble'
+import { day1BubbleReadings } from '@/lib/content/path-topic-reading-refs'
 
 export type DayOneSubsection = NarrativeSubsection
 export type DayOneBubble = NarrativeBubble
@@ -12,6 +13,34 @@ export const dayOneAccentMap: Record<string, string> = {
   extremistan: '#ffe600',
   'every-day-is-day-one': '#fb7185',
 }
+
+export const dayOneStep1CoverAssets = {
+  english: '/assets/100years/day1/day1-01.jpg',
+  'invest-self': '/assets/100years/day1/day1-02.jpg',
+  'scientific-decision': '/assets/100years/day1/day1-03.jpg',
+  'all-in-here': '/assets/100years/day1/day1-04.jpg',
+} as const
+
+export const dayOneStep2CoverAssets = {
+  'compound-unit': '/assets/100years/day1/day1-11.jpg',
+  'compound-effect': '/assets/100years/day1/day1-12.jpg',
+} as const
+
+export const dayOneStep3CoverAssets = {
+  'leverage-debt': '/assets/100years/day1/day1-21.jpg',
+  'value-investing': '/assets/100years/day1/day1-22.jpg',
+} as const
+
+export const dayOneStep4CoverAssets = {
+  'survival-layer': '/assets/100years/day1/day1-31.jpg',
+  'trial-layer': '/assets/100years/day1/day1-32.jpg',
+  'leverage-layer': '/assets/100years/day1/day1-33.jpg',
+} as const
+
+export const dayOneStep5CoverAssets = {
+  'survivorship-bias': '/assets/100years/day1/day1-41.jpg',
+  'cut-fake-diligence': '/assets/100years/day1/day1-42.jpg',
+} as const
 
 export type DayOneStep = {
   id: string
@@ -89,38 +118,46 @@ export const dayOneNarrative = {
             {
               id: 'english',
               label: '学好英语',
+              coverSrc: dayOneStep1CoverAssets.english,
               hook: '英语，是你扩大「能力圈」的第一把钥匙。',
               summary:
                 '顶尖认知资源大多以英文存在。英语不只是一门语言，更是一种思维系统——多一个维度，就多一双扫描极端斯坦裂缝的眼睛。',
               href: '/langtontao#english',
+              readings: day1BubbleReadings.english,
               body:
                 '芒格说：「我这辈子遇到的聪明人没有不每天阅读的——一个都没有。」全球最顶尖的认知资源，绝大多数以英文存在。不掌握英语，「能力圈」就被锁死在翻译过的二手信息里。\n\n英语是一种思维——精确、直接、逻辑前置。当你用英语思考时，你会被训练成「先讲结论，再给论据」的物种。在平均斯坦的泥潭里，大多数人用同一种语言、同一种思维方式、同一种信息源；你多掌握一种思维系统，就多一个维度去扫描极端斯坦的裂缝。',
             },
             {
               id: 'invest-self',
               label: '投资自己',
+              coverSrc: dayOneStep1CoverAssets['invest-self'],
               hook: '复利效应的第一笔本金，不是你银行里的钱，是你自己。',
               summary:
                 '找到长项、认清性格、把自己做成可识别可信任的 IP。在第一天，核心任务是从「可替代的劳动单位」变成「不可替代的资产」。',
+              readings: day1BubbleReadings['invest-self'],
               body:
                 '找到你的长项。哪怕只有一个。认清你的性格。哪怕它不完美。把自己做成 IP，成为一个「可识别、可信任、可溢价」的个体。\n\n理财会亏，房子会跌，公司会倒。但身上长的本事，脑子里装的认知，时代拿不走，周期夺不去。\n\n芒格：「要得到你想要的某样东西，最好的办法是让你自己配得上它。」巴菲特：「知识复利会让点滴积累最终形成认知壁垒，品格复利则会让善良与正直收获长远回报。」',
             },
             {
               id: 'scientific-decision',
               label: '科学决策',
+              coverSrc: dayOneStep1CoverAssets['scientific-decision'],
               hook: '科学决策，是你在第一天唯一的生存法则。',
               summary:
                 '第一天最贵的成本是试错成本。不预测，算概率；只在理解的事上下注；不做超出自己能力圈的事。用 AI 放大劳动，而不是用情绪代替判断。',
+              readings: day1BubbleReadings['scientific-decision'],
               body:
                 '因为第一天最贵的成本，是试错成本。你只有有限的肉身、有限的时间、有限的现金。每一次错误的决策，都会把你往平均斯坦的泥潭里多摁一截。\n\n科学决策的三条原则：不要试图预测，要学会计算概率；只在你理解的事情上下注；不要做超出自己能力圈的事。\n\n第一天里的超级个体，不是力气最大的，是决策系统最科学的。用 AI 工具放大你的劳动——让 AI 帮你做信息筛选、数据分析、概率计算。',
             },
             {
               id: 'all-in-here',
               label: 'All in here',
+              coverSrc: dayOneStep1CoverAssets['all-in-here'],
               hook: '敢于出手，All in here 是一种责任——赌性坚强，活成幸存者偏差里的幸运儿。',
               summary:
                 '真正的 All in 是贝叶斯更新、算过赔率、锁定损失之后的选择性下注。在机遇来临时敢于出手，是概率思维下的勇敢，不是盲目冲动。',
               href: '/member',
+              readings: day1BubbleReadings['all-in-here'],
               body:
                 '芒格：「成功的投资既需要进取心又需要耐心，并且还需要准备好在机会出现时抓住它。」\n\n在平均斯坦的泥潭里，大多数人一生都没有抓住那一次机遇——不是不够努力，是机遇来临时不敢出手。郑荣禄：「创富是抓住一次机遇的能力。」\n\nAll in here，赌性坚强，不是盲目冲动，是概率思维下的勇敢。',
             },
@@ -133,6 +170,8 @@ export const dayOneNarrative = {
             {
               id: 'compound-unit',
               label: '建立复利单元',
+              coverSrc: dayOneStep2CoverAssets['compound-unit'],
+              readings: day1BubbleReadings['compound-unit'],
               summary:
                 '复利单元是把劳动残值转化为可量化、可积累、不可中断的资产底座。每月固定划出一笔，宽基/货基/国债皆可——关键是三个字：不中断。',
               subsections: [
@@ -161,6 +200,8 @@ export const dayOneNarrative = {
             {
               id: 'compound-effect',
               label: '复利效应',
+              coverSrc: dayOneStep2CoverAssets['compound-effect'],
+              readings: day1BubbleReadings['compound-effect'],
               summary:
                 '复利不只是「钱生钱」，而是参与人类文明过去 200 年最伟大的进程。你不参与复利，就在被复利碾压；第一天雪球很小，但坡很长——滚起来，别停。',
               href: '/coffee#reading',
@@ -204,20 +245,24 @@ export const dayOneNarrative = {
             {
               id: 'leverage-debt',
               label: '利用负债',
+              coverSrc: dayOneStep3CoverAssets['leverage-debt'],
               hook: '寻找非对称机会，并用负债工具提前占位。',
               summary:
                 '第一天最大的矛盾是资本太少、机会太大。优质负债是在资产暴跌时用低成本资金买入优质资产——杠杆的另一端，必须拴在价值的柱子上。',
               href: '/coffee#debt',
+              readings: day1BubbleReadings['leverage-debt'],
               body:
                 '郑荣禄：「大概 10 年一次经济危机，用大额保单守住财富，在经济危机时把保单现金价值借款出来抄底优质资产。」\n\n芒格更保守：「我们以更加有利的条款借更少的钱。」负债不是消费，负债是杠杆。用好了，负债是推开大门的推力；用不好，是把你在泥潭里多摁十年的重力。',
             },
             {
               id: 'value-investing',
               label: '价值投资',
+              coverSrc: dayOneStep3CoverAssets['value-investing'],
               hook: '价值投资，不是让你去买股票，是一种世界观。',
               summary:
                 '用低于内在价值的价格，买入未来会产生现金流的资产。在第一天，用「资产」而非「劳动力」的视角审视每一次人生决策。',
               href: '/coffee#invest',
+              readings: day1BubbleReadings['value-investing'],
               body:
                 '巴菲特：「你要把股票当成一门生意来看。」第二个原则：「安全边际。」\n\n李录：「价值投资研究的是让大家能够踏踏实实地投资于价值，让投资者在企业不断创造价值的过程中，通过与企业一起成长，一起来分享企业价值在增长过程中所能得到的回报。」\n\n这个决策的「内在价值」是多少？付出的成本是否低于它？它未来能产生多少现金流？',
             },
@@ -230,27 +275,33 @@ export const dayOneNarrative = {
             {
               id: 'survival-layer',
               label: '生存层',
+              coverSrc: dayOneStep4CoverAssets['survival-layer'],
               hook: '用劳动创造价值，是第一天的底线。',
               summary:
                 '讲梦想之前先讲生存，讲 All in 之前先讲吃饭。生存层是所有冒险的安全垫——边劳动边试错，边挣饭钱边攒子弹。',
+              readings: day1BubbleReadings['survival-layer'],
               body:
                 '第一天的超级个体，首先是一个能「用劳动创造价值」的人。这项技能必须是真实的需求，必须是别人愿意为此付费的东西。\n\n生存层是你在试错层亏光之后，还能回来继续攒筹码的地方。不要看不起劳动，不要看不起小钱。第一天最愚蠢的错误，是还没站稳就想着飞。',
             },
             {
               id: 'trial-layer',
               label: '试错层',
+              coverSrc: dayOneStep4CoverAssets['trial-layer'],
               hook: '每个月，为自己买一张「期权」。',
               summary:
                 '每月划出收入 5%–10%，专门做高赔率、有限损失的尝试。失败不致命，一次成功就值回所有成本——系统化地增加撞上极端斯坦的概率。',
+              readings: day1BubbleReadings['trial-layer'],
               body:
                 '生存层保你活着，试错层保你有机会。大部分尝试也许都会失败，但试错层的设计就是为了让失败不致命。\n\n芒格：「玩好投资这个游戏，关键在于少数几次机会，你确实能看出来，一个机会比其他一般的机会都好，而且你很清楚，自己比别人知道的更多。」',
             },
             {
               id: 'leverage-layer',
               label: '杠杆层',
+              coverSrc: dayOneStep4CoverAssets['leverage-layer'],
               hook: '当裂缝出现，用负债放大你的推力。',
               summary:
                 '杠杆层是动用负债工具放大赌注的那一层。铁律：杠杆规模永远不超过生存层的 50%。赌性坚强，是锁死下行风险后的放手一搏。',
+              readings: day1BubbleReadings['leverage-layer'],
               body:
                 '盲目加杠杆，就是把你辛苦积累的核心资产变成破坏性的非核心赌博。赌性坚强，不是孤注一掷，是计算清楚后的勇敢。',
             },
@@ -263,6 +314,8 @@ export const dayOneNarrative = {
             {
               id: 'survivorship-bias',
               label: '幸存者偏差',
+              coverSrc: dayOneStep5CoverAssets['survivorship-bias'],
+              readings: day1BubbleReadings['survivorship-bias'],
               summary:
                 '大多数人看到的成功者，都是活下来的那一个。要问那些没活下来的人做了什么——答案往往是：做了很多看起来很勤奋、实际上没用的事。',
               body:
@@ -271,6 +324,8 @@ export const dayOneNarrative = {
             {
               id: 'cut-fake-diligence',
               label: '砍掉90%的「勤奋」',
+              coverSrc: dayOneStep5CoverAssets['cut-fake-diligence'],
+              readings: day1BubbleReadings['cut-fake-diligence'],
               summary:
                 '第一天最大的敌人不是懒惰，是「虚假的勤奋」。只投资于能产生长期复利的行为；砍掉之后的时间，用来调研裂缝、打磨技能、积累筹码。',
               body:
@@ -283,7 +338,7 @@ export const dayOneNarrative = {
   ] satisfies DayOneSection[],
   closing: [
     '记住，第二天没有退路。第一天有。',
-    '所以，在你的第一天，All in here。成为那个即使世界塌下来，你还能靠自己的认知、本事和现金流站起来的超级个体。然后，勇敢地看向第二天——看向三年、十年、二十年、五十年、一百年。',
+    '所以，在你的第一天，All in here。成为那个即使世界塌下来，你还能靠自己的认知、本事和现金流站起来的超级个体。然后，勇敢地看向第二天——看向三年、十年、十五年、三十年、五十年、一百年。',
   ],
 } as const
 

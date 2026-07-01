@@ -1,5 +1,4 @@
 import { aboutModules } from '@/lib/content/about-modules'
-import { problemCards, serveContent } from '@/lib/content/langton-page'
 
 export const langtontaoWhyMfoMeta = {
   eyebrow: 'Part I · 何必家办',
@@ -115,29 +114,3 @@ export const langtontaoExposureItems = buildExposureItems()
 export const langtontaoExposureCategories = [
   ...new Set(langtontaoExposureItems.map((i) => i.category)),
 ]
-
-export const langtontaoOpportunityNeeds = {
-  opportunities: [
-    {
-      id: 'density',
-      title: '密度与同频',
-      body: '每年 300+ 场活动与工坊式陪跑，让架构讨论发生在真实场景里。',
-    },
-    {
-      id: 'cognition',
-      title: '认知定投',
-      body: '诚实投资学与财富沙龙，把 TAO 路径变成可执行的长期纪律。',
-    },
-    {
-      id: 'embodied',
-      title: '具身陪跑',
-      body: '超级英雄之旅、私董会与六人茶局，传递默会知识。',
-    },
-  ],
-  needs: problemCards.map((card, index) => ({
-    id: `need-${index}`,
-    title: card.title,
-    bullets: [...card.bullets],
-  })),
-  serveQuote: serveContent.quote,
-} as const

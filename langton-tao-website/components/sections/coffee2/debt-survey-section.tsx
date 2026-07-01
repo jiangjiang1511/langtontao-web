@@ -7,7 +7,7 @@ import { debtSectionMeta } from '@/lib/content/coffee-debt-page'
 export function DebtSurveySection() {
   return (
     <section
-      className="debt-survey-stage"
+      className="debt-survey-stage c2-pop-collage-bg"
       aria-labelledby="debt-survey-stage-title"
     >
       <Coffee2Reveal

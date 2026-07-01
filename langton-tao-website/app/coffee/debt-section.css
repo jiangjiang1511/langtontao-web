@@ -315,23 +315,11 @@
 }
 
 .coffee2-page .debt-survey-stage__hint-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 9999px;
-  background: #ffe600;
-  animation: debt-survey-pulse 2s ease-in-out infinite;
+  /* unified in coffee-interactive.css */
 }
 
 @keyframes debt-survey-pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(0.85);
-  }
+  /* retained for reduced-motion compat */
 }
 
 .coffee2-page .debt-survey-stage__deck-wrap {
@@ -398,6 +386,8 @@
 }
 
 .coffee2-page .debt-poker-card__inner {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -423,15 +413,15 @@
 }
 
 .coffee2-page .debt-poker-card[data-stack-slot='0'] .debt-poker-card__face::after {
-  background: linear-gradient(135deg, rgba(255, 230, 0, 0.22), transparent 60%);
+  /* flat overlay in coffee-interactive.css */
 }
 
 .coffee2-page .debt-poker-card[data-stack-slot='1'] .debt-poker-card__face::after {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.18), transparent 55%);
+  /* flat overlay in coffee-interactive.css */
 }
 
 .coffee2-page .debt-poker-card[data-stack-slot='2'] .debt-poker-card__face::after {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.16), transparent 50%);
+  /* flat overlay in coffee-interactive.css */
 }
 
 .coffee2-page .debt-poker-card--deal-out {
@@ -454,8 +444,12 @@
   pointer-events: none;
 }
 
+.coffee2-page .debt-poker-card:not([data-active='true']) .debt-poker-card__inner {
+  visibility: hidden;
+}
+
 .coffee2-page .debt-poker-card--stacked-away .debt-poker-card__face::after {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.08), transparent 70%);
+  /* flat overlay in coffee-interactive.css */
 }
 
 .coffee2-page .debt-poker-card--overlay {
@@ -498,10 +492,6 @@
 
 .coffee2-page .debt-share-actions--primary {
   width: 100%;
-}
-
-.coffee2-page .debt-survey-option[data-selected='true'] {
-  transform: translateX(1px);
 }
 
 .coffee2-page .debt-survey-bar-fill {

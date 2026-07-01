@@ -7,6 +7,7 @@ import { ViewportDebugBadge } from '@/components/dev/viewport-debug-badge'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import './globals.css'
+import './glossary.css'
 
 export const metadata: Metadata = {
   title: '朗敦道 Langton Tao | VFO/MFO Leader in China',

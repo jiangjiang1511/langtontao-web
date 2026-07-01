@@ -1,5 +1,9 @@
 import { networkSynergy, networkTeaser } from '@/lib/content/network-page'
 
+export type LangtontaoYitishuangkuaCta =
+  | { label: string; comingSoon: true }
+  | { label: string; href: string }
+
 export const langtontaoHongKongMeta = {
   eyebrow: '何为香港',
   title: '何为香港',
@@ -49,6 +53,8 @@ export const langtontaoYitishuangkua = {
     { business: '家办级协同', node: '比元家族办公室 BE ONE' },
     { business: '国际教育/身份', node: '普晖国际' },
   ],
-  ctaLabel: '了解更多一体双跨',
-  ctaHref: '/network',
+  cta: {
+    label: '香港全球资产配置沙龙报名',
+    comingSoon: true,
+  } satisfies LangtontaoYitishuangkuaCta,
 } as const

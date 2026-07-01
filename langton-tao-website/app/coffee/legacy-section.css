@@ -315,11 +315,7 @@
 }
 
 .coffee2-page .legacy-survey-stage__hint-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 9999px;
-  background: #ffe600;
-  animation: legacy-survey-pulse 2s ease-in-out infinite;
+  /* unified in coffee-interactive.css */
 }
 
 @keyframes legacy-survey-pulse {
@@ -398,6 +394,8 @@
 }
 
 .coffee2-page .legacy-poker-card__inner {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -422,16 +420,11 @@
   z-index: 1;
 }
 
-.coffee2-page .legacy-poker-card[data-stack-slot='0'] .legacy-poker-card__face::after {
-  background: linear-gradient(135deg, rgba(255, 230, 0, 0.22), transparent 60%);
-}
-
-.coffee2-page .legacy-poker-card[data-stack-slot='1'] .legacy-poker-card__face::after {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.18), transparent 55%);
-}
-
-.coffee2-page .legacy-poker-card[data-stack-slot='2'] .legacy-poker-card__face::after {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.16), transparent 50%);
+.coffee2-page .legacy-poker-card[data-stack-slot='0'] .legacy-poker-card__face::after,
+.coffee2-page .legacy-poker-card[data-stack-slot='1'] .legacy-poker-card__face::after,
+.coffee2-page .legacy-poker-card[data-stack-slot='2'] .legacy-poker-card__face::after,
+.coffee2-page .legacy-poker-card--stacked-away .legacy-poker-card__face::after {
+  /* flat overlays in coffee-interactive.css */
 }
 
 .coffee2-page .legacy-poker-card--deal-out {
@@ -454,8 +447,8 @@
   pointer-events: none;
 }
 
-.coffee2-page .legacy-poker-card--stacked-away .legacy-poker-card__face::after {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.08), transparent 70%);
+.coffee2-page .legacy-poker-card:not([data-active='true']) .legacy-poker-card__inner {
+  visibility: hidden;
 }
 
 .coffee2-page .legacy-poker-card--overlay {

@@ -3,7 +3,11 @@ import type {
   Coffee2ManifestoStackLayout,
 } from '@/lib/content/coffee2-manifesto-gallery'
 
-export type EducationGalleryCategory = 'english' | 'baretscholar' | 'sail'
+export type EducationGalleryCategory =
+  | 'english'
+  | 'baretscholar'
+  | 'sail'
+  | 'birth'
 
 export type EducationGalleryImage = {
   id: string
@@ -18,12 +22,12 @@ export type EducationGalleryImage = {
 
 export const educationGalleryImages: readonly EducationGalleryImage[] = [
   {
-    id: 'edu-english-1',
-    src: '/assets/edu/english1.png',
-    alt: '英语课堂活动',
-    category: 'english',
-    width: 950,
-    height: 1016,
+    id: 'edu-birth-1',
+    src: '/assets/edu/birth1.jpg',
+    alt: '新生命与家庭起点',
+    category: 'birth',
+    width: 1200,
+    height: 1200,
     stack: {
       x: '-5%',
       y: '-3%',

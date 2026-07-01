@@ -20,7 +20,7 @@ function handleTabKeyDown(event: KeyboardEvent, onSelect: () => void) {
 
 type NarrativeBubbleGroupProps = {
   bubbles: NarrativeBubble[]
-  layout?: 'wrap' | 'grid-2' | 'concept-grid'
+  layout?: 'wrap' | 'grid-2' | 'concept-grid' | 'concept-grid-2-1'
   className?: string
   accentMap?: Record<string, string>
   tablistLabel?: string
@@ -222,11 +222,14 @@ export function NarrativeBubbleGroup({
     setActiveId((current) => (current === id ? null : id))
   }
 
-  if (layout === 'concept-grid') {
+  if (layout === 'concept-grid' || layout === 'concept-grid-2-1') {
     return (
       <div className={cn('day-one-concept-grid-wrap', className)}>
         <div
-          className="day-one-concept-grid"
+          className={cn(
+            'day-one-concept-grid',
+            layout === 'concept-grid-2-1' && 'day-one-concept-grid--2-1'
+          )}
           role="tablist"
           aria-label={tablistLabel}
         >

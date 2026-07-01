@@ -20,7 +20,7 @@ export const langtontaoWishlistMeta = {
   eyebrow: 'Interactive · 十年愿望清单',
   title: '家庭十年愿望清单',
   lead: '财富、关系、教育、传承——四个维度，勾勒你们家未来十年的优先序。没有标准答案，只有更诚实的方向感。',
-  stageHint: '点选翻页 · 约 3 分钟',
+  stageHint: '翻页作答 · 约 3 分钟 · 可生成分享海报',
   thanks: '谢谢你愿意把家庭的长期愿望放进对话里。以下是基于你选择的演示画像——建议与顾问进一步对齐。',
   resultsCta: '查看推荐方案',
   nextLabel: '下一题',

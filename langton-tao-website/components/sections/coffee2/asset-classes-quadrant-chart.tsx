@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import { AssetQuadrantDetailDialog } from '@/components/sections/coffee2/asset-quadrant-detail-dialog'
 import {
-  assetBubbleSizeByWeight,
+  assetTileSizeByWeight,
   assetBubbles,
   assetQuadrantAxes,
   assetQuadrants,
@@ -13,27 +13,52 @@ import {
 } from '@/lib/content/coffee-asset-classes'
 import { cn } from '@/lib/utils'
 
+const QUADRANT_SCALE_MAX = 0.8
+const QUADRANT_SCALE_MIN = 0.48
+/** Reference bubbles inner area at scale 1 (larger area → slightly larger tiles). */
+const BUBBLES_REF_WIDTH = 560
+const BUBBLES_REF_HEIGHT = 350
+
+function computeQuadrantScale(bubblesWidth: number, bubblesHeight: number) {
+  if (bubblesWidth <= 0 || bubblesHeight <= 0) {
+    return QUADRANT_SCALE_MIN
+  }
+
+  const byWidth = bubblesWidth / BUBBLES_REF_WIDTH
+  const byHeight = bubblesHeight / BUBBLES_REF_HEIGHT
+  const raw = Math.min(byWidth, byHeight)
+
+  return Math.min(QUADRANT_SCALE_MAX, Math.max(QUADRANT_SCALE_MIN, raw))
+}
+
 const CHART_STAGE_DELAY = 400
 const LEGEND_BASE_DELAY = 560
 const LEGEND_STAGGER = 90
 
-function AssetBubbleButton({
+function tileWidthForLabel(baseWidth: number, label: string) {
+  const labelBonus = Math.max(0, label.length - 4) * 8
+  return baseWidth + labelBonus
+}
+
+function AssetTileButton({
   bubble,
   index,
 }: {
   bubble: AssetBubble
   index: number
 }) {
-  const size = assetBubbleSizeByWeight[bubble.weight] ?? 48
+  const base = assetTileSizeByWeight[bubble.weight] ?? { width: 72, height: 36 }
+  const width = tileWidthForLabel(base.width, bubble.label)
 
   return (
     <button
       type="button"
-      className="invest-bubble"
+      className="invest-bubble invest-asset-tile"
       data-weight={bubble.weight}
       style={
         {
-          '--bubble-size': `${size}px`,
+          '--tile-width': `${width}px`,
+          '--tile-height': `${base.height}px`,
           '--bubble-x': `${bubble.x}%`,
           '--bubble-y': `${bubble.y}%`,
           '--bubble-stagger': `${index * 42}ms`,
@@ -41,7 +66,6 @@ function AssetBubbleButton({
       }
       aria-label={bubble.label}
     >
-      <span className="invest-bubble__ring" aria-hidden />
       <span className="invest-bubble__label">{bubble.label}</span>
     </button>
   )
@@ -56,29 +80,29 @@ export function AssetClassesQuadrantChart({
 }: AssetClassesQuadrantChartProps) {
   const chartRef = useRef<HTMLDivElement | null>(null)
   const stageRef = useRef<HTMLDivElement | null>(null)
+  const bubblesRef = useRef<HTMLDivElement | null>(null)
   const [isExploded, setIsExploded] = useState(false)
   const [activeQuadrant, setActiveQuadrant] = useState<AssetQuadrantId | null>(
     null
   )
 
   useEffect(() => {
-    const frame = stageRef.current
+    const bubbles = bubblesRef.current
     const chart = chartRef.current
-    if (!frame || !chart) return
+    if (!bubbles || !chart) return
 
     const updateScale = () => {
-      const width = frame.clientWidth
-      const isMobile = width < 768
-      const scale = isMobile
-        ? Math.min(0.72, Math.max(0.52, width / 640))
-        : Math.min(1, Math.max(0.48, width / 720))
+      const scale = computeQuadrantScale(
+        bubbles.clientWidth,
+        bubbles.clientHeight
+      )
       chart.style.setProperty('--quadrant-scale', scale.toFixed(3))
     }
 
     updateScale()
 
     const resizeObserver = new ResizeObserver(updateScale)
-    resizeObserver.observe(frame)
+    resizeObserver.observe(bubbles)
     window.addEventListener('resize', updateScale)
 
     return () => {
@@ -122,7 +146,7 @@ export function AssetClassesQuadrantChart({
       ref={chartRef}
       className={cn('invest-quadrant', className)}
       role="img"
-      aria-label="大类资产四象限气泡图"
+      aria-label="大类资产四象限资产图"
     >
       <Coffee2Reveal
         delay={CHART_STAGE_DELAY}
@@ -168,11 +192,12 @@ export function AssetClassesQuadrantChart({
             ))}
 
             <div
+              ref={bubblesRef}
               className="invest-quadrant__bubbles"
               data-exploded={isExploded ? 'true' : 'false'}
             >
               {assetBubbles.map((bubble, index) => (
-                <AssetBubbleButton
+                <AssetTileButton
                   key={bubble.id}
                   bubble={bubble}
                   index={index}

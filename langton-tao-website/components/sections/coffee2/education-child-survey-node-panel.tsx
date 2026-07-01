@@ -37,7 +37,7 @@ export function EducationChildSurveyNodePanel({
           <li key={option.id}>
             <button
               type="button"
-              className="education-survey-option"
+              className="c2-pop-option education-survey-option"
               onClick={() => onSelect(option)}
             >
               <span className="education-survey-option__label">{option.label}</span>

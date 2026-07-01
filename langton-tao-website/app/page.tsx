@@ -1,9 +1,11 @@
+import { TopicCardHashScrollHost } from '@/hooks/use-topic-card-hash-scroll'
 import type { Metadata } from 'next'
 import { JarsyJoinBand } from '@/components/jarsy/jarsy-join-band'
 import { CoffeeCompoundGrowthHost } from '@/components/sections/coffee2/coffee-compound-growth-host'
 import { HomeJarsyHero } from '@/components/sections/home-jarsy/home-jarsy-hero'
 import { HomeJarsyStageNav } from '@/components/sections/home-jarsy/home-jarsy-stage-nav'
 import { HomeJarsyStages } from '@/components/sections/home-jarsy/home-jarsy-stages'
+import { HomeJarsyTaoFrameworkSection } from '@/components/sections/home-jarsy/home-jarsy-tao-framework-section'
 import {
   fiftyYearPageTitle,
   homeJarsyJoinBand,
@@ -36,7 +38,9 @@ export default function HomePage() {
       disclaimer={compoundIndex?.disclaimer ?? ''}
     >
       <div className="home-jarsy-page jarsy-v2-page">
+        <TopicCardHashScrollHost />
         <HomeJarsyHero />
+        <HomeJarsyTaoFrameworkSection />
         <HomeJarsyStageNav />
         <HomeJarsyStages />
         <JarsyJoinBand

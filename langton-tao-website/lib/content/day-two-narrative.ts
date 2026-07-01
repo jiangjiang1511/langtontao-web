@@ -1,4 +1,8 @@
 import type { NarrativeBubble } from '@/lib/content/narrative-bubble'
+import {
+  day2BubbleReadings,
+  day2SubsectionReadings,
+} from '@/lib/content/path-topic-reading-refs'
 
 export type DayTwoWhatSection = {
   id: 'what-is-day-two'
@@ -29,6 +33,21 @@ export type DayTwoSection =
   | DayTwoCyclesSection
   | DayTwoSuperheroSection
 
+export const dayTwoSuperheroCoverAssets = {
+  'what-is-money': '/assets/100years/day2/day2-superhero-01.jpg',
+  'global-wealth': '/assets/100years/day2/day2-superhero-01.jpg',
+  'purchasing-power': '/assets/100years/day2/day2-superhero-02.jpg',
+  'cash-flow': '/assets/100years/day2/day2-superhero-02.jpg',
+  'what-is-asset': '/assets/100years/day2/day2-superhero-11.jpg',
+  growth: '/assets/100years/day2/day2-superhero-11.jpg',
+  preservation: '/assets/100years/day2/day2-superhero-12.jpg',
+  'risk-isolation': '/assets/100years/day2/day2-superhero-13.jpg',
+  'what-is-debt': '/assets/100years/day2/day2-superhero-21.jpg',
+  'circle-of-competence': '/assets/100years/day2/day2-superhero-31.jpg',
+  'circle-decision': '/assets/100years/day2/day2-superhero-31.jpg',
+  'inverse-thinking': '/assets/100years/day2/day2-superhero-32.jpg',
+} as const
+
 export const dayTwoAccentMap: Record<string, string> = {
   'hero-awakening': '#ffe600',
   'day-two-clarity': '#6366f1',
@@ -40,6 +59,14 @@ export const dayTwoAccentMap: Record<string, string> = {
   'what-is-asset': '#22c55e',
   'what-is-debt': '#ef4444',
   'circle-of-competence': '#6366f1',
+  'global-wealth': '#f59e0b',
+  'purchasing-power': '#f59e0b',
+  'cash-flow': '#f59e0b',
+  growth: '#22c55e',
+  preservation: '#22c55e',
+  'risk-isolation': '#22c55e',
+  'circle-decision': '#6366f1',
+  'inverse-thinking': '#6366f1',
 }
 
 export const dayTwoNarrative = {
@@ -177,24 +204,34 @@ export const dayTwoNarrative = {
             {
               id: 'what-is-money',
               label: '什么是钱',
+              coverSrc: dayTwoSuperheroCoverAssets['what-is-money'],
               hook: '第一天的人看数字，第二天的超级英雄看透本质',
               summary:
                 '李录说：「投资的本质，是保持并增长购买力。」读懂钱的本质，才不会被数字幻觉迷惑，才能守住真正的财富。',
               subsections: [
                 {
+                  id: 'global-wealth',
                   title: '全球财富总量',
+                  coverSrc: dayTwoSuperheroCoverAssets['global-wealth'],
+                  readings: day2SubsectionReadings['global-wealth'],
                   paragraphs: [
                     '钱不是孤立的纸面数字，是全球财富体系里的分配凭证，联动着全球市场的通胀、利率与汇率，牵一发而动全身。',
                   ],
                 },
                 {
+                  id: 'purchasing-power',
                   title: '购买力',
+                  coverSrc: dayTwoSuperheroCoverAssets['purchasing-power'],
+                  readings: day2SubsectionReadings['purchasing-power'],
                   paragraphs: [
                     '钱的真正价值，是它能兑换多少商品、服务与资源。通胀会悄悄稀释名义财富，只有购买力才是真实的财富，守住购买力才是守住财富的根。',
                   ],
                 },
                 {
+                  id: 'cash-flow',
                   title: '现金流',
+                  coverSrc: dayTwoSuperheroCoverAssets['cash-flow'],
+                  readings: day2SubsectionReadings['cash-flow'],
                   paragraphs: [
                     '钱的终极形态是现金流。一笔能持续产生正向现金流的资产，才是真正的财富；无法产生现金流的纸面富贵，不过是随时可能消散的泡沫。',
                   ],
@@ -210,23 +247,33 @@ export const dayTwoNarrative = {
             {
               id: 'what-is-asset',
               label: '哪些是资产',
+              coverSrc: dayTwoSuperheroCoverAssets['what-is-asset'],
               summary:
                 '资产承载着三重核心价值：通过价值投资分享时代红利，作为家庭压舱石抵御周期波动，通过合规架构完成代际传承。',
               subsections: [
                 {
+                  id: 'growth',
                   title: '增长',
+                  coverSrc: dayTwoSuperheroCoverAssets.growth,
+                  readings: day2SubsectionReadings.growth,
                   paragraphs: [
                     '通过价值投资，分享企业成长与时代红利，实现财富的持续增值，让复利滚出更大的雪球。',
                   ],
                 },
                 {
+                  id: 'preservation',
                   title: '保全',
+                  coverSrc: dayTwoSuperheroCoverAssets.preservation,
+                  readings: day2SubsectionReadings.preservation,
                   paragraphs: [
                     '作为家庭压舱石，通过风险隔离机制，抵御周期波动、意外风险与债务牵连，守住财富的基本盘，最终完成代际传承。',
                   ],
                 },
                 {
+                  id: 'risk-isolation',
                   title: '风险隔离',
+                  coverSrc: dayTwoSuperheroCoverAssets['risk-isolation'],
+                  readings: day2SubsectionReadings['risk-isolation'],
                   paragraphs: [
                     '通过合规的架构设计，将个人资产与经营风险、债务风险做切割，任凭外界风雨，家族财富始终安如磐石。',
                   ],
@@ -242,9 +289,11 @@ export const dayTwoNarrative = {
             {
               id: 'what-is-debt',
               label: '哪些是债务',
+              coverSrc: dayTwoSuperheroCoverAssets['what-is-debt'],
               hook: '化债，是第二天的核心动作',
               summary:
                 '第一天的债务可以是撬动机会的杠杆，第二天的债务却往往是拖垮财富的枷锁——卸掉投机性杠杆，清理高息负债，只保留极低风险的优质负债，让债务结构轻装上阵。',
+              readings: day2BubbleReadings['what-is-debt'],
               body:
                 '化债，是第二天的核心动作。只保留极低风险的优质负债，让债务结构轻装上阵，扛得住周期的冲击。第一天用负债提前占位，第二天用化债守住底盘——这是英雄与个体最本质的分野之一。',
             },
@@ -257,18 +306,25 @@ export const dayTwoNarrative = {
             {
               id: 'circle-of-competence',
               label: '什么是能力圈',
+              coverSrc: dayTwoSuperheroCoverAssets['circle-of-competence'],
               hook: '芒格一生践行的边界智慧',
               summary:
                 '真正的超级英雄，从来不是无所不能，而是无比清醒地知道自己的边界。能力圈的大小不重要，知道边界在哪里，才最重要。',
               subsections: [
                 {
+                  id: 'circle-decision',
                   title: '圈内决策，圈外敬畏',
+                  coverSrc: dayTwoSuperheroCoverAssets['circle-decision'],
+                  readings: day2SubsectionReadings['circle-decision'],
                   paragraphs: [
                     '在你真正看懂、摸透的领域里，可以果断出击、重仓下注；在你认知之外的赛道上，哪怕诱惑再大、神话再多，也保持敬畏，不轻易入场。',
                   ],
                 },
                 {
+                  id: 'inverse-thinking',
                   title: '逆向思维',
+                  coverSrc: dayTwoSuperheroCoverAssets['inverse-thinking'],
+                  readings: day2SubsectionReadings['inverse-thinking'],
                   paragraphs: [
                     '「反过来想，总是反过来想。」当所有人狂热时，反过来思考风险在哪里；当所有人恐慌时，反过来思考机会在哪里。所有超额收益，都来自逆人性的理性决策。',
                     '芒格说：「尽量别犯愚蠢的错误，而不是尽量表现得聪明。」守住能力圈，就是第二天最顶级的聪明。',

@@ -37,7 +37,7 @@ export default function MemberPage() {
       <MembershipCommissionSection />
 
       <section
-        className="member-section member-section--benefits border-b border-zinc-200 bg-zinc-50 py-16 md:py-24"
+        className="member-section member-section--benefits border-b border-zinc-200 bg-zinc-50 py-12 md:py-16"
         aria-labelledby="tier-benefits-heading"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { ArrowRight, Calculator, Share2, Sparkles } from 'lucide-react'
+import { Share2, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import type { MembershipTierId } from '@/lib/content/membership'
 import {
@@ -88,11 +88,32 @@ export function MembershipCommissionCalculator({
   return (
     <div
       className={cn(
-        'commission-calculator',
-        standalone && 'commission-calculator--standalone',
+        !standalone &&
+          'mt-10 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 text-white',
         className
       )}
     >
+      {!standalone ? (
+        <div className="border-b border-zinc-800 px-6 py-6 md:px-8 md:py-8">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
+            Commission Calculator
+          </p>
+          <h3 className="mt-2 text-2xl font-semibold md:text-3xl">
+            一键试算 · 一键分享
+          </h3>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400 md:text-base">
+            选择档位与产品组合试算，并生成带二维码的分享海报，邀请同频伙伴一起加入。
+          </p>
+        </div>
+      ) : null}
+
+      <div
+        className={cn(
+          'commission-calculator',
+          standalone && 'commission-calculator--standalone',
+          !standalone && 'commission-calculator--embedded'
+        )}
+      >
       <div className="commission-calculator__glow" aria-hidden />
       <div className="commission-calculator__grid">
         <div className="commission-calculator__panel commission-calculator__panel--inputs">
@@ -107,14 +128,7 @@ export function MembershipCommissionCalculator({
                 选择会员档位与分享产品，输入预估成交额，即时查看占位渠道收益。正式费率以协议为准。
               </p>
             </div>
-          ) : (
-            <div className="mb-6">
-              <p className="c2-eyebrow">Quick Calc</p>
-              <h2 className="mt-2 text-2xl font-semibold text-zinc-950">
-                渠道收益试算
-              </h2>
-            </div>
-          )}
+          ) : null}
 
           <div className="commission-calculator__fields">
             <label className="commission-calculator__field">
@@ -190,11 +204,15 @@ export function MembershipCommissionCalculator({
               </Button>
             </div>
           ) : (
-            <Button asChild variant="dark" size="lg" className="mt-6 w-full">
-              <Link href={`/member/commission?tier=${tierId}&product=${productId}&amount=${orderAmount}`}>
-                打开完整计算器
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+            <Button
+              type="button"
+              variant="default"
+              size="lg"
+              className="mt-6 w-full"
+              onClick={() => setShareOpen(true)}
+            >
+              <Share2 className="h-4 w-4" />
+              生成分享海报
             </Button>
           )}
         </div>
@@ -238,43 +256,16 @@ export function MembershipCommissionCalculator({
           )}
         </div>
       </div>
-
-      {standalone ? (
-        <MembershipCommissionSharePanel
-          open={shareOpen}
-          onOpenChange={setShareOpen}
-          tierId={tierId}
-          productId={productId}
-          orderAmount={orderAmount}
-          commissionAmount={result.amount}
-        />
-      ) : null}
-    </div>
-  )
-}
-
-export function MembershipCommissionCalculatorTeaser() {
-  return (
-    <div className="mt-10 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 p-6 text-white md:p-8">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-        <div className="max-w-xl">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
-            Commission Calculator
-          </p>
-          <h3 className="mt-2 text-2xl font-semibold md:text-3xl">
-            一键试算 · 一键分享
-          </h3>
-          <p className="mt-3 text-sm leading-relaxed text-zinc-400 md:text-base">
-            独立交互页面支持档位与产品组合试算，并生成带二维码的分享海报，扫码直达计算器。
-          </p>
-        </div>
-        <Button asChild variant="default" size="lg" className="shrink-0">
-          <Link href="/member/commission">
-            <Calculator className="h-4 w-4" />
-            打开渠道收益计算器
-          </Link>
-        </Button>
       </div>
+
+      <MembershipCommissionSharePanel
+        open={shareOpen}
+        onOpenChange={setShareOpen}
+        tierId={tierId}
+        productId={productId}
+        orderAmount={orderAmount}
+        commissionAmount={result.amount}
+      />
     </div>
   )
 }

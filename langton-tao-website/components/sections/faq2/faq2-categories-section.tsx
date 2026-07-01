@@ -78,7 +78,7 @@ export function Faq2CategoriesSection() {
                 {category.label}
               </h2>
               <p className="mt-6 text-base leading-relaxed text-zinc-600 md:text-lg">
-                {category.summary}
+                <Coffee2AnnotatedText text={category.summary} as="span" />
               </p>
               <p className="mt-2 text-sm text-zinc-400">
                 {category.items.length} 个问题

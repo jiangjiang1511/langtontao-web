@@ -1,98 +1,127 @@
-import Image from 'next/image'
 import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import type { MembershipTierId } from '@/lib/content/membership'
 import {
-  membershipBenefitBars,
+  membershipBenefitBarGroups,
   tierColumnLabels,
   wealthHealthCheckupItems,
+  type MembershipBenefitBar,
 } from '@/lib/content/membership-v2'
+import { cn } from '@/lib/utils'
+
+const tierTagClass: Record<MembershipTierId, string> = {
+  member: 'member-benefit-catalog__tier--member',
+  plus: 'member-benefit-catalog__tier--plus',
+  pro: 'member-benefit-catalog__tier--pro',
+  board: 'member-benefit-catalog__tier--board',
+}
+
+const featuredRowClass: Record<string, string> = {
+  'physical-pass': 'member-benefit-catalog__row--featured-pass',
+  'channel-commission': 'member-benefit-catalog__row--featured-channel',
+  'allocation-toolkit': 'member-benefit-catalog__row--featured-toolkit',
+}
 
 function TierTag({ tierId }: { tierId: MembershipTierId }) {
   return (
-    <span className="c2-chip border-zinc-300 bg-white text-zinc-700">
+    <span className={cn('member-benefit-catalog__tier', tierTagClass[tierId])}>
       {tierColumnLabels[tierId]}
     </span>
   )
 }
 
+function BenefitRow({ benefit }: { benefit: MembershipBenefitBar }) {
+  return (
+    <article
+      className={cn(
+        'member-benefit-catalog__row',
+        benefit.featured && featuredRowClass[benefit.id]
+      )}
+    >
+      <div className="member-benefit-catalog__tiers">
+        {benefit.tierIds.map((tierId) => (
+          <TierTag key={`${benefit.id}-${tierId}`} tierId={tierId} />
+        ))}
+      </div>
+
+      <div className="member-benefit-catalog__body">
+        <h3 className="member-benefit-catalog__title">{benefit.title}</h3>
+        <Coffee2AnnotatedText
+          text={benefit.summary}
+          className="member-benefit-catalog__summary"
+          as="span"
+        />
+
+        {benefit.id === 'health-checkup' ? (
+          <dl className="member-benefit-catalog__checkup-grid">
+            {wealthHealthCheckupItems.map((item) => (
+              <div key={item.title} className="member-benefit-nested">
+                <dt className="text-xs font-semibold text-zinc-950">
+                  {item.title}
+                </dt>
+                <dd className="mt-0.5 text-[11px] leading-snug text-zinc-600 md:text-xs">
+                  {item.description}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        ) : (
+          <ul className="member-benefit-catalog__items">
+            {benefit.items.map((item) => (
+              <li key={item} className="member-benefit-catalog__item">
+                <Coffee2AnnotatedText as="span" text={item} />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </article>
+  )
+}
+
 export function MembershipBenefitBars() {
   return (
-    <div id="tier-benefits" className="scroll-mt-28 space-y-4">
+    <div id="tier-benefits" className="scroll-mt-28">
       <Coffee2Reveal>
-        <div>
-          <h2 className="c2-display text-3xl text-zinc-950 md:text-4xl">
+        <div className="mb-5 md:mb-6">
+          <h2 className="c2-display text-2xl text-zinc-950 md:text-3xl">
             权益详情
           </h2>
-          <p className="mt-2 text-sm text-zinc-600 md:text-base">
-            逐项了解核心权益，标签标示拥有该权益的会员档位
+          <p className="mt-1.5 text-sm text-zinc-600">
+            按档位范围分组展示 · 私董会权益见下方专属区块
           </p>
         </div>
       </Coffee2Reveal>
 
-      {membershipBenefitBars.map((benefit, index) => (
-        <Coffee2Reveal
-          key={benefit.id}
-          as="article"
-          delay={80 + index * 90}
-          className="c2-card flex flex-col overflow-hidden sm:flex-row"
-        >
-            <div className="relative aspect-[21/9] w-full shrink-0 border-b border-zinc-200 sm:aspect-auto sm:w-[34%] sm:border-b-0 sm:border-r md:min-h-[180px]">
-              <div
-                className={`absolute inset-0 ${benefit.imageClass}`}
-                aria-hidden
-              />
-              <Image
-                src={benefit.imageSrc}
-                alt={benefit.imageAlt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 380px"
-              />
-            </div>
-            <div className="flex flex-1 flex-col justify-center p-5 md:p-6">
-              <div className="flex flex-wrap items-center gap-2">
-                {benefit.tierIds.map((tierId) => (
-                  <TierTag key={`${benefit.id}-${tierId}`} tierId={tierId} />
-                ))}
-              </div>
-              <h3 className="mt-3 text-lg font-semibold leading-tight text-zinc-950 md:text-xl">
-                {benefit.title}
-              </h3>
-              <Coffee2AnnotatedText
-                text={benefit.summary}
-                className="mt-2 text-sm leading-relaxed text-zinc-600"
-              />
-              {benefit.id === 'health-checkup' ? (
-                <ul className="mt-4 space-y-3">
-                  {wealthHealthCheckupItems.map((item) => (
-                    <li
-                      key={item.title}
-                      className="member-benefit-nested rounded-xl border border-zinc-200 bg-zinc-50 px-3 py-2"
-                    >
-                      <p className="text-xs font-semibold text-zinc-950 md:text-sm">
-                        {item.title}
-                      </p>
-                      <p className="mt-1 text-xs leading-snug text-zinc-600 md:text-sm">
-                        {item.description}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {benefit.items.map((item) => (
-                    <li key={item}>
-                      <span className="c2-chip bg-zinc-50 text-zinc-700">
-                        <Coffee2AnnotatedText as="span" text={item} />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+      <div className="space-y-5">
+        {membershipBenefitBarGroups.map((group, groupIndex) => (
+          <Coffee2Reveal key={group.scope} delay={60 + groupIndex * 40}>
+            <section
+              className={cn(
+                'member-benefit-catalog',
+                `member-benefit-catalog--${group.scope}`
               )}
-            </div>
-        </Coffee2Reveal>
-      ))}
+              aria-labelledby={`tier-benefits-${group.scope}`}
+            >
+              <header
+                id={`tier-benefits-${group.scope}`}
+                className="member-benefit-catalog__group-header"
+              >
+                <h3 className="member-benefit-catalog__group-title">
+                  {group.title}
+                </h3>
+                <p className="member-benefit-catalog__group-description">
+                  {group.description}
+                </p>
+              </header>
+
+              {group.benefits.map((benefit) => (
+                <BenefitRow key={benefit.id} benefit={benefit} />
+              ))}
+            </section>
+          </Coffee2Reveal>
+        ))}
+      </div>
     </div>
   )
 }

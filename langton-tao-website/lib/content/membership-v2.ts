@@ -106,6 +106,8 @@ const allTierSections: MembershipTierSection[] = [
     contactIntent: '了解会员',
     summaryPoints: [
       '朗敦道物理通行证',
+      '社群渠道收益',
+      '全球资产配置工具集及素材库',
       '每年300+赋能活动',
       '超级英雄之旅探索',
       '开启个人数字资产积累',
@@ -123,6 +125,36 @@ const allTierSections: MembershipTierSection[] = [
         imageSrc: '/membership/physical-pass.svg',
         imageAlt: '朗敦道物理通行证',
         imageClass: 'bg-gradient-to-br from-pop-yellow via-amber-200 to-zinc-400',
+      },
+      {
+        id: 'channel-commission',
+        title: '社群渠道收益',
+        summary:
+          '推荐同频家庭加入朗敦道或成交会员与家办产品，按你的档位获得渠道收益——规则公开，可在会员页即时试算。',
+        items: [
+          '普通会员分享成交按 5% 分佣',
+          'Plus 按 12% 分佣',
+          'Pro 按 20% 分佣（智能英语等产品 50%+，详见收益计算器）',
+          '核销后次月 10 号前可申请结算',
+        ],
+        imageSrc: '/membership/partner.svg',
+        imageAlt: '社群渠道收益',
+        imageClass: 'bg-gradient-to-br from-amber-800 via-yellow-700 to-zinc-900',
+      },
+      {
+        id: 'allocation-toolkit',
+        title: '全球资产配置工具集及素材库',
+        summary:
+          '从宏观配置方向到保单类专业解读，从术语拆解到港股港卡实操攻略——会员可持续取用的工具与素材库。',
+        items: [
+          '资产配置框架与周期判断素材',
+          '港险、融资保单等产品解读',
+          '港股、港卡开设与跨境配置实操攻略',
+          '社群共享素材库持续更新',
+        ],
+        imageSrc: '/membership/global.svg',
+        imageAlt: '全球资产配置工具集',
+        imageClass: 'bg-gradient-to-br from-sky-950 via-blue-900 to-pop-black',
       },
       {
         id: 'empowerment-events',
@@ -260,6 +292,33 @@ export const membershipV2FullComparison: ComparisonCategory[] = [
     ],
   },
   {
+    title: '社群渠道收益',
+    rows: [
+      {
+        label: '推荐成交按档位分佣（会员 5% · Plus 12% · Pro 20%）',
+        values: {
+          member: '5%',
+          plus: '12%',
+          pro: '20%',
+          board: '30%',
+        },
+      },
+      {
+        label: '会员页渠道收益计算器试算 · 核销后次月 10 号前可申请结算',
+        values: { member: true, plus: true, pro: true, board: true },
+      },
+    ],
+  },
+  {
+    title: '全球资产配置工具集及素材库',
+    rows: [
+      {
+        label: '配置框架 · 保单解读 · 港股港卡攻略 · 社群素材库',
+        values: { member: true, plus: true, pro: true, board: true },
+      },
+    ],
+  },
+  {
     title: '每年300+赋能活动',
     rows: [
       {
@@ -350,16 +409,24 @@ export const membershipV2FullComparison: ComparisonCategory[] = [
 ]
 
 /** 折叠态：四列对比，显示至「个人叙事赋能内容库开源」行止 */
+const personalDigitalAssetCategory = membershipV2FullComparison.find(
+  (category) => category.title === '个人数字资产积累'
+)
+
 export const membershipV2CollapsedComparison: ComparisonCategory[] = [
   ...membershipV2FullComparison.slice(0, 3),
-  {
-    title: membershipV2FullComparison[3].title,
-    rows: membershipV2FullComparison[3].rows.filter(
-      (row) =>
-        row.label ===
-        '个人叙事赋能内容库开源——帮你开启自己的数字资产积累'
-    ),
-  },
+  ...(personalDigitalAssetCategory
+    ? [
+        {
+          title: personalDigitalAssetCategory.title,
+          rows: personalDigitalAssetCategory.rows.filter(
+            (row) =>
+              row.label ===
+              '个人叙事赋能内容库开源——帮你开启自己的数字资产积累'
+          ),
+        },
+      ]
+    : []),
 ]
 
 export const tierColumnOrder: MembershipTierId[] = [
@@ -388,8 +455,19 @@ export type PricingOverviewCard = {
   mystery?: boolean
 }
 
+export type MembershipBenefitScope = 'all-tiers' | 'plus-up' | 'pro-only'
+
 export type MembershipBenefitBar = TierBenefitCard & {
   tierIds: MembershipTierId[]
+  scope: MembershipBenefitScope
+  featured?: boolean
+}
+
+export type MembershipBenefitBarGroup = {
+  scope: MembershipBenefitScope
+  title: string
+  description: string
+  benefits: MembershipBenefitBar[]
 }
 
 /** 权益详情标签：不展示私董会（私董会单独区块介绍） */
@@ -402,19 +480,89 @@ const benefitTierScope: Record<
   pro: ['pro'],
 }
 
+const featuredBenefitIds = new Set([
+  'physical-pass',
+  'channel-commission',
+  'allocation-toolkit',
+])
+
+const benefitDisplayOrder: Record<string, number> = {
+  'physical-pass': 0,
+  'channel-commission': 1,
+  'allocation-toolkit': 2,
+  'empowerment-events': 10,
+  superhero: 11,
+  'digital-asset': 12,
+  'health-checkup': 20,
+  'ip-starter': 21,
+  partnership: 30,
+  crm: 31,
+  'ip-trilogy': 32,
+}
+
+const benefitBarGroupMeta: Record<
+  MembershipBenefitScope,
+  { title: string; description: string }
+> = {
+  'all-tiers': {
+    title: '三档共有权益',
+    description: '普通会员、Plus、Pro 均可享有',
+  },
+  'plus-up': {
+    title: 'Plus 及以上',
+    description: '含会员全部权益，Plus 与 Pro 解锁',
+  },
+  'pro-only': {
+    title: 'Pro 专属',
+    description: '含 Plus 全部权益，合伙人档独享',
+  },
+}
+
+function resolveBenefitScope(tierIds: MembershipTierId[]): MembershipBenefitScope {
+  if (tierIds.length === 1 && tierIds[0] === 'pro') return 'pro-only'
+  if (
+    tierIds.length === 2 &&
+    tierIds.includes('plus') &&
+    tierIds.includes('pro')
+  ) {
+    return 'plus-up'
+  }
+  return 'all-tiers'
+}
+
 const benefitTitleOverrides: Record<string, string> = {
   'ip-starter': '数字资产赋能（IP 起步）',
   'ip-trilogy': '数字资产赋能（IP 三部曲）',
 }
 
-export const membershipBenefitBars: MembershipBenefitBar[] = allTierSections.flatMap(
-  (tier) =>
-    tier.coreBenefits.map((benefit) => ({
-      ...benefit,
-      title: benefitTitleOverrides[benefit.id] ?? benefit.title,
-      tierIds: benefitTierScope[tier.id as keyof typeof benefitTierScope],
-    }))
+const membershipBenefitBarsUnsorted: MembershipBenefitBar[] =
+  allTierSections.flatMap((tier) =>
+    tier.coreBenefits.map((benefit) => {
+      const tierIds = benefitTierScope[tier.id as keyof typeof benefitTierScope]
+      return {
+        ...benefit,
+        title: benefitTitleOverrides[benefit.id] ?? benefit.title,
+        tierIds,
+        scope: resolveBenefitScope(tierIds),
+        featured: featuredBenefitIds.has(benefit.id),
+      }
+    })
+  )
+
+export const membershipBenefitBars: MembershipBenefitBar[] = [
+  ...membershipBenefitBarsUnsorted,
+].sort(
+  (a, b) =>
+    (benefitDisplayOrder[a.id] ?? 99) - (benefitDisplayOrder[b.id] ?? 99)
 )
+
+export const membershipBenefitBarGroups: MembershipBenefitBarGroup[] = (
+  ['all-tiers', 'plus-up', 'pro-only'] as const
+).map((scope) => ({
+  scope,
+  ...benefitBarGroupMeta[scope],
+  benefits: membershipBenefitBars.filter((benefit) => benefit.scope === scope),
+}))
 
 export const membershipPricingOverview: PricingOverviewCard[] = [
   ...allTierSections.map((tier) => ({

@@ -5,64 +5,111 @@ import { useEffect, useState } from 'react'
 import { langtontaoSectionNav } from '@/lib/content/langtontao-page'
 import { cn } from '@/lib/utils'
 
+const HERO_ANCHOR_ID = 'langtontao-hero'
+
 export function LangtontaoSectionNav() {
+  const [visible, setVisible] = useState(false)
   const [activeId, setActiveId] = useState<string>(
-    langtontaoSectionNav[0]?.id ?? 'why-mfo'
+    langtontaoSectionNav[0]?.id ?? 'home-roots'
   )
 
   useEffect(() => {
-    const sections = langtontaoSectionNav
-      .map((item) => document.getElementById(item.id))
-      .filter((element): element is HTMLElement => element !== null)
+    const hero = document.getElementById(HERO_ANCHOR_ID)
+    if (!hero) return
 
-    if (sections.length === 0) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-
-        if (visible[0]?.target.id) {
-          setActiveId(visible[0].target.id)
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(false)
+          return
         }
+
+        setVisible(entry.boundingClientRect.top < 0)
       },
-      {
-        rootMargin: '-25% 0px -55% 0px',
-        threshold: [0, 0.15, 0.35],
-      }
+      { threshold: 0 }
     )
 
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
+    heroObserver.observe(hero)
+
+    const sectionRatios = new Map<string, number>()
+
+    const sectionObservers = langtontaoSectionNav.map((item) => {
+      const section = document.getElementById(item.id)
+      if (!section) return null
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            sectionRatios.set(item.id, entry.intersectionRatio)
+          } else {
+            sectionRatios.delete(item.id)
+          }
+
+          let nextActive: string | null = null
+          let highestRatio = 0
+
+          sectionRatios.forEach((ratio, id) => {
+            if (ratio >= highestRatio) {
+              highestRatio = ratio
+              nextActive = id
+            }
+          })
+
+          if (nextActive) {
+            setActiveId(nextActive)
+          }
+        },
+        {
+          rootMargin: '-32% 0px -52% 0px',
+          threshold: [0, 0.15, 0.35, 0.55, 0.75, 1],
+        }
+      )
+
+      observer.observe(section)
+      return observer
+    })
+
+    return () => {
+      heroObserver.disconnect()
+      sectionObservers.forEach((observer) => observer?.disconnect())
+    }
   }, [])
 
   return (
     <nav
       aria-label="朗敦道业务板块导航"
-      className="sticky top-[4.5rem] z-10 border-b border-zinc-200 bg-white/95 py-3 backdrop-blur-sm md:top-20"
+      aria-hidden={!visible}
+      data-visible={visible ? 'true' : 'false'}
+      className={cn(
+        'coffee2-life-events-sticky-nav pointer-events-none fixed inset-x-0 z-40 flex justify-center px-4 sm:px-6',
+        visible && 'coffee2-life-events-sticky-nav--visible pointer-events-auto'
+      )}
     >
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-2 px-4 sm:px-6 lg:px-8">
-        {langtontaoSectionNav.map((item) => (
-          <Link
-            key={item.id}
-            href={`#${item.id}`}
-            className={cn(
-              'rounded-full px-4 py-2 text-sm font-bold transition-colors',
-              activeId === item.id
-                ? 'bg-zinc-950 text-white'
-                : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-zinc-950'
-            )}
-          >
-            {item.label}
-          </Link>
-        ))}
-        <Link
-          href="/langton"
-          className="rounded-full border border-zinc-200 px-4 py-2 text-sm font-bold text-zinc-600 transition-colors hover:border-zinc-400 hover:text-zinc-950"
-        >
-          关于朗敦道
-        </Link>
+      <div className="coffee2-life-events-sticky-nav__shell max-w-[calc(100vw-2rem)]">
+        <div className="coffee2-life-events-sticky-nav__track">
+          {langtontaoSectionNav.map((item, index) => {
+            const isActive = activeId === item.id
+
+            return (
+              <Link
+                key={item.id}
+                href={`#${item.id}`}
+                className={cn(
+                  'coffee2-life-events-sticky-nav__link',
+                  isActive && 'coffee2-life-events-sticky-nav__link--active'
+                )}
+                aria-current={isActive ? 'location' : undefined}
+              >
+                <span className="coffee2-life-events-sticky-nav__number">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="coffee2-life-events-sticky-nav__title">
+                  {item.label}
+                </span>
+              </Link>
+            )
+          })}
+        </div>
       </div>
     </nav>
   )

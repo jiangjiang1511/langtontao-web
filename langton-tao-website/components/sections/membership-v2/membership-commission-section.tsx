@@ -2,7 +2,6 @@ import { Suspense } from 'react'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import {
   MembershipCommissionCalculator,
-  MembershipCommissionCalculatorTeaser,
 } from '@/components/sections/membership-v2/membership-commission-calculator'
 import {
   formatCommissionRule,
@@ -136,21 +135,15 @@ export function MembershipCommissionSection() {
         </Coffee2Reveal>
 
         <Coffee2Reveal delay={200}>
-          <MembershipCommissionCalculatorTeaser />
-        </Coffee2Reveal>
-
-        <Coffee2Reveal delay={240}>
-          <div className="mt-10">
-            <Suspense
-              fallback={
-                <div className="rounded-2xl border border-zinc-200 bg-white p-8 text-sm text-zinc-500">
-                  加载计算器…
-                </div>
-              }
-            >
-              <MembershipCommissionCalculator />
-            </Suspense>
-          </div>
+          <Suspense
+            fallback={
+              <div className="mt-10 rounded-2xl border border-zinc-200 bg-white p-8 text-sm text-zinc-500">
+                加载计算器…
+              </div>
+            }
+          >
+            <MembershipCommissionCalculator />
+          </Suspense>
         </Coffee2Reveal>
       </div>
     </section>

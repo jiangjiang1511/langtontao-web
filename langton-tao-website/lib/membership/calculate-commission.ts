@@ -44,7 +44,7 @@ export function calculateMembershipCommission(
 
   const breakdown =
     rule.type === 'percent'
-      ? `${product.name} · 成交额 ¥${orderAmount.toLocaleString('zh-CN')} × ${Math.round(rule.value * 100)}%`
+      ? `${product.name} · 成交额 ¥${orderAmount.toLocaleString('zh-CN')} × ${rule.display ?? `${Math.round(rule.value * 100)}%`}`
       : `${product.name} · 固定推荐奖 ${formattedAmount}`
 
   return {

@@ -82,7 +82,7 @@ export function AllianceSurveyQuestionCard({
               <button
                 type="button"
                 className={cn(
-                  'alliance-survey-option w-full rounded-lg border-2 px-3 text-left text-xs transition-all md:text-sm',
+                  'c2-pop-option alliance-survey-option w-full px-3 text-left text-xs md:text-sm',
                   isMulti ? 'py-2' : 'py-2.5',
                   selected && 'alliance-survey-option--selected',
                   disabled && 'pointer-events-none opacity-60'

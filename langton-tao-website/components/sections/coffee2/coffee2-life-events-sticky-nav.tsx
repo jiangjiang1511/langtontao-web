@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 const NAV_GRID_ID = 'coffee-life-events-nav-grid'
 const COFFEE_STICKY_NAV_TOP = {
   id: 'coffee-top',
-  href: '#coffee2-hero',
+  href: '#pillars',
   title: '一杯咖啡',
 } as const
 

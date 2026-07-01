@@ -1,6 +1,6 @@
 'use client'
 
-import { RetirementBubblesStage } from '@/components/sections/coffee2/retirement-bubbles-stage'
+import { RetirementTopicCardsSection } from '@/components/sections/coffee2/retirement-topic-cards-section'
 import { RetirementCalculatorsSection } from '@/components/sections/coffee2/retirement-calculators-section'
 import { RetirementSoulQuestions } from '@/components/sections/coffee2/retirement-soul-questions'
 
@@ -9,7 +9,7 @@ export function RetirementSection() {
     <div className="retirement-section mt-12 md:mt-16">
       <RetirementSoulQuestions />
       <RetirementCalculatorsSection />
-      <RetirementBubblesStage />
+      <RetirementTopicCardsSection />
     </div>
   )
 }

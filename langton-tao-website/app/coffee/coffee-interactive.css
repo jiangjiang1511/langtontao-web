@@ -1,0 +1,521 @@
+/* Coffee life-events — shared Pop Art / Collage interactive primitives */
+
+.coffee2-page {
+  --c2-pop-black: #09090b;
+  --c2-pop-yellow: #ffe600;
+  --c2-pop-white: #ffffff;
+  --c2-pop-shadow: 3px 3px 0 0 var(--c2-pop-yellow);
+  --c2-pop-shadow-hover: 4px 4px 0 0 var(--c2-pop-black);
+  --c2-pop-shadow-lg: 6px 6px 0 0 var(--c2-pop-yellow);
+  --c2-pop-radius: 0.5rem;
+  --c2-pop-radius-panel: 0.75rem;
+  --c2-pop-accent-education: #2563eb;
+  --c2-pop-accent-retirement: #f59e0b;
+}
+
+/* —— Stamp eyebrow —— */
+.coffee2-page .c2-pop-stamp,
+.coffee2-page .debt-survey-stage__eyebrow.c2-eyebrow,
+.coffee2-page .legacy-survey-stage__eyebrow.c2-eyebrow,
+.coffee2-page .education-survey-stage__eyebrow.c2-eyebrow,
+.coffee2-page .retirement-soul-survey-stage__eyebrow.c2-eyebrow {
+  display: inline-block;
+  padding: 0.2em 0.55em 0.28em;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c2-pop-white);
+  background: var(--c2-pop-black);
+  box-shadow: 2px 2px 0 0 var(--c2-pop-yellow);
+}
+
+/* —— Collage tape background —— */
+.coffee2-page .c2-pop-collage-bg {
+  position: relative;
+  isolation: isolate;
+}
+
+.coffee2-page .c2-pop-collage-bg::before {
+  content: '';
+  position: absolute;
+  inset: -0.5rem -0.75rem;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  background:
+    linear-gradient(32deg, rgb(255 230 0 / 0.22) 0%, rgb(255 230 0 / 0.22) 100%)
+      6% 8% / 72px 16px no-repeat,
+    linear-gradient(-18deg, rgb(255 230 0 / 0.16) 0%, rgb(255 230 0 / 0.16) 100%)
+      82% 14% / 56px 12px no-repeat,
+    linear-gradient(8deg, rgb(9 9 11 / 0.08) 0%, rgb(9 9 11 / 0.08) 100%) 58%
+      72% / 48px 10px no-repeat,
+    linear-gradient(-42deg, rgb(255 230 0 / 0.12) 0%, rgb(255 230 0 / 0.12) 100%)
+      18% 82% / 64px 14px no-repeat;
+}
+
+.coffee2-page .c2-pop-collage-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+.coffee2-page .c2-pop-accent--education.c2-pop-collage-bg::before {
+  background:
+    linear-gradient(24deg, rgb(37 99 235 / 0.28) 0%, rgb(37 99 235 / 0.28) 100%)
+      4% 6% / 80px 14px no-repeat,
+    linear-gradient(32deg, rgb(255 230 0 / 0.2) 0%, rgb(255 230 0 / 0.2) 100%)
+      78% 12% / 64px 12px no-repeat,
+    linear-gradient(-12deg, rgb(9 9 11 / 0.07) 0%, rgb(9 9 11 / 0.07) 100%) 52%
+      78% / 52px 10px no-repeat;
+}
+
+.coffee2-page .c2-pop-accent--retirement.c2-pop-collage-bg::before {
+  background:
+    linear-gradient(28deg, rgb(245 158 11 / 0.28) 0%, rgb(245 158 11 / 0.28) 100%)
+      8% 10% / 72px 14px no-repeat,
+    linear-gradient(-20deg, rgb(255 230 0 / 0.18) 0%, rgb(255 230 0 / 0.18) 100%)
+      80% 18% / 60px 12px no-repeat,
+    linear-gradient(6deg, rgb(9 9 11 / 0.07) 0%, rgb(9 9 11 / 0.07) 100%) 24%
+      76% / 56px 10px no-repeat;
+}
+
+/* —— Hint pulse dot —— */
+.coffee2-page .c2-pop-hint-dot,
+.coffee2-page .debt-survey-stage__hint-dot,
+.coffee2-page .legacy-survey-stage__hint-dot,
+.coffee2-page .education-survey-stage__hint-dot,
+.coffee2-page .retirement-soul-survey-stage__hint-dot,
+.coffee2-page .alliance-survey-section__hint-dot,
+.coffee2-page .child-calc-section__hint-dot,
+.coffee2-page .retirement-soul-section__hint-dot,
+.coffee2-page .retirement-calc-section__hint-dot,
+.coffee2-page .retirement-topic-cards-section__hint-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--c2-pop-yellow);
+  animation: c2-pop-hint-pulse 2s ease-in-out infinite;
+}
+
+@keyframes c2-pop-hint-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+  }
+}
+
+/* —— Poker / flashcard face —— */
+.coffee2-page .c2-pop-poker-card__face,
+.coffee2-page .debt-poker-card__face,
+.coffee2-page .legacy-poker-card__face,
+.coffee2-page .alliance-flashcard--question,
+.coffee2-page .alliance-flashcard--results,
+.coffee2-page .alliance-flashcard--commentary,
+.coffee2-page .alliance-flashcard-slot[data-variant] .alliance-flashcard,
+.coffee2-page .retirement-chart-card__face {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid var(--c2-pop-black);
+  border-radius: 1rem;
+  background: var(--c2-pop-white);
+  box-shadow: var(--c2-pop-shadow-lg);
+}
+
+/* Stack tint overlays — flat, no gradients */
+.coffee2-page .debt-poker-card:not([data-active='true']) .debt-poker-card__face::after,
+.coffee2-page .legacy-poker-card:not([data-active='true']) .legacy-poker-card__face::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.coffee2-page .debt-poker-card[data-stack-slot='0'] .debt-poker-card__face::after,
+.coffee2-page .legacy-poker-card[data-stack-slot='0'] .legacy-poker-card__face::after {
+  background: rgb(255 230 0 / 0.1);
+}
+
+.coffee2-page .debt-poker-card[data-stack-slot='1'] .debt-poker-card__face::after,
+.coffee2-page .legacy-poker-card[data-stack-slot='1'] .legacy-poker-card__face::after {
+  background: rgb(9 9 11 / 0.05);
+}
+
+.coffee2-page .debt-poker-card[data-stack-slot='2'] .debt-poker-card__face::after,
+.coffee2-page .legacy-poker-card[data-stack-slot='2'] .legacy-poker-card__face::after {
+  background: rgb(255 230 0 / 0.06);
+}
+
+.coffee2-page .debt-poker-card--stacked-away .debt-poker-card__face::after,
+.coffee2-page .legacy-poker-card--stacked-away .legacy-poker-card__face::after {
+  background: rgb(9 9 11 / 0.06);
+}
+
+.coffee2-page .debt-poker-card__inner,
+.coffee2-page .legacy-poker-card__inner {
+  position: relative;
+  z-index: 2;
+}
+
+.coffee2-page .c2-pop-option,
+.coffee2-page .debt-survey-option,
+.coffee2-page .legacy-survey-option,
+.coffee2-page .alliance-survey-option,
+.coffee2-page .education-survey-option,
+.coffee2-page .retirement-soul-survey-option {
+  border: 2px solid var(--c2-pop-black);
+  border-radius: var(--c2-pop-radius);
+  background: var(--c2-pop-white);
+  color: var(--c2-pop-black);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.coffee2-page .c2-pop-option:hover:not(:disabled),
+.coffee2-page .debt-survey-option:hover:not(:disabled),
+.coffee2-page .legacy-survey-option:hover:not(:disabled),
+.coffee2-page .alliance-survey-option:hover:not(:disabled),
+.coffee2-page .education-survey-option:hover:not(:disabled),
+.coffee2-page .retirement-soul-survey-option:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--c2-pop-shadow);
+}
+
+.coffee2-page .c2-pop-option[data-selected='true'],
+.coffee2-page .c2-pop-option--selected,
+.coffee2-page .debt-survey-option[data-selected='true'],
+.coffee2-page .legacy-survey-option[data-selected='true'],
+.coffee2-page .alliance-survey-option--selected,
+.coffee2-page .education-survey-option[data-selected='true'],
+.coffee2-page .retirement-soul-survey-option--selected {
+  background: var(--c2-pop-yellow);
+  border-color: var(--c2-pop-black);
+  box-shadow: 3px 3px 0 0 var(--c2-pop-black);
+  transform: translate(-1px, -1px);
+}
+
+.coffee2-page .c2-pop-option:focus-visible,
+.coffee2-page .debt-survey-option:focus-visible,
+.coffee2-page .legacy-survey-option:focus-visible,
+.coffee2-page .alliance-survey-option:focus-visible,
+.coffee2-page .education-survey-option:focus-visible,
+.coffee2-page .retirement-soul-survey-option:focus-visible {
+  outline: 2px solid var(--c2-pop-black);
+  outline-offset: 2px;
+}
+
+.coffee2-page .c2-pop-accent--education .education-survey-option[data-selected='true'] {
+  border-left: 4px solid var(--c2-pop-accent-education);
+}
+
+.coffee2-page .c2-pop-accent--retirement .retirement-soul-survey-option--selected {
+  border-left: 4px solid var(--c2-pop-accent-retirement);
+}
+
+/* —— Calculator panels & pills —— */
+.coffee2-page .c2-pop-panel,
+.coffee2-page .child-calc__panel,
+.coffee2-page .retirement-calc__panel {
+  border: 2px solid var(--c2-pop-black);
+  border-radius: var(--c2-pop-radius-panel);
+  background: var(--c2-pop-white);
+  box-shadow: var(--c2-pop-shadow);
+}
+
+.coffee2-page .child-calc__panel--result,
+.coffee2-page .retirement-calc__panel--result {
+  background: var(--c2-pop-white);
+}
+
+.coffee2-page .child-calc__panel--result .child-calc__result-value,
+.coffee2-page .retirement-calc__panel--result .retirement-calc__result-value {
+  display: inline-block;
+  padding: 0.15rem 0.35rem;
+  background: var(--c2-pop-yellow);
+  box-shadow: 2px 2px 0 0 var(--c2-pop-black);
+}
+
+.coffee2-page .c2-pop-pill,
+.coffee2-page .child-calc__option-pill,
+.coffee2-page .retirement-calc__option-pill,
+.coffee2-page .retirement-calc__year-pill {
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--c2-pop-black);
+  border-radius: var(--c2-pop-radius);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--c2-pop-black);
+  text-align: left;
+  background: var(--c2-pop-white);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.coffee2-page .c2-pop-pill:hover,
+.coffee2-page .child-calc__option-pill:hover,
+.coffee2-page .retirement-calc__option-pill:hover,
+.coffee2-page .retirement-calc__year-pill:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0 0 var(--c2-pop-yellow);
+}
+
+.coffee2-page .c2-pop-pill--active,
+.coffee2-page .child-calc__option-pill--active,
+.coffee2-page .retirement-calc__option-pill--active,
+.coffee2-page .retirement-calc__year-pill--active {
+  background: var(--c2-pop-yellow);
+  border-color: var(--c2-pop-black);
+  box-shadow: 3px 3px 0 0 var(--c2-pop-black);
+}
+
+.coffee2-page .retirement-calc__select {
+  border: 2px solid var(--c2-pop-black);
+  border-radius: var(--c2-pop-radius);
+}
+
+.coffee2-page .child-calc__disclaimer,
+.coffee2-page .retirement-calc__disclaimer {
+  border: 2px solid var(--c2-pop-black);
+  border-radius: var(--c2-pop-radius);
+  background: var(--c2-pop-white);
+  box-shadow: 2px 2px 0 0 rgb(255 230 0 / 0.45);
+}
+
+/* Fishbone */
+.coffee2-page .child-fishbone__bar-fill,
+.coffee2-page .retirement-fishbone__bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--c2-pop-yellow);
+}
+
+.coffee2-page .retirement-calc__year-pill {
+  border-radius: 9999px;
+  padding: 0.45rem 0.85rem;
+}
+
+.coffee2-page .child-fishbone__spine,
+.coffee2-page .retirement-fishbone__spine {
+  border-left: 4px solid var(--c2-pop-black);
+  background: var(--c2-pop-yellow);
+}
+
+/* Share actions */
+.coffee2-page .calc-share-actions {
+  border-top: 2px dashed var(--c2-pop-black);
+}
+
+.coffee2-page .calc-share-actions__btn {
+  border: 2px solid var(--c2-pop-black) !important;
+  color: var(--c2-pop-black) !important;
+  background: var(--c2-pop-white) !important;
+  box-shadow: 2px 2px 0 0 var(--c2-pop-yellow);
+}
+
+.coffee2-page .calc-share-actions__btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 0 var(--c2-pop-black) !important;
+  background: var(--c2-pop-yellow) !important;
+}
+
+/* —— Education survey panel —— */
+.coffee2-page .education-survey-navigator__panel {
+  border: 2px solid var(--c2-pop-black);
+  border-radius: 1rem;
+  background: var(--c2-pop-white);
+  box-shadow: var(--c2-pop-shadow-lg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.coffee2-page .c2-pop-accent--education .education-survey-navigator__panel::before {
+  content: '';
+  position: absolute;
+  top: 0.65rem;
+  left: -0.35rem;
+  width: 3.5rem;
+  height: 0.85rem;
+  background: var(--c2-pop-accent-education);
+  transform: rotate(-4deg);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.coffee2-page .education-survey-navigator__panel {
+  position: relative;
+}
+
+.coffee2-page .education-survey-progress__step--done,
+.coffee2-page .education-survey-progress__step--active {
+  background: var(--c2-pop-yellow);
+}
+
+.coffee2-page .education-survey-progress__step {
+  background: #e4e4e7;
+  border: 1px solid var(--c2-pop-black);
+}
+
+.coffee2-page .education-survey-result__reflection,
+.coffee2-page .debt-survey-commentary-reflection,
+.coffee2-page .legacy-survey-commentary-reflection,
+.coffee2-page .alliance-survey-commentary-reflection,
+.coffee2-page .retirement-soul-commentary-reflection {
+  border-left: 4px solid var(--c2-pop-yellow);
+}
+
+/* —— Retirement soul chart card stripe —— */
+.coffee2-page .retirement-chart-card__stripe,
+.coffee2-page .retirement-chart-card__stripe--langton,
+.coffee2-page .retirement-chart-card__stripe--results {
+  padding: 0.65rem 1.25rem;
+  background: var(--c2-pop-yellow);
+  border-bottom: 2px solid var(--c2-pop-black);
+}
+
+.coffee2-page .retirement-chart-card__angle {
+  display: inline-block;
+  padding: 0.15em 0.45em;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c2-pop-white);
+  background: var(--c2-pop-accent-retirement);
+  box-shadow: 2px 2px 0 0 var(--c2-pop-black);
+}
+
+.coffee2-page .retirement-chart-card__progress {
+  font-weight: 700;
+  color: var(--c2-pop-black);
+}
+
+.coffee2-page .retirement-chart-card__footer {
+  border-top: 2px solid var(--c2-pop-black);
+}
+
+.coffee2-page .retirement-chart-card__primary-btn {
+  border: 2px solid var(--c2-pop-black);
+  background: var(--c2-pop-yellow);
+  color: var(--c2-pop-black);
+  box-shadow: 3px 3px 0 0 var(--c2-pop-black);
+}
+
+.coffee2-page .retirement-chart-card__primary-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--c2-pop-shadow-hover);
+}
+
+/* —— Alliance variant accents (flat corner stamps) —— */
+.coffee2-page .alliance-survey-cell {
+  position: relative;
+}
+
+.coffee2-page .alliance-survey-cell__eyebrow {
+  display: inline-block;
+  padding: 0.12em 0.4em;
+  font-weight: 700;
+  color: var(--c2-pop-white);
+  background: var(--c2-pop-black);
+  box-shadow: 2px 2px 0 0 var(--c2-pop-yellow);
+}
+
+.coffee2-page [data-variant='partner'] .alliance-survey-cell__eyebrow,
+.coffee2-page [data-variant='partner'] .alliance-flashcard__dot--active {
+  background: #e11d48;
+}
+
+.coffee2-page [data-variant='cofounder'] .alliance-survey-cell__eyebrow,
+.coffee2-page [data-variant='cofounder'] .alliance-flashcard__dot--active {
+  background: #0891b2;
+}
+
+.coffee2-page [data-variant='company'] .alliance-survey-cell__eyebrow,
+.coffee2-page [data-variant='company'] .alliance-flashcard__dot--active {
+  background: var(--c2-pop-black);
+}
+
+.coffee2-page [data-variant='friend'] .alliance-survey-cell__eyebrow,
+.coffee2-page [data-variant='friend'] .alliance-flashcard__dot--active {
+  background: #7c3aed;
+}
+
+.coffee2-page [data-variant='partner'] .alliance-survey-option--selected {
+  border-left: 4px solid #e11d48;
+}
+
+.coffee2-page [data-variant='cofounder'] .alliance-survey-option--selected {
+  border-left: 4px solid #0891b2;
+}
+
+.coffee2-page [data-variant='friend'] .alliance-survey-option--selected {
+  border-left: 4px solid #7c3aed;
+}
+
+.coffee2-page .alliance-flashcard__primary-btn {
+  border: 2px solid var(--c2-pop-black);
+  background: var(--c2-pop-yellow);
+  color: var(--c2-pop-black);
+  box-shadow: 3px 3px 0 0 var(--c2-pop-black);
+}
+
+/* —— Invest quadrant frame collage —— */
+.coffee2-page .invest-venn-section__chart .invest-quadrant__frame {
+  position: relative;
+}
+
+.coffee2-page .invest-venn-section__chart .invest-quadrant__frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+  background:
+    linear-gradient(28deg, rgb(255 230 0 / 0.18) 0%, rgb(255 230 0 / 0.18) 100%)
+      10% 6% / 64px 12px no-repeat,
+    linear-gradient(-16deg, rgb(9 9 11 / 0.06) 0%, rgb(9 9 11 / 0.06) 100%) 88%
+      20% / 48px 10px no-repeat,
+    linear-gradient(4deg, rgb(255 230 0 / 0.12) 0%, rgb(255 230 0 / 0.12) 100%) 72%
+      88% / 56px 11px no-repeat;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coffee2-page .c2-pop-hint-dot,
+  .coffee2-page .debt-survey-stage__hint-dot,
+  .coffee2-page .legacy-survey-stage__hint-dot,
+  .coffee2-page .education-survey-stage__hint-dot,
+  .coffee2-page .retirement-soul-survey-stage__hint-dot,
+  .coffee2-page .alliance-survey-section__hint-dot,
+  .coffee2-page .child-calc-section__hint-dot {
+    animation: none;
+  }
+
+  .coffee2-page .c2-pop-option:hover,
+  .coffee2-page .debt-survey-option:hover,
+  .coffee2-page .legacy-survey-option:hover,
+  .coffee2-page .alliance-survey-option:hover,
+  .coffee2-page .education-survey-option:hover,
+  .coffee2-page .retirement-soul-survey-option:hover,
+  .coffee2-page .c2-pop-pill:hover,
+  .coffee2-page .child-calc__option-pill:hover,
+  .coffee2-page .retirement-calc__option-pill:hover {
+    transform: none;
+  }
+}
