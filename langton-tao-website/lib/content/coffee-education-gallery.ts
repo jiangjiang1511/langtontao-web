@@ -143,7 +143,7 @@ export const educationGalleryImages: readonly EducationGalleryImage[] = [
   },
   {
     id: 'edu-sail-3',
-    src: '/assets/edu/sail3.png',
+    src: '/assets/edu/sail3.jpg',
     alt: '哪吒航海团队协作',
     category: 'sail',
     width: 1871,
@@ -167,7 +167,7 @@ export const educationGalleryImages: readonly EducationGalleryImage[] = [
   },
   {
     id: 'edu-sail-5',
-    src: '/assets/edu/sail5.jpg',
+    src: '/assets/edu/sail5.jpeg',
     alt: '哪吒航海风浪训练',
     category: 'sail',
     width: 4096,

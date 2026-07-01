@@ -74,7 +74,7 @@ const programGalleries = {
       `${superheroAssetBase.baretscholar}/baretscholar3.jpeg`,
       `${superheroAssetBase.baretscholar}/baretscholar4.jpg`,
       `${superheroAssetBase.baretscholar}/baretscholar5.jpg`,
-      `${superheroAssetBase.baretscholar}/baretscholar6.png`,
+      `${superheroAssetBase.baretscholar}/baretscholar6.jpg`,
       `${superheroAssetBase.baretscholar}/baretscholar7.jpeg`,
     ],
   },
@@ -82,14 +82,16 @@ const programGalleries = {
     cover: `${superheroAssetBase.sail}/sail4.jpg`,
     gallery: [
       `${superheroAssetBase.sail}/sail1.jpg`,
-      `${superheroAssetBase.sail}/sail2.png`,
-      `${superheroAssetBase.sail}/sail3.png`,
+      `${superheroAssetBase.sail}/sail2.jpg`,
+      `${superheroAssetBase.sail}/sail3.jpg`,
       `${superheroAssetBase.sail}/sail4.jpg`,
-      `${superheroAssetBase.sail}/sail5.jpg`,
-      `${superheroAssetBase.sail}/sail6.jpg`,
+      `${superheroAssetBase.sail}/sail5.jpeg`,
+      `${superheroAssetBase.sail}/sail6.jpeg`,
     ],
   },
 } as const
+
+export const langtontaoSuperheroProgramGalleries = programGalleries
 
 export const langtontaoSuperheroPhilosophy = {
   eyebrow: 'Embodied Cognition · 具身认知',

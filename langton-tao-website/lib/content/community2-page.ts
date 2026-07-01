@@ -5,6 +5,7 @@ import {
   superheroJourneyIntro,
   superheroPrograms,
 } from '@/lib/content/community-page'
+import { langtontaoSuperheroProgramGalleries } from '@/lib/content/langtontao/langtontao-superhero-journey'
 
 export {
   communityMembershipMeta,
@@ -28,43 +29,7 @@ export type Community2Program = {
   gallery: readonly string[]
 }
 
-const programGalleries: Record<
-  (typeof superheroPrograms)[number]['id'],
-  { cover: string; gallery: string[] }
-> = {
-  maclehose: {
-    cover: '/assets/hike1.jpg',
-    gallery: [
-      '/assets/hike1.jpg',
-      '/assets/hike2.jpg',
-      '/assets/hike3.jpg',
-      '/assets/hike4.jpg',
-      '/assets/hike5.jpg',
-      '/assets/hike6.jpg',
-    ],
-  },
-  borui: {
-    cover: '/assets/baretscholar1.jpg',
-    gallery: [
-      '/assets/baretscholar1.jpg',
-      '/assets/baretscholar2.jpg',
-      '/assets/baretscholar3.jpeg',
-      '/assets/baretscholar4.jpg',
-      '/assets/baretscholar5.jpg',
-    ],
-  },
-  nezha: {
-    cover: '/assets/sail1.jpg',
-    gallery: [
-      '/assets/sail1.jpg',
-      '/assets/sail2.png',
-      '/assets/sail3.png',
-      '/assets/sail4.jpg',
-      '/assets/sail5.jpg',
-      '/assets/sail6.jpg',
-    ],
-  },
-}
+const programGalleries = langtontaoSuperheroProgramGalleries
 
 export const community2Programs: Community2Program[] = superheroPrograms.map(
   (program) => {

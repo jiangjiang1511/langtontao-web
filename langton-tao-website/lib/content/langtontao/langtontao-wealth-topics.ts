@@ -6,9 +6,9 @@ import type {
 } from '@/lib/content/langtontao/langtontao-topic-types'
 
 const WEALTH_COVER_BY_ID: Record<string, string> = {
-  'poverty-norm': '/assets/langtontao/wealth/part3-wealth-01.jpg',
+  'poverty-norm': '/assets/langtontao/wealth/part3-wealth-01.jpeg',
   'malthusian-trap': '/assets/langtontao/wealth/part3-wealth-02.jpg',
-  'bayesian-acceleration': '/assets/langtontao/wealth/part3-breakthrough-01.jpg',
+  'bayesian-acceleration': '/assets/langtontao/wealth/part3-breakthrough-01.jpeg',
   'system-upgrade': '/assets/langtontao/wealth/part3-breakthrough-02.jpg',
   'global-471t': '/assets/langtontao/wealth/part3-breakthrough-03.jpg',
   'family-wealth-path': '/assets/langtontao/wealth/part3-breakthrough-04.jpg',

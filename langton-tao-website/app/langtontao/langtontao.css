@@ -2686,18 +2686,26 @@
     transform: none;
     transition: none;
     z-index: auto;
+    display: flex;
+    flex-direction: column;
   }
 
   .langtontao-page .langtontao-pillars .coffee2-pillar-card {
     aspect-ratio: auto;
     min-height: 0;
     height: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
   }
 
   .langtontao-page .langtontao-pillars .coffee2-pillar-card__content {
     aspect-ratio: auto;
     min-height: 11.5rem;
-    height: auto;
+    flex: 1 1 auto;
+    height: 100%;
+    width: 100%;
     padding: 1rem;
   }
 

@@ -36,8 +36,8 @@ export type DayTwoSection =
 export const dayTwoSuperheroCoverAssets = {
   'what-is-money': '/assets/100years/day2/day2-superhero-01.jpg',
   'global-wealth': '/assets/100years/day2/day2-superhero-01.jpg',
-  'purchasing-power': '/assets/100years/day2/day2-superhero-02.jpg',
-  'cash-flow': '/assets/100years/day2/day2-superhero-02.jpg',
+  'purchasing-power': '/assets/100years/day2/day2-superhero-02.jpeg',
+  'cash-flow': '/assets/100years/day2/day2-superhero-02.jpeg',
   'what-is-asset': '/assets/100years/day2/day2-superhero-11.jpg',
   growth: '/assets/100years/day2/day2-superhero-11.jpg',
   preservation: '/assets/100years/day2/day2-superhero-12.jpg',

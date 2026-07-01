@@ -5,11 +5,11 @@ import {
 import type { LangtontaoTopicItem } from '@/lib/content/langtontao/langtontao-topic-types'
 
 const PANIC_CORE_COVER_BY_ID: Record<string, string> = {
-  'inheritance-essence': '/assets/langtontao/panic/part2-panic-01.jpg',
+  'inheritance-essence': '/assets/langtontao/panic/part2-panic-01.jpeg',
   'panic-source': '/assets/langtontao/panic/part2-panic-02.jpg',
   'employment-ice-age': '/assets/langtontao/panic/part2-panic-03.jpg',
-  'asset-landslide': '/assets/langtontao/panic/part2-panic-04.jpg',
-  'deflation-shadow': '/assets/langtontao/panic/part2-panic-05.jpg',
+  'asset-landslide': '/assets/langtontao/panic/part2-panic-04.jpeg',
+  'deflation-shadow': '/assets/langtontao/panic/part2-panic-05.jpeg',
   'order-shakeup': '/assets/langtontao/panic/part2-panic-06.jpg',
 }
 
