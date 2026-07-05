@@ -3,10 +3,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 /** Bump when replacing hero-anime.mp4 to bust browser cache. */
-const HERO_VIDEO_CACHE_VERSION = '20260705-2'
+const HERO_VIDEO_CACHE_VERSION = '20260705-3'
 
 export const LANGTONTAO_HERO_VIDEO_SRC = `/assets/langtontao/hero-anime.mp4?v=${HERO_VIDEO_CACHE_VERSION}`
-export const LANGTONTAO_HERO_VIDEO_POSTER = '/assets/langtontao/langtontao-logo.png'
+export const LANGTONTAO_HERO_VIDEO_POSTER = '/assets/langtontao/hero-anime.jpg'
 
 const DESKTOP_MEDIA = '(min-width: 768px)'
 const HEADER_CAPSULE_SELECTOR = 'header > div > .site-header-capsule'
