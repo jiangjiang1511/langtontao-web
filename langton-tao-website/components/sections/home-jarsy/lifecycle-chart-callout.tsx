@@ -19,7 +19,7 @@ function PaeiCode({
           key={`${char}-${index}`}
           className={cn(
             char === char.toUpperCase() && char !== '-'
-              ? 'font-black text-pop-yellow'
+              ? 'font-black text-jarsy-violet'
               : 'font-bold text-zinc-400'
           )}
         >

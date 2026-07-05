@@ -38,7 +38,7 @@ export const coffee2PillarCards: readonly Coffee2PillarCard[] = [
       '开启人生认知定投——为家庭与社群夯实同频的认知底层，在五件人生大事上建立共通语言。'
     ),
     href: '#reading',
-    accent: '#ffe600',
+    accent: '#8b5cf6',
     backgroundSrc: '/assets/bearbitcoffee/pillars/reading.jpg',
   },
   {

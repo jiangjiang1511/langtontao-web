@@ -2,27 +2,27 @@ import { FooterNavLinks } from '@/components/navigation/footer-nav-links'
 
 export function SiteFooter() {
   return (
-    <footer className="min-h-[320px] border-t-2 border-pop-black bg-pop-black text-pop-white">
+    <footer className="min-h-[320px] border-t border-zinc-800 bg-zinc-950 text-white">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3 md:py-16 lg:px-8">
         <div>
-          <p className="text-lg font-black">朗敦道</p>
-          <p className="mt-3 max-w-[280px] text-sm font-bold leading-relaxed text-pop-white/80">
+          <p className="text-lg font-semibold">朗敦道</p>
+          <p className="mt-3 max-w-[280px] text-sm font-medium leading-relaxed text-zinc-400">
             为第二代华人财富传承提供系统解决方案
           </p>
         </div>
         <div>
-          <p className="text-sm font-black text-pop-yellow">导航</p>
+          <p className="jarsy-gradient-text text-sm font-semibold">导航</p>
           <FooterNavLinks />
         </div>
         <div>
-          <p className="text-sm font-black text-pop-yellow">合规声明</p>
-          <p className="mt-3 text-xs font-bold leading-relaxed text-pop-white/70">
+          <p className="jarsy-gradient-text text-sm font-semibold">合规声明</p>
+          <p className="mt-3 text-xs font-medium leading-relaxed text-zinc-500">
             本站内容仅供教育与交流，不构成投资建议。
           </p>
         </div>
       </div>
-      <div className="border-t-2 border-pop-white/20">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs font-bold text-pop-white/60 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+      <div className="border-t border-zinc-800">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs font-medium text-zinc-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>© 2026 LANGTON TAO · ALL RIGHTS</p>
           <div className="flex gap-4">
             <span>Terms</span>

@@ -15,8 +15,8 @@
 .coffee2-glossary-term__label {
   background: linear-gradient(
     transparent 58%,
-    rgb(255 230 0 / 0.55) 58%,
-    rgb(255 230 0 / 0.55) 92%,
+    rgb(139 92 246 / 0.55) 58%,
+    rgb(139 92 246 / 0.55) 92%,
     transparent 92%
   );
   box-decoration-break: clone;
@@ -38,7 +38,7 @@
 }
 
 .coffee2-glossary-term:focus-visible .coffee2-glossary-term__label {
-  outline: 2px solid var(--pop-yellow);
+  outline: 2px solid var(--jarsy-violet);
   outline-offset: 2px;
 }
 
@@ -65,7 +65,7 @@
 .coffee2-glossary-dialog__definition {
   margin: 0;
   padding-left: 0.875rem;
-  border-left: 3px solid var(--pop-yellow);
+  border-left: 3px solid var(--jarsy-violet);
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.6;

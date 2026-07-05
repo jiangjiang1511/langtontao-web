@@ -1,21 +1,19 @@
 import Link from 'next/link'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import { Coffee2TypewriterReveal } from '@/components/sections/coffee2/coffee2-typewriter-reveal'
-import { LangtontaoHeroLogoOrbit } from '@/components/sections/langtontao/langtontao-hero-logo-orbit'
+import { LangtontaoHeroVideoBackground } from '@/components/sections/langtontao/langtontao-hero-video-background'
 import { langtonHero } from '@/lib/content/langton-page'
 
 export function Langton2HeroSection() {
   return (
     <section
       id="langton-hero"
-      className="langtontao-hero relative scroll-mt-20 overflow-hidden border-b border-zinc-200 bg-white"
+      className="langtontao-hero langtontao-hero--video relative scroll-mt-20 overflow-hidden border-b border-zinc-200"
       aria-labelledby="langton-hero-title"
     >
-      <LangtontaoHeroLogoOrbit />
-
       <div className="langtontao-hero__inner relative z-10 mx-auto flex max-w-7xl flex-col px-4 text-center sm:px-6 lg:px-8">
         <div className="langtontao-hero__upper" aria-hidden>
-          <div className="langtontao-hero__logo-slot langtontao-hero__logo-slot--layout" />
+          <LangtontaoHeroVideoBackground />
         </div>
 
         <div className="langtontao-hero__headline w-full max-w-3xl">

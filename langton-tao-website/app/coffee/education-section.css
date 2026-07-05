@@ -95,7 +95,7 @@
   background: #ffffff;
   box-shadow:
     0 1px 2px rgba(30, 58, 95, 0.04),
-    3px 3px 0 0 rgb(255 230 0 / 0.4),
+    3px 3px 0 0 rgb(139 92 246 / 0.4),
     0 10px 28px rgba(30, 58, 95, 0.08);
   transition:
     transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
@@ -107,7 +107,7 @@
   transform: scale(1.08);
   box-shadow:
     0 4px 12px rgba(30, 58, 95, 0.06),
-    4px 4px 0 0 rgb(255 230 0 / 0.5),
+    var(--ji-glow),
     0 20px 48px rgba(30, 58, 95, 0.12);
 }
 
@@ -116,7 +116,7 @@
   .education-gallery__frame {
   box-shadow:
     0 2px 4px rgba(30, 58, 95, 0.04),
-    3px 3px 0 0 rgb(255 230 0 / 0.35),
+    3px 3px 0 0 rgb(139 92 246 / 0.35),
     0 16px 40px rgba(30, 58, 95, 0.1);
 }
 
@@ -235,7 +235,7 @@
 .coffee2-page .education-topic-card:hover .education-topic-card__frame {
   transform: translateY(calc(var(--education-topic-stagger-y, 0px) - 4px));
   box-shadow:
-    4px 4px 0 0 #3f4f6b,
+    var(--ji-glow),
     0 22px 48px rgba(30, 58, 95, 0.35);
   filter: drop-shadow(0 20px 28px rgba(30, 58, 95, 0.2));
 }
@@ -252,10 +252,10 @@
     #3f4f6b 0%,
     #1e3a5f 42%,
     #2a4a72 88%,
-    rgba(255, 230, 0, 0.45) 100%
+    rgba(139, 92, 246, 0.45) 100%
   );
   box-shadow:
-    4px 4px 0 0 #ffe600,
+    var(--jarsy-glow),
     0 16px 40px rgba(30, 58, 95, 0.2);
   transition:
     box-shadow 0.35s ease,
@@ -285,7 +285,7 @@
   background: linear-gradient(
     125deg,
     rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 230, 0, 0.06) 22%,
+    rgba(139, 92, 246, 0.06) 22%,
     transparent 48%
   );
   pointer-events: none;
@@ -304,7 +304,7 @@
 }
 
 .coffee2-page .education-topic-card__index {
-  color: #ffe600;
+  color: var(--jarsy-violet);
   opacity: 0.85;
 }
 
@@ -323,11 +323,11 @@
 
 .coffee2-page .education-topic-card__link:hover .education-topic-card__readmore,
 .coffee2-page .education-topic-card__link:focus-visible .education-topic-card__readmore {
-  color: #ffe600;
+  color: var(--jarsy-violet);
 }
 
 .coffee2-page .education-topic-card__link:focus-visible {
-  outline: 2px solid #ffe600;
+  outline: 2px solid var(--jarsy-violet);
   outline-offset: 3px;
   border-radius: calc(1rem - 4px);
 }
@@ -335,7 +335,7 @@
 .coffee2-page .education-article-dialog {
   border: 2px solid #09090b;
   border-radius: 0.75rem;
-  box-shadow: 6px 6px 0 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 @media (prefers-reduced-motion: reduce) {

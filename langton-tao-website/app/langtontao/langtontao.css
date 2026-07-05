@@ -244,7 +244,7 @@
   bottom: 0.125rem;
   width: 3px;
   border-radius: 9999px;
-  background: #ffe600;
+  background: var(--jarsy-violet);
 }
 
 .langtontao-page .lt-heading-l2--center {
@@ -278,7 +278,7 @@
 
 /* L2 theme markers */
 .langtontao-page .lt-major-section--home .lt-heading-l2__rule {
-  background: #ffe600;
+  background: var(--jarsy-violet);
 }
 
 .langtontao-page .lt-major-section--superhero .lt-heading-l2__rule {
@@ -289,7 +289,7 @@
   top: 0.125rem;
   bottom: unset;
   border-radius: 2px;
-  background: linear-gradient(90deg, #ffe600, rgb(255 230 0 / 0.35));
+  background: linear-gradient(90deg, var(--jarsy-violet), rgb(139 92 246 / 0.35));
 }
 
 .langtontao-page .lt-major-section--superhero .lt-heading-l2--with-rule {
@@ -304,7 +304,7 @@
   bottom: auto;
   border-radius: 9999px;
   background: #a1a1aa;
-  box-shadow: 12px 0 0 #ffe600;
+  box-shadow: 12px 0 0 var(--jarsy-violet);
 }
 
 .langtontao-page .lt-major-section--checkup .lt-heading-l2--with-rule {
@@ -317,7 +317,7 @@
 }
 
 .langtontao-page .lt-major-section--checkup .lt-heading-l2--center .lt-heading-l2__rule--center {
-  background: linear-gradient(90deg, transparent, #ffe600, transparent);
+  background: linear-gradient(90deg, transparent, var(--jarsy-violet), transparent);
 }
 
 .langtontao-page .lt-major-section--network .lt-heading-l2,
@@ -341,7 +341,7 @@
   width: 100%;
   height: 2px;
   border-radius: 0;
-  background: linear-gradient(90deg, #ffe600, rgb(255 230 0 / 0.15));
+  background: linear-gradient(90deg, var(--jarsy-violet), rgb(139 92 246 / 0.15));
 }
 
 .langtontao-page .lt-major-section--network .lt-heading-l2--with-rule {
@@ -350,7 +350,7 @@
 }
 
 .langtontao-page .lt-major-section--network .lt-heading-l2--center .lt-heading-l2__rule--center {
-  background: linear-gradient(90deg, transparent, #ffe600, transparent);
+  background: linear-gradient(90deg, transparent, var(--jarsy-violet), transparent);
 }
 
 /* L1 dark module overrides */
@@ -388,7 +388,7 @@
   border-radius: 1rem;
   border: 1px solid #27272a;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgb(255 230 0 / 0.08), transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgb(139 92 246 / 0.08), transparent 55%),
     #09090b;
   padding: 2.5rem 1.5rem;
 }
@@ -413,7 +413,7 @@
 }
 
 .langtontao-page .lt-checkup-embedded--signup .lt-heading-l2__rule--center {
-  background: linear-gradient(90deg, transparent, #ffe600, transparent);
+  background: linear-gradient(90deg, transparent, var(--jarsy-violet), transparent);
 }
 
 .langtontao-page .lt-major-section--checkup .lt-checkup-embedded .c2-card {
@@ -565,7 +565,7 @@
   width: 0.625rem;
   height: 0.625rem;
   border-radius: 9999px;
-  background: #ffe600;
+  background: var(--jarsy-violet);
   border: 2px solid #18181b;
   justify-self: center;
 }
@@ -710,19 +710,19 @@
 
 .langtontao-page .lt-major-section--home {
   background:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgb(255 230 0 / 0.05), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgb(139 92 246 / 0.05), transparent 55%),
     #fafafa;
 }
 
 .langtontao-page .lt-major-section--home .lt-major-section__decor {
   background:
-    linear-gradient(135deg, transparent 48%, rgb(255 230 0 / 0.08) 48%, rgb(255 230 0 / 0.08) 49%, transparent 49%),
-    linear-gradient(-135deg, transparent 48%, rgb(255 230 0 / 0.06) 48%, rgb(255 230 0 / 0.06) 49%, transparent 49%);
+    linear-gradient(135deg, transparent 48%, rgb(139 92 246 / 0.08) 48%, rgb(139 92 246 / 0.08) 49%, transparent 49%),
+    linear-gradient(-135deg, transparent 48%, rgb(139 92 246 / 0.06) 48%, rgb(139 92 246 / 0.06) 49%, transparent 49%);
 }
 
 .langtontao-page .lt-major-section--superhero {
   background:
-    linear-gradient(160deg, rgb(255 230 0 / 0.04), transparent 35%),
+    linear-gradient(160deg, rgb(139 92 246 / 0.04), transparent 35%),
     #ffffff;
 }
 
@@ -786,7 +786,7 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  background: var(--lt-superhero-accent, #ffe600);
+  background: var(--lt-superhero-accent, var(--jarsy-violet));
 }
 
 .langtontao-page .lt-superhero-pillars__title {
@@ -852,7 +852,7 @@
 .langtontao-page .lt-superhero-program-hub__tab[data-selected='true'] {
   border-color: var(--lt-superhero-accent, #09090b);
   background: #fffef5;
-  box-shadow: inset 0 0 0 1px rgb(255 230 0 / 0.35);
+  box-shadow: inset 0 0 0 1px rgb(139 92 246 / 0.35);
 }
 
 .langtontao-page .lt-superhero-program-hub__tab-progress {
@@ -863,7 +863,7 @@
   width: 100%;
   transform-origin: left center;
   transform: scaleX(0);
-  background: var(--lt-superhero-accent, #ffe600);
+  background: var(--lt-superhero-accent, var(--jarsy-violet));
   animation: lt-superhero-tab-progress var(--lt-superhero-advance-ms, 8000ms) linear forwards;
 }
 
@@ -955,7 +955,7 @@
   margin-top: 1.25rem;
   border-radius: 0.75rem;
   border: 1px solid #e4e4e7;
-  border-left: 3px solid var(--lt-superhero-accent, #ffe600);
+  border-left: 3px solid var(--lt-superhero-accent, var(--jarsy-violet));
   background: #ffffff;
   padding: 0.875rem 1rem;
 }
@@ -1174,7 +1174,7 @@
 
 .langtontao-page .lt-major-section--checkup {
   background:
-    radial-gradient(circle at 20% 80%, rgb(255 230 0 / 0.05), transparent 40%),
+    radial-gradient(circle at 20% 80%, rgb(139 92 246 / 0.05), transparent 40%),
     #fafafa;
 }
 
@@ -1188,15 +1188,15 @@
 
 .langtontao-page .lt-major-section--network {
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgb(255 230 0 / 0.1), transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgb(139 92 246 / 0.1), transparent 55%),
     #09090b;
   border-color: #27272a;
 }
 
 .langtontao-page .lt-major-section--network .lt-major-section__decor {
   background:
-    radial-gradient(circle at 25% 50%, rgb(255 230 0 / 0.08), transparent 35%),
-    radial-gradient(circle at 75% 50%, rgb(255 230 0 / 0.06), transparent 35%);
+    radial-gradient(circle at 25% 50%, rgb(139 92 246 / 0.08), transparent 35%),
+    radial-gradient(circle at 75% 50%, rgb(139 92 246 / 0.06), transparent 35%);
 }
 
 .langtontao-page .lt-major-section--network .lt-major-section__decor::before,
@@ -1207,7 +1207,7 @@
   width: 12px;
   height: 12px;
   border-radius: 9999px;
-  border: 2px solid rgb(255 230 0 / 0.45);
+  border: 2px solid rgb(139 92 246 / 0.45);
   background: #09090b;
 }
 
@@ -1259,7 +1259,7 @@
   z-index: 2;
   height: 2px;
   border-radius: 9999px;
-  background: var(--philosophy-accent, #ffe600);
+  background: var(--philosophy-accent, var(--jarsy-violet));
   opacity: 0.92;
   transition: opacity 0.24s ease;
 }
@@ -1296,7 +1296,7 @@
   width: 58%;
   aspect-ratio: 1;
   border-radius: 9999px;
-  background: var(--philosophy-accent, #ffe600);
+  background: var(--philosophy-accent, var(--jarsy-violet));
   opacity: 0.14;
   transition:
     transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
@@ -1472,7 +1472,7 @@
 
 .langtontao-page .lt-beautiful-familyos-hub__card--selected,
 .langtontao-page .lt-beautiful-familyos-hub__card[data-selected='true'] {
-  box-shadow: inset 0 0 0 2px #ffe600;
+  box-shadow: inset 0 0 0 2px var(--jarsy-violet);
 }
 
 .langtontao-page .lt-beautiful-familyos-hub__card--selected .lt-beautiful-familyos-hub__card-content,
@@ -1688,7 +1688,7 @@
   width: 2.5rem;
   height: 2px;
   margin: 0.875rem auto 0;
-  background: #ffe600;
+  background: var(--jarsy-violet);
 }
 
 /* Panic channel row — 3-card aligned strip (narrower than scatter grid) */
@@ -1754,7 +1754,7 @@
   right: 1rem;
   height: 2px;
   border-radius: 9999px;
-  background: var(--lt-topic-accent, #ffe600);
+  background: var(--lt-topic-accent, var(--jarsy-violet));
   opacity: 0.95;
 }
 
@@ -2061,12 +2061,12 @@
   border: 2px solid #09090b;
   border-radius: 1rem;
   background: #fff;
-  box-shadow: 6px 6px 0 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 .langtontao-page .lt-wishlist-flashcard-card__face--results {
   min-height: auto;
-  box-shadow: 4px 4px 0 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 .langtontao-page .lt-wishlist-flashcard__inner {
@@ -2154,7 +2154,7 @@
 
 .langtontao-page .lt-wishlist-topic-window[open] {
   border-color: #09090b;
-  box-shadow: 4px 4px 0 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 .langtontao-page .lt-wishlist-topic-window__summary {
@@ -2237,13 +2237,13 @@
 
 .langtontao-page .lt-section--why-mfo {
   background:
-    radial-gradient(ellipse 70% 50% at 50% 0%, rgb(255 230 0 / 0.05), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgb(139 92 246 / 0.05), transparent 55%),
     #ffffff;
 }
 
 .langtontao-page .lt-section--panic {
   background:
-    linear-gradient(135deg, rgb(255 230 0 / 0.03), transparent 40%),
+    linear-gradient(135deg, rgb(139 92 246 / 0.03), transparent 40%),
     #fafafa;
 }
 
@@ -2255,7 +2255,7 @@
 
 .langtontao-page .lt-section--hk {
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgb(255 230 0 / 0.1), transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgb(139 92 246 / 0.1), transparent 55%),
     #09090b;
 }
 
@@ -2273,13 +2273,13 @@
 
 @keyframes lt-solution-flash {
   0% {
-    box-shadow: 0 0 0 0 rgb(255 230 0 / 0.7);
+    box-shadow: 0 0 0 0 rgb(139 92 246 / 0.7);
   }
   30% {
-    box-shadow: 0 0 0 6px rgb(255 230 0 / 0.35);
+    box-shadow: 0 0 0 6px rgb(139 92 246 / 0.35);
   }
   100% {
-    box-shadow: 0 0 0 0 rgb(255 230 0 / 0);
+    box-shadow: 0 0 0 0 rgb(139 92 246 / 0);
   }
 }
 
@@ -2336,10 +2336,10 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(32deg, rgb(255 230 0 / 0.14) 0%, rgb(255 230 0 / 0.14) 100%) 8% 12% / 72px 18px no-repeat,
-    linear-gradient(-18deg, rgb(255 230 0 / 0.1) 0%, rgb(255 230 0 / 0.1) 100%) 78% 22% / 56px 14px no-repeat,
+    linear-gradient(32deg, rgb(139 92 246 / 0.14) 0%, rgb(139 92 246 / 0.14) 100%) 8% 12% / 72px 18px no-repeat,
+    linear-gradient(-18deg, rgb(139 92 246 / 0.1) 0%, rgb(139 92 246 / 0.1) 100%) 78% 22% / 56px 14px no-repeat,
     linear-gradient(8deg, rgb(9 9 11 / 0.06) 0%, rgb(9 9 11 / 0.06) 100%) 62% 68% / 48px 12px no-repeat,
-    linear-gradient(-42deg, rgb(255 230 0 / 0.08) 0%, rgb(255 230 0 / 0.08) 100%) 22% 78% / 64px 16px no-repeat;
+    linear-gradient(-42deg, rgb(139 92 246 / 0.08) 0%, rgb(139 92 246 / 0.08) 100%) 22% 78% / 64px 16px no-repeat;
   opacity: 0.55;
 }
 
@@ -2356,7 +2356,7 @@
   left: 18%;
   width: 200px;
   height: 200px;
-  background: rgb(255 230 0 / 0.12);
+  background: rgb(139 92 246 / 0.12);
 }
 
 .langtontao-page .lt-exposure-showcase__glow--b {
@@ -2377,8 +2377,10 @@
 
 .langtontao-page .lt-exposure-danmaku {
   position: relative;
+  box-sizing: border-box;
   height: min(560px, 48vh);
   min-height: 480px;
+  padding-block: 0.75rem;
   overflow: hidden;
   background: transparent;
   opacity: 1;
@@ -2415,10 +2417,12 @@
 
 @keyframes lt-exposure-drift {
   from {
-    transform: translateX(110vw) scale(var(--drift-scale)) rotate(var(--drift-rotate));
+    transform: translateX(110vw) translateY(-50%) scale(var(--drift-scale))
+      rotate(var(--drift-rotate));
   }
   to {
-    transform: translateX(-130%) scale(var(--drift-scale)) rotate(var(--drift-rotate));
+    transform: translateX(-130%) translateY(-50%) scale(var(--drift-scale))
+      rotate(var(--drift-rotate));
   }
 }
 
@@ -2434,7 +2438,7 @@
   padding: 0.625rem 0.875rem;
   border: 2px solid #09090b;
   border-radius: 0;
-  box-shadow: 4px 4px 0 #09090b;
+  box-shadow: var(--ji-glow);
   text-align: left;
   white-space: normal;
   cursor: grab;
@@ -2454,11 +2458,11 @@
 .langtontao-page .lt-exposure-danmaku__card::after {
   content: '';
   position: absolute;
-  top: -6px;
+  top: 2px;
   right: 12px;
   width: 28px;
   height: 12px;
-  background: rgb(255 230 0 / 0.55);
+  background: rgb(139 92 246 / 0.55);
   border: 1px solid rgb(9 9 11 / 0.35);
   transform: rotate(6deg);
   pointer-events: none;
@@ -2485,38 +2489,38 @@
 .langtontao-page .lt-exposure-danmaku__card--severity-high {
   background: #09090b;
   color: #fafafa;
-  box-shadow: 4px 4px 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 .langtontao-page .lt-exposure-danmaku__card--severity-high .lt-exposure-danmaku__card-category {
-  color: #ffe600;
+  color: var(--jarsy-violet);
   opacity: 1;
 }
 
 .langtontao-page .lt-exposure-danmaku__card--severity-medium {
   background: #ffffff;
   color: #09090b;
-  box-shadow: 4px 4px 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 .langtontao-page .lt-exposure-danmaku__card--severity-watch {
   background: #f4f4f5;
   color: #3f3f46;
   border-style: dashed;
-  box-shadow: 3px 3px 0 #09090b;
+  box-shadow: var(--ji-glow);
 }
 
 .langtontao-page .lt-exposure-danmaku__card--severity-watch::before {
   content: '留意';
   position: absolute;
-  top: -8px;
+  top: 2px;
   left: 10px;
   padding: 0 6px;
   font-size: 0.5625rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #09090b;
-  background: #ffe600;
+  background: var(--jarsy-violet);
   border: 1px solid #09090b;
   line-height: 1.4;
 }
@@ -2526,16 +2530,16 @@
   padding: 0.75rem 1rem;
   border: 2px solid #09090b;
   border-radius: 0;
-  box-shadow: 4px 4px 0 #09090b;
+  box-shadow: var(--ji-glow);
   text-align: left;
 }
 
 .langtontao-page .lt-exposure-danmaku__static-card.lt-exposure-danmaku__card--severity-high {
-  box-shadow: 4px 4px 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 .langtontao-page .lt-exposure-danmaku__static-card.lt-exposure-danmaku__card--severity-medium {
-  box-shadow: 4px 4px 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 .langtontao-page .lt-exposure-danmaku__static-card.lt-exposure-danmaku__card--severity-watch {
@@ -2557,13 +2561,35 @@
   line-height: 1.45;
 }
 
+.langtontao-page .lt-exposure-danmaku__card--dimmed {
+  filter: blur(calc(var(--drift-blur) + 5px));
+  opacity: calc(var(--drift-opacity) * 0.42);
+}
+
+.langtontao-page .lt-exposure-danmaku__card--focused {
+  filter: blur(0);
+  opacity: 1;
+  z-index: calc(var(--drift-z) + 4);
+}
+
+.langtontao-page .lt-exposure-danmaku__static-card--dimmed {
+  filter: blur(3px);
+  opacity: 0.45;
+}
+
+.langtontao-page .lt-exposure-danmaku__static-card--focused {
+  filter: none;
+  opacity: 1;
+  box-shadow: var(--jarsy-glow);
+}
+
 @media (hover: hover) and (pointer: fine) {
   .langtontao-page .lt-exposure-danmaku__card:hover {
     animation-play-state: paused;
     z-index: 20;
     opacity: 1;
     filter: blur(0);
-    box-shadow: 6px 6px 0 #ffe600;
+    box-shadow: var(--jarsy-glow);
     outline: 2px solid #09090b;
     outline-offset: 2px;
   }
@@ -2574,7 +2600,7 @@
   z-index: 20;
   opacity: 1;
   filter: blur(0);
-  box-shadow: 6px 6px 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
   outline: 2px solid #09090b;
   outline-offset: 2px;
 }
@@ -2584,7 +2610,7 @@
   opacity: 1;
   filter: blur(0);
   cursor: grabbing;
-  box-shadow: 6px 6px 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
   outline: 2px solid #09090b;
   outline-offset: 2px;
 }
@@ -2631,7 +2657,7 @@
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #09090b, #ffe600);
+  background: var(--jarsy-gradient);
 }
 
 .langtontao-page .lt-wishlist-timeline__score-value {
@@ -2644,7 +2670,7 @@
 @media (prefers-reduced-motion: reduce) {
   .langtontao-page .lt-solution-highlight {
     animation: none;
-    outline: 2px solid rgb(255 230 0);
+    outline: 2px solid rgb(139 92 246);
     outline-offset: 4px;
   }
 

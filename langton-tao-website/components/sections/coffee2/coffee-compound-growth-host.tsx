@@ -32,7 +32,7 @@ function CompoundGrowthDeepLinkSync() {
     if (exists) {
       context.selectStock(slug)
       if (typeof window !== 'undefined') {
-        const targetHash = pathname === '/' ? 'day-2' : 'invest'
+        const targetHash = pathname === '/tao' ? 'day-2' : 'invest'
         if (!window.location.hash.includes(targetHash)) {
           window.location.hash = targetHash
         }

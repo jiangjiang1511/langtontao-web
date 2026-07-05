@@ -4,18 +4,18 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pop-black disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-jarsy-violet disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98]',
   {
     variants: {
       variant: {
         default:
-          'rounded-full border-2 border-pop-black bg-pop-yellow text-pop-black hover:-translate-y-0.5 hover:shadow-pop-black',
-        dark: 'rounded-full border-2 border-pop-black bg-pop-black text-pop-white hover:-translate-y-0.5 hover:shadow-pop-yellow',
+          'rounded-full border-0 bg-[image:var(--jarsy-gradient)] text-white shadow-[var(--jarsy-glow)] hover:-translate-y-0.5 hover:brightness-105',
+        dark: 'rounded-full border-0 bg-zinc-950 text-white hover:-translate-y-0.5 hover:shadow-[var(--jarsy-glow)]',
         outline:
-          'rounded-full border-2 border-pop-black bg-pop-white text-pop-black hover:-translate-y-0.5',
-        ghost: 'rounded-lg hover:bg-pop-paper',
-        link: 'text-pop-black underline-offset-4 hover:underline',
-        pop: 'rounded-lg border-2 border-pop-black bg-pop-white text-pop-black shadow-pop-black hover:-translate-y-0.5',
+          'rounded-full border border-zinc-200 bg-white text-zinc-950 hover:-translate-y-0.5 hover:border-jarsy-violet/40 hover:shadow-[var(--jarsy-glow)]',
+        ghost: 'rounded-lg hover:bg-zinc-100',
+        link: 'text-zinc-950 underline-offset-4 hover:underline',
+        pop: 'rounded-lg border border-zinc-200 bg-white text-zinc-950 shadow-sm hover:-translate-y-0.5 hover:shadow-[var(--jarsy-glow)]',
       },
       size: {
         default: 'h-11 px-5',

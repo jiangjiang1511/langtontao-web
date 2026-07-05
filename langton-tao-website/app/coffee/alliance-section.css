@@ -8,7 +8,7 @@
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 9999px;
-  background: #ffe600;
+  background: var(--jarsy-violet);
   animation: alliance-hint-pulse 2s ease-in-out infinite;
 }
 

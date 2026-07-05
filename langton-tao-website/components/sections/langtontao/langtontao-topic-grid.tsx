@@ -15,7 +15,7 @@ import {
 } from '@/lib/langtontao/build-topic-pillar-layout'
 import { cn } from '@/lib/utils'
 
-const TOPIC_ACCENTS = ['#ffe600', '#fafafa', '#a1a1aa', '#ffe600'] as const
+const TOPIC_ACCENTS = ['var(--jarsy-violet)', '#fafafa', '#a1a1aa', 'var(--jarsy-violet)'] as const
 const LINK_COMPONENT_ASSET_DIR = '/assets/langtontao/linkcomponent'
 
 function resolveTopicBackground(topic: LangtontaoTopicItem, index: number): string {

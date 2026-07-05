@@ -10,7 +10,7 @@
   width: 0.4rem;
   height: 0.4rem;
   border-radius: 9999px;
-  background: #fbbf24;
+  background: #a78bfa;
   animation: child-calc-hint-pulse 2s ease-in-out infinite;
 }
 
@@ -51,7 +51,7 @@
   background: linear-gradient(
     165deg,
     #fff 0%,
-    color-mix(in srgb, #fef3c7 18%, #fff) 100%
+    color-mix(in srgb, #ede9fe 18%, #fff) 100%
   );
 }
 
@@ -104,7 +104,7 @@
 .coffee2-page .child-calc__option-pill--active {
   border-color: #09090b;
   color: #09090b;
-  background: #ffe600;
+  background: var(--jarsy-violet);
 }
 
 .coffee2-page .child-calc__option-pill:focus-visible {
@@ -189,7 +189,7 @@
   margin: 0.75rem 0 1rem;
   padding: 0.65rem 1rem;
   border-left: 4px solid #09090b;
-  background: color-mix(in srgb, #ffe600 22%, #fff);
+  background: color-mix(in srgb, var(--jarsy-violet) 22%, #fff);
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
@@ -241,7 +241,7 @@
 .coffee2-page .child-fishbone__bar-fill {
   height: 100%;
   border-radius: 9999px;
-  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  background: linear-gradient(90deg, #a78bfa, var(--jarsy-rose));
   transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -285,7 +285,7 @@
 .coffee2-page .calc-share-actions__btn:hover {
   border-color: #09090b !important;
   color: #09090b !important;
-  background: #fffbeb !important;
+  background: #f5f3ff !important;
 }
 
 .coffee2-page .calc-share-actions__preview {

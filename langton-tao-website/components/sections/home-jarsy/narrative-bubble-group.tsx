@@ -51,7 +51,7 @@ function BubblePanel({
   const [showFull, setShowFull] = useState(false)
   const hasBody = Boolean(bubble.body)
   const hasSubsections = Boolean(bubble.subsections?.length)
-  const accent = accentMap[bubble.id] ?? '#09090b'
+  const accent = accentMap[bubble.id] ?? 'var(--jarsy-indigo)'
 
   const scrollToTarget = () => {
     if (!bubble.scrollTarget) return
@@ -152,7 +152,7 @@ function ConceptCard({
   onSelect: () => void
   accentMap: Record<string, string>
 }) {
-  const accent = accentMap[bubble.id] ?? '#09090b'
+  const accent = accentMap[bubble.id] ?? 'var(--jarsy-indigo)'
 
   return (
     <div

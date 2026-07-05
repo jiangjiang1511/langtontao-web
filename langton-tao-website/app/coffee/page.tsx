@@ -84,7 +84,7 @@ const Coffee2CollaborationSection = dynamic(
 
 export default function CoffeePage() {
   return (
-    <div className="coffee2-page bg-white text-zinc-950">
+    <div className="jarsy-v2-page coffee2-page bg-white text-zinc-950">
       <TopicCardHashScrollHost />
       <Coffee2LifeEventsStickyNav />
       <Coffee2HeroSection />

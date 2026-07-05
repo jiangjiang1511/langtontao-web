@@ -45,7 +45,7 @@ export function DebtSurveyFeedbackDialog({
           </DialogHeader>
 
           <div className="mt-4 space-y-4">
-            <blockquote className="debt-survey-feedback-reflection border-l-4 border-pop-yellow pl-4 text-sm leading-relaxed text-zinc-800">
+            <blockquote className="debt-survey-feedback-reflection border-l-4 border-jarsy-violet pl-4 text-sm leading-relaxed text-zinc-800">
               {profile.reflection}
             </blockquote>
 

@@ -26,7 +26,7 @@ export const compoundGrowthStockCatalog: CompoundGrowthStockMeta[] = [
     nameEn: 'Bitcoin',
     market: 'US',
     tagline: '2016 年直接买入比特币',
-    accent: '#f59e0b',
+    accent: '#ec4899',
   },
   {
     slug: 'gold',

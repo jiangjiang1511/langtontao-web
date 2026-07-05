@@ -50,7 +50,7 @@ export function EducationSmartEnglishShowcase() {
               {paragraph}
             </p>
           ))}
-          <div className="education-smart-english__callout mt-6 rounded-lg border-2 border-zinc-950 bg-[#fffef2] px-4 py-4 shadow-[3px_3px_0_0_#ffe600]">
+          <div className="education-smart-english__callout mt-6 rounded-lg border-2 border-zinc-950 bg-[#fffef2] px-4 py-4 shadow-[3px_3px_0_0_var(--jarsy-violet)]">
             <p className="text-sm font-bold text-zinc-950">
               {smartEnglishMeta.parentCallout.question}
             </p>
@@ -64,7 +64,7 @@ export function EducationSmartEnglishShowcase() {
           {smartEnglishDualEngine.map((engine) => (
             <div
               key={engine.id}
-              className="rounded-lg border-2 border-zinc-950 bg-white p-5 shadow-[2px_2px_0_0_#ffe600]"
+              className="rounded-lg border-2 border-zinc-950 bg-white p-5 shadow-[2px_2px_0_0_var(--jarsy-violet)]"
             >
               <h5 className="text-base font-bold text-zinc-950">{engine.title}</h5>
               <p className="mt-2 text-sm leading-relaxed text-zinc-600">
@@ -135,7 +135,7 @@ export function EducationSmartEnglishShowcase() {
                 key={stat.id}
                 className="rounded-lg border-2 border-zinc-950 bg-zinc-950 p-4 text-white"
               >
-                <p className="text-xl font-black text-[#ffe600] md:text-2xl">
+                <p className="text-xl font-black text-[var(--jarsy-violet)] md:text-2xl">
                   {stat.value}
                 </p>
                 <p className="mt-2 text-xs leading-relaxed text-zinc-300">

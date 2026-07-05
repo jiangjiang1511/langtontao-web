@@ -35,7 +35,7 @@ function InsurerListItem({
       tabIndex={isClone ? -1 : undefined}
       className="cg-list-item pi-list-item"
       data-active={isActive}
-      style={{ '--cg-accent': '#ffe600' } as CSSProperties}
+      style={{ '--cg-accent': 'var(--jarsy-violet)' } as CSSProperties}
       onClick={() => onSelect(insurer.id)}
     >
       <span className="cg-list-item-accent" aria-hidden />

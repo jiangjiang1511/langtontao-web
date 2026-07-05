@@ -39,7 +39,7 @@ export const coffeeCyclesTimeline = {
       intro:
         '由企业库存与供应链补库、去库驱动的短波周期。地缘冲突、关税与政策冲击常在季度尺度上改写预期——看见基钦，是为了在短波扰动里保持纪律，而非押注每一个拐点。',
       periodYears: 4,
-      color: '#ffe600',
+      color: '#8b5cf6',
       strokeWidth: 0.75,
       amplitude: 12,
       phase: 0,

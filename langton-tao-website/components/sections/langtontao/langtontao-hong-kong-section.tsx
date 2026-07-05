@@ -46,7 +46,7 @@ export function LangtontaoHongKongSection() {
               as="li"
               className="rounded-xl border border-zinc-800 bg-zinc-900/80 p-5"
             >
-              <p className="font-semibold text-pop-yellow">{item.title}</p>
+              <p className="font-semibold text-jarsy-violet">{item.title}</p>
               <p className="mt-2 text-sm text-zinc-400">{item.body}</p>
             </Coffee2Reveal>
           ))}
@@ -80,8 +80,8 @@ export function LangtontaoHongKongSection() {
               )}
             </div>
 
-            <div className="mt-8 rounded-xl border border-pop-yellow/30 bg-pop-yellow/5 p-5">
-              <h4 className="font-semibold text-pop-yellow">
+            <div className="mt-8 rounded-xl border border-jarsy-violet/30 bg-jarsy-violet/5 p-5">
+              <h4 className="font-semibold text-jarsy-violet">
                 {langtontaoYitishuangkua.synergyTitle}
               </h4>
               <p className="mt-2 text-sm text-zinc-400">{langtontaoYitishuangkua.synergyBody}</p>

@@ -45,7 +45,7 @@ export function RubiksExperience() {
               <>
                 <h2
                   id={`test-story-title-${section.id}`}
-                  className="text-display text-[clamp(3.5rem,14vw,8.5rem)] font-black leading-[0.92] tracking-[-0.03em] text-pop-yellow"
+                  className="text-display text-[clamp(3.5rem,14vw,8.5rem)] font-black leading-[0.92] tracking-[-0.03em] text-jarsy-violet"
                 >
                   {section.periodLabel}
                 </h2>
@@ -56,7 +56,7 @@ export function RubiksExperience() {
             ) : (
               <>
                 {section.eyebrow ? (
-                  <p className="text-xs font-black uppercase tracking-[0.24em] text-pop-yellow">
+                  <p className="text-xs font-black uppercase tracking-[0.24em] text-jarsy-violet">
                     {section.eyebrow}
                   </p>
                 ) : null}

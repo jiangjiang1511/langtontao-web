@@ -21,7 +21,7 @@ export function EducationTeachCtaSection() {
         </p>
         <PillLink
           href={smartEnglishMeta.ctaHref}
-          variant="yellow"
+          variant="gradient"
           className="mt-6"
         >
           {smartEnglishMeta.ctaLabel}

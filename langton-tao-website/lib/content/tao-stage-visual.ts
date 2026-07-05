@@ -20,7 +20,7 @@ export type TaoStageVisual = {
 export const taoStageVisualById: Record<string, TaoStageVisual> = {
   'day-1': {
     eyebrow: 'Origin · 起点',
-    accent: '#ffe600',
+    accent: '#6366f1',
     variant: 'dawn',
     index: '01',
   },
@@ -38,7 +38,7 @@ export const taoStageVisualById: Record<string, TaoStageVisual> = {
   },
   'year-6': {
     eyebrow: 'Growth · 生长',
-    accent: '#f59e0b',
+    accent: '#6366f1',
     variant: 'growth',
     index: '04',
   },
@@ -56,13 +56,13 @@ export const taoStageVisualById: Record<string, TaoStageVisual> = {
   },
   'year-50': {
     eyebrow: 'Dynasty · 奠基',
-    accent: '#ca8a04',
+    accent: '#8b5cf6',
     variant: 'dynasty',
     index: '07',
   },
   'year-100': {
     eyebrow: 'Eternal · 永续',
-    accent: '#ffe600',
+    accent: '#8b5cf6',
     variant: 'eternal',
     index: '08',
   },

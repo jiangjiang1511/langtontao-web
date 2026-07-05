@@ -10,12 +10,12 @@ import { cn } from '@/lib/utils'
 const ROW_REVEAL_STAGGER_MS = 90
 
 const CHANNEL_ACCENTS: Record<string, string> = {
-  'purchasing-power': '#ffe600',
+  'purchasing-power': 'var(--jarsy-violet)',
   'asset-shrinkage': '#fb7185',
   'debt-channel': '#a1a1aa',
 }
 
-const DEFAULT_CHANNEL_ACCENTS = ['#ffe600', '#fb7185', '#a1a1aa'] as const
+const DEFAULT_CHANNEL_ACCENTS = ['var(--jarsy-violet)', '#fb7185', '#a1a1aa'] as const
 
 function resolveChannelAccent(topicId: string, index: number): string {
   return CHANNEL_ACCENTS[topicId] ?? DEFAULT_CHANNEL_ACCENTS[index % DEFAULT_CHANNEL_ACCENTS.length]

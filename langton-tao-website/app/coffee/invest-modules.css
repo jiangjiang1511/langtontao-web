@@ -50,7 +50,7 @@
   border-radius: 0.5rem;
   padding: calc(0.3rem * var(--quadrant-scale))
     calc(0.45rem * var(--quadrant-scale));
-  box-shadow: 2px 2px 0 0 var(--iq-yellow);
+  box-shadow: var(--ji-glow);
 }
 
 .invest-venn-section__chart .invest-asset-tile .invest-bubble__label {
@@ -146,7 +146,7 @@
   .invest-quadrant__bubbles[data-exploded='true']
   .invest-asset-tile:hover {
   transform: translate(-50%, -50%) translate(-2px, -2px);
-  box-shadow: 4px 4px 0 0 var(--iq-black);
+  box-shadow: var(--ji-glow);
 }
 
 .invest-venn-section__chart
@@ -189,7 +189,7 @@
 .invest-quadrant {
   position: relative;
   --iq-black: #09090b;
-  --iq-yellow: #ffe600;
+  --iq-yellow: var(--jarsy-violet);
   --iq-white: #ffffff;
 }
 
@@ -319,7 +319,7 @@
   text-transform: uppercase;
   color: var(--iq-white);
   background: var(--iq-black);
-  box-shadow: 2px 2px 0 0 var(--iq-yellow);
+  box-shadow: var(--ji-glow);
 }
 
 .invest-quadrant__bubbles {
@@ -342,7 +342,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.25rem;
-  border: 2px solid var(--iq-black);
+  border: 1px solid var(--ji-border);
   border-radius: 50%;
   background: var(--iq-white);
   box-shadow: 2px 2px 0 0 color-mix(in srgb, var(--iq-black) 12%, transparent);
@@ -394,7 +394,7 @@
   transform: translate(-50%, -50%) scale(1.14);
   border-color: var(--iq-black);
   background: var(--iq-yellow);
-  box-shadow: 4px 4px 0 0 var(--iq-black);
+  box-shadow: var(--ji-glow);
   transition-delay: 0ms;
 }
 
@@ -465,7 +465,7 @@
 .invest-quadrant__legend-item {
   position: relative;
   overflow: hidden;
-  border: 2px solid var(--iq-black);
+  border: 1px solid var(--ji-border);
   border-radius: 0.75rem;
   background: var(--iq-white);
   text-align: left;
@@ -478,7 +478,7 @@
 
 .invest-quadrant__legend-item:hover {
   border-color: var(--iq-black);
-  box-shadow: 3px 3px 0 0 var(--iq-yellow);
+  box-shadow: var(--ji-glow-strong);
   transform: translateY(-1px);
 }
 
@@ -545,7 +545,7 @@
   gap: 0.625rem;
   overflow: hidden;
   padding: 0.75rem 0.875rem 0.75rem 1.125rem;
-  border: 2px solid var(--iq-black);
+  border: 1px solid var(--ji-border);
   border-radius: 0.625rem;
   background: var(--iq-white);
   box-shadow: 2px 2px 0 0 color-mix(in srgb, var(--iq-black) 10%, transparent);
@@ -570,7 +570,7 @@
   width: 0.75rem;
   height: 0.75rem;
   flex-shrink: 0;
-  border: 2px solid var(--iq-black);
+  border: 1px solid var(--ji-border);
   border-radius: 9999px;
 }
 
@@ -865,7 +865,7 @@
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   border: 2px solid var(--iq-black, #09090b);
-  background: var(--iq-yellow, #ffe600);
+  background: var(--iq-yellow, var(--jarsy-violet));
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.8125rem;
   font-weight: 700;
@@ -902,7 +902,7 @@
 
 .invest-wealth-stats__item:hover {
   border-color: var(--iq-black, #09090b);
-  box-shadow: 3px 3px 0 0 var(--iq-yellow, #ffe600);
+  box-shadow: 3px 3px 0 0 var(--iq-yellow, var(--jarsy-violet));
 }
 
 .invest-wealth-stats__head {

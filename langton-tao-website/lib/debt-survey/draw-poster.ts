@@ -81,8 +81,8 @@ function drawBackground(ctx: CanvasRenderingContext2D, width: number, height: nu
   ctx.fillRect(0, 0, width, height)
 
   const blob1 = ctx.createRadialGradient(width * 0.2, height * 0.12, 0, width * 0.2, height * 0.12, 320)
-  blob1.addColorStop(0, 'rgba(255,230,0,0.14)')
-  blob1.addColorStop(1, 'rgba(255,230,0,0)')
+  blob1.addColorStop(0, 'rgba(139,92,246,0.14)')
+  blob1.addColorStop(1, 'rgba(139,92,246,0)')
   ctx.fillStyle = blob1
   ctx.fillRect(0, 0, width, height)
 
@@ -92,7 +92,7 @@ function drawBackground(ctx: CanvasRenderingContext2D, width: number, height: nu
   ctx.fillStyle = blob2
   ctx.fillRect(0, 0, width, height)
 
-  ctx.strokeStyle = '#ffe60055'
+  ctx.strokeStyle = 'rgba(139, 92, 246, 0.33)'
   ctx.lineWidth = 3
   ctx.strokeRect(28, 28, width - 56, height - 56)
 }
@@ -106,7 +106,7 @@ function drawCommentaryHero(
   maxWidth: number,
   maxBottomY: number
 ) {
-  ctx.fillStyle = '#ffe600'
+  ctx.fillStyle = '#8b5cf6'
   ctx.font = '700 13px "Noto Sans SC", system-ui, sans-serif'
   ctx.fillText('COFFEE CHAT · 熊比特', x, y)
 
@@ -116,7 +116,7 @@ function drawCommentaryHero(
 
   const quoteStartY = y + 72
 
-  ctx.fillStyle = '#ffe600'
+  ctx.fillStyle = '#8b5cf6'
   ctx.fillRect(x, quoteStartY, 6, 48)
 
   ctx.fillStyle = '#ffffff'
@@ -131,7 +131,7 @@ function drawCommentaryHero(
   )
 
   const inviteY = Math.min(reflectionEndY + 36, maxBottomY - 40)
-  ctx.fillStyle = 'rgba(255,230,0,0.9)'
+  ctx.fillStyle = 'rgba(139,92,246,0.9)'
   ctx.font = '700 15px "Noto Sans SC", system-ui, sans-serif'
   const inviteEndY = wrapText(ctx, invite, x + 20, inviteY, maxWidth - 20, 24)
 
@@ -186,9 +186,9 @@ function drawUserChoicesPanel(
       ctx.font = '700 12px "Noto Sans SC", system-ui, sans-serif'
       const chipW = Math.min(ctx.measureText(display).width + 20, panelW - 120)
 
-      ctx.fillStyle = 'rgba(255,230,0,0.15)'
+      ctx.fillStyle = 'rgba(139,92,246,0.15)'
       fillRoundedRect(ctx, chipX, chipY, chipW, 22, 6)
-      ctx.strokeStyle = 'rgba(255,230,0,0.45)'
+      ctx.strokeStyle = 'rgba(139,92,246,0.45)'
       ctx.lineWidth = 1
       ctx.beginPath()
       if (typeof ctx.roundRect === 'function') {
@@ -198,7 +198,7 @@ function drawUserChoicesPanel(
       }
       ctx.stroke()
 
-      ctx.fillStyle = '#ffe600'
+      ctx.fillStyle = '#8b5cf6'
       ctx.fillText(display, chipX + 10, chipY + 15)
 
       chipX += chipW + 8
@@ -283,7 +283,7 @@ export async function drawDebtSurveyPoster(
   )
 
   ctx.save()
-  ctx.shadowColor = '#ffe60055'
+  ctx.shadowColor = 'rgba(139, 92, 246, 0.33)'
   ctx.shadowBlur = 18
   ctx.fillStyle = '#ffffff'
   fillRoundedRect(ctx, qrX - 8, qrY - 8, qrSize + 16, qrSize + 16, 12)

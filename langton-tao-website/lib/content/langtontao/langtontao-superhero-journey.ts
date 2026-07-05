@@ -108,7 +108,7 @@ export const langtontaoSuperheroPillars: readonly LangtontaoSuperheroPillar[] = 
     id: 'society',
     title: '体察社会',
     summary: '在真实街景、产业现场与跨境节点里，感受制度、周期与人心如何共同定价。',
-    accent: '#ffe600',
+    accent: '#8b5cf6',
   },
   {
     id: 'opportunity',
@@ -164,7 +164,7 @@ export const langtontaoSuperheroCorePrograms: readonly LangtontaoSuperheroCorePr
     description:
       '博睿学者连接国内大脑与架构中枢：在实地走访、学者对话与行业现场中，拓展顶层视野。先通过具身体验理解世界的运行规律，再为未来以全球视野做资产配置、做认知与商业储备——游学不是观光，是为传承系统补足认知纵深。',
     highlights: ['耶鲁前校长发起', '环球1年的顶层游学规划', '学者与同频家庭对话', '全球视野与架构链接', '认知商业储备'],
-    accent: '#f59e0b',
+    accent: '#ec4899',
     coverSrc: programGalleries.borui.cover,
     coverAlt: '博睿学者游学活动实拍',
     gallery: programGalleries.borui.gallery,

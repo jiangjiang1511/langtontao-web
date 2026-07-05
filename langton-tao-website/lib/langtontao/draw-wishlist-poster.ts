@@ -82,7 +82,7 @@ export async function drawWishlistPoster(
   ctx.font = '500 16px "Noto Sans SC", system-ui, sans-serif'
   ctx.fillText('朗敦道 Langton Tao', margin, 104)
 
-  ctx.fillStyle = '#ffe600'
+  ctx.fillStyle = '#8b5cf6'
   ctx.fillRect(margin, 120, 64, 4)
 
   ctx.fillStyle = '#09090b'

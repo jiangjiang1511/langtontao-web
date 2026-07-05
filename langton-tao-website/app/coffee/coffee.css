@@ -532,7 +532,7 @@
   z-index: 2;
   height: 2px;
   border-radius: 9999px;
-  background: var(--pillar-accent, #ffe600);
+  background: var(--pillar-accent, var(--jarsy-violet));
   opacity: 0.9;
   transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -1109,23 +1109,23 @@
 }
 
 .coffee2-hero-orbit__ring--2 .coffee2-hero-orbit__tick-accent {
-  stroke: #ffe600;
+  stroke: var(--jarsy-violet);
   stroke-width: 0.65;
 }
 
 /* Ring 3 — 教育 */
 .coffee2-hero-orbit__ring--3 .coffee2-hero-orbit__arc {
-  stroke: #ffe600;
+  stroke: var(--jarsy-violet);
   stroke-width: 0.45;
 }
 
 .coffee2-hero-orbit__ring--3 line {
-  stroke: #ffe600;
+  stroke: var(--jarsy-violet);
   stroke-width: 0.4;
 }
 
 .coffee2-hero-orbit__ring--3 .coffee2-hero-orbit__inner-dashed {
-  stroke: #ffe600;
+  stroke: var(--jarsy-violet);
   stroke-width: 0.35;
   stroke-dasharray: 2 5;
   opacity: 0.75;
@@ -1136,7 +1136,7 @@
 }
 
 .coffee2-hero-orbit__ring--3 .coffee2-hero-orbit__node circle:first-child {
-  stroke: #ffe600;
+  stroke: var(--jarsy-violet);
   stroke-width: 0.45;
 }
 
@@ -1202,7 +1202,7 @@
 
 .coffee2-hero-orbit__hatch {
   fill: none;
-  stroke: #ffe600;
+  stroke: var(--jarsy-violet);
   stroke-width: 0.45;
 }
 
@@ -1222,7 +1222,7 @@
 }
 
 .coffee2-hero-orbit__node-core {
-  fill: #ffe600;
+  fill: var(--jarsy-violet);
   stroke: none;
 }
 
@@ -1339,7 +1339,7 @@
   margin: 0;
   padding: 14px 20px;
   border-bottom: 2px solid var(--c2-fg);
-  background: var(--pop-yellow);
+  background: var(--jarsy-violet);
   font-size: 1rem;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -1386,7 +1386,7 @@
   .coffee2-backed-panel__title {
   background: var(--c2-fg);
   color: #ffffff;
-  border-bottom-color: var(--pop-yellow);
+  border-bottom-color: var(--jarsy-violet);
 }
 
 
@@ -1602,7 +1602,7 @@
   background: #ffffff;
   box-shadow:
     inset 0 0 0 1px #e4e4e7,
-    0 0 0 2px rgb(255 230 0 / 0.45);
+    0 0 0 2px rgb(139 92 246 / 0.45);
 }
 
 .coffee2-life-events-sticky-nav__link--top {
@@ -1702,7 +1702,7 @@
   left: 16px;
   height: 3px;
   border-radius: 0 0 2px 2px;
-  background: var(--pop-yellow);
+  background: var(--jarsy-violet);
 }
 
 .coffee2-life-event-card--life-retirement {
@@ -1712,7 +1712,7 @@
 .coffee2-life-event-card--life-education {
   box-shadow:
     0 1px 4px rgba(0, 0, 0, 0.08),
-    2px 2px 0 0 rgb(255 230 0 / 0.28);
+    2px 2px 0 0 rgb(139 92 246 / 0.28);
 }
 
 .coffee2-life-event-card--life-alliance::before {
@@ -1720,7 +1720,7 @@
   bottom: 14px;
   left: 0;
   width: 3px;
-  background: var(--pop-yellow);
+  background: var(--jarsy-violet);
 }
 
 .coffee2-life-event-card--life-legacy::before {
@@ -1796,8 +1796,8 @@ a.coffee2-life-event-card--link {
 .coffee2-life-event-section__title-mark {
   display: inline-block;
   padding: 0.06em 0.14em 0.1em;
-  background: var(--pop-yellow);
-  box-shadow: 4px 4px 0 0 var(--c2-fg);
+  background: var(--jarsy-violet);
+  box-shadow: var(--ji-glow);
 }
 
 .coffee2-life-event-section__subtitle {
@@ -1858,7 +1858,7 @@ a.coffee2-life-event-card--link {
   .coffee2-life-event-card--life-education:hover {
     box-shadow:
       0 10px 28px rgba(0, 0, 0, 0.08),
-      3px 3px 0 0 rgb(255 230 0 / 0.34);
+      3px 3px 0 0 rgb(139 92 246 / 0.34);
   }
 
   .coffee2-life-event-card--life-legacy:hover {
@@ -1991,33 +1991,30 @@ a.coffee2-life-event-card--link {
   justify-content: center;
   min-width: 11rem;
   border-radius: 9999px;
-  border: 2px solid var(--c2-fg);
+  border: none;
   padding: 0.875rem 2.25rem;
   font-size: 0.9375rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   color: #ffffff;
-  background: var(--c2-fg);
-  box-shadow: 4px 4px 0 0 var(--pop-yellow);
+  background: var(--jarsy-gradient);
+  box-shadow: var(--jarsy-glow);
   transition:
-    background-color 0.18s ease,
-    color 0.18s ease,
-    border-color 0.18s ease,
+    filter 0.18s ease,
     box-shadow 0.18s ease,
     transform 0.18s ease;
 }
 
 .coffee2-page .coffee2-cta-button:hover {
-  background: var(--pop-yellow);
-  color: var(--c2-fg);
-  border-color: var(--c2-fg);
-  box-shadow: 4px 4px 0 0 var(--c2-fg);
-  transform: translate(-2px, -2px);
+  filter: brightness(1.05);
+  box-shadow:
+    0 12px 40px rgb(99 102 241 / 0.35),
+    0 6px 20px rgb(236 72 153 / 0.2);
+  transform: translateY(-2px);
 }
 
 .coffee2-page .coffee2-cta-button:active {
-  transform: translate(0, 0);
-  box-shadow: 2px 2px 0 0 var(--c2-fg);
+  transform: translateY(0);
 }
 
 .coffee2-backed-logo-card {
@@ -2232,7 +2229,7 @@ a.coffee2-life-event-card--link {
   border-color: #09090b;
   background: #09090b;
   color: #ffffff;
-  box-shadow: 0 0 0 2px var(--pop-yellow);
+  box-shadow: 0 0 0 2px var(--jarsy-violet);
 }
 
 .coffee2-preservation-insurer-card[data-selected='true']:hover {

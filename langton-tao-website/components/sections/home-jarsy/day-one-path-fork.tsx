@@ -152,7 +152,7 @@ function ForkJunction() {
           strokeLinecap="round"
           fill="none"
         />
-        <circle cx="60" cy="68" r="3" fill="#ffe600" stroke="#09090b" strokeWidth="1" />
+        <circle cx="60" cy="68" r="3" fill="var(--jarsy-violet)" stroke="#09090b" strokeWidth="1" />
       </svg>
       <span className="day-one-path-fork__fork-badge">或</span>
     </div>

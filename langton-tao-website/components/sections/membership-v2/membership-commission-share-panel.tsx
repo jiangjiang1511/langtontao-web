@@ -149,7 +149,7 @@ export function MembershipCommissionSharePanel({
       <DialogContent className="max-w-lg border-zinc-800 bg-zinc-950 text-white">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-white">
-            <Share2 className="h-5 w-5 text-pop-yellow" />
+            <Share2 className="h-5 w-5 text-jarsy-violet" />
             分享海报
           </DialogTitle>
         </DialogHeader>

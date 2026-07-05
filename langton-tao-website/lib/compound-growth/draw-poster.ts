@@ -129,7 +129,7 @@ export async function drawCompoundGrowthPoster(
   ctx.lineWidth = 3
   ctx.strokeRect(28, 28, width - 56, height - 56)
 
-  ctx.fillStyle = '#ffe600'
+  ctx.fillStyle = '#8b5cf6'
   ctx.font = '700 20px "Noto Sans SC", system-ui, sans-serif'
   ctx.fillText('LANGTON TAO · 熊比特咖啡', 56, 88)
 
@@ -232,11 +232,11 @@ export async function drawCompoundGrowthOverviewPoster(
   ctx.fillStyle = gradient
   ctx.fillRect(0, 0, width, height)
 
-  ctx.strokeStyle = '#ffe60055'
+  ctx.strokeStyle = 'rgba(139, 92, 246, 0.33)'
   ctx.lineWidth = 3
   ctx.strokeRect(28, 28, width - 56, height - 56)
 
-  ctx.fillStyle = '#ffe600'
+  ctx.fillStyle = '#8b5cf6'
   ctx.font = '700 20px "Noto Sans SC", system-ui, sans-serif'
   ctx.fillText('LANGTON TAO · 熊比特咖啡', 56, 88)
 

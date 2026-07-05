@@ -8,9 +8,9 @@ export type DayOneSubsection = NarrativeSubsection
 export type DayOneBubble = NarrativeBubble
 
 export const dayOneAccentMap: Record<string, string> = {
-  'scarce-resource': '#f59e0b',
+  'scarce-resource': '#ec4899',
   mediocristan: '#a1a1aa',
-  extremistan: '#ffe600',
+  extremistan: '#8b5cf6',
   'every-day-is-day-one': '#fb7185',
 }
 

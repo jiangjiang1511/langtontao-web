@@ -135,7 +135,7 @@ export function TopicSharePosterDialog({
         >
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2 text-zinc-950">
-              <Share2 className="h-5 w-5 text-pop-yellow" aria-hidden />
+              <Share2 className="h-5 w-5 text-jarsy-violet" aria-hidden />
               分享话题卡片
             </DialogTitle>
           </DialogHeader>

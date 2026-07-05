@@ -133,10 +133,10 @@ export async function drawCommissionPoster(
   ctx.fillStyle = bg
   ctx.fillRect(0, 0, width, height)
 
-  ctx.fillStyle = '#ffe600'
+  ctx.fillStyle = '#8b5cf6'
   ctx.fillRect(0, 0, width, 8)
 
-  ctx.fillStyle = 'rgba(255, 230, 0, 0.12)'
+  ctx.fillStyle = 'rgba(139, 92, 246, 0.12)'
   ctx.beginPath()
   ctx.arc(width - 80, 120, 140, 0, Math.PI * 2)
   ctx.fill()
@@ -144,7 +144,7 @@ export async function drawCommissionPoster(
   ctx.arc(60, 420, 100, 0, Math.PI * 2)
   ctx.fill()
 
-  ctx.fillStyle = '#ffe600'
+  ctx.fillStyle = '#8b5cf6'
   ctx.font = '700 20px "Noto Sans SC", system-ui, sans-serif'
   ctx.fillText('LANGTON TAO · MFO', margin, 64)
 
@@ -156,7 +156,7 @@ export async function drawCommissionPoster(
   ctx.font = '700 40px "Noto Sans SC", system-ui, sans-serif'
   ctx.fillText('我分享了', margin, 168)
 
-  ctx.fillStyle = '#ffe600'
+  ctx.fillStyle = '#8b5cf6'
   ctx.font = '700 34px "Noto Sans SC", system-ui, sans-serif'
   const productBottom = wrapText(
     ctx,
@@ -177,7 +177,7 @@ export async function drawCommissionPoster(
     contentW,
     cardH,
     20,
-    'rgba(255, 230, 0, 0.35)',
+    'rgba(139, 92, 246, 0.35)',
     2
   )
 
@@ -189,7 +189,7 @@ export async function drawCommissionPoster(
   ctx.fillText('成功推荐，预估可获得', cardX, cardY + 52)
 
   const amountText = formatMoney(commissionAmount)
-  ctx.fillStyle = '#ffe600'
+  ctx.fillStyle = '#8b5cf6'
   ctx.font = '700 72px "Noto Sans SC", system-ui, sans-serif'
   ctx.fillText(amountText, cardX, cardY + 148)
 
@@ -211,7 +211,7 @@ export async function drawCommissionPoster(
 
   const ctaY = cardY + cardH + 40
   const ctaH = 72
-  fillRoundedRect(ctx, margin, ctaY, contentW, ctaH, 36, '#ffe600')
+  fillRoundedRect(ctx, margin, ctaY, contentW, ctaH, 36, '#8b5cf6')
 
   ctx.fillStyle = '#09090b'
   ctx.font = '700 28px "Noto Sans SC", system-ui, sans-serif'

@@ -69,7 +69,7 @@ export function LegacySurveyQuestionCard({
                 className={cn(
                   'legacy-survey-option w-full rounded-lg border-2 px-4 py-3 text-left text-sm transition-all',
                   selected
-                    ? 'border-zinc-900 bg-zinc-50 shadow-[3px_3px_0_0_#ffe600]'
+                    ? 'border-zinc-900 bg-zinc-50 shadow-[3px_3px_0_0_var(--jarsy-violet)]'
                     : 'border-zinc-200 bg-white hover:border-zinc-400',
                   disabled && 'pointer-events-none opacity-60'
                 )}

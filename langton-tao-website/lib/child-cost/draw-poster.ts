@@ -71,11 +71,11 @@ export async function drawChildCostPoster(
   ctx.fillStyle = gradient
   ctx.fillRect(0, 0, width, height)
 
-  ctx.strokeStyle = 'rgba(255, 230, 0, 0.35)'
+  ctx.strokeStyle = 'rgba(139, 92, 246, 0.35)'
   ctx.lineWidth = 3
   ctx.strokeRect(28, 28, width - 56, height - 56)
 
-  ctx.fillStyle = '#ffe600'
+  ctx.fillStyle = '#8b5cf6'
   ctx.font = '700 22px "Noto Sans SC", system-ui, sans-serif'
   ctx.fillText('LANGTON TAO · 熊比特咖啡', 56, 96)
 
@@ -98,7 +98,7 @@ export async function drawChildCostPoster(
   ctx.font = '600 20px "Noto Sans SC", system-ui, sans-serif'
   ctx.fillText('月均分摊', 56, 320)
 
-  ctx.fillStyle = '#ffe600'
+  ctx.fillStyle = '#8b5cf6'
   ctx.font = '700 56px "Noto Sans SC", system-ui, sans-serif'
   ctx.fillText(formatCny(data.monthlyTotal), 56, 390)
 

@@ -30,7 +30,7 @@ export function DebtSurveyResultsDistributionCard({
       <div className="debt-flashcard__footer mt-5 border-t border-zinc-100 pt-4">
         <button
           type="button"
-          className="debt-flashcard__primary-btn w-full rounded-lg border-2 border-zinc-900 bg-zinc-900 py-2.5 text-sm font-semibold text-white shadow-[3px_3px_0_0_#ffe600] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
+          className="debt-flashcard__primary-btn w-full rounded-lg border-2 border-zinc-900 bg-zinc-900 py-2.5 text-sm font-semibold text-white shadow-[3px_3px_0_0_var(--jarsy-violet)] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none"
           onClick={onContinue}
         >
           {debtSectionMeta.surveyResultsContinueLabel}

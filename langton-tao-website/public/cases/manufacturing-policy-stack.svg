@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="案例01 制造业家族封面">
-  <rect width="800" height="600" fill="#ffe600"/>
+  <rect width="800" height="600" fill="#8b5cf6"/>
   <rect x="40" y="40" width="720" height="520" fill="#f2f2f0" stroke="#000" stroke-width="4"/>
   <text x="64" y="120" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="22" font-weight="900">案例 01</text>
   <text x="64" y="260" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="48" font-weight="900">制造业</text>
   <text x="64" y="320" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="28" font-weight="900">保单堆量 · 敞口错位</text>
   <rect x="64" y="420" width="200" height="80" fill="#000"/>
-  <text x="84" y="470" fill="#ffe600" font-family="Noto Sans SC, sans-serif" font-size="20" font-weight="900">050 拆解</text>
+  <text x="84" y="470" fill="#8b5cf6" font-family="Noto Sans SC, sans-serif" font-size="20" font-weight="900">050 拆解</text>
 </svg>

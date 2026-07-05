@@ -84,7 +84,7 @@
 .coffee2-page .legacy-topic-card:hover .legacy-topic-card__frame {
   transform: translateY(calc(var(--legacy-topic-stagger-y, 0px) - 4px));
   box-shadow:
-    4px 4px 0 0 #ffe600,
+    var(--jarsy-glow),
     0 22px 48px rgba(0, 0, 0, 0.45);
   filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.35));
 }
@@ -101,10 +101,10 @@
     #27272a 0%,
     #09090b 42%,
     #18181b 88%,
-    rgba(255, 230, 0, 0.55) 100%
+    rgba(139, 92, 246, 0.55) 100%
   );
   box-shadow:
-    4px 4px 0 0 #ffe600,
+    var(--jarsy-glow),
     0 16px 40px rgba(0, 0, 0, 0.35);
   transition:
     box-shadow 0.35s ease,
@@ -134,7 +134,7 @@
   background: linear-gradient(
     125deg,
     rgba(255, 255, 255, 0.07) 0%,
-    rgba(255, 230, 0, 0.06) 22%,
+    rgba(139, 92, 246, 0.06) 22%,
     transparent 48%
   );
   pointer-events: none;
@@ -149,7 +149,7 @@
   height: 55%;
   background: radial-gradient(
     ellipse at center,
-    rgba(255, 230, 0, 0.12) 0%,
+    rgba(139, 92, 246, 0.12) 0%,
     rgba(9, 9, 11, 0.4) 45%,
     transparent 72%
   );
@@ -169,7 +169,7 @@
 }
 
 .coffee2-page .legacy-topic-card__index {
-  color: #ffe600;
+  color: var(--jarsy-violet);
   opacity: 0.85;
 }
 
@@ -188,11 +188,11 @@
 
 .coffee2-page .legacy-topic-card__link:hover .legacy-topic-card__readmore,
 .coffee2-page .legacy-topic-card__link:focus-visible .legacy-topic-card__readmore {
-  color: #ffe600;
+  color: var(--jarsy-violet);
 }
 
 .coffee2-page .legacy-topic-card__link:focus-visible {
-  outline: 2px solid #ffe600;
+  outline: 2px solid var(--jarsy-violet);
   outline-offset: 3px;
   border-radius: calc(1rem - 4px);
 }
@@ -213,7 +213,7 @@
   border: 2px solid #09090b;
   border-radius: 0.75rem;
   background: #fff;
-  box-shadow: 6px 6px 0 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 .coffee2-page .legacy-article-dialog__lead {
@@ -390,7 +390,7 @@
   border: 2px solid #09090b;
   border-radius: 1rem;
   background: #fff;
-  box-shadow: 6px 6px 0 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 .coffee2-page .legacy-poker-card__inner {

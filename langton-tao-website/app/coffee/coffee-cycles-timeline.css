@@ -55,7 +55,7 @@
   right: 1rem;
   height: 2px;
   border-radius: 9999px;
-  background: var(--cycle-accent, #ffe600);
+  background: var(--cycle-accent, var(--jarsy-violet));
   opacity: 0.9;
 }
 

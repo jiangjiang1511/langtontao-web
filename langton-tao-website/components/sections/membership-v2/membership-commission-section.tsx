@@ -73,7 +73,7 @@ export function MembershipCommissionSection() {
                       className={cn(
                         'px-3 py-4 text-center font-semibold md:px-4',
                         tierId === 'board'
-                          ? 'bg-zinc-950 text-pop-yellow'
+                          ? 'bg-zinc-950 text-jarsy-violet'
                           : 'text-zinc-950'
                       )}
                     >

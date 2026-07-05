@@ -33,7 +33,7 @@ export function LegacySurveyCommentaryCard({
         {profile.headline}
       </h5>
 
-      <blockquote className="legacy-survey-commentary-reflection mt-4 flex-1 border-l-4 border-pop-yellow pl-4 text-sm leading-relaxed text-zinc-800 md:text-base">
+      <blockquote className="legacy-survey-commentary-reflection mt-4 flex-1 border-l-4 border-jarsy-violet pl-4 text-sm leading-relaxed text-zinc-800 md:text-base">
         <Coffee2AnnotatedText text={profile.reflection} />
       </blockquote>
 

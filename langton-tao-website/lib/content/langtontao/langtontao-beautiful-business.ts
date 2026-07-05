@@ -38,7 +38,7 @@ export const langtontaoBeautifulPhilosophyPillars: BeautifulPhilosophyPillar[] =
     summary: '诚实面对零和游戏、长期养根，保留真实判断力。',
     surface: {
       background: '#fffef5',
-      accent: '#ffe600',
+      accent: '#8b5cf6',
       foreground: '#09090b',
       muted: '#71717a',
     },
@@ -51,7 +51,7 @@ export const langtontaoBeautifulPhilosophyPillars: BeautifulPhilosophyPillar[] =
     summary: '择良地而居 · 遇明人而交 · 观大势而动 · 知进退而安。',
     surface: {
       background: '#09090b',
-      accent: '#ffe600',
+      accent: '#8b5cf6',
       foreground: '#fafafa',
       muted: '#a1a1aa',
     },
@@ -76,7 +76,7 @@ export const langtontaoBeautifulPhilosophyPillars: BeautifulPhilosophyPillar[] =
     title: '宏观接受 · 微观大有作为',
     summary: '做价值的捕手，不做焦虑的奴隶——在微观层面做能做的事。',
     surface: {
-      background: 'linear-gradient(145deg, #fff9c4 0%, #ffe600 72%)',
+      background: 'linear-gradient(145deg, #ede9fe 0%, var(--jarsy-violet) 72%)',
       accent: '#09090b',
       foreground: '#09090b',
       muted: '#3f3f46',

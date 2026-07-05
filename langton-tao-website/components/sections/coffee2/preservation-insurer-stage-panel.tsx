@@ -80,7 +80,7 @@ export function PreservationInsurerStagePanel({
   return (
     <div
       className="cg-stage pi-stage"
-      style={{ '--cg-accent': '#ffe600' } as CSSProperties}
+      style={{ '--cg-accent': 'var(--jarsy-violet)' } as CSSProperties}
       data-enter-token={enterToken}
     >
       <div className="cg-stage-grid" aria-hidden />

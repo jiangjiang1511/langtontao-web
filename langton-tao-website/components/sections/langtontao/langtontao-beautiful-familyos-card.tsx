@@ -5,7 +5,7 @@ import type { FamilyOsListItem } from '@/components/sections/langtontao/langtont
 import { cn } from '@/lib/utils'
 
 const BRANCH_ACCENTS: Record<string, string> = {
-  财富养成计划: '#ffe600',
+  财富养成计划: 'var(--jarsy-violet)',
   超级英雄之旅: '#fafafa',
 }
 
@@ -25,7 +25,7 @@ export const LangtontaoBeautifulFamilyosCard = forwardRef<
   ref
 ) {
   const number = String(index + 1).padStart(2, '0')
-  const accent = BRANCH_ACCENTS[item.branchTitle] ?? '#ffe600'
+  const accent = BRANCH_ACCENTS[item.branchTitle] ?? 'var(--jarsy-violet)'
 
   return (
     <button

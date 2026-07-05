@@ -347,7 +347,7 @@ export function CoffeeCyclesTimeline() {
                         y1={24}
                         x2={x}
                         y2={layout.height - layout.padding.bottom}
-                        stroke={isActive ? '#09090b' : '#d4d4d8'}
+                        stroke={isActive ? '#6366f1' : '#d4d4d8'}
                         strokeWidth={isActive ? 1 : 0.5}
                         strokeDasharray={isActive ? undefined : '2 4'}
                         opacity={isActive ? 0.85 : 0.4}
@@ -356,7 +356,7 @@ export function CoffeeCyclesTimeline() {
                         cx={x}
                         cy={axisY}
                         r={isActive ? 6 : 4}
-                        fill={isActive ? '#ffe600' : '#ffffff'}
+                        fill={isActive ? 'var(--jarsy-violet)' : '#ffffff'}
                         stroke="#09090b"
                         strokeWidth={isActive ? 1.5 : 1}
                       />
@@ -374,7 +374,7 @@ export function CoffeeCyclesTimeline() {
                         y1={24}
                         x2={todayX}
                         y2={layout.height - layout.padding.bottom}
-                        stroke="#09090b"
+                        stroke={isActive ? '#6366f1' : '#e4e4e7'}
                         strokeWidth={isActive ? 1.5 : 1}
                         opacity={0.85}
                       />
@@ -382,8 +382,8 @@ export function CoffeeCyclesTimeline() {
                         cx={todayX}
                         cy={axisY}
                         r={isActive ? 7 : 4.5}
-                        fill="#09090b"
-                        stroke={isActive ? '#ffe600' : '#09090b'}
+                        fill={isActive ? '#6366f1' : '#09090b'}
+                        stroke={isActive ? 'var(--jarsy-violet)' : '#e4e4e7'}
                         strokeWidth={isActive ? 2 : 1}
                       />
                     </g>

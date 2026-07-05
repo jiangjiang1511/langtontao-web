@@ -21,7 +21,7 @@
 .topic-phone-dialog,
 .invest-phone-dialog {
   --topic-phone-black: #09090b;
-  --topic-phone-yellow: #ffe600;
+  --topic-phone-yellow: var(--jarsy-violet);
   --topic-phone-white: #ffffff;
   --iq-black: var(--topic-phone-black);
   --iq-yellow: var(--topic-phone-yellow);
@@ -204,7 +204,7 @@
 
 .topic-share-bottom-bar__btn:hover {
   transform: translateY(-1px);
-  box-shadow: 4px 4px 0 0 var(--topic-phone-black);
+  box-shadow: var(--ji-glow);
   background: #fff566;
 }
 
@@ -228,7 +228,7 @@
   border: 2px solid #09090b;
   border-radius: 0.75rem;
   background: #fff;
-  box-shadow: 6px 6px 0 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 .topic-share-poster-dialog__upgrade {
@@ -258,7 +258,7 @@
 }
 
 .topic-card-hash-highlight {
-  outline: 3px solid #ffe600;
+  outline: 3px solid var(--jarsy-violet);
   outline-offset: 4px;
   border-radius: 0.75rem;
   transition: outline-color 0.3s ease;

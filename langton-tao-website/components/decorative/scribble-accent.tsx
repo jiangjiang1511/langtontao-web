@@ -13,7 +13,7 @@ export function ScribbleAccent({ side = 'left' }: { side?: 'left' | 'right' }) {
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
-        className="text-pop-yellow"
+        className="text-jarsy-violet"
       />
       <circle cx="8" cy="8" r="3" fill="currentColor" className="text-pop-black" />
     </svg>

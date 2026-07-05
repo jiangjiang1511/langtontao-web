@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function WealthCheckupPage() {
   return (
-    <div className="bg-white text-zinc-950">
+    <div className="jarsy-v2-page wh-checkup-page bg-white text-zinc-950">
       <WealthCheckupDetailView />
     </div>
   )

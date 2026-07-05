@@ -16,7 +16,7 @@ type CompoundGrowthChartProps = {
 export function CompoundGrowthChart({
   points,
   progress,
-  accent = '#ffe600',
+  accent = 'var(--jarsy-violet)',
   className,
   width = 640,
   height = 280,

@@ -12,7 +12,7 @@ export function FooterNavLinks() {
             <NavigationLink
               href={item.href}
               prefetch
-              className="text-sm font-bold text-pop-white/80 hover:text-pop-yellow"
+              className="text-sm font-medium text-zinc-400 transition-colors hover:text-jarsy-violet"
             >
               {item.label}
             </NavigationLink>
@@ -25,7 +25,7 @@ export function FooterNavLinks() {
             <NavigationLink
               href={item.href}
               prefetch
-              className="text-sm font-bold text-pop-white/80 hover:text-pop-yellow"
+              className="text-sm font-medium text-zinc-400 transition-colors hover:text-jarsy-rose"
             >
               {item.label}
             </NavigationLink>

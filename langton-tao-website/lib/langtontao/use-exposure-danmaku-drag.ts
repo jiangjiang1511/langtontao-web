@@ -71,7 +71,7 @@ export function useExposureDanmakuDrag({
     (x: number, y: number) => {
       const element = elementRef.current
       if (!element) return
-      element.style.transform = `translate(${x}px, ${y}px) scale(${scale}) rotate(${rotateDeg}deg)`
+      element.style.transform = `translate(${x}px, ${y}px) translateY(-50%) scale(${scale}) rotate(${rotateDeg}deg)`
     },
     [rotateDeg, scale]
   )
@@ -80,11 +80,10 @@ export function useExposureDanmakuDrag({
     (y: number, element: HTMLElement) => {
       const stage = stageRef.current
       if (!stage) return y
-      const stageRect = stage.getBoundingClientRect()
-      const cardHeight = element.offsetHeight
-      const minY = VERTICAL_BLEED_PX - element.offsetTop
+      const halfHeight = element.offsetHeight / 2
+      const minY = halfHeight + VERTICAL_BLEED_PX - element.offsetTop
       const maxY =
-        stage.clientHeight - element.offsetTop - cardHeight - VERTICAL_BLEED_PX
+        stage.clientHeight - halfHeight - VERTICAL_BLEED_PX - element.offsetTop
       return Math.min(maxY, Math.max(minY, y))
     },
     [stageRef]

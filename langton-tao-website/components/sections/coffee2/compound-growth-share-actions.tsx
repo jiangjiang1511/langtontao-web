@@ -155,7 +155,7 @@ export function CompoundGrowthShareActions(props: CompoundGrowthShareActionsProp
           >
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2 text-white">
-                <Share2 className="h-5 w-5 text-pop-yellow" />
+                <Share2 className="h-5 w-5 text-jarsy-violet" />
                 {props.mode === 'overview' ? '分享复利对比海报' : '分享复利海报'}
               </DialogTitle>
             </DialogHeader>

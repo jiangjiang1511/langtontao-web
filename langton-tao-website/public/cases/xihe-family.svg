@@ -5,5 +5,5 @@
   <text x="64" y="260" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="56" font-weight="900">溪河</text>
   <text x="64" y="340" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="32" font-weight="900">跨境架构</text>
   <text x="64" y="420" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="24" font-weight="700">内地 + 香港</text>
-  <rect x="640" y="480" width="120" height="80" fill="#ffe600" stroke="#000" stroke-width="3"/>
+  <rect x="640" y="480" width="120" height="80" fill="#8b5cf6" stroke="#000" stroke-width="3"/>
 </svg>

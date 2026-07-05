@@ -124,7 +124,7 @@ const allTierSections: MembershipTierSection[] = [
         ],
         imageSrc: '/membership/physical-pass.svg',
         imageAlt: '朗敦道物理通行证',
-        imageClass: 'bg-gradient-to-br from-pop-yellow via-amber-200 to-zinc-400',
+        imageClass: 'bg-gradient-to-br from-jarsy-violet via-jarsy-rose/30 to-zinc-400',
       },
       {
         id: 'channel-commission',

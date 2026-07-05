@@ -18,22 +18,22 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/education',
-        destination: '/langtontao#beautiful-education',
+        destination: '/#beautiful-education',
         permanent: true,
       },
       {
         source: '/community',
-        destination: '/langtontao#beautiful-community',
+        destination: '/#beautiful-community',
         permanent: true,
       },
       {
         source: '/checkup',
-        destination: '/langtontao#beautiful-checkup',
+        destination: '/#beautiful-checkup',
         permanent: true,
       },
       {
         source: '/cases',
-        destination: '/langtontao#beautiful-cases',
+        destination: '/#beautiful-cases',
         permanent: true,
       },
     ]

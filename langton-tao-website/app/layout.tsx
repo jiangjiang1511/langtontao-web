@@ -9,6 +9,7 @@ import { ViewportDebugBadge } from '@/components/dev/viewport-debug-badge'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import './globals.css'
+import '../styles/jarsy-v2.css'
 import './glossary.css'
 
 export const metadata: Metadata = {

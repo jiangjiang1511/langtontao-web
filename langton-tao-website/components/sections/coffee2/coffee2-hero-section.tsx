@@ -10,7 +10,7 @@ export function Coffee2HeroSection() {
   return (
     <section
       id="coffee2-hero"
-      className="relative scroll-mt-20 overflow-visible border-b-0 bg-white"
+      className="relative scroll-mt-20 overflow-visible border-b border-zinc-200 bg-white jarsy-glow"
       aria-labelledby="coffee2-hero-title"
     >
       <Coffee2HeroOrbitBackground />

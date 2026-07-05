@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 type PillLinkProps = {
   href: string
   children: React.ReactNode
-  variant?: 'dark' | 'yellow' | 'outline'
+  variant?: 'dark' | 'gradient' | 'outline'
   className?: string
 }
 
@@ -19,18 +19,18 @@ export function PillLink({
     <Link
       href={href}
       className={cn(
-        'inline-flex items-center gap-2 rounded-full border-2 px-5 py-2.5 text-sm font-bold transition-transform hover:-translate-y-0.5',
+        'inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-transform hover:-translate-y-0.5',
         variant === 'dark' &&
-          'border-pop-black bg-pop-black text-pop-white shadow-pop-black',
-        variant === 'yellow' &&
-          'border-pop-black bg-pop-yellow text-pop-black shadow-pop-black',
+          'bg-zinc-950 text-white shadow-[var(--jarsy-glow)]',
+        variant === 'gradient' &&
+          'bg-[image:var(--jarsy-gradient)] text-white shadow-[var(--jarsy-glow)]',
         variant === 'outline' &&
-          'border-pop-black bg-pop-white text-pop-black',
+          'border border-zinc-200 bg-white text-zinc-950 hover:shadow-[var(--jarsy-glow)]',
         className
       )}
     >
       {children}
-      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-pop-white text-pop-black">
+      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-white">
         <ArrowRight className="h-3.5 w-3.5" />
       </span>
     </Link>

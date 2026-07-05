@@ -113,7 +113,7 @@ export function WishlistShareActions({ answers }: WishlistShareActionsProps) {
           >
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2 text-white">
-                <Share2 className="h-5 w-5 text-pop-yellow" />
+                <Share2 className="h-5 w-5 text-jarsy-violet" />
                 分享愿望清单
               </DialogTitle>
             </DialogHeader>

@@ -1,7 +1,7 @@
 /* Member page — coffee2 visual atmosphere (layout unchanged) */
 
 .member-page {
-  --member-accent: rgb(255 230 0);
+  --member-accent: rgb(139 92 246);
   overflow-x: clip;
 }
 
@@ -10,15 +10,15 @@
 .member-page .member-section--pricing {
   position: relative;
   background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgb(255 230 0 / 0.06), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 80% 100%, rgb(255 230 0 / 0.04), transparent 50%),
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgb(139 92 246 / 0.06), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgb(139 92 246 / 0.04), transparent 50%),
     #ffffff;
 }
 
 .member-page .member-section--commission {
   position: relative;
   background:
-    radial-gradient(ellipse 70% 45% at 20% 30%, rgb(255 230 0 / 0.07), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 20% 30%, rgb(139 92 246 / 0.07), transparent 55%),
     radial-gradient(ellipse 50% 35% at 90% 70%, rgb(9 9 11 / 0.03), transparent 50%),
     #fafafa;
 }
@@ -26,7 +26,7 @@
 .member-page .member-section--benefits {
   position: relative;
   background:
-    linear-gradient(135deg, rgb(255 230 0 / 0.03) 0%, transparent 40%),
+    linear-gradient(135deg, rgb(139 92 246 / 0.03) 0%, transparent 40%),
     radial-gradient(ellipse 55% 40% at 100% 50%, rgb(9 9 11 / 0.02), transparent 55%),
     #fafafa;
 }
@@ -34,7 +34,7 @@
 .member-page .member-section--compare {
   position: relative;
   background:
-    radial-gradient(ellipse 65% 45% at 50% 0%, rgb(255 230 0 / 0.05), transparent 55%),
+    radial-gradient(ellipse 65% 45% at 50% 0%, rgb(139 92 246 / 0.05), transparent 55%),
     #ffffff;
 }
 
@@ -45,7 +45,7 @@
 .member-page .member-section--board {
   position: relative;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgb(255 230 0 / 0.08), transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgb(139 92 246 / 0.08), transparent 55%),
     #09090b;
 }
 
@@ -86,7 +86,7 @@
 
 .member-page .member-tier-board:hover {
   transform: translateY(-3px);
-  box-shadow: 6px 6px 0 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 /* ── Benefit catalog ── */
@@ -104,10 +104,10 @@
 }
 
 .member-page .member-benefit-catalog--plus-up {
-  border-color: rgb(255 230 0 / 0.45);
+  border-color: rgb(139 92 246 / 0.45);
   box-shadow:
     0 2px 16px rgb(0 0 0 / 0.04),
-    inset 4px 0 0 #ffe600;
+    inset 4px 0 0 var(--jarsy-violet);
 }
 
 .member-page .member-benefit-catalog--pro-only {
@@ -181,7 +181,7 @@
     rgb(255 254 245 / 0.95) 0%,
     #ffffff 42%
   );
-  box-shadow: inset 3px 0 0 #ffe600;
+  box-shadow: inset 3px 0 0 var(--jarsy-violet);
 }
 
 .member-page .member-benefit-catalog__row--featured-channel {
@@ -190,7 +190,7 @@
     rgb(255 251 235 / 0.95) 0%,
     #ffffff 42%
   );
-  box-shadow: inset 3px 0 0 #f59e0b;
+  box-shadow: inset 3px 0 0 var(--jarsy-violet);
 }
 
 .member-page .member-benefit-catalog__row--featured-toolkit {
@@ -237,7 +237,7 @@
 }
 
 .member-page .member-benefit-catalog__tier--plus {
-  border-color: rgb(255 230 0 / 0.45);
+  border-color: rgb(139 92 246 / 0.45);
   background: #fffef5;
   color: #3f3f46;
 }
@@ -245,7 +245,7 @@
 .member-page .member-benefit-catalog__tier--pro {
   border-color: #18181b;
   background: #18181b;
-  color: #ffe600;
+  color: var(--jarsy-violet);
 }
 
 .member-page .member-benefit-catalog__tier--board {
@@ -374,7 +374,7 @@
   border-radius: inherit;
   background: radial-gradient(
     ellipse 70% 80% at 30% 50%,
-    rgb(255 230 0 / 0.06),
+    rgb(139 92 246 / 0.06),
     transparent 65%
   );
   pointer-events: none;

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" role="img" aria-label="老师的理财课封面">
   <rect width="200" height="300" fill="#000"/>
-  <rect x="12" y="12" width="176" height="276" fill="#ffe600"/>
+  <rect x="12" y="12" width="176" height="276" fill="#8b5cf6"/>
   <rect x="12" y="24" width="40" height="6" fill="#000"/>
   <text x="20" y="120" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="16" font-weight="900">老师的</text>
   <text x="20" y="145" fill="#000" font-family="Noto Sans SC, sans-serif" font-size="16" font-weight="900">理财课</text>

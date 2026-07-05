@@ -26,7 +26,7 @@ export default function LangtonPage() {
   const [mvv, tools, , features] = langtonMegaBanners
 
   return (
-    <div className="coffee2-page bg-white text-zinc-950">
+    <div className="jarsy-v2-page coffee2-page bg-white text-zinc-950">
       <Langton2HeroSection />
       <Langton2SectionNav />
       <Langton2InterstitialBand

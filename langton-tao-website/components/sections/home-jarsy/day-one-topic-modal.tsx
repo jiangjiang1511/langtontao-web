@@ -60,7 +60,7 @@ export function DayOneTopicModal({
       ? `day-one-path-modal-${bubble.id}`
       : undefined
   const accentKey = accentId ?? bubble?.id ?? subsection?.id ?? ''
-  const accent = accentKey ? (accentMap[accentKey] ?? '#ffe600') : '#ffe600'
+  const accent = accentKey ? (accentMap[accentKey] ?? 'var(--jarsy-violet)') : 'var(--jarsy-violet)'
   const readings = isSubsection ? subsection?.readings : bubble?.readings
   const posterSrc = resolveTopicSharePoster('path', topicId)
 
@@ -82,7 +82,7 @@ export function DayOneTopicModal({
         bodyClassName="day-one-path-modal__body"
         style={{ '--day-one-accent': accent } as CSSProperties}
         share={{
-          pathname: '/',
+          pathname: '/tao',
           topicId,
           topicTitle: title,
           posterSrc,

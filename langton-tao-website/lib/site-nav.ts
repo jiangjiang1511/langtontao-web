@@ -1,25 +1,35 @@
 export type SiteNavItem = {
   href: string
   label: string
-  featured?: boolean
 }
 
 /** Temporarily hide /langton and disable in-page “关于朗敦道” CTAs. */
 export const aboutLangtonPageEnabled = false
 
-/** 顶栏：熊比特 → TAO（突出）→ 朗敦道 */
+/** 顶栏：朗敦道 → TAO → 熊比特 */
 export const siteNav: SiteNavItem[] = [
+  { href: '/', label: '朗敦道' },
+  { href: '/tao', label: 'TAO定律' },
   { href: '/coffee', label: '熊比特咖啡' },
-  { href: '/', label: 'TAO定律', featured: true },
-  { href: '/langtontao', label: '朗敦道' },
 ]
 
-/** 页脚左列：TAO → 朗敦道 → 熊比特（自上而下） */
+/** 页脚左列：朗敦道 → TAO → 熊比特（自上而下） */
 export const footerSiteNav: SiteNavItem[] = [
-  { href: '/', label: 'TAO定律' },
-  { href: '/langtontao', label: '朗敦道' },
+  { href: '/', label: '朗敦道' },
+  { href: '/tao', label: 'TAO定律' },
   { href: '/coffee', label: '熊比特咖啡' },
 ]
+
+export function isSiteNavActive(pathname: string, href: string) {
+  if (href === '/') {
+    return (
+      pathname === '/' ||
+      pathname === '/langtontao' ||
+      pathname.startsWith('/langtontao/')
+    )
+  }
+  return pathname === href || pathname.startsWith(`${href}/`)
+}
 
 /** 页脚右列 */
 export const footerSpotlightNav = [

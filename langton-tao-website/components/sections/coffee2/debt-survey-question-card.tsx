@@ -83,7 +83,7 @@ export function DebtSurveyQuestionCard({
                   'debt-survey-option w-full rounded-lg border-2 px-4 text-left text-sm transition-all',
                   isMulti ? 'py-2.5' : 'py-3',
                   selected
-                    ? 'border-zinc-900 bg-zinc-50 shadow-[3px_3px_0_0_#ffe600]'
+                    ? 'border-zinc-900 bg-zinc-50 shadow-[3px_3px_0_0_var(--jarsy-violet)]'
                     : 'border-zinc-200 bg-white hover:border-zinc-400',
                   disabled && 'pointer-events-none opacity-60'
                 )}
@@ -133,7 +133,7 @@ export function DebtSurveyQuestionCard({
           {isMulti ? (
             <button
               type="button"
-              className="debt-flashcard__primary-btn rounded-lg border-2 border-zinc-900 bg-zinc-900 px-6 py-2.5 text-sm font-semibold text-white shadow-[3px_3px_0_0_#ffe600] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none disabled:opacity-60"
+              className="debt-flashcard__primary-btn rounded-lg border-2 border-zinc-900 bg-zinc-900 px-6 py-2.5 text-sm font-semibold text-white shadow-[3px_3px_0_0_var(--jarsy-violet)] transition-transform hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none disabled:opacity-60"
               onClick={onNext}
               disabled={disabled}
             >

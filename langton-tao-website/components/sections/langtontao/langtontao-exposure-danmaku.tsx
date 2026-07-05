@@ -11,7 +11,15 @@ import { cn } from '@/lib/utils'
 
 type LangtontaoExposureDanmakuProps = {
   items: LangtontaoExposureItem[]
-  categoryKey: string
+  selectedCategory: string
+}
+
+function isExposureItemDimmed(item: LangtontaoExposureItem, selectedCategory: string) {
+  return selectedCategory !== '全部' && item.category !== selectedCategory
+}
+
+function isExposureItemFocused(item: LangtontaoExposureItem, selectedCategory: string) {
+  return selectedCategory !== '全部' && item.category === selectedCategory
 }
 
 function usePrefersReducedMotion() {
@@ -42,7 +50,13 @@ function useCoarsePointer() {
   return coarse
 }
 
-function ExposureDanmakuStaticList({ items }: { items: LangtontaoExposureItem[] }) {
+function ExposureDanmakuStaticList({
+  items,
+  selectedCategory,
+}: {
+  items: LangtontaoExposureItem[]
+  selectedCategory: string
+}) {
   return (
     <ul className="lt-exposure-danmaku__static-list mx-auto grid max-w-7xl gap-2 px-4 sm:grid-cols-2 lg:grid-cols-3 sm:px-6 lg:px-8">
       {items.map((item) => (
@@ -50,7 +64,11 @@ function ExposureDanmakuStaticList({ items }: { items: LangtontaoExposureItem[] 
           <div
             className={cn(
               'lt-exposure-danmaku__static-card',
-              `lt-exposure-danmaku__card--severity-${item.severity}`
+              `lt-exposure-danmaku__card--severity-${item.severity}`,
+              isExposureItemDimmed(item, selectedCategory) &&
+                'lt-exposure-danmaku__static-card--dimmed',
+              isExposureItemFocused(item, selectedCategory) &&
+                'lt-exposure-danmaku__static-card--focused'
             )}
           >
             <p className="lt-exposure-danmaku__card-category">{item.category}</p>
@@ -66,6 +84,8 @@ type ExposureDanmakuCardProps = {
   item: LangtontaoExposureItem
   track: ExposureDanmakuTrack
   isActive: boolean
+  isDimmed: boolean
+  isFocused: boolean
   coarsePointer: boolean
   stageRef: React.RefObject<HTMLDivElement | null>
   onCardClick: (itemId: string) => void
@@ -75,6 +95,8 @@ function ExposureDanmakuCard({
   item,
   track,
   isActive,
+  isDimmed,
+  isFocused,
   coarsePointer,
   stageRef,
   onCardClick,
@@ -111,6 +133,8 @@ function ExposureDanmakuCard({
         'lt-exposure-danmaku__card',
         `lt-exposure-danmaku__card--severity-${item.severity}`,
         `lt-exposure-danmaku__card--collage-${track.collageVariant}`,
+        isDimmed && 'lt-exposure-danmaku__card--dimmed',
+        isFocused && 'lt-exposure-danmaku__card--focused',
         isActive && 'lt-exposure-danmaku__card--active',
         isDragging && 'lt-exposure-danmaku__card--dragging'
       )}
@@ -135,30 +159,19 @@ function ExposureDanmakuCard({
 
 export function LangtontaoExposureDanmaku({
   items,
-  categoryKey,
+  selectedCategory,
 }: LangtontaoExposureDanmakuProps) {
   const reducedMotion = usePrefersReducedMotion()
   const coarsePointer = useCoarsePointer()
   const stageRef = useRef<HTMLDivElement>(null)
   const [activeId, setActiveId] = useState<string | null>(null)
-  const [fadeIn, setFadeIn] = useState(true)
 
   const itemById = useMemo(
     () => new Map(items.map((item) => [item.id, item])),
     [items]
   )
 
-  const tracks = useMemo(
-    () => buildExposureDanmakuTracks(items, categoryKey),
-    [items, categoryKey]
-  )
-
-  useEffect(() => {
-    setActiveId(null)
-    setFadeIn(false)
-    const frame = requestAnimationFrame(() => setFadeIn(true))
-    return () => cancelAnimationFrame(frame)
-  }, [categoryKey, items])
+  const tracks = useMemo(() => buildExposureDanmakuTracks(items), [items])
 
   const handleCardClick = useCallback(
     (itemId: string) => {
@@ -171,20 +184,14 @@ export function LangtontaoExposureDanmaku({
   if (reducedMotion) {
     return (
       <div className="lt-exposure-danmaku lt-exposure-danmaku--static">
-        <ExposureDanmakuStaticList items={items} />
+        <ExposureDanmakuStaticList items={items} selectedCategory={selectedCategory} />
       </div>
     )
   }
 
   return (
-    <div
-      className={cn(
-        'lt-exposure-danmaku',
-        fadeIn ? 'lt-exposure-danmaku--visible' : 'lt-exposure-danmaku--fading'
-      )}
-      aria-label="家庭风险敞口流动视图"
-    >
-      <div ref={stageRef} className="lt-exposure-danmaku__stage" key={categoryKey}>
+    <div className="lt-exposure-danmaku lt-exposure-danmaku--visible" aria-label="家庭风险敞口流动视图">
+      <div ref={stageRef} className="lt-exposure-danmaku__stage">
         {tracks.map((track) => {
           const item = itemById.get(track.itemId)
           if (!item) return null
@@ -194,6 +201,8 @@ export function LangtontaoExposureDanmaku({
               key={track.itemId}
               item={item}
               track={track}
+              isDimmed={isExposureItemDimmed(item, selectedCategory)}
+              isFocused={isExposureItemFocused(item, selectedCategory)}
               isActive={activeId === track.itemId}
               coarsePointer={coarsePointer}
               stageRef={stageRef}

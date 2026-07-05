@@ -1,5 +1,5 @@
 .wh-checkup-page {
-  --wh-checkup-accent: #ffe600;
+  --wh-checkup-accent: var(--jarsy-violet);
   --wh-checkup-max: 28rem;
   min-height: 100svh;
   background: #ffffff;

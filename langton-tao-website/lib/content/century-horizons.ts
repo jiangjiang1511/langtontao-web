@@ -108,7 +108,7 @@ const yearOne: HorizonStageContent = {
         {
           title: '李录',
           body: '《文明、现代化、价值投资与中国》：投资的终极目标，是长期守住、持续提升自身购买力。',
-          accent: '#f59e0b',
+          accent: '#ec4899',
         },
       ],
       demo: 'value-investing',

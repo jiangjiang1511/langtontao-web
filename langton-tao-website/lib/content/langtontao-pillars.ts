@@ -45,9 +45,9 @@ export const langtontaoPillarsMeta = {
 const LINK_COMPONENT_ASSET_DIR = '/assets/langtontao/linkcomponent'
 
 const pillarAccents: Record<LangtontaoPillarId, string> = {
-  'home-roots': '#ffe600',
+  'home-roots': '#8b5cf6',
   superhero: '#fafafa',
-  'wealth-checkup': '#ffe600',
+  'wealth-checkup': '#8b5cf6',
   yitishuangkua: '#a1a1aa',
 }
 

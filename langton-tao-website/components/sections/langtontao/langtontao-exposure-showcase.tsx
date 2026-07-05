@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import { LangtontaoExposureDanmaku } from '@/components/sections/langtontao/langtontao-exposure-danmaku'
 import {
@@ -11,11 +11,6 @@ import { cn } from '@/lib/utils'
 
 export function LangtontaoExposureShowcase() {
   const [category, setCategory] = useState<string>('全部')
-
-  const filtered = useMemo(() => {
-    if (category === '全部') return langtontaoExposureItems
-    return langtontaoExposureItems.filter((i) => i.category === category)
-  }, [category])
 
   return (
     <>
@@ -40,7 +35,10 @@ export function LangtontaoExposureShowcase() {
       </Coffee2Reveal>
 
       <div className="lt-exposure-danmaku-breakout mt-8">
-        <LangtontaoExposureDanmaku items={filtered} categoryKey={category} />
+        <LangtontaoExposureDanmaku
+          items={langtontaoExposureItems}
+          selectedCategory={category}
+        />
       </div>
     </>
   )

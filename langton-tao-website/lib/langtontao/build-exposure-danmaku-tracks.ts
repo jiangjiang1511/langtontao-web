@@ -2,10 +2,8 @@ import type { LangtontaoExposureItem } from '@/lib/content/langtontao/langtontao
 
 export const EXPOSURE_DANMAKU_LANE_COUNT = 5
 export const EXPOSURE_DANMAKU_DEPTH_COUNT = 5
-export const EXPOSURE_DANMAKU_SAFE_TOP_PCT = 14
-export const EXPOSURE_DANMAKU_SAFE_BOTTOM_PCT = 82
-export const EXPOSURE_DANMAKU_VERTICAL_SPAN_PCT =
-  EXPOSURE_DANMAKU_SAFE_BOTTOM_PCT - EXPOSURE_DANMAKU_SAFE_TOP_PCT
+/** Vertical center lines (%) for each lane — top anchors center via translateY(-50%). */
+export const EXPOSURE_DANMAKU_LANE_CENTERS_PCT = [24, 36, 48, 60, 72]
 
 export type ExposureDepthProfile = {
   depthIndex: number
@@ -47,19 +45,17 @@ function hashString(value: string): number {
 }
 
 export function buildExposureDanmakuTracks(
-  items: LangtontaoExposureItem[],
-  categoryKey: string
+  items: LangtontaoExposureItem[]
 ): ExposureDanmakuTrack[] {
   const laneNextDelay = Array.from({ length: EXPOSURE_DANMAKU_LANE_COUNT }, () => 0)
 
   return items.map((item, index) => {
-    const hash = hashString(`${categoryKey}:${item.id}`)
+    const hash = hashString(item.id)
     const depthIndex = hash % EXPOSURE_DANMAKU_DEPTH_COUNT
     const profile = EXPOSURE_DANMAKU_DEPTH_PROFILES[depthIndex]!
-    const lane = (hash >> 4) % EXPOSURE_DANMAKU_LANE_COUNT
+    const lane = (hash >>> 4) % EXPOSURE_DANMAKU_LANE_COUNT
     const topPercent =
-      EXPOSURE_DANMAKU_SAFE_TOP_PCT +
-      ((hash >> 8) % EXPOSURE_DANMAKU_VERTICAL_SPAN_PCT)
+      EXPOSURE_DANMAKU_LANE_CENTERS_PCT[lane] ?? EXPOSURE_DANMAKU_LANE_CENTERS_PCT[0]!
     const rotateDeg = -4 + (hash % 9)
     const collageVariant = hash % 4
     const jitter = (hash % 11) * 0.45

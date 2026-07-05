@@ -69,7 +69,7 @@ export function CompoundGrowthStagePanel({
 
   const displaySeries = activeSeries ?? allSeries[0] ?? null
 
-  const accent = activeStock?.accent ?? '#ffe600'
+  const accent = activeStock?.accent ?? 'var(--jarsy-violet)'
   const overviewMode = !activeStock
 
   return (

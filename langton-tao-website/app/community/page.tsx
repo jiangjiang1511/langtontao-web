@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function CommunityPage() {
   return (
-    <div className="community2-page bg-white text-zinc-950">
+    <div className="jarsy-v2-page community2-page bg-white text-zinc-950">
       <Community2HeroSection />
       <Community2ProgramsSection />
       <Community2HowToJoinSection />

@@ -141,7 +141,7 @@ export function CostCalculatorShareActions({
           >
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2 text-white">
-                <Share2 className="h-5 w-5 text-pop-yellow" />
+                <Share2 className="h-5 w-5 text-jarsy-violet" />
                 {dialogTitle}
               </DialogTitle>
             </DialogHeader>

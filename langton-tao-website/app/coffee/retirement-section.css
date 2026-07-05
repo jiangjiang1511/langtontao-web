@@ -12,7 +12,7 @@
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 9999px;
-  background: #f59e0b;
+  background: var(--jarsy-rose);
   animation: retirement-hint-pulse 2s ease-in-out infinite;
 }
 
@@ -61,7 +61,7 @@
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 9999px;
-  background: #f59e0b;
+  background: var(--jarsy-rose);
   animation: retirement-hint-pulse 2s ease-in-out infinite;
 }
 
@@ -165,7 +165,7 @@
   border: 2px solid #d97706;
   border-radius: 1.25rem;
   background: #fff;
-  box-shadow: 5px 5px 0 0 #fbbf24;
+  box-shadow: 5px 5px 0 0 #a78bfa;
 }
 
 .coffee2-page .retirement-chart-card__stripe {
@@ -175,8 +175,8 @@
   padding: 0.65rem 1.25rem;
   background: linear-gradient(
     90deg,
-    #fef3c7 0%,
-    color-mix(in srgb, #fff 40%, #fef3c7) 100%
+    #ede9fe 0%,
+    color-mix(in srgb, #fff 40%, #ede9fe) 100%
   );
   border-bottom: 1px solid #fde68a;
 }
@@ -185,12 +185,12 @@
   background: linear-gradient(
     90deg,
     #fde68a 0%,
-    color-mix(in srgb, #f59e0b 18%, #fef3c7) 100%
+    color-mix(in srgb, var(--jarsy-rose) 18%, #ede9fe) 100%
   );
 }
 
 .coffee2-page .retirement-chart-card__stripe--results {
-  background: linear-gradient(90deg, #fff7ed, #fef3c7);
+  background: linear-gradient(90deg, #f5f3ff, #ede9fe);
 }
 
 .coffee2-page .retirement-chart-card__angle {
@@ -250,16 +250,16 @@
 
 .coffee2-page .retirement-soul-survey-option--selected {
   border-color: #d97706 !important;
-  background: #fffbeb !important;
-  box-shadow: 3px 3px 0 0 #fbbf24;
+  background: #f5f3ff !important;
+  box-shadow: 3px 3px 0 0 #a78bfa;
   transform: translateX(1px);
 }
 
 .coffee2-page .retirement-chart-card__primary-btn {
   border-color: #d97706;
-  background: #f59e0b;
+  background: var(--jarsy-rose);
   color: #451a03;
-  box-shadow: 3px 3px 0 0 #92400e;
+  box-shadow: var(--ji-glow);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -308,7 +308,7 @@
   background: linear-gradient(
     165deg,
     #fff 0%,
-    color-mix(in srgb, #fef3c7 18%, #fff) 100%
+    color-mix(in srgb, #ede9fe 18%, #fff) 100%
   );
 }
 
@@ -376,7 +376,7 @@
 .coffee2-page .retirement-calc__option-pill--active {
   border-color: #09090b;
   color: #09090b;
-  background: #ffe600;
+  background: var(--jarsy-violet);
 }
 
 .coffee2-page .retirement-calc__option-pill:focus-visible {
@@ -412,7 +412,7 @@
 .coffee2-page .retirement-calc__year-pill--active {
   border-color: #09090b;
   color: #09090b;
-  background: #ffe600;
+  background: var(--jarsy-violet);
 }
 
 .coffee2-page .retirement-calc__result-label,
@@ -493,7 +493,7 @@
 .coffee2-page .calc-share-actions__btn:hover {
   border-color: #09090b !important;
   color: #09090b !important;
-  background: #fffbeb !important;
+  background: #f5f3ff !important;
 }
 
 .coffee2-page .calc-share-actions__preview {
@@ -516,7 +516,7 @@
   margin: 0.75rem 0 1rem;
   padding: 0.65rem 1rem;
   border-left: 4px solid #09090b;
-  background: color-mix(in srgb, #ffe600 22%, #fff);
+  background: color-mix(in srgb, var(--jarsy-violet) 22%, #fff);
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
@@ -568,7 +568,7 @@
 .coffee2-page .retirement-fishbone__bar-fill {
   height: 100%;
   border-radius: 9999px;
-  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  background: linear-gradient(90deg, #a78bfa, var(--jarsy-rose));
   transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -675,7 +675,7 @@
 .coffee2-page .retirement-topic-card:hover .retirement-topic-card__frame {
   transform: translateY(calc(var(--retirement-topic-stagger-y, 0px) - 4px));
   box-shadow:
-    4px 4px 0 0 #3f4f6b,
+    var(--ji-glow),
     0 22px 48px rgba(30, 58, 95, 0.35);
   filter: drop-shadow(0 20px 28px rgba(30, 58, 95, 0.2));
 }
@@ -692,10 +692,10 @@
     #3f4f6b 0%,
     #1e3a5f 42%,
     #2a4a72 88%,
-    rgba(255, 230, 0, 0.45) 100%
+    rgba(139, 92, 246, 0.45) 100%
   );
   box-shadow:
-    4px 4px 0 0 #ffe600,
+    var(--jarsy-glow),
     0 16px 40px rgba(30, 58, 95, 0.2);
   transition:
     box-shadow 0.35s ease,
@@ -725,7 +725,7 @@
   background: linear-gradient(
     125deg,
     rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 230, 0, 0.06) 22%,
+    rgba(139, 92, 246, 0.06) 22%,
     transparent 48%
   );
   pointer-events: none;
@@ -744,7 +744,7 @@
 }
 
 .coffee2-page .retirement-topic-card__index {
-  color: #ffe600;
+  color: var(--jarsy-violet);
   opacity: 0.85;
 }
 
@@ -763,11 +763,11 @@
 
 .coffee2-page .retirement-topic-card__link:hover .retirement-topic-card__readmore,
 .coffee2-page .retirement-topic-card__link:focus-visible .retirement-topic-card__readmore {
-  color: #ffe600;
+  color: var(--jarsy-violet);
 }
 
 .coffee2-page .retirement-topic-card__link:focus-visible {
-  outline: 2px solid #ffe600;
+  outline: 2px solid var(--jarsy-violet);
   outline-offset: 3px;
   border-radius: calc(1rem - 4px);
 }
@@ -775,7 +775,7 @@
 .coffee2-page .retirement-article-dialog {
   border: 2px solid #09090b;
   border-radius: 0.75rem;
-  box-shadow: 6px 6px 0 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 @media (prefers-reduced-motion: reduce) {

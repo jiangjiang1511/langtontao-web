@@ -5,19 +5,14 @@ import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { NavigationLink } from '@/components/navigation/navigation-link'
-import { siteNav, aboutLangtonPageEnabled } from '@/lib/site-nav'
+import { aboutLangtonPageEnabled, isSiteNavActive, siteNav } from '@/lib/site-nav'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-
-function isNavActive(pathname: string, href: string) {
-  if (href === '/') return pathname === '/'
-  return pathname === href || pathname.startsWith(`${href}/`)
-}
 
 export function SiteHeader() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const logoHref = aboutLangtonPageEnabled ? '/langton' : '/langtontao'
+  const logoHref = aboutLangtonPageEnabled ? '/langton' : '/'
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-3 z-50 flex justify-center px-4 sm:top-4 sm:px-6">
@@ -26,7 +21,7 @@ export function SiteHeader() {
           <NavigationLink
             href={logoHref}
             prefetch
-            className="flex shrink-0 items-center overflow-hidden rounded-full border-2 border-pop-black transition-all hover:-translate-y-0.5 hover:shadow-pop-yellow active:scale-[0.98]"
+            className="flex shrink-0 items-center overflow-hidden rounded-full ring-2 ring-zinc-200 transition-all hover:-translate-y-0.5 hover:ring-jarsy-violet/50 hover:shadow-[var(--jarsy-glow)] active:scale-[0.98]"
             aria-label={aboutLangtonPageEnabled ? '关于朗敦道' : '朗敦道'}
           >
             <Image
@@ -43,25 +38,24 @@ export function SiteHeader() {
             className="hidden items-center gap-4 md:flex lg:gap-5"
             aria-label="主导航"
           >
-            {siteNav.map((item) => (
-              <NavigationLink
-                key={item.href}
-                href={item.href}
-                prefetch
-                className={cn(
-                  'whitespace-nowrap transition-colors',
-                  item.featured
-                    ? 'text-base font-black text-zinc-950 md:text-lg'
-                    : 'text-sm font-bold text-zinc-600 hover:text-zinc-950',
-                  isNavActive(pathname, item.href) &&
-                    (item.featured
-                      ? 'underline decoration-pop-yellow decoration-4 underline-offset-4'
-                      : 'text-zinc-950 underline decoration-zinc-300 decoration-2 underline-offset-4')
-                )}
-              >
-                {item.label}
-              </NavigationLink>
-            ))}
+            {siteNav.map((item) => {
+              const active = isSiteNavActive(pathname, item.href)
+              return (
+                <NavigationLink
+                  key={item.href}
+                  href={item.href}
+                  prefetch
+                  className={cn(
+                    'whitespace-nowrap transition-colors',
+                    active
+                      ? 'jarsy-nav-active-featured text-base font-black text-zinc-950 md:text-lg'
+                      : 'text-sm font-semibold text-zinc-600 hover:text-zinc-950'
+                  )}
+                >
+                  {item.label}
+                </NavigationLink>
+              )
+            })}
           </nav>
 
           <div className="flex shrink-0 items-center gap-1 md:gap-2">
@@ -95,22 +89,25 @@ export function SiteHeader() {
         {mobileOpen && (
           <div className="site-header-capsule mt-2 rounded-2xl border border-zinc-200/80 bg-white/95 p-4 shadow-[0_4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md md:hidden">
             <nav className="flex flex-col gap-3" aria-label="移动端导航">
-              {siteNav.map((item) => (
-                <NavigationLink
-                  key={item.href}
-                  href={item.href}
-                  prefetch
-                  onClick={() => setMobileOpen(false)}
-                  className={cn(
-                    'font-bold text-zinc-950',
-                    item.featured ? 'text-lg font-black' : 'text-base',
-                    isNavActive(pathname, item.href) &&
-                      'underline decoration-pop-yellow decoration-4'
-                  )}
-                >
-                  {item.label}
-                </NavigationLink>
-              ))}
+              {siteNav.map((item) => {
+                const active = isSiteNavActive(pathname, item.href)
+                return (
+                  <NavigationLink
+                    key={item.href}
+                    href={item.href}
+                    prefetch
+                    onClick={() => setMobileOpen(false)}
+                    className={cn(
+                      'font-semibold text-zinc-950',
+                      active
+                        ? 'jarsy-nav-active-featured text-lg font-black'
+                        : 'text-base'
+                    )}
+                  >
+                    {item.label}
+                  </NavigationLink>
+                )
+              })}
               <Button className="mt-1 w-full rounded-full" size="lg" asChild>
                 <NavigationLink
                   href="/member"

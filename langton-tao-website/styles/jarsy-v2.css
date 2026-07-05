@@ -1,9 +1,54 @@
-.jarsy-v2-page {
+.jarsy-v2-page,
+.coffee2-page,
+.community2-page {
   --c2-bg: #ffffff;
   --c2-fg: #09090b;
   --c2-muted: #71717a;
   --c2-border: #e4e4e7;
   --c2-surface: #fafafa;
+  --jarsy-blue: #3b82f6;
+  --jarsy-indigo: #6366f1;
+  --jarsy-violet: #8b5cf6;
+  --jarsy-rose: #ec4899;
+  --jarsy-gradient: linear-gradient(
+    135deg,
+    var(--jarsy-blue) 0%,
+    var(--jarsy-violet) 50%,
+    var(--jarsy-rose) 100%
+  );
+  --jarsy-glow: 0 8px 32px rgb(99 102 241 / 0.25),
+    0 4px 16px rgb(236 72 153 / 0.15);
+  --jarsy-gradient-subtle: linear-gradient(
+    135deg,
+    rgb(59 130 246 / 0.1) 0%,
+    rgb(139 92 246 / 0.1) 50%,
+    rgb(236 72 153 / 0.1) 100%
+  );
+  /* Jarsy Interactive — charts, diagrams, surveys */
+  --ji-ink: #09090b;
+  --ji-surface: #ffffff;
+  --ji-muted: #a1a1aa;
+  --ji-border: #e4e4e7;
+  --ji-accent: var(--jarsy-violet);
+  --ji-accent-cool: var(--jarsy-blue);
+  --ji-accent-warm: var(--jarsy-rose);
+  --ji-accent-mid: var(--jarsy-indigo);
+  --ji-glow: var(--jarsy-glow);
+  --ji-glow-strong:
+    0 12px 40px rgb(99 102 241 / 0.3), 0 4px 16px rgb(236 72 153 / 0.15);
+  /* Legacy aliases for interactive components */
+  --el-ink: var(--ji-ink);
+  --el-accent: var(--ji-accent);
+  --lb-ink: var(--ji-ink);
+  --lb-accent: var(--ji-accent);
+  --lb-shadow: var(--ji-glow);
+  --iq-black: var(--ji-ink);
+  --iq-yellow: var(--ji-accent);
+  --c2-pop-black: var(--ji-ink);
+  --c2-jarsy-violet: var(--ji-accent);
+  --c2-pop-shadow: var(--ji-glow);
+  --c2-pop-shadow-hover: var(--ji-glow-strong);
+  --c2-pop-shadow-lg: var(--ji-glow-strong);
   background: var(--c2-bg);
   color: var(--c2-fg);
   font-weight: 500;
@@ -24,21 +69,31 @@
   color: var(--c2-muted);
 }
 
-.jarsy-v2-page .c2-btn-primary {
+.jarsy-v2-page .c2-btn-primary,
+.coffee2-page .c2-btn-primary,
+.community2-page .c2-btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  background: var(--c2-fg);
+  background: var(--jarsy-gradient);
   color: #ffffff;
   padding: 0.75rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  border: none;
+  box-shadow: var(--jarsy-glow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
-.jarsy-v2-page .c2-btn-primary:hover {
-  background: #27272a;
+.jarsy-v2-page .c2-btn-primary:hover,
+.coffee2-page .c2-btn-primary:hover,
+.community2-page .c2-btn-primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow:
+    0 12px 40px rgb(99 102 241 / 0.35),
+    0 6px 20px rgb(236 72 153 / 0.2);
 }
 
 .jarsy-v2-page .c2-btn-cta-emphasis {
@@ -102,15 +157,46 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
 }
 
+/* Jarsy Interactive utilities */
+.ji-surface {
+  background: var(--ji-surface);
+  border: 1px solid var(--ji-border);
+  border-radius: 0.75rem;
+}
+
+.ji-card-pop {
+  background: var(--ji-surface);
+  border: 1px solid var(--ji-border);
+  border-radius: var(--c2-pop-radius-panel, 0.75rem);
+  box-shadow: var(--ji-glow);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.ji-card-pop:hover,
+.ji-card-pop:focus-visible {
+  box-shadow: var(--ji-glow-strong);
+  transform: translateY(-1px);
+  border-color: rgb(139 92 246 / 0.35);
+}
+
+.ji-node-active {
+  box-shadow: var(--ji-glow-strong);
+  border-color: var(--ji-accent-mid);
+}
+
 .jarsy-v2-page .member-tier-board,
 .coffee2-page.member-page .member-tier-board {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .jarsy-v2-page .member-tier-board:hover,
-.coffee2-page.member-page .member-tier-board:hover {
+.coffee2-page.member-page .member-tier-board:hover,
+.jarsy-v2-page.member-page .member-tier-board:hover {
   transform: translateY(-3px);
-  box-shadow: 6px 6px 0 0 #ffe600;
+  box-shadow: var(--jarsy-glow);
 }
 
 .jarsy-v2-page .c2-chip {
@@ -214,7 +300,7 @@
   position: relative;
   z-index: 1;
   flex: 1 1 auto;
-  min-height: clamp(10rem, 28vh, 16rem);
+  min-height: max(clamp(10rem, 28vh, 16rem), var(--langtontao-hero-video-size, 0px));
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -243,334 +329,28 @@
   pointer-events: auto;
 }
 
-.langtontao-hero__logo-slot {
-  --langtontao-logo-size: clamp(7.5rem, 22vw, 13rem);
-  --langtontao-dust-ring-r: clamp(3.35rem, 9.8vw, 5.85rem);
-
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0.5rem 0 0.25rem;
-  overflow: visible;
+.langtontao-hero--video {
+  --langtontao-hero-video-bg: #ffffff;
+  --langtontao-hero-video-size: min(100%, clamp(18rem, 62vw, 42rem));
+  background-color: var(--langtontao-hero-video-bg);
 }
 
-.langtontao-hero__logo-slot--layout {
-  min-height: var(--langtontao-logo-size);
-  padding-bottom: 0.25rem;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* Langtontao hero — 3D logo orbit background */
-.langtontao-hero-orbit {
-  --langtontao-orbit-anchor-y: clamp(24%, 28vh, 32%);
-
-  pointer-events: none;
+.langtontao-hero__video-wrap {
   position: absolute;
   inset: 0;
   z-index: 0;
-  overflow: hidden;
-}
-
-.langtontao-hero-orbit__vignette {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background:
-    radial-gradient(
-      ellipse 88% 78% at 50% var(--langtontao-orbit-anchor-y),
-      transparent 0%,
-      transparent 74%,
-      rgb(0 0 0 / 0.06) 90%,
-      rgb(0 0 0 / 0.12) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgb(0 0 0 / 0.14) 0%,
-      rgb(0 0 0 / 0.05) 5%,
-      transparent 12%
-    ),
-    linear-gradient(
-      90deg,
-      rgb(0 0 0 / 0.12) 0%,
-      rgb(0 0 0 / 0.04) 4%,
-      transparent 9%,
-      transparent 91%,
-      rgb(0 0 0 / 0.04) 96%,
-      rgb(0 0 0 / 0.12) 100%
-    );
-}
-
-.langtontao-hero-orbit__stage {
-  position: absolute;
-  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 1500px;
-  perspective-origin: 50% var(--langtontao-orbit-anchor-y);
+  pointer-events: none;
 }
 
-.langtontao-hero-orbit__logos {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-.langtontao-hero-orbit__logo {
-  position: absolute;
-  top: var(--langtontao-orbit-anchor-y);
-  left: 50%;
-  width: clamp(4.75rem, 14vw, 8.5rem);
-  will-change: transform, opacity, filter;
-  transform: translate3d(-50%, -50%, 0);
-}
-
-.langtontao-hero-orbit__logo-image {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 0.75rem;
-  box-shadow: 0 12px 40px rgb(0 0 0 / 0.08);
-}
-
-.langtontao-hero-orbit__rings {
-  position: absolute;
-  top: var(--langtontao-orbit-anchor-y);
-  left: 50%;
-  width: min(100vw, 34rem);
+.langtontao-hero__video {
+  width: var(--langtontao-hero-video-size);
+  max-width: 100%;
   aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  transform-style: preserve-3d;
-  opacity: 0.5;
-}
-
-.langtontao-hero-orbit__rings-svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.langtontao-hero-orbit__rings-svg circle,
-.langtontao-hero-orbit__rings-svg ellipse {
-  stroke: #d4d4d8;
-  stroke-width: 0.5;
-  fill: none;
-}
-
-.langtontao-hero-orbit__rings-svg line {
-  stroke: #e4e4e7;
-  stroke-width: 0.4;
-}
-
-.langtontao-hero-orbit__rings-svg--1 {
-  animation: langtontao-orbit-ring-1 52s linear infinite;
-  opacity: 0.65;
-}
-
-.langtontao-hero-orbit__rings-svg--2 {
-  animation: langtontao-orbit-ring-2 68s linear infinite reverse;
-  opacity: 0.5;
-}
-
-.langtontao-hero-orbit__rings-svg--3 {
-  animation: langtontao-orbit-ring-3 80s linear infinite;
-  opacity: 0.32;
-}
-
-@keyframes langtontao-orbit-ring-1 {
-  from {
-    transform: rotateX(60deg) rotateZ(0deg);
-  }
-  to {
-    transform: rotateX(60deg) rotateZ(360deg);
-  }
-}
-
-@keyframes langtontao-orbit-ring-2 {
-  from {
-    transform: rotateX(46deg) rotateY(16deg) rotateZ(0deg);
-  }
-  to {
-    transform: rotateX(46deg) rotateY(16deg) rotateZ(-360deg);
-  }
-}
-
-@keyframes langtontao-orbit-ring-3 {
-  from {
-    transform: rotateX(70deg) rotateY(-20deg) rotateZ(0deg);
-  }
-  to {
-    transform: rotateX(70deg) rotateY(-20deg) rotateZ(360deg);
-  }
-}
-
-.langtontao-hero-orbit--glitch {
-  animation: langtontao-orbit-glitch-shake 0.42s steps(6) forwards;
-}
-
-.langtontao-hero-orbit--glitch .langtontao-hero-orbit__stage {
-  filter: contrast(1.4) saturate(1.25);
-}
-
-.langtontao-hero-orbit--glitch .langtontao-hero-orbit__logo-image {
-  filter: contrast(1.2);
-}
-
-.langtontao-hero-orbit__glitch-scan {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  background: repeating-linear-gradient(
-    0deg,
-    rgb(0 0 0 / 0.07) 0,
-    rgb(0 0 0 / 0.07) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  mix-blend-mode: multiply;
-  animation: langtontao-orbit-glitch-scan 0.42s steps(8) forwards;
-  pointer-events: none;
-}
-
-@keyframes langtontao-orbit-glitch-shake {
-  0% {
-    transform: translate(0, 0);
-  }
-  20% {
-    transform: translate(-5px, 2px) skewX(-2deg);
-  }
-  40% {
-    transform: translate(6px, -2px) skewX(3deg);
-  }
-  60% {
-    transform: translate(-4px, 3px);
-  }
-  80% {
-    transform: translate(5px, -2px) skewX(-1deg);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes langtontao-orbit-glitch-scan {
-  0% {
-    opacity: 0.85;
-    transform: translateY(-10%);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(10%);
-  }
-}
-
-.langtontao-hero-orbit--reduced .langtontao-hero-orbit__rings {
-  opacity: 0.2;
-}
-
-.langtontao-hero__logo-stage {
-  position: relative;
-  z-index: 1;
-  width: var(--langtontao-logo-size);
-  height: var(--langtontao-logo-size);
-  transform-origin: center center;
-  opacity: 0;
-  animation: langtontao-hero-logo-enter 2.1s linear forwards;
-}
-
-.langtontao-hero__logo {
-  position: relative;
-  z-index: 2;
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* Pressure shockwaves — radial expansion outside logo */
-.langtontao-hero__fx-waves {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 0;
-  width: var(--langtontao-logo-size);
-  height: var(--langtontao-logo-size);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.langtontao-hero__shockwave {
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgb(161 161 170 / 0.42);
-  border-radius: 50%;
-  opacity: 0;
-  filter: blur(4px);
-  animation: langtontao-shockwave 2.1s ease-out forwards;
-}
-
-.langtontao-hero__shockwave--1 {
-  animation-delay: 0.05s;
-}
-
-.langtontao-hero__shockwave--2 {
-  animation-delay: 0.22s;
-}
-
-.langtontao-hero__shockwave--3 {
-  animation-delay: 0.4s;
-}
-
-/* Tangential dust lines — centrifugal motion blur outside logo */
-.langtontao-hero__fx-dust {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  --langtontao-dust-stretch: 1;
-  animation: langtontao-dust-stretch 2.1s linear forwards;
-}
-
-.langtontao-hero__fx-dust--ghost {
-  z-index: 0;
-  animation-delay: -45ms;
-  filter: blur(3px);
-  opacity: 0.55;
-}
-
-.langtontao-hero__dust-spoke {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0;
-  height: 0;
-  transform: rotate(calc(var(--i, 0) * 22.5deg));
-}
-
-.langtontao-hero__dust-line {
-  position: absolute;
-  left: 0;
-  top: -1px;
-  width: 0.4rem;
-  height: 2px;
-  transform-origin: left center;
-  border-radius: 999px;
-  transform: translateX(var(--langtontao-dust-ring-r)) rotate(90deg)
-    scaleX(var(--langtontao-dust-stretch, 1));
-  background: linear-gradient(
-    90deg,
-    rgb(161 161 170 / 0),
-    rgb(161 161 170 / 0.45) 18%,
-    rgb(212 175 55 / 0.38) 55%,
-    rgb(161 161 170 / 0.12) 82%,
-    rgb(161 161 170 / 0)
-  );
-  filter: blur(0.6px);
-  will-change: transform;
+  object-fit: contain;
+  background-color: var(--langtontao-hero-video-bg);
 }
 
 .langtontao-hero__title-main {
@@ -610,19 +390,7 @@
   }
 
   .langtontao-hero__upper {
-    min-height: clamp(11rem, 30vh, 17rem);
-  }
-
-  .langtontao-hero-orbit {
-    --langtontao-orbit-anchor-y: clamp(24%, 28vh, 32%);
-  }
-
-  .langtontao-hero-orbit__logo {
-    width: clamp(4rem, 10vw, 6.75rem);
-  }
-
-  .langtontao-hero-orbit__rings {
-    width: min(88vw, 28rem);
+    min-height: max(clamp(11rem, 30vh, 17rem), var(--langtontao-hero-video-size, 0px));
   }
 }
 
@@ -640,180 +408,7 @@
   transition-delay: var(--c2-reveal-delay, 0ms);
 }
 
-@keyframes langtontao-hero-logo-enter {
-  0% {
-    opacity: 0;
-    transform: rotate(-108deg) scale(0.03);
-  }
-
-  5% {
-    opacity: 1;
-  }
-
-  /* Elastic grow — scale reaches overshoot sooner */
-  28% {
-    transform: rotate(400deg) scale(1.18);
-  }
-
-  38% {
-    transform: rotate(560deg) scale(0.9);
-  }
-
-  45% {
-    transform: rotate(650deg) scale(1.06);
-  }
-
-  52% {
-    transform: rotate(720deg) scale(1);
-  }
-
-  /* Stutter wobbles after entrance — pause frames create a “卡顿” feel */
-  68% {
-    transform: rotate(720deg) scale(1);
-  }
-
-  74% {
-    transform: rotate(756deg) scale(1);
-  }
-
-  78% {
-    transform: rotate(756deg) scale(1);
-  }
-
-  84% {
-    transform: rotate(684deg) scale(1);
-  }
-
-  88% {
-    transform: rotate(684deg) scale(1);
-  }
-
-  94% {
-    transform: rotate(738deg) scale(1);
-  }
-
-  100% {
-    opacity: 1;
-    transform: rotate(720deg) scale(1);
-  }
-}
-
-@keyframes langtontao-shockwave {
-  0% {
-    opacity: 0;
-    transform: scale(0.82);
-  }
-
-  6% {
-    opacity: 0.38;
-  }
-
-  28% {
-    opacity: 0.22;
-    transform: scale(1.65);
-  }
-
-  42% {
-    opacity: 0;
-    transform: scale(2.25);
-  }
-
-  66%,
-  100% {
-    opacity: 0;
-    transform: scale(2.25);
-  }
-}
-
-@keyframes langtontao-dust-stretch {
-  0%,
-  4% {
-    --langtontao-dust-stretch: 1;
-    opacity: 0;
-  }
-
-  6% {
-    opacity: 1;
-  }
-
-  14% {
-    --langtontao-dust-stretch: 5;
-  }
-
-  24% {
-    --langtontao-dust-stretch: 11;
-  }
-
-  28% {
-    --langtontao-dust-stretch: 12;
-  }
-
-  38% {
-    --langtontao-dust-stretch: 6;
-  }
-
-  45% {
-    --langtontao-dust-stretch: 3.5;
-  }
-
-  52% {
-    --langtontao-dust-stretch: 1.5;
-    opacity: 0.85;
-  }
-
-  68%,
-  72% {
-    --langtontao-dust-stretch: 1.5;
-  }
-
-  /* Stutter flicks — brief tangential fling synced with logo wobble */
-  74% {
-    --langtontao-dust-stretch: 9;
-    opacity: 0.9;
-  }
-
-  78% {
-    --langtontao-dust-stretch: 2;
-  }
-
-  84% {
-    --langtontao-dust-stretch: -8;
-    opacity: 0.75;
-  }
-
-  88% {
-    --langtontao-dust-stretch: 1.5;
-  }
-
-  94% {
-    --langtontao-dust-stretch: 7;
-    opacity: 0.55;
-  }
-
-  100% {
-    --langtontao-dust-stretch: 1;
-    opacity: 0;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .langtontao-hero-orbit__rings-svg--1,
-  .langtontao-hero-orbit__rings-svg--2,
-  .langtontao-hero-orbit__rings-svg--3 {
-    animation: none;
-  }
-
-  .langtontao-hero__logo-stage {
-    animation: none;
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-
-  .langtontao-hero__fx-waves,
-  .langtontao-hero__fx-dust {
-    display: none;
-  }
-
   .langtontao-hero__inner .c2-reveal[data-visible='false'],
   .langtontao-hero__inner .c2-reveal[data-visible='true'] {
     opacity: 1;
@@ -823,9 +418,8 @@
 }
 
 @media (max-width: 767px) {
-  .langtontao-hero__logo-slot {
-    --langtontao-logo-size: clamp(6.5rem, 34vw, 10rem);
-    --langtontao-dust-ring-r: clamp(2.9rem, 15.2vw, 4.5rem);
+  .langtontao-hero--video {
+    --langtontao-hero-video-size: min(100%, calc(100vw - 2.25rem));
   }
 
   .langtontao-hero__inner {
@@ -837,7 +431,7 @@
 
   .langtontao-hero__upper {
     flex: 0 0 auto;
-    min-height: clamp(4rem, 12vh, 7rem);
+    min-height: var(--langtontao-hero-video-size, clamp(4rem, 12vh, 7rem));
   }
 
   .langtontao-hero__headline {
@@ -863,23 +457,5 @@
 
   .langtontao-hero__lead-text {
     padding-inline: clamp(0.75rem, 4vw, 1.25rem);
-  }
-
-  .langtontao-hero-orbit {
-    --langtontao-orbit-anchor-y: clamp(22%, 26vh, 30%);
-  }
-
-  .langtontao-hero-orbit__logo {
-    width: clamp(5.75rem, 22vw, 8.25rem);
-  }
-
-  .langtontao-hero-orbit__rings {
-    width: min(118vw, 32rem);
-    opacity: 0.48;
-  }
-
-  .langtontao-hero-orbit__stage {
-    transform: scale(1.08);
-    transform-origin: 50% var(--langtontao-orbit-anchor-y);
   }
 }
