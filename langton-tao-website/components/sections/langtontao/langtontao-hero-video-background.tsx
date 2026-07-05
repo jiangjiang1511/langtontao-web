@@ -1,11 +1,12 @@
 'use client'
 
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 /** Bump when replacing hero-anime.mp4 to bust browser cache. */
 const HERO_VIDEO_CACHE_VERSION = '20260705-2'
 
 export const LANGTONTAO_HERO_VIDEO_SRC = `/assets/langtontao/hero-anime.mp4?v=${HERO_VIDEO_CACHE_VERSION}`
+export const LANGTONTAO_HERO_VIDEO_POSTER = '/assets/langtontao/langtontao-logo.png'
 
 const DESKTOP_MEDIA = '(min-width: 768px)'
 const HEADER_CAPSULE_SELECTOR = 'header > div > .site-header-capsule'
@@ -15,15 +16,14 @@ function syncVideoSize(video: HTMLVideoElement) {
   if (!hero) return
 
   const isDesktop = window.matchMedia(DESKTOP_MEDIA).matches
-  let size = 0
 
-  if (isDesktop) {
-    const capsule = document.querySelector<HTMLElement>(HEADER_CAPSULE_SELECTOR)
-    if (capsule) size = capsule.getBoundingClientRect().width
-  } else {
-    const tagline = hero.querySelector<HTMLElement>('.langtontao-hero__title-sub')
-    if (tagline) size = tagline.getBoundingClientRect().width
+  if (!isDesktop) {
+    hero.style.removeProperty('--langtontao-hero-video-size')
+    return
   }
+
+  const capsule = document.querySelector<HTMLElement>(HEADER_CAPSULE_SELECTOR)
+  const size = capsule?.getBoundingClientRect().width ?? 0
 
   if (size > 0) {
     hero.style.setProperty('--langtontao-hero-video-size', `${Math.round(size)}px`)
@@ -32,6 +32,11 @@ function syncVideoSize(video: HTMLVideoElement) {
 
 export function LangtontaoHeroVideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [preload, setPreload] = useState<'auto' | 'metadata'>('metadata')
+
+  useEffect(() => {
+    setPreload(window.matchMedia(DESKTOP_MEDIA).matches ? 'auto' : 'metadata')
+  }, [])
 
   const syncPlayback = useCallback((video: HTMLVideoElement) => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -57,7 +62,6 @@ export function LangtontaoHeroVideoBackground() {
 
     const handleMotionChange = () => syncPlayback(video)
 
-    video.load()
     video.addEventListener('canplay', handleCanPlay)
     mediaQuery.addEventListener('change', handleMotionChange)
 
@@ -75,25 +79,22 @@ export function LangtontaoHeroVideoBackground() {
     if (!hero) return
 
     const desktopMedia = window.matchMedia(DESKTOP_MEDIA)
-    const observers: ResizeObserver[] = []
+    let capsuleObserver: ResizeObserver | undefined
 
     const measure = () => syncVideoSize(video)
 
-    const observe = (element: Element | null) => {
-      if (!element || typeof ResizeObserver === 'undefined') return
-      const observer = new ResizeObserver(measure)
-      observer.observe(element)
-      observers.push(observer)
-    }
-
     const bindTargets = () => {
-      observers.forEach((observer) => observer.disconnect())
-      observers.length = 0
+      capsuleObserver?.disconnect()
+      capsuleObserver = undefined
 
       if (desktopMedia.matches) {
-        observe(document.querySelector(HEADER_CAPSULE_SELECTOR))
+        const capsule = document.querySelector(HEADER_CAPSULE_SELECTOR)
+        if (capsule && typeof ResizeObserver !== 'undefined') {
+          capsuleObserver = new ResizeObserver(measure)
+          capsuleObserver.observe(capsule)
+        }
       } else {
-        observe(hero.querySelector('.langtontao-hero__title-sub'))
+        hero.style.removeProperty('--langtontao-hero-video-size')
       }
 
       measure()
@@ -106,7 +107,7 @@ export function LangtontaoHeroVideoBackground() {
     return () => {
       desktopMedia.removeEventListener('change', bindTargets)
       window.removeEventListener('resize', measure)
-      observers.forEach((observer) => observer.disconnect())
+      capsuleObserver?.disconnect()
     }
   }, [])
 
@@ -117,11 +118,12 @@ export function LangtontaoHeroVideoBackground() {
         ref={videoRef}
         className="langtontao-hero__video"
         src={LANGTONTAO_HERO_VIDEO_SRC}
+        poster={LANGTONTAO_HERO_VIDEO_POSTER}
         autoPlay
         muted
         loop
         playsInline
-        preload="auto"
+        preload={preload}
         onLoadedData={(event) => syncPlayback(event.currentTarget)}
       />
     </div>

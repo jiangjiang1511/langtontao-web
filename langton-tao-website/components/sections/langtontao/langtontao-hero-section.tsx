@@ -1,6 +1,6 @@
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import { Coffee2TypewriterReveal } from '@/components/sections/coffee2/coffee2-typewriter-reveal'
-import { LangtontaoHeroVideoBackground } from '@/components/sections/langtontao/langtontao-hero-video-background'
+import { LangtontaoHeroVideoBackgroundLazy } from '@/components/sections/langtontao/langtontao-hero-video-background-lazy'
 import { langtontaoHero } from '@/lib/content/langtontao-page'
 
 export function LangtontaoHeroSection() {
@@ -12,7 +12,7 @@ export function LangtontaoHeroSection() {
     >
       <div className="langtontao-hero__inner relative z-10 mx-auto flex max-w-7xl flex-col px-4 text-center sm:px-6 lg:px-8">
         <div className="langtontao-hero__upper" aria-hidden>
-          <LangtontaoHeroVideoBackground />
+          <LangtontaoHeroVideoBackgroundLazy />
         </div>
 
         <div className="langtontao-hero__headline w-full max-w-3xl">

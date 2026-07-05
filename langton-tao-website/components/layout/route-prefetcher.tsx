@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-const PREFETCH_ROUTES = ['/', '/tao', '/langtontao', '/coffee', '/member', '/faq'] as const
+const PREFETCH_ROUTES = ['/tao', '/coffee', '/member', '/faq'] as const
 
 export function RoutePrefetcher() {
   const router = useRouter()
@@ -17,7 +17,7 @@ export function RoutePrefetcher() {
       router.prefetch(PREFETCH_ROUTES[index])
       index += 1
       if (index < PREFETCH_ROUTES.length) {
-        window.setTimeout(prefetchNext, 120)
+        window.setTimeout(prefetchNext, 80)
       }
     }
 

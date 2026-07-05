@@ -1,6 +1,6 @@
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
 import { Coffee2TypewriterReveal } from '@/components/sections/coffee2/coffee2-typewriter-reveal'
-import { LangtontaoHeroVideoBackground } from '@/components/sections/langtontao/langtontao-hero-video-background'
+import { LangtontaoHeroVideoBackgroundLazy } from '@/components/sections/langtontao/langtontao-hero-video-background-lazy'
 import { membershipV2Hero } from '@/lib/content/membership-v2'
 
 export function MembershipV2HeroSection() {
@@ -9,12 +9,12 @@ export function MembershipV2HeroSection() {
   return (
     <section
       id="member-hero"
-      className="langtontao-hero langtontao-hero--video relative scroll-mt-28 overflow-hidden border-b border-zinc-200"
+      className="langtontao-hero langtontao-hero--video langtontao-hero--member relative scroll-mt-28 overflow-hidden border-b border-zinc-200"
       aria-labelledby="member-hero-title"
     >
       <div className="langtontao-hero__inner relative z-10 mx-auto flex max-w-7xl flex-col px-4 text-center sm:px-6 lg:px-8">
         <div className="langtontao-hero__upper" aria-hidden>
-          <LangtontaoHeroVideoBackground />
+          <LangtontaoHeroVideoBackgroundLazy />
         </div>
 
         <div className="langtontao-hero__headline w-full max-w-3xl">

@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import { JarsyJoinBand } from '@/components/jarsy/jarsy-join-band'
 import { LangtontaoHeroSection } from '@/components/sections/langtontao/langtontao-hero-section'
-import { LangtontaoPillarsSection } from '@/components/sections/langtontao/langtontao-pillars-section'
 import { LangtontaoSectionNav } from '@/components/sections/langtontao/langtontao-section-nav'
 import { DeferredMount } from '@/components/shared/deferred-mount'
 import { SectionLoadingFallback } from '@/components/shared/section-loading-fallback'
@@ -19,6 +18,14 @@ export const metadata: Metadata = {
   title: '朗敦道 Langton Tao | VFO/MFO Leader in China',
   description: langtontaoPageMeta.description,
 }
+
+const LangtontaoPillarsSection = dynamic(
+  () =>
+    import('@/components/sections/langtontao/langtontao-pillars-section').then(
+      (module) => ({ default: module.LangtontaoPillarsSection })
+    ),
+  { loading: () => <SectionLoadingFallback label="加载四大板块…" /> }
+)
 
 const LangtontaoHomeRootsSection = dynamic(
   () =>

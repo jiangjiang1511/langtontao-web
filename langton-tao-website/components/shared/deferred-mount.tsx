@@ -4,6 +4,10 @@ import { useEffect, useState, type ReactNode } from 'react'
 import { useInViewTrigger } from '@/hooks/use-in-view-trigger'
 import { cn } from '@/lib/utils'
 
+const MOBILE_MEDIA = '(max-width: 767px)'
+const DEFAULT_ROOT_MARGIN_DESKTOP = '600px 0px'
+const DEFAULT_ROOT_MARGIN_MOBILE = '240px 0px'
+
 type DeferredMountProps = {
   anchorId?: string
   minHeight?: string
@@ -23,15 +27,37 @@ function hashTargetsAnchor(anchorId: string) {
 export function DeferredMount({
   anchorId,
   minHeight = '40vh',
-  rootMargin = '600px 0px',
+  rootMargin,
   className,
   fallback,
   children,
 }: DeferredMountProps) {
   const [forceMount, setForceMount] = useState(false)
+  const [effectiveRootMargin, setEffectiveRootMargin] = useState(
+    rootMargin ?? DEFAULT_ROOT_MARGIN_DESKTOP
+  )
+
+  useEffect(() => {
+    if (rootMargin) {
+      setEffectiveRootMargin(rootMargin)
+      return
+    }
+
+    const media = window.matchMedia(MOBILE_MEDIA)
+    const sync = () => {
+      setEffectiveRootMargin(
+        media.matches ? DEFAULT_ROOT_MARGIN_MOBILE : DEFAULT_ROOT_MARGIN_DESKTOP
+      )
+    }
+
+    sync()
+    media.addEventListener('change', sync)
+    return () => media.removeEventListener('change', sync)
+  }, [rootMargin])
+
   const { ref, inView } = useInViewTrigger({
     enabled: !forceMount,
-    rootMargin,
+    rootMargin: effectiveRootMargin,
     threshold: 0,
   })
 

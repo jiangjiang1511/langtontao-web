@@ -330,6 +330,7 @@
 }
 
 .langtontao-hero--video {
+  position: relative;
   --langtontao-hero-video-bg: #ffffff;
   --langtontao-hero-video-size: min(100%, clamp(18rem, 62vw, 42rem));
   background-color: var(--langtontao-hero-video-bg);
@@ -419,7 +420,7 @@
 
 @media (max-width: 767px) {
   .langtontao-hero--video {
-    --langtontao-hero-video-size: min(100%, calc(100vw - 2.25rem));
+    --langtontao-hero-video-size: min(calc(100vw - 1.5rem), calc(100dvh - 20rem));
   }
 
   .langtontao-hero__inner {
@@ -430,8 +431,38 @@
   }
 
   .langtontao-hero__upper {
-    flex: 0 0 auto;
-    min-height: var(--langtontao-hero-video-size, clamp(4rem, 12vh, 7rem));
+    position: static;
+    flex: 0 0 0;
+    height: 0;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .langtontao-hero__video-wrap {
+    top: 0;
+    right: 0;
+    bottom: 41%;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    padding-top: clamp(1.25rem, 4.5vh, 2rem);
+  }
+
+  .langtontao-hero--member.langtontao-hero--video {
+    --langtontao-hero-video-size: min(calc(100vw - 1.5rem), calc(100dvh - 24rem));
+  }
+
+  #member-hero.langtontao-hero--video .langtontao-hero__video-wrap {
+    bottom: 46%;
+    padding-top: clamp(1rem, 3.5vh, 1.5rem);
+  }
+
+  .langtontao-hero__video {
+    width: var(--langtontao-hero-video-size);
+    height: var(--langtontao-hero-video-size);
+    max-width: 100%;
+    aspect-ratio: 1;
+    transform: translateY(clamp(0.5rem, 2vh, 1rem));
   }
 
   .langtontao-hero__headline {
