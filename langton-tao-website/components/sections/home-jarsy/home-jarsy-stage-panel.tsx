@@ -1,3 +1,5 @@
+'use client'
+
 import { HomeJarsyDayOnePanel } from '@/components/sections/home-jarsy/home-jarsy-day-one-panel'
 import { HomeJarsyDayTwoPanel } from '@/components/sections/home-jarsy/home-jarsy-day-two-panel'
 import { HomeJarsyFeatureBlocks } from '@/components/sections/home-jarsy/home-jarsy-feature-blocks'
@@ -11,6 +13,7 @@ import {
   taoStagePanelClassName,
   taoStagePanelStyle,
 } from '@/lib/content/tao-stage-visual'
+import { useSectionDomId } from '@/components/shared/deferred-mount-context'
 import { cn } from '@/lib/utils'
 
 type HomeJarsyStagePanelProps = {
@@ -31,9 +34,11 @@ export function HomeJarsyStagePanel({ stage, index }: HomeJarsyStagePanelProps) 
     return <HomeJarsyHorizonPanel stage={stage} index={index} />
   }
 
+  const sectionId = useSectionDomId(stage.id)
+
   return (
     <section
-      id={stage.id}
+      id={sectionId}
       className={cn(
         taoStagePanelClassName(stage.id, 'scroll-mt-28 py-16 md:py-24 lg:min-h-[85vh] lg:py-28')
       )}

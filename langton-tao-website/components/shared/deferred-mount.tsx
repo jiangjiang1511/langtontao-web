@@ -1,6 +1,17 @@
 'use client'
 
-import { useEffect, useState, type ReactNode } from 'react'
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react'
+import {
+  DEFERRED_MOUNT_READY_EVENT,
+  DeferredMountAnchorContext,
+  type DeferredMountReadyDetail,
+} from '@/components/shared/deferred-mount-context'
 import { useInViewTrigger } from '@/hooks/use-in-view-trigger'
 import { cn } from '@/lib/utils'
 
@@ -14,6 +25,7 @@ type DeferredMountProps = {
   rootMargin?: string
   className?: string
   fallback?: ReactNode
+  eagerOnMobile?: boolean
   children: ReactNode
 }
 
@@ -30,12 +42,31 @@ export function DeferredMount({
   rootMargin,
   className,
   fallback,
+  eagerOnMobile = true,
   children,
 }: DeferredMountProps) {
   const [forceMount, setForceMount] = useState(false)
+  const [eagerMobile, setEagerMobile] = useState(false)
+  const [mounted, setMounted] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return eagerOnMobile && window.matchMedia(MOBILE_MEDIA).matches
+  })
   const [effectiveRootMargin, setEffectiveRootMargin] = useState(
     rootMargin ?? DEFAULT_ROOT_MARGIN_DESKTOP
   )
+  const geometryRef = useRef<{ top: number; height: number } | null>(null)
+  const pendingMountRef = useRef(false)
+
+  useEffect(() => {
+    if (!eagerOnMobile) return
+
+    const media = window.matchMedia(MOBILE_MEDIA)
+    const sync = () => setEagerMobile(media.matches)
+
+    sync()
+    media.addEventListener('change', sync)
+    return () => media.removeEventListener('change', sync)
+  }, [eagerOnMobile])
 
   useEffect(() => {
     if (rootMargin) {
@@ -55,8 +86,11 @@ export function DeferredMount({
     return () => media.removeEventListener('change', sync)
   }, [rootMargin])
 
+  const shouldEagerMount = eagerOnMobile && eagerMobile
+  const lazyEnabled = !forceMount && !shouldEagerMount && !mounted
+
   const { ref, inView } = useInViewTrigger({
-    enabled: !forceMount,
+    enabled: lazyEnabled,
     rootMargin: effectiveRootMargin,
     threshold: 0,
   })
@@ -75,9 +109,53 @@ export function DeferredMount({
     return () => window.removeEventListener('hashchange', syncHash)
   }, [anchorId])
 
-  const shouldMount = forceMount || inView
+  useEffect(() => {
+    if (mounted) return
+    if (!(forceMount || inView || shouldEagerMount)) return
 
-  if (!shouldMount) {
+    if (!shouldEagerMount && ref.current) {
+      geometryRef.current = {
+        top: ref.current.offsetTop,
+        height: ref.current.offsetHeight,
+      }
+    }
+
+    pendingMountRef.current = true
+    setMounted(true)
+  }, [forceMount, inView, shouldEagerMount, mounted])
+
+  useLayoutEffect(() => {
+    if (!mounted || !pendingMountRef.current) return
+
+    pendingMountRef.current = false
+
+    if (!shouldEagerMount && geometryRef.current && ref.current) {
+      const { top, height: oldHeight } = geometryRef.current
+      const newHeight = ref.current.offsetHeight
+      const delta = newHeight - oldHeight
+
+      if (delta > 0 && top < window.scrollY) {
+        window.scrollTo({
+          top: window.scrollY + delta,
+          behavior: 'instant' as ScrollBehavior,
+        })
+      }
+
+      geometryRef.current = null
+    }
+  }, [mounted, shouldEagerMount])
+
+  useEffect(() => {
+    if (!mounted || !anchorId) return
+
+    window.dispatchEvent(
+      new CustomEvent<DeferredMountReadyDetail>(DEFERRED_MOUNT_READY_EVENT, {
+        detail: { anchorId },
+      })
+    )
+  }, [mounted, anchorId])
+
+  if (!mounted) {
     return (
       <div
         ref={ref}
@@ -95,5 +173,15 @@ export function DeferredMount({
     )
   }
 
-  return <div ref={ref} className={className}>{children}</div>
+  return (
+    <DeferredMountAnchorContext.Provider value={anchorId ?? null}>
+      <div
+        ref={ref}
+        id={anchorId}
+        className={cn('deferred-mount-root scroll-mt-28', className)}
+      >
+        {children}
+      </div>
+    </DeferredMountAnchorContext.Provider>
+  )
 }

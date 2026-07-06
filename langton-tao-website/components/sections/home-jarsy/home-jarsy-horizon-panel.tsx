@@ -20,6 +20,7 @@ import {
   taoStagePanelClassName,
   taoStagePanelStyle,
 } from '@/lib/content/tao-stage-visual'
+import { useSectionDomId } from '@/components/shared/deferred-mount-context'
 import { cn } from '@/lib/utils'
 
 type HomeJarsyHorizonPanelProps = {
@@ -40,9 +41,11 @@ export function HomeJarsyHorizonPanel({ stage, index }: HomeJarsyHorizonPanelPro
   const activeTopic =
     content.topics.find((topic) => topic.id === activeTopicId) ?? content.topics[0]
 
+  const sectionId = useSectionDomId(stage.id)
+
   return (
     <section
-      id={stage.id}
+      id={sectionId}
       className={cn(
         taoStagePanelClassName(
           stage.id,

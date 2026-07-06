@@ -1,13 +1,23 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { fiftyYearStages } from '@/lib/content/fifty-year-narrative'
+import {
+  scrollToSectionAnchor,
+  useSectionScrollSpy,
+} from '@/hooks/use-section-scroll-spy'
 import { cn } from '@/lib/utils'
 
+const STAGE_IDS = fiftyYearStages.map((stage) => stage.id)
+
 export function HomeJarsyStageNav() {
-  const [activeId, setActiveId] = useState(fiftyYearStages[0]?.id ?? 'day-1')
   const [navVisible, setNavVisible] = useState(false)
+  const activeId = useSectionScrollSpy({
+    sectionIds: STAGE_IDS,
+    rootMargin: '-20% 0px -55% 0px',
+    threshold: [0, 0.15, 0.35, 0.55],
+    enabled: navVisible,
+  })
 
   useEffect(() => {
     const hero = document.getElementById('hero')
@@ -26,35 +36,6 @@ export function HomeJarsyStageNav() {
     heroObserver.observe(hero)
     return () => heroObserver.disconnect()
   }, [])
-
-  useEffect(() => {
-    if (!navVisible) return
-
-    const sections = fiftyYearStages
-      .map((stage) => document.getElementById(stage.id))
-      .filter((element): element is HTMLElement => element !== null)
-
-    if (sections.length === 0) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-
-        if (visible[0]?.target.id) {
-          setActiveId(visible[0].target.id)
-        }
-      },
-      {
-        rootMargin: '-20% 0px -55% 0px',
-        threshold: [0, 0.15, 0.35, 0.55],
-      }
-    )
-
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
-  }, [navVisible])
 
   return (
     <nav
@@ -76,7 +57,7 @@ export function HomeJarsyStageNav() {
             const isActive = activeId === stage.id
 
             return (
-              <Link
+              <a
                 key={stage.id}
                 href={`#${stage.id}`}
                 role="listitem"
@@ -86,6 +67,10 @@ export function HomeJarsyStageNav() {
                   'home-jarsy-stage-nav__link',
                   isActive && 'home-jarsy-stage-nav__link--active'
                 )}
+                onClick={(event) => {
+                  event.preventDefault()
+                  scrollToSectionAnchor(stage.id)
+                }}
               >
                 <span className="home-jarsy-stage-nav__number" aria-hidden>
                   {String(index + 1).padStart(2, '0')}
@@ -93,7 +78,7 @@ export function HomeJarsyStageNav() {
                 <span className="home-jarsy-stage-nav__title">
                   {stage.periodLabel}
                 </span>
-              </Link>
+              </a>
             )
           })}
         </div>

@@ -71,9 +71,7 @@ export default function TaoPage() {
 
         <HomeJarsyStageNav />
 
-        <DeferredMount minHeight="55vh">
-          <HomeJarsyDeferredStages />
-        </DeferredMount>
+        <HomeJarsyDeferredStages />
 
         <DeferredMount minHeight="20vh">
           <JarsyJoinBand

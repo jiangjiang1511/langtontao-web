@@ -20,6 +20,7 @@ import {
   taoStagePanelClassName,
   taoStagePanelStyle,
 } from '@/lib/content/tao-stage-visual'
+import { useSectionDomId } from '@/components/shared/deferred-mount-context'
 import { cn } from '@/lib/utils'
 
 type HomeJarsyDayTwoPanelProps = {
@@ -41,9 +42,11 @@ export function HomeJarsyDayTwoPanel({ stage, index }: HomeJarsyDayTwoPanelProps
     useCenterZoneVisible<HTMLDivElement>()
   const { ref: closeRef, visible: closeVisible } = useCenterZoneVisible<HTMLDivElement>()
 
+  const sectionId = useSectionDomId(stage.id)
+
   return (
     <section
-      id={stage.id}
+      id={sectionId}
       className={cn(
         taoStagePanelClassName(stage.id, 'day-two-panel scroll-mt-28 py-16 md:py-24 lg:min-h-[85vh] lg:py-28')
       )}

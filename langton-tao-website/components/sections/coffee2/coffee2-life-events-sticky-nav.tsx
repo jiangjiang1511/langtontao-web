@@ -1,11 +1,14 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import {
   coffee2LifeEvents,
   type Coffee2LifeEventId,
 } from '@/lib/content/coffee-manifesto'
+import {
+  scrollToSectionAnchor,
+  useSectionScrollSpy,
+} from '@/hooks/use-section-scroll-spy'
 import { cn } from '@/lib/utils'
 
 const NAV_GRID_ID = 'coffee-life-events-nav-grid'
@@ -14,10 +17,14 @@ const COFFEE_STICKY_NAV_TOP = {
   href: '#pillars',
   title: '一杯咖啡',
 } as const
+const EVENT_IDS = coffee2LifeEvents.map((event) => event.id)
 
 export function Coffee2LifeEventsStickyNav() {
   const [visible, setVisible] = useState(false)
-  const [activeId, setActiveId] = useState<Coffee2LifeEventId>('life-living')
+  const activeId = useSectionScrollSpy({
+    sectionIds: EVENT_IDS,
+    enabled: visible,
+  }) as Coffee2LifeEventId
 
   useEffect(() => {
     const grid = document.getElementById(NAV_GRID_ID)
@@ -36,49 +43,7 @@ export function Coffee2LifeEventsStickyNav() {
     )
 
     gridObserver.observe(grid)
-
-    const sectionRatios = new Map<Coffee2LifeEventId, number>()
-
-    const sectionObservers = coffee2LifeEvents.map((event) => {
-      const section = document.getElementById(event.id)
-      if (!section) return null
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            sectionRatios.set(event.id, entry.intersectionRatio)
-          } else {
-            sectionRatios.delete(event.id)
-          }
-
-          let nextActive: Coffee2LifeEventId | null = null
-          let highestRatio = 0
-
-          sectionRatios.forEach((ratio, id) => {
-            if (ratio >= highestRatio) {
-              highestRatio = ratio
-              nextActive = id
-            }
-          })
-
-          if (nextActive) {
-            setActiveId(nextActive)
-          }
-        },
-        {
-          rootMargin: '-32% 0px -52% 0px',
-          threshold: [0, 0.15, 0.35, 0.55, 0.75, 1],
-        }
-      )
-
-      observer.observe(section)
-      return observer
-    })
-
-    return () => {
-      gridObserver.disconnect()
-      sectionObservers.forEach((observer) => observer?.disconnect())
-    }
+    return () => gridObserver.disconnect()
   }, [])
 
   return (
@@ -93,14 +58,18 @@ export function Coffee2LifeEventsStickyNav() {
     >
       <div className="coffee2-life-events-sticky-nav__shell max-w-[calc(100vw-2rem)]">
         <div className="coffee2-life-events-sticky-nav__track">
-          <Link
+          <a
             href={COFFEE_STICKY_NAV_TOP.href}
             className="coffee2-life-events-sticky-nav__link coffee2-life-events-sticky-nav__link--top"
+            onClick={(event) => {
+              event.preventDefault()
+              scrollToSectionAnchor('pillars')
+            }}
           >
             <span className="coffee2-life-events-sticky-nav__title">
               {COFFEE_STICKY_NAV_TOP.title}
             </span>
-          </Link>
+          </a>
 
           <span
             className="coffee2-life-events-sticky-nav__divider"
@@ -111,7 +80,7 @@ export function Coffee2LifeEventsStickyNav() {
             const isActive = activeId === event.id
 
             return (
-              <Link
+              <a
                 key={event.id}
                 href={`#${event.id}`}
                 className={cn(
@@ -119,6 +88,10 @@ export function Coffee2LifeEventsStickyNav() {
                   isActive && 'coffee2-life-events-sticky-nav__link--active'
                 )}
                 aria-current={isActive ? 'location' : undefined}
+                onClick={(eventClick) => {
+                  eventClick.preventDefault()
+                  scrollToSectionAnchor(event.id)
+                }}
               >
                 <span className="coffee2-life-events-sticky-nav__number">
                   {event.number}
@@ -126,7 +99,7 @@ export function Coffee2LifeEventsStickyNav() {
                 <span className="coffee2-life-events-sticky-nav__title">
                   {event.title}
                 </span>
-              </Link>
+              </a>
             )
           })}
         </div>

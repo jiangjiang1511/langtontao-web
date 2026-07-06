@@ -2815,7 +2815,7 @@
 
   .langtontao-page .lt-superhero-program-hub__stage {
     padding: 1rem;
-    min-height: 0;
+    min-height: clamp(16rem, 42vh, 22rem);
   }
 
   .langtontao-page .lt-superhero-program-hub__stage-header {

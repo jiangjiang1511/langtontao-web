@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Coffee2AnnotatedParagraph,
   Coffee2AnnotatedText,
@@ -12,6 +14,7 @@ import {
   type Coffee2SectionCopyBlock,
 } from '@/lib/content/coffee-glossary'
 import { coffee2LifeEventJoinCtas } from '@/lib/content/coffee2-page'
+import { useSectionDomId } from '@/components/shared/deferred-mount-context'
 import { cn } from '@/lib/utils'
 
 type Coffee2LifeEventSectionProps = {
@@ -53,10 +56,11 @@ export function Coffee2LifeEventSection({
 }: Coffee2LifeEventSectionProps) {
   const joinCta = coffee2LifeEventJoinCtas[event.id]
   const { subtitle, body } = getSectionIntro(event)
+  const sectionId = useSectionDomId(event.id)
 
   return (
     <section
-      id={event.id}
+      id={sectionId}
       className={cn(
         'coffee2-life-event-section scroll-mt-28 border-t border-zinc-200 py-16 md:py-24',
         index % 2 === 1 ? 'bg-zinc-50/80' : 'bg-white'

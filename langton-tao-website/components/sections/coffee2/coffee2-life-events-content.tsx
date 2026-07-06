@@ -11,7 +11,7 @@ export function Coffee2LifeEventsContent() {
     if (!hash) return
 
     requestAnimationFrame(() => {
-      document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
+      document.getElementById(hash)?.scrollIntoView({ behavior: 'auto', block: 'start' })
     })
   }, [])
 

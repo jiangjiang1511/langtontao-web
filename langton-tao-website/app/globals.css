@@ -57,6 +57,12 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (max-width: 767px) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -509,6 +515,11 @@ body {
   width: 40%;
   background: linear-gradient(90deg, var(--jarsy-blue), var(--jarsy-violet), var(--jarsy-rose));
   animation: route-loading-progress 1.1s ease-in-out infinite;
+}
+
+.deferred-mount-placeholder,
+.deferred-mount-root {
+  overflow-anchor: none;
 }
 
 .deferred-mount-skeleton {

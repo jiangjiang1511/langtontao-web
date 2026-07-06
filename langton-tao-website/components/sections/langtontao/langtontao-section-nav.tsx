@@ -1,17 +1,22 @@
 'use client'
 
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { langtontaoSectionNav } from '@/lib/content/langtontao-page'
+import {
+  scrollToSectionAnchor,
+  useSectionScrollSpy,
+} from '@/hooks/use-section-scroll-spy'
 import { cn } from '@/lib/utils'
 
 const HERO_ANCHOR_ID = 'langtontao-hero'
+const SECTION_IDS = langtontaoSectionNav.map((item) => item.id)
 
 export function LangtontaoSectionNav() {
   const [visible, setVisible] = useState(false)
-  const [activeId, setActiveId] = useState<string>(
-    langtontaoSectionNav[0]?.id ?? 'home-roots'
-  )
+  const activeId = useSectionScrollSpy({
+    sectionIds: SECTION_IDS,
+    enabled: visible,
+  })
 
   useEffect(() => {
     const hero = document.getElementById(HERO_ANCHOR_ID)
@@ -30,49 +35,7 @@ export function LangtontaoSectionNav() {
     )
 
     heroObserver.observe(hero)
-
-    const sectionRatios = new Map<string, number>()
-
-    const sectionObservers = langtontaoSectionNav.map((item) => {
-      const section = document.getElementById(item.id)
-      if (!section) return null
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            sectionRatios.set(item.id, entry.intersectionRatio)
-          } else {
-            sectionRatios.delete(item.id)
-          }
-
-          let nextActive: string | null = null
-          let highestRatio = 0
-
-          sectionRatios.forEach((ratio, id) => {
-            if (ratio >= highestRatio) {
-              highestRatio = ratio
-              nextActive = id
-            }
-          })
-
-          if (nextActive) {
-            setActiveId(nextActive)
-          }
-        },
-        {
-          rootMargin: '-32% 0px -52% 0px',
-          threshold: [0, 0.15, 0.35, 0.55, 0.75, 1],
-        }
-      )
-
-      observer.observe(section)
-      return observer
-    })
-
-    return () => {
-      heroObserver.disconnect()
-      sectionObservers.forEach((observer) => observer?.disconnect())
-    }
+    return () => heroObserver.disconnect()
   }, [])
 
   return (
@@ -91,7 +54,7 @@ export function LangtontaoSectionNav() {
             const isActive = activeId === item.id
 
             return (
-              <Link
+              <a
                 key={item.id}
                 href={`#${item.id}`}
                 className={cn(
@@ -99,6 +62,10 @@ export function LangtontaoSectionNav() {
                   isActive && 'coffee2-life-events-sticky-nav__link--active'
                 )}
                 aria-current={isActive ? 'location' : undefined}
+                onClick={(event) => {
+                  event.preventDefault()
+                  scrollToSectionAnchor(item.id)
+                }}
               >
                 <span className="coffee2-life-events-sticky-nav__number">
                   {String(index + 1).padStart(2, '0')}
@@ -106,7 +73,7 @@ export function LangtontaoSectionNav() {
                 <span className="coffee2-life-events-sticky-nav__title">
                   {item.label}
                 </span>
-              </Link>
+              </a>
             )
           })}
         </div>

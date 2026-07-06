@@ -1,5 +1,8 @@
+'use client'
+
 import type { ReactNode } from 'react'
 import { Coffee2Reveal } from '@/components/sections/coffee2/coffee2-reveal'
+import { useSectionDomId } from '@/components/shared/deferred-mount-context'
 import type { LangtontaoMajorSectionMeta } from '@/lib/content/langtontao/langtontao-major-sections'
 import { cn } from '@/lib/utils'
 
@@ -14,9 +17,11 @@ export function LangtontaoMajorSectionShell({
   children,
   className,
 }: LangtontaoMajorSectionShellProps) {
+  const sectionId = useSectionDomId(meta.id)
+
   return (
     <section
-      id={meta.id}
+      id={sectionId}
       className={cn(
         'lt-major-section scroll-mt-28 border-b border-zinc-200 py-16 md:py-24',
         `lt-major-section--${meta.theme}`,
