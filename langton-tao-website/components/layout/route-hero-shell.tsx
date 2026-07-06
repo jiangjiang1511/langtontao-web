@@ -1,5 +1,3 @@
-import { LANGTONTAO_HERO_VIDEO_POSTER } from '@/lib/langtontao-hero-video-assets'
-
 export type RouteHeroShellVariant = 'home' | 'tao' | 'coffee' | 'member'
 
 type RouteHeroShellProps = {
@@ -26,16 +24,7 @@ export function RouteHeroShell({ variant }: RouteHeroShellProps) {
       <section className="route-hero-shell__section relative scroll-mt-20 overflow-hidden border-b border-zinc-200">
         <div className="route-hero-shell__content mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col px-4 pb-16 pt-28 sm:px-6 md:min-h-[calc(100svh-4.5rem)] md:pb-24 md:pt-32 lg:px-8">
           {variant === 'home' || variant === 'member' ? (
-            <div className="route-hero-shell__media mx-auto mb-8 aspect-square w-[min(100%,clamp(18rem,62vw,42rem))] overflow-hidden rounded-2xl bg-zinc-50">
-              {variant === 'member' || variant === 'home' ? (
-                <img
-                  src={LANGTONTAO_HERO_VIDEO_POSTER}
-                  alt=""
-                  className="h-full w-full object-cover"
-                  decoding="async"
-                />
-              ) : null}
-            </div>
+            <HeroSkeletonBar className="route-hero-shell__media mx-auto mb-8 aspect-square w-[min(100%,clamp(18rem,62vw,42rem))] rounded-2xl" />
           ) : null}
 
           {variant === 'coffee' ? (

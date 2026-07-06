@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   HERO_VIDEO_CACHE_VERSION,
-  LANGTONTAO_HERO_VIDEO_POSTER,
   LANGTONTAO_HERO_VIDEO_SRC,
 } from '@/lib/langtontao-hero-video-assets'
 
@@ -117,7 +116,6 @@ export function LangtontaoHeroVideoBackground() {
         ref={videoRef}
         className="langtontao-hero__video"
         src={LANGTONTAO_HERO_VIDEO_SRC}
-        poster={LANGTONTAO_HERO_VIDEO_POSTER}
         autoPlay
         muted
         loop
