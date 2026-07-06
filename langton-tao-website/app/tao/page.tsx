@@ -2,6 +2,7 @@ import { TopicCardHashScrollHost } from '@/hooks/use-topic-card-hash-scroll'
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import { CoffeeCompoundGrowthHost } from '@/components/sections/coffee2/coffee-compound-growth-host'
+import { HomeJarsyDeferredStages } from '@/components/sections/home-jarsy/home-jarsy-deferred-stages'
 import { HomeJarsyHero } from '@/components/sections/home-jarsy/home-jarsy-hero'
 import { HomeJarsyStageNav } from '@/components/sections/home-jarsy/home-jarsy-stage-nav'
 import { DeferredMount } from '@/components/shared/deferred-mount'
@@ -31,14 +32,6 @@ const HomeJarsyTaoFrameworkSection = dynamic(
   { loading: () => <SectionLoadingFallback label="加载 TAO 框架…" /> }
 )
 
-const HomeJarsyDeferredStages = dynamic(
-  () =>
-    import('@/components/sections/home-jarsy/home-jarsy-deferred-stages').then(
-      (module) => ({ default: module.HomeJarsyDeferredStages })
-    ),
-  { loading: () => <SectionLoadingFallback label="加载百年路径…" /> }
-)
-
 const JarsyJoinBand = dynamic(
   () =>
     import('@/components/jarsy/jarsy-join-band').then((module) => ({
@@ -65,7 +58,7 @@ export default function TaoPage() {
         <DeferredMount
           anchorId="tao-framework"
           minHeight={sectionMinHeight('tao-framework')}
-          mountStrategy="immediate"
+          mountStrategy="lazy"
         >
           <HomeJarsyTaoFrameworkSection />
         </DeferredMount>

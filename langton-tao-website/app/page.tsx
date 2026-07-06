@@ -66,12 +66,20 @@ export default function HomePage() {
       <TopicCardHashScrollHost />
       <LangtontaoSectionNav />
       <LangtontaoHeroSection />
-      <LangtontaoPillarsSection />
+
+      <DeferredMount
+        anchorId="pillars"
+        minHeight={sectionMinHeight('pillars')}
+        mountStrategy="lazy"
+      >
+        <LangtontaoPillarsSection />
+      </DeferredMount>
 
       <DeferredMount
         anchorId="home-roots"
         minHeight={sectionMinHeight('home-roots')}
-        mountStrategy="immediate"
+        mountStrategy="idle"
+        idleStaggerIndex={0}
       >
         <LangtontaoHomeRootsSection />
       </DeferredMount>
@@ -80,7 +88,7 @@ export default function HomePage() {
         anchorId="superhero"
         minHeight={sectionMinHeight('superhero')}
         mountStrategy="idle"
-        idleStaggerIndex={0}
+        idleStaggerIndex={1}
       >
         <LangtontaoSuperheroSection />
       </DeferredMount>
@@ -89,7 +97,7 @@ export default function HomePage() {
         anchorId="wealth-checkup"
         minHeight={sectionMinHeight('wealth-checkup')}
         mountStrategy="idle"
-        idleStaggerIndex={1}
+        idleStaggerIndex={2}
       >
         <LangtontaoCheckupMajorSection />
       </DeferredMount>
@@ -102,13 +110,18 @@ export default function HomePage() {
         <LangtontaoYitishuangkuaSection />
       </DeferredMount>
 
-      <JarsyJoinBand
-        id="langtontao-join-band"
-        statement={langtontaoJoinBand.statement}
-        tagline={langtontaoJoinBand.tagline}
-        ctaLabel={langtontaoJoinBand.ctaLabel}
-        ctaHref={langtontaoJoinBand.ctaHref}
-      />
+      <DeferredMount
+        minHeight={sectionMinHeight('langtontao-join-band')}
+        mountStrategy="lazy"
+      >
+        <JarsyJoinBand
+          id="langtontao-join-band"
+          statement={langtontaoJoinBand.statement}
+          tagline={langtontaoJoinBand.tagline}
+          ctaLabel={langtontaoJoinBand.ctaLabel}
+          ctaHref={langtontaoJoinBand.ctaHref}
+        />
+      </DeferredMount>
     </div>
   )
 }

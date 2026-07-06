@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { JarsyReveal } from '@/components/jarsy/jarsy-reveal'
 import { Coffee2AnnotatedText } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import { Coffee2TypewriterReveal } from '@/components/sections/coffee2/coffee2-typewriter-reveal'
-import { HomeJarsyHeroFormulaOrbit } from '@/components/sections/home-jarsy/home-jarsy-hero-formula-orbit'
+import { HomeJarsyHeroFormulaOrbitLazy } from '@/components/sections/home-jarsy/home-jarsy-hero-formula-orbit-lazy'
 import { FORMULA_ARIA_LABEL } from '@/lib/content/home-jarsy-hero-formula'
 import { homeJarsyHero } from '@/lib/content/home-jarsy-page'
 
@@ -26,7 +26,7 @@ export function HomeJarsyHero() {
       aria-labelledby="home-jarsy-hero-title"
       aria-label={FORMULA_ARIA_LABEL}
     >
-      <HomeJarsyHeroFormulaOrbit />
+      <HomeJarsyHeroFormulaOrbitLazy />
 
       <div className="home-jarsy-hero__content mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl flex-col px-4 pb-16 pt-28 text-center sm:px-6 md:min-h-[calc(100svh-4.5rem)] md:pb-24 md:pt-32 lg:px-8">
         <div className="home-jarsy-hero__top">

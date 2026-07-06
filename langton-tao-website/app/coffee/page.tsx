@@ -94,7 +94,8 @@ export default function CoffeePage() {
       <DeferredMount
         anchorId="coffee-life-events-content"
         minHeight={sectionMinHeight('coffee-life-events-content')}
-        mountStrategy="immediate"
+        mountStrategy="idle"
+        idleStaggerIndex={0}
       >
         <Coffee2LifeEventsContent />
       </DeferredMount>

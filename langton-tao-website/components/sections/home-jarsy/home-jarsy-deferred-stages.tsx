@@ -2,10 +2,7 @@
 
 import { Fragment } from 'react'
 import dynamic from 'next/dynamic'
-import {
-  DeferredMount,
-  type MountStrategy,
-} from '@/components/shared/deferred-mount'
+import { DeferredMount } from '@/components/shared/deferred-mount'
 import { SectionLoadingFallback } from '@/components/shared/section-loading-fallback'
 import {
   fiftyYearPageTitle,
@@ -29,46 +26,28 @@ const HomeJarsyCenturyBridgeSection = dynamic(
   { loading: () => <SectionLoadingFallback label="加载世纪之桥…" /> }
 )
 
-function getStageMountConfig(index: number): {
-  mountStrategy: MountStrategy
-  idleStaggerIndex?: number
-} {
-  if (index === 0) return { mountStrategy: 'immediate' }
-  if (index === 1) return { mountStrategy: 'idle', idleStaggerIndex: 0 }
-  if (index >= 2 && index <= 5) {
-    return { mountStrategy: 'idle', idleStaggerIndex: index }
-  }
-  return { mountStrategy: 'lazy' }
-}
-
 export function HomeJarsyDeferredStages() {
   return (
     <div aria-label={fiftyYearPageTitle}>
-      {fiftyYearStages.map((stage, index) => {
-        const mountConfig = getStageMountConfig(index)
-
-        return (
-          <Fragment key={stage.id}>
+      {fiftyYearStages.map((stage, index) => (
+        <Fragment key={stage.id}>
+          <DeferredMount
+            anchorId={stage.id}
+            minHeight={sectionMinHeight(stage.id)}
+            mountStrategy="lazy"
+          >
+            <HomeJarsyStagePanel stage={stage} index={index} />
+          </DeferredMount>
+          {stage.id === 'day-2' ? (
             <DeferredMount
-              anchorId={stage.id}
-              minHeight={sectionMinHeight(stage.id)}
-              mountStrategy={mountConfig.mountStrategy}
-              idleStaggerIndex={mountConfig.idleStaggerIndex}
+              minHeight={sectionMinHeight('century-bridge')}
+              mountStrategy="lazy"
             >
-              <HomeJarsyStagePanel stage={stage} index={index} />
+              <HomeJarsyCenturyBridgeSection />
             </DeferredMount>
-            {stage.id === 'day-2' ? (
-              <DeferredMount
-                minHeight={sectionMinHeight('century-bridge')}
-                mountStrategy="idle"
-                idleStaggerIndex={1}
-              >
-                <HomeJarsyCenturyBridgeSection />
-              </DeferredMount>
-            ) : null}
-          </Fragment>
-        )
-      })}
+          ) : null}
+        </Fragment>
+      ))}
     </div>
   )
 }

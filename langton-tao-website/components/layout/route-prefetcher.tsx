@@ -2,7 +2,8 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-import { warmAdjacentRouteChunks } from '@/lib/route-chunk-prefetch'
+import { onCurrentHeroReady } from '@/lib/hero-ready'
+import { warmOtherRouteHeroChunks } from '@/lib/route-chunk-prefetch'
 
 const PREFETCH_ROUTES = ['/tao', '/coffee', '/member', '/faq'] as const
 
@@ -24,10 +25,7 @@ export function RoutePrefetcher() {
     }
 
     const start = () => {
-      if (!cancelled) {
-        prefetchNext()
-        warmAdjacentRouteChunks(pathname)
-      }
+      if (!cancelled) prefetchNext()
     }
 
     const schedule =
@@ -42,9 +40,14 @@ export function RoutePrefetcher() {
           }
 
     const cancelSchedule = schedule(start)
+    const cancelHeroReady = onCurrentHeroReady(() => {
+      if (!cancelled) warmOtherRouteHeroChunks(pathname)
+    })
+
     return () => {
       cancelled = true
       cancelSchedule()
+      cancelHeroReady()
     }
   }, [pathname, router])
 

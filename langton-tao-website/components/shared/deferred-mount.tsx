@@ -13,6 +13,7 @@ import {
   type DeferredMountReadyDetail,
 } from '@/components/shared/deferred-mount-context'
 import { useInViewTrigger } from '@/hooks/use-in-view-trigger'
+import { HERO_GATE_MS } from '@/lib/hero-ready'
 import { cn } from '@/lib/utils'
 
 const MOBILE_MEDIA = '(max-width: 767px)'
@@ -166,16 +167,18 @@ function DeferredLazyMount({
     if (mounted || strategy !== 'idle') return
 
     let cancelled = false
-    let timeoutId: number | undefined
+    let gateTimeoutId: number | undefined
+    let staggerTimeoutId: number | undefined
+    let cancelIdle: (() => void) | undefined
 
-    const mountAfterDelay = () => {
+    const mountAfterGate = () => {
       if (cancelled) return
-      timeoutId = window.setTimeout(() => {
+      staggerTimeoutId = window.setTimeout(() => {
         if (!cancelled) triggerMount()
       }, idleStaggerIndex * IDLE_STAGGER_MS)
     }
 
-    const cancelSchedule =
+    const scheduleIdle =
       typeof window !== 'undefined' && 'requestIdleCallback' in window
         ? (callback: () => void) => {
             const idleId = window.requestIdleCallback(callback, {
@@ -188,12 +191,16 @@ function DeferredLazyMount({
             return () => window.clearTimeout(fallbackId)
           }
 
-    const cancelIdle = cancelSchedule(mountAfterDelay)
+    gateTimeoutId = window.setTimeout(() => {
+      if (cancelled) return
+      cancelIdle = scheduleIdle(mountAfterGate)
+    }, HERO_GATE_MS)
 
     return () => {
       cancelled = true
-      cancelIdle()
-      if (timeoutId !== undefined) window.clearTimeout(timeoutId)
+      if (gateTimeoutId !== undefined) window.clearTimeout(gateTimeoutId)
+      if (staggerTimeoutId !== undefined) window.clearTimeout(staggerTimeoutId)
+      cancelIdle?.()
     }
   }, [mounted, strategy, idleStaggerIndex])
 

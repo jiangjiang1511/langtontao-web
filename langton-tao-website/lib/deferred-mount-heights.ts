@@ -1,6 +1,7 @@
 /** Calibrated placeholder min-heights to reduce layout shift on lazy mount (@375px). */
 export const SECTION_MIN_HEIGHTS = {
   'home-roots': 'min(100vh, 3200px)',
+  pillars: 'min(50vh, 900px)',
   superhero: 'min(120vh, 4200px)',
   'wealth-checkup': 'min(110vh, 4000px)',
   yitishuangkua: 'min(80vh, 2400px)',
@@ -31,6 +32,7 @@ export const SECTION_MIN_HEIGHTS = {
   'plan-compare': 'min(75vh, 2400px)',
   'tier-board': 'min(60vh, 2000px)',
   'jarsy-join-band': '20vh',
+  'langtontao-join-band': '20vh',
 } as const
 
 export type SectionMinHeightKey = keyof typeof SECTION_MIN_HEIGHTS

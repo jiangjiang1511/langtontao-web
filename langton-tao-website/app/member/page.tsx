@@ -69,7 +69,8 @@ export default function MemberPage() {
       <DeferredMount
         anchorId="commission-overview"
         minHeight={sectionMinHeight('commission-overview')}
-        mountStrategy="immediate"
+        mountStrategy="idle"
+        idleStaggerIndex={0}
       >
         <MembershipCommissionSection />
       </DeferredMount>

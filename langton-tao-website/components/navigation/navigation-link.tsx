@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { ComponentProps } from 'react'
 import { useNavigationPendingOptional } from '@/components/navigation/navigation-pending-context'
-import { warmRouteChunks } from '@/lib/route-chunk-prefetch'
 import { cn } from '@/lib/utils'
 
 type NavigationLinkProps = ComponentProps<typeof Link>
@@ -42,7 +41,6 @@ export function NavigationLink({
           const [path] = hrefString.split('#')
           if (path) {
             router.prefetch(path)
-            warmRouteChunks(path)
           }
         }
         onTouchStart?.(event)
