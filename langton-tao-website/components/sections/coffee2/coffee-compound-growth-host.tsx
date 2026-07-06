@@ -1,11 +1,12 @@
 'use client'
 
-import { Suspense, useEffect, type ReactNode } from 'react'
+import { Suspense, useEffect, useState, type ReactNode } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import {
   CompoundGrowthProvider,
   useCompoundGrowthOptional,
 } from '@/components/sections/coffee2/compound-growth-provider'
+import { fetchAllCompoundGrowthSeries } from '@/lib/compound-growth/load-series.client'
 import type {
   CompoundGrowthIndexEntry,
   CompoundGrowthSeries,
@@ -13,8 +14,9 @@ import type {
 
 type CoffeeCompoundGrowthHostProps = {
   stocks: CompoundGrowthIndexEntry[]
-  allSeries: CompoundGrowthSeries[]
+  allSeries?: CompoundGrowthSeries[]
   disclaimer: string
+  deferSeriesLoad?: boolean
   children: ReactNode
 }
 
@@ -47,10 +49,46 @@ function CompoundGrowthDeepLinkSync() {
 
 export function CoffeeCompoundGrowthHost({
   stocks,
-  allSeries,
+  allSeries: initialAllSeries = [],
   disclaimer,
+  deferSeriesLoad = false,
   children,
 }: CoffeeCompoundGrowthHostProps) {
+  const [allSeries, setAllSeries] = useState(initialAllSeries)
+
+  useEffect(() => {
+    if (!deferSeriesLoad || stocks.length === 0 || allSeries.length > 0) return
+
+    let cancelled = false
+
+    const loadSeries = () => {
+      void fetchAllCompoundGrowthSeries(stocks)
+        .then((series) => {
+          if (!cancelled) setAllSeries(series)
+        })
+        .catch(() => {
+          // Provider still renders; compound panels show their existing fallback copy.
+        })
+    }
+
+    const cancelSchedule =
+      typeof window !== 'undefined' && 'requestIdleCallback' in window
+        ? (callback: () => void) => {
+            const idleId = window.requestIdleCallback(callback, { timeout: 2000 })
+            return () => window.cancelIdleCallback(idleId)
+          }
+        : (callback: () => void) => {
+            const timeoutId = window.setTimeout(callback, 1500)
+            return () => window.clearTimeout(timeoutId)
+          }
+
+    const cancelIdle = cancelSchedule(loadSeries)
+    return () => {
+      cancelled = true
+      cancelIdle()
+    }
+  }, [allSeries.length, deferSeriesLoad, stocks])
+
   if (stocks.length === 0) {
     return <>{children}</>
   }

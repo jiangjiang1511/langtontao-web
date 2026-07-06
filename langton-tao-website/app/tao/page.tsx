@@ -12,9 +12,9 @@ import {
 } from '@/lib/content/home-jarsy-page'
 import {
   compoundGrowthIndexExists,
-  readAllCompoundGrowthSeries,
   readCompoundGrowthIndex,
 } from '@/lib/compound-growth/load-series.server'
+import { sectionMinHeight } from '@/lib/deferred-mount-heights'
 import '@/app/home.css'
 import '@/app/coffee/compound-growth.css'
 
@@ -51,21 +51,22 @@ export default function TaoPage() {
   const compoundIndex = compoundGrowthIndexExists()
     ? readCompoundGrowthIndex()
     : null
-  const allSeries = compoundIndex
-    ? readAllCompoundGrowthSeries(compoundIndex.stocks)
-    : []
 
   return (
     <CoffeeCompoundGrowthHost
       stocks={compoundIndex?.stocks ?? []}
-      allSeries={allSeries}
       disclaimer={compoundIndex?.disclaimer ?? ''}
+      deferSeriesLoad
     >
       <div className="home-jarsy-page jarsy-v2-page">
         <TopicCardHashScrollHost />
         <HomeJarsyHero />
 
-        <DeferredMount anchorId="tao-framework" minHeight="50vh">
+        <DeferredMount
+          anchorId="tao-framework"
+          minHeight={sectionMinHeight('tao-framework')}
+          mountStrategy="immediate"
+        >
           <HomeJarsyTaoFrameworkSection />
         </DeferredMount>
 
@@ -73,7 +74,7 @@ export default function TaoPage() {
 
         <HomeJarsyDeferredStages />
 
-        <DeferredMount minHeight="20vh">
+        <DeferredMount minHeight={sectionMinHeight('jarsy-join-band')} mountStrategy="lazy">
           <JarsyJoinBand
             id="home-jarsy-join-band-title"
             statement={homeJarsyJoinBand.statement}

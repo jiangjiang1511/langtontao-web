@@ -6,6 +6,7 @@ import { LangtontaoHeroSection } from '@/components/sections/langtontao/langtont
 import { LangtontaoSectionNav } from '@/components/sections/langtontao/langtontao-section-nav'
 import { DeferredMount } from '@/components/shared/deferred-mount'
 import { SectionLoadingFallback } from '@/components/shared/section-loading-fallback'
+import { sectionMinHeight } from '@/lib/deferred-mount-heights'
 import {
   langtontaoJoinBand,
   langtontaoPageMeta,
@@ -67,19 +68,37 @@ export default function HomePage() {
       <LangtontaoHeroSection />
       <LangtontaoPillarsSection />
 
-      <DeferredMount anchorId="home-roots" minHeight="55vh">
+      <DeferredMount
+        anchorId="home-roots"
+        minHeight={sectionMinHeight('home-roots')}
+        mountStrategy="immediate"
+      >
         <LangtontaoHomeRootsSection />
       </DeferredMount>
 
-      <DeferredMount anchorId="superhero" minHeight="55vh">
+      <DeferredMount
+        anchorId="superhero"
+        minHeight={sectionMinHeight('superhero')}
+        mountStrategy="idle"
+        idleStaggerIndex={0}
+      >
         <LangtontaoSuperheroSection />
       </DeferredMount>
 
-      <DeferredMount anchorId="wealth-checkup" minHeight="50vh">
+      <DeferredMount
+        anchorId="wealth-checkup"
+        minHeight={sectionMinHeight('wealth-checkup')}
+        mountStrategy="idle"
+        idleStaggerIndex={1}
+      >
         <LangtontaoCheckupMajorSection />
       </DeferredMount>
 
-      <DeferredMount anchorId="yitishuangkua" minHeight="45vh">
+      <DeferredMount
+        anchorId="yitishuangkua"
+        minHeight={sectionMinHeight('yitishuangkua')}
+        mountStrategy="lazy"
+      >
         <LangtontaoYitishuangkuaSection />
       </DeferredMount>
 

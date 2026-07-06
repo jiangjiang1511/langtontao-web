@@ -1,12 +1,14 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
+import { warmAdjacentRouteChunks } from '@/lib/route-chunk-prefetch'
 
 const PREFETCH_ROUTES = ['/tao', '/coffee', '/member', '/faq'] as const
 
 export function RoutePrefetcher() {
   const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     let cancelled = false
@@ -22,7 +24,10 @@ export function RoutePrefetcher() {
     }
 
     const start = () => {
-      if (!cancelled) prefetchNext()
+      if (!cancelled) {
+        prefetchNext()
+        warmAdjacentRouteChunks(pathname)
+      }
     }
 
     const schedule =
@@ -41,7 +46,7 @@ export function RoutePrefetcher() {
       cancelled = true
       cancelSchedule()
     }
-  }, [router])
+  }, [pathname, router])
 
   return null
 }

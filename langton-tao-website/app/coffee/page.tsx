@@ -6,6 +6,7 @@ import { Coffee2LifeEventsStickyNav } from '@/components/sections/coffee2/coffee
 import { Coffee2LifeEventsNavSection } from '@/components/sections/coffee2/coffee2-life-events-nav-section'
 import { DeferredMount } from '@/components/shared/deferred-mount'
 import { SectionLoadingFallback } from '@/components/shared/section-loading-fallback'
+import { sectionMinHeight } from '@/lib/deferred-mount-heights'
 import './coffee.css'
 import './coffee-interactive.css'
 import './debt-section.css'
@@ -90,31 +91,35 @@ export default function CoffeePage() {
       <Coffee2HeroSection />
       <Coffee2LifeEventsNavSection />
 
-      <DeferredMount anchorId="coffee-life-events-content" minHeight="55vh">
+      <DeferredMount
+        anchorId="coffee-life-events-content"
+        minHeight={sectionMinHeight('coffee-life-events-content')}
+        mountStrategy="immediate"
+      >
         <Coffee2LifeEventsContent />
       </DeferredMount>
 
-      <DeferredMount minHeight="20vh">
+      <DeferredMount minHeight={sectionMinHeight('coffee-join-band')} mountStrategy="lazy">
         <Coffee2JoinBand />
       </DeferredMount>
 
-      <DeferredMount minHeight="35vh">
+      <DeferredMount minHeight={sectionMinHeight('coffee-pillars')} mountStrategy="lazy">
         <Coffee2PillarsSection />
       </DeferredMount>
 
-      <DeferredMount minHeight="35vh">
+      <DeferredMount minHeight={sectionMinHeight('coffee-manifesto')} mountStrategy="lazy">
         <Coffee2ManifestoGallerySection />
       </DeferredMount>
 
-      <DeferredMount minHeight="30vh">
+      <DeferredMount minHeight={sectionMinHeight('coffee-reading')} mountStrategy="lazy">
         <Education2ReadingSection />
       </DeferredMount>
 
-      <DeferredMount minHeight="35vh">
+      <DeferredMount minHeight={sectionMinHeight('coffee-events')} mountStrategy="lazy">
         <Community2EventsHub />
       </DeferredMount>
 
-      <DeferredMount minHeight="25vh">
+      <DeferredMount minHeight={sectionMinHeight('coffee-collaboration')} mountStrategy="lazy">
         <Coffee2CollaborationSection />
       </DeferredMount>
     </div>

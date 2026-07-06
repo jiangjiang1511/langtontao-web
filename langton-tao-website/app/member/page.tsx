@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import { DeferredMount } from '@/components/shared/deferred-mount'
 import { SectionLoadingFallback } from '@/components/shared/section-loading-fallback'
+import { sectionMinHeight } from '@/lib/deferred-mount-heights'
 import { MembershipPricingOverview } from '@/components/sections/membership-v2/membership-pricing-overview'
 import { MembershipV2HeroSection } from '@/components/sections/membership-v2/membership-v2-hero-section'
 import { membershipV2Hero } from '@/lib/content/membership-v2'
@@ -65,11 +66,20 @@ export default function MemberPage() {
         </div>
       </section>
 
-      <DeferredMount anchorId="commission-overview" minHeight="50vh">
+      <DeferredMount
+        anchorId="commission-overview"
+        minHeight={sectionMinHeight('commission-overview')}
+        mountStrategy="immediate"
+      >
         <MembershipCommissionSection />
       </DeferredMount>
 
-      <DeferredMount anchorId="tier-benefits" minHeight="55vh">
+      <DeferredMount
+        anchorId="tier-benefits"
+        minHeight={sectionMinHeight('tier-benefits')}
+        mountStrategy="idle"
+        idleStaggerIndex={0}
+      >
         <section
           className="member-section member-section--benefits border-b border-zinc-200 bg-zinc-50 py-12 md:py-16"
           aria-labelledby="tier-benefits-heading"
@@ -83,7 +93,11 @@ export default function MemberPage() {
         </section>
       </DeferredMount>
 
-      <DeferredMount anchorId="plan-compare" minHeight="50vh">
+      <DeferredMount
+        anchorId="plan-compare"
+        minHeight={sectionMinHeight('plan-compare')}
+        mountStrategy="lazy"
+      >
         <section
           className="member-section member-section--compare border-b border-zinc-200 py-16 md:py-24"
           aria-labelledby="plan-compare"
@@ -102,7 +116,11 @@ export default function MemberPage() {
         </div>
       </section>
 
-      <DeferredMount anchorId="tier-board" minHeight="40vh">
+      <DeferredMount
+        anchorId="tier-board"
+        minHeight={sectionMinHeight('tier-board')}
+        mountStrategy="lazy"
+      >
         <MembershipBoardSection />
       </DeferredMount>
     </div>
