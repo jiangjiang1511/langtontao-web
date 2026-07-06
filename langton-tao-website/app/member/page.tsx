@@ -54,17 +54,24 @@ export default function MemberPage() {
     <div className="jarsy-v2-page coffee2-page member-page bg-white text-zinc-950">
       <MembershipV2HeroSection />
 
-      <section
-        className="member-section member-section--pricing border-b border-zinc-200 py-16 md:py-24"
-        aria-labelledby="tier-overview-heading"
+      <DeferredMount
+        anchorId="member-pricing"
+        minHeight={sectionMinHeight('member-pricing')}
+        mountStrategy="idle"
+        idleStaggerIndex={0}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="sr-only" id="tier-overview-heading">
-            会员档位总览
-          </p>
-          <MembershipPricingOverview />
-        </div>
-      </section>
+        <section
+          className="member-section member-section--pricing border-b border-zinc-200 py-16 md:py-24"
+          aria-labelledby="tier-overview-heading"
+        >
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <p className="sr-only" id="tier-overview-heading">
+              会员档位总览
+            </p>
+            <MembershipPricingOverview />
+          </div>
+        </section>
+      </DeferredMount>
 
       <DeferredMount
         anchorId="commission-overview"

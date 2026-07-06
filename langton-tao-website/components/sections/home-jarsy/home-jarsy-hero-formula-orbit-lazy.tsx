@@ -2,7 +2,8 @@
 
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
-import { onCurrentHeroReady } from '@/lib/hero-ready'
+import { HomeJarsyHeroFormulaOrbitPlaceholder } from '@/components/sections/home-jarsy/home-jarsy-hero-formula-orbit-placeholder'
+import { onHeroDecorReady } from '@/lib/hero-ready'
 
 const HomeJarsyHeroFormulaOrbit = dynamic(
   () =>
@@ -18,7 +19,7 @@ export function HomeJarsyHeroFormulaOrbitLazy() {
   useEffect(() => {
     let cancelled = false
 
-    const cancelReady = onCurrentHeroReady(() => {
+    const cancelReady = onHeroDecorReady(() => {
       if (!cancelled) setShowOrbit(true)
     })
 
@@ -28,7 +29,7 @@ export function HomeJarsyHeroFormulaOrbitLazy() {
     }
   }, [])
 
-  if (!showOrbit) return null
+  if (!showOrbit) return <HomeJarsyHeroFormulaOrbitPlaceholder />
 
   return <HomeJarsyHeroFormulaOrbit />
 }

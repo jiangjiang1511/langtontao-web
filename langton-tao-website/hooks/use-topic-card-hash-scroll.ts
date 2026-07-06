@@ -16,7 +16,7 @@ function scrollToTopicCard(topicId: string): boolean {
   const element = document.getElementById(topicCardHash(topicId))
   if (!element) return false
 
-  element.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  element.scrollIntoView({ behavior: 'auto', block: 'center' })
   highlightTopicCard(element)
   return true
 }

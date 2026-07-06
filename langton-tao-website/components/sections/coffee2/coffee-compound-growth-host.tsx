@@ -6,16 +6,19 @@ import {
   CompoundGrowthProvider,
   useCompoundGrowthOptional,
 } from '@/components/sections/coffee2/compound-growth-provider'
-import { fetchAllCompoundGrowthSeries } from '@/lib/compound-growth/load-series.client'
+import {
+  fetchAllCompoundGrowthSeries,
+  fetchCompoundGrowthIndex,
+} from '@/lib/compound-growth/load-series.client'
 import type {
   CompoundGrowthIndexEntry,
   CompoundGrowthSeries,
 } from '@/lib/compound-growth/types'
 
 type CoffeeCompoundGrowthHostProps = {
-  stocks: CompoundGrowthIndexEntry[]
+  stocks?: CompoundGrowthIndexEntry[]
   allSeries?: CompoundGrowthSeries[]
-  disclaimer: string
+  disclaimer?: string
   deferSeriesLoad?: boolean
   children: ReactNode
 }
@@ -48,13 +51,57 @@ function CompoundGrowthDeepLinkSync() {
 }
 
 export function CoffeeCompoundGrowthHost({
-  stocks,
+  stocks: initialStocks = [],
   allSeries: initialAllSeries = [],
-  disclaimer,
+  disclaimer: initialDisclaimer = '',
   deferSeriesLoad = false,
   children,
 }: CoffeeCompoundGrowthHostProps) {
+  const [stocks, setStocks] = useState(initialStocks)
+  const [disclaimer, setDisclaimer] = useState(initialDisclaimer)
   const [allSeries, setAllSeries] = useState(initialAllSeries)
+
+  useEffect(() => {
+    if (initialStocks.length > 0) {
+      setStocks(initialStocks)
+      setDisclaimer(initialDisclaimer)
+      return
+    }
+
+    if (!deferSeriesLoad) return
+
+    let cancelled = false
+
+    const loadIndex = () => {
+      void fetchCompoundGrowthIndex()
+        .then((index) => {
+          if (!cancelled) {
+            setStocks(index.stocks)
+            setDisclaimer(index.disclaimer)
+          }
+        })
+        .catch(() => {
+          // Provider still renders; compound panels show their existing fallback copy.
+        })
+    }
+
+    const cancelSchedule =
+      typeof window !== 'undefined' && 'requestIdleCallback' in window
+        ? (callback: () => void) => {
+            const idleId = window.requestIdleCallback(callback, { timeout: 2000 })
+            return () => window.cancelIdleCallback(idleId)
+          }
+        : (callback: () => void) => {
+            const timeoutId = window.setTimeout(callback, 1500)
+            return () => window.clearTimeout(timeoutId)
+          }
+
+    const cancelIdle = cancelSchedule(loadIndex)
+    return () => {
+      cancelled = true
+      cancelIdle()
+    }
+  }, [deferSeriesLoad, initialDisclaimer, initialStocks])
 
   useEffect(() => {
     if (!deferSeriesLoad || stocks.length === 0 || allSeries.length > 0) return

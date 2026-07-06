@@ -5,7 +5,6 @@ import { taoFiftyYearTimelineMeta } from '@/lib/content/tao-fifty-year-timeline'
 export function HomeJarsyTaoFrameworkSection() {
   return (
     <section
-      id="tao-framework"
       className="tao-framework scroll-mt-28 border-b border-zinc-200 bg-white py-16 md:py-24"
       aria-labelledby="tao-framework-title"
     >

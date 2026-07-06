@@ -81,7 +81,7 @@ function BenefitRow({ benefit }: { benefit: MembershipBenefitBar }) {
 
 export function MembershipBenefitBars() {
   return (
-    <div id="tier-benefits" className="scroll-mt-28">
+    <div className="scroll-mt-28">
       <Coffee2Reveal>
         <div className="mb-5 md:mb-6">
           <h2 className="c2-display text-2xl text-zinc-950 md:text-3xl">

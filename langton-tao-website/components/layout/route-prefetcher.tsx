@@ -2,10 +2,12 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-import { onCurrentHeroReady } from '@/lib/hero-ready'
+import { onPrefetchHeroReady } from '@/lib/hero-ready'
 import { warmOtherRouteHeroChunks } from '@/lib/route-chunk-prefetch'
 
-const PREFETCH_ROUTES = ['/tao', '/coffee', '/member', '/faq'] as const
+const PREFETCH_ROUTES = ['/', '/tao', '/coffee', '/member', '/faq'] as const
+const PREFETCH_START_MS = 300
+const PREFETCH_STAGGER_MS = 80
 
 export function RoutePrefetcher() {
   const router = useRouter()
@@ -14,39 +16,30 @@ export function RoutePrefetcher() {
   useEffect(() => {
     let cancelled = false
     let index = 0
+    let startTimeoutId: number | undefined
+    let staggerTimeoutId: number | undefined
 
     const prefetchNext = () => {
       if (cancelled || index >= PREFETCH_ROUTES.length) return
       router.prefetch(PREFETCH_ROUTES[index])
       index += 1
       if (index < PREFETCH_ROUTES.length) {
-        window.setTimeout(prefetchNext, 80)
+        staggerTimeoutId = window.setTimeout(prefetchNext, PREFETCH_STAGGER_MS)
       }
     }
 
-    const start = () => {
+    startTimeoutId = window.setTimeout(() => {
       if (!cancelled) prefetchNext()
-    }
+    }, PREFETCH_START_MS)
 
-    const schedule =
-      typeof window !== 'undefined' && 'requestIdleCallback' in window
-        ? (callback: () => void) => {
-            const idleId = window.requestIdleCallback(callback, { timeout: 2500 })
-            return () => window.cancelIdleCallback(idleId)
-          }
-        : (callback: () => void) => {
-            const timeoutId = window.setTimeout(callback, 1200)
-            return () => window.clearTimeout(timeoutId)
-          }
-
-    const cancelSchedule = schedule(start)
-    const cancelHeroReady = onCurrentHeroReady(() => {
+    const cancelHeroReady = onPrefetchHeroReady(() => {
       if (!cancelled) warmOtherRouteHeroChunks(pathname)
     })
 
     return () => {
       cancelled = true
-      cancelSchedule()
+      if (startTimeoutId !== undefined) window.clearTimeout(startTimeoutId)
+      if (staggerTimeoutId !== undefined) window.clearTimeout(staggerTimeoutId)
       cancelHeroReady()
     }
   }, [pathname, router])

@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { JarsyReveal } from '@/components/jarsy/jarsy-reveal'
+import { PrefetchLink } from '@/components/navigation/prefetch-link'
 
 type JarsyJoinBandProps = {
   id?: string
@@ -33,9 +33,9 @@ export function JarsyJoinBand({
           </p>
         </JarsyReveal>
         <JarsyReveal delay={180} className="c2-reveal-fade">
-          <Link href={ctaHref} className="c2-btn-cta-emphasis mt-10">
+          <PrefetchLink href={ctaHref} className="c2-btn-cta-emphasis mt-10">
             {ctaLabel}
-          </Link>
+          </PrefetchLink>
         </JarsyReveal>
       </div>
     </section>

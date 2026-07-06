@@ -68,7 +68,7 @@ export default function HomePage() {
       <LangtontaoHeroSection />
 
       <DeferredMount
-        anchorId="pillars"
+        anchorId="langtontao-pillars"
         minHeight={sectionMinHeight('pillars')}
         mountStrategy="lazy"
       >

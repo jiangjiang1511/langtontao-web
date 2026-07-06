@@ -5,6 +5,14 @@ import { Coffee2LifeEventSection } from '@/components/sections/coffee2/coffee2-l
 import { DeferredMount } from '@/components/shared/deferred-mount'
 import { coffee2LifeEvents } from '@/lib/content/coffee-manifesto'
 import { sectionMinHeight } from '@/lib/deferred-mount-heights'
+import '@/app/coffee/coffee-interactive.css'
+import '@/app/coffee/debt-section.css'
+import '@/app/coffee/alliance-section.css'
+import '@/app/coffee/retirement-section.css'
+import '@/app/coffee/invest-modules.css'
+import '@/app/coffee/education-section.css'
+import '@/app/coffee/child-cost-section.css'
+import '@/app/coffee/legacy-section.css'
 
 export function Coffee2LifeEventsContent() {
   useEffect(() => {

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Toaster } from 'sonner'
+import { notoSansSC } from '@/app/fonts'
 import { RoutePrefetcher } from '@/components/layout/route-prefetcher'
 import { NavigationPendingProvider } from '@/components/navigation/navigation-pending-context'
 import { ContactProvider } from '@/components/providers/contact-provider'
@@ -23,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="zh-CN">
-      <body className="min-h-screen antialiased">
+    <html lang="zh-CN" className={notoSansSC.variable}>
+      <body className={`${notoSansSC.className} min-h-screen antialiased`}>
         <NavigationPendingProvider>
           <StripCursorBrowserRefs />
           <RoutePrefetcher />

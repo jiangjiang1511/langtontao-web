@@ -5,7 +5,6 @@ import { membershipBoardSection } from '@/lib/content/membership-v2'
 export function MembershipBoardSection() {
   return (
     <section
-      id="tier-board"
       className="member-section member-section--board scroll-mt-28 border-b border-zinc-800 bg-zinc-950 py-16 text-white md:py-24"
       aria-labelledby="tier-board-heading"
     >

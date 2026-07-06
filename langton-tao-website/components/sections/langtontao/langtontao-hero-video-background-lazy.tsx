@@ -2,8 +2,8 @@
 
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
-import { LANGTONTAO_HERO_VIDEO_POSTER } from '@/components/sections/langtontao/langtontao-hero-video-background'
-import { onCurrentHeroReady } from '@/lib/hero-ready'
+import { onHeroDecorReady } from '@/lib/hero-ready'
+import { LANGTONTAO_HERO_VIDEO_POSTER } from '@/lib/langtontao-hero-video-assets'
 
 const LangtontaoHeroVideoBackground = dynamic(
   () =>
@@ -19,7 +19,7 @@ export function LangtontaoHeroVideoBackgroundLazy() {
   useEffect(() => {
     let cancelled = false
 
-    const cancelReady = onCurrentHeroReady(() => {
+    const cancelReady = onHeroDecorReady(() => {
       if (!cancelled) setShowVideo(true)
     })
 
@@ -37,6 +37,7 @@ export function LangtontaoHeroVideoBackgroundLazy() {
           alt=""
           className="langtontao-hero__video"
           decoding="async"
+          fetchPriority="high"
         />
       </div>
     )

@@ -18,7 +18,6 @@ import { cn } from '@/lib/utils'
 export function MembershipCommissionSection() {
   return (
     <section
-      id="commission-overview"
       className="member-section member-section--commission border-b border-zinc-200 bg-zinc-50 py-16 md:py-24"
       aria-labelledby="commission-overview-heading"
     >

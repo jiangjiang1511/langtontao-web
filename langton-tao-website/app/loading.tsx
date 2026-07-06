@@ -1,5 +1,5 @@
-import { RouteLoadingFallback } from '@/components/layout/route-loading-fallback'
+import { RouteHeroShell } from '@/components/layout/route-hero-shell'
 
 export default function Loading() {
-  return <RouteLoadingFallback />
+  return <RouteHeroShell variant="home" />
 }

@@ -1,9 +1,9 @@
 /** Calibrated placeholder min-heights to reduce layout shift on lazy mount (@375px). */
 export const SECTION_MIN_HEIGHTS = {
   'home-roots': 'min(100vh, 3200px)',
-  pillars: 'min(50vh, 900px)',
-  superhero: 'min(120vh, 4200px)',
-  'wealth-checkup': 'min(110vh, 4000px)',
+  pillars: 'min(55vh, 990px)',
+  superhero: 'min(125vh, 4400px)',
+  'wealth-checkup': 'min(115vh, 4200px)',
   yitishuangkua: 'min(80vh, 2400px)',
   'tao-framework': 'min(90vh, 2800px)',
   'day-1': 'min(100vh, 3600px)',
@@ -16,6 +16,8 @@ export const SECTION_MIN_HEIGHTS = {
   'year-100': 'min(70vh, 2200px)',
   'century-bridge': 'min(60vh, 2000px)',
   'coffee-life-events-content': 'min(100vh, 3800px)',
+  'coffee-life-events-nav': 'min(38vh, 900px)',
+  'member-pricing': 'min(65vh, 1400px)',
   'life-living': 'min(100vh, 3600px)',
   'life-alliance': 'min(95vh, 3200px)',
   'life-education': 'min(90vh, 3000px)',

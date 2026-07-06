@@ -1,8 +1,8 @@
 'use client'
 
 import type { CSSProperties } from 'react'
-import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import { PrefetchLink } from '@/components/navigation/prefetch-link'
 import { Coffee2AnnotatedCopyBlock } from '@/components/sections/coffee2/coffee2-annotated-paragraph'
 import {
   langtontaoPillarCards,
@@ -92,7 +92,7 @@ export function LangtontaoPillarsSection() {
                 } as CSSProperties
               }
             >
-              <Link
+              <PrefetchLink
                 href={card.href}
                 className="coffee2-pillar-card group block h-full"
                 style={{ '--pillar-accent': card.accent } as CSSProperties}
@@ -116,7 +116,7 @@ export function LangtontaoPillarsSection() {
                     探索
                   </span>
                 </div>
-              </Link>
+              </PrefetchLink>
             </li>
           ))}
           </ul>

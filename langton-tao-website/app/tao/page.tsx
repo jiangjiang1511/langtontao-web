@@ -11,10 +11,6 @@ import {
   fiftyYearPageTitle,
   homeJarsyJoinBand,
 } from '@/lib/content/home-jarsy-page'
-import {
-  compoundGrowthIndexExists,
-  readCompoundGrowthIndex,
-} from '@/lib/compound-growth/load-series.server'
 import { sectionMinHeight } from '@/lib/deferred-mount-heights'
 import '@/app/home.css'
 import '@/app/coffee/compound-growth.css'
@@ -41,16 +37,8 @@ const JarsyJoinBand = dynamic(
 )
 
 export default function TaoPage() {
-  const compoundIndex = compoundGrowthIndexExists()
-    ? readCompoundGrowthIndex()
-    : null
-
   return (
-    <CoffeeCompoundGrowthHost
-      stocks={compoundIndex?.stocks ?? []}
-      disclaimer={compoundIndex?.disclaimer ?? ''}
-      deferSeriesLoad
-    >
+    <CoffeeCompoundGrowthHost deferSeriesLoad>
       <div className="home-jarsy-page jarsy-v2-page">
         <TopicCardHashScrollHost />
         <HomeJarsyHero />

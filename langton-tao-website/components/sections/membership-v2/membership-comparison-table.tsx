@@ -357,7 +357,7 @@ export function MembershipComparisonTable() {
     : membershipV2CollapsedComparison
 
   return (
-    <div id="plan-compare" className="scroll-mt-28">
+    <div className="scroll-mt-28">
       <Coffee2Reveal>
         <div>
           <h2 className="c2-display text-3xl text-zinc-950 md:text-4xl">

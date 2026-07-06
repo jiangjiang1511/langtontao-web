@@ -68,16 +68,35 @@ export function Coffee2TypewriterReveal({
       return
     }
 
-    const timers = chars.map((_, index) =>
-      window.setTimeout(() => {
-        setRevealedCount((count) => Math.max(count, index + 1))
-      }, baseDelay + index * charStagger)
-    )
+    const start = performance.now()
+    const totalDuration = baseDelay + Math.max(chars.length - 1, 0) * charStagger
+    let rafId = 0
+
+    const tick = (now: number) => {
+      const elapsed = now - start
+      if (elapsed < baseDelay) {
+        setRevealedCount(0)
+      } else {
+        const nextCount = Math.min(
+          chars.length,
+          Math.floor((elapsed - baseDelay) / charStagger) + 1
+        )
+        setRevealedCount(nextCount)
+      }
+
+      if (elapsed < totalDuration) {
+        rafId = requestAnimationFrame(tick)
+      } else {
+        setRevealedCount(chars.length)
+      }
+    }
+
+    rafId = requestAnimationFrame(tick)
 
     return () => {
-      timers.forEach((timer) => window.clearTimeout(timer))
+      cancelAnimationFrame(rafId)
     }
-  }, [active, baseDelay, charStagger, text, chars.length])
+  }, [active, baseDelay, charStagger, chars.length])
 
   const cursorVisible = showCursor && revealedCount >= chars.length
 

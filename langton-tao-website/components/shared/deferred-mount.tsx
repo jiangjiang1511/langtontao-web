@@ -13,7 +13,7 @@ import {
   type DeferredMountReadyDetail,
 } from '@/components/shared/deferred-mount-context'
 import { useInViewTrigger } from '@/hooks/use-in-view-trigger'
-import { HERO_GATE_MS } from '@/lib/hero-ready'
+import { BELOW_HERO_IDLE_MS } from '@/lib/hero-ready'
 import { cn } from '@/lib/utils'
 
 const MOBILE_MEDIA = '(max-width: 767px)'
@@ -194,7 +194,7 @@ function DeferredLazyMount({
     gateTimeoutId = window.setTimeout(() => {
       if (cancelled) return
       cancelIdle = scheduleIdle(mountAfterGate)
-    }, HERO_GATE_MS)
+    }, BELOW_HERO_IDLE_MS)
 
     return () => {
       cancelled = true

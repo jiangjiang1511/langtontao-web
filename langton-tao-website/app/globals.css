@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -38,7 +37,7 @@
   --color-jarsy-rose: var(--jarsy-rose);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Noto Sans SC', system-ui, sans-serif;
+  --font-sans: var(--font-noto-sans-sc), 'Noto Sans SC', system-ui, sans-serif;
   --animate-marquee: marquee 45s linear infinite;
   --shadow-pop-black: var(--ji-glow);
   --shadow-jarsy-glow: var(--jarsy-glow);
@@ -517,6 +516,17 @@ body {
   animation: route-loading-progress 1.1s ease-in-out infinite;
 }
 
+.route-hero-shell__bar {
+  background: linear-gradient(
+    90deg,
+    rgb(250 250 250) 0%,
+    rgb(244 244 245) 50%,
+    rgb(250 250 250) 100%
+  );
+  background-size: 200% 100%;
+  animation: deferred-mount-shimmer 1.4s ease-in-out infinite;
+}
+
 .deferred-mount-placeholder,
 .deferred-mount-root {
   overflow-anchor: none;
@@ -544,7 +554,8 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .route-loading-progress__bar,
-  .deferred-mount-skeleton {
+  .deferred-mount-skeleton,
+  .route-hero-shell__bar {
     animation: none;
   }
 }

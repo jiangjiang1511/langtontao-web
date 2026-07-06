@@ -2,7 +2,8 @@
 
 import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
-import { onCurrentHeroReady } from '@/lib/hero-ready'
+import { Coffee2HeroOrbitPlaceholder } from '@/components/sections/coffee2/coffee2-hero-orbit-placeholder'
+import { onHeroDecorReady } from '@/lib/hero-ready'
 
 const Coffee2HeroOrbitBackground = dynamic(
   () =>
@@ -18,7 +19,7 @@ export function Coffee2HeroOrbitBackgroundLazy() {
   useEffect(() => {
     let cancelled = false
 
-    const cancelReady = onCurrentHeroReady(() => {
+    const cancelReady = onHeroDecorReady(() => {
       if (!cancelled) setShowOrbit(true)
     })
 
@@ -28,7 +29,7 @@ export function Coffee2HeroOrbitBackgroundLazy() {
     }
   }, [])
 
-  if (!showOrbit) return null
+  if (!showOrbit) return <Coffee2HeroOrbitPlaceholder />
 
   return <Coffee2HeroOrbitBackground />
 }

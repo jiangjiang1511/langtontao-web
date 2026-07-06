@@ -8,14 +8,6 @@ import { DeferredMount } from '@/components/shared/deferred-mount'
 import { SectionLoadingFallback } from '@/components/shared/section-loading-fallback'
 import { sectionMinHeight } from '@/lib/deferred-mount-heights'
 import './coffee.css'
-import './coffee-interactive.css'
-import './debt-section.css'
-import './alliance-section.css'
-import './retirement-section.css'
-import './invest-modules.css'
-import './education-section.css'
-import './child-cost-section.css'
-import './legacy-section.css'
 
 export const metadata: Metadata = {
   title: '熊比特咖啡 | 朗敦道 Langton Tao',
@@ -89,7 +81,15 @@ export default function CoffeePage() {
       <TopicCardHashScrollHost />
       <Coffee2LifeEventsStickyNav />
       <Coffee2HeroSection />
-      <Coffee2LifeEventsNavSection />
+
+      <DeferredMount
+        anchorId="coffee-life-events-nav"
+        minHeight={sectionMinHeight('coffee-life-events-nav')}
+        mountStrategy="idle"
+        idleStaggerIndex={0}
+      >
+        <Coffee2LifeEventsNavSection />
+      </DeferredMount>
 
       <DeferredMount
         anchorId="coffee-life-events-content"
