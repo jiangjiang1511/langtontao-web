@@ -23,7 +23,17 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-zinc-800">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs font-medium text-zinc-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p>© 2026 LANGTON TAO · ALL RIGHTS</p>
+          <div className="flex flex-col gap-1">
+            <p>© 2026 LANGTON TAO · ALL RIGHTS</p>
+            <a
+              href="https://beian.miit.gov.cn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-zinc-300"
+            >
+              粤ICP备2025467350号-1
+            </a>
+          </div>
           <div className="flex gap-4">
             <span>Terms</span>
             <span>Privacy</span>
