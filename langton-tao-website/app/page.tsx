@@ -78,8 +78,7 @@ export default function HomePage() {
       <DeferredMount
         anchorId="home-roots"
         minHeight={sectionMinHeight('home-roots')}
-        mountStrategy="idle"
-        idleStaggerIndex={0}
+        mountStrategy="lazy"
       >
         <LangtontaoHomeRootsSection />
       </DeferredMount>
@@ -87,8 +86,7 @@ export default function HomePage() {
       <DeferredMount
         anchorId="superhero"
         minHeight={sectionMinHeight('superhero')}
-        mountStrategy="idle"
-        idleStaggerIndex={1}
+        mountStrategy="lazy"
       >
         <LangtontaoSuperheroSection />
       </DeferredMount>
@@ -96,8 +94,7 @@ export default function HomePage() {
       <DeferredMount
         anchorId="wealth-checkup"
         minHeight={sectionMinHeight('wealth-checkup')}
-        mountStrategy="idle"
-        idleStaggerIndex={2}
+        mountStrategy="lazy"
       >
         <LangtontaoCheckupMajorSection />
       </DeferredMount>

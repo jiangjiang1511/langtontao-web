@@ -76,8 +76,7 @@ export default function MemberPage() {
       <DeferredMount
         anchorId="commission-overview"
         minHeight={sectionMinHeight('commission-overview')}
-        mountStrategy="idle"
-        idleStaggerIndex={0}
+        mountStrategy="lazy"
       >
         <MembershipCommissionSection />
       </DeferredMount>
@@ -85,8 +84,7 @@ export default function MemberPage() {
       <DeferredMount
         anchorId="tier-benefits"
         minHeight={sectionMinHeight('tier-benefits')}
-        mountStrategy="idle"
-        idleStaggerIndex={0}
+        mountStrategy="lazy"
       >
         <section
           className="member-section member-section--benefits border-b border-zinc-200 bg-zinc-50 py-12 md:py-16"

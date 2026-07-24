@@ -59,6 +59,17 @@ export function Coffee2PreservationInsurerHub({
         insurer.id === selectedInsurerId &&
         (drawerPhase === 'open' || drawerPhase === 'opening')
       ) {
+        swapTargetRef.current = null
+        setSwapTarget(null)
+
+        if (reduceMotionRef.current) {
+          setDisplayInsurer(null)
+          setSelectedInsurerId(null)
+          setDrawerPhase('closed')
+          return
+        }
+
+        setDrawerPhase('closing')
         return
       }
 

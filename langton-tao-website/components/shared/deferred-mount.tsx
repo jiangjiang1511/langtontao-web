@@ -17,7 +17,7 @@ import { BELOW_HERO_IDLE_MS } from '@/lib/hero-ready'
 import { cn } from '@/lib/utils'
 
 const MOBILE_MEDIA = '(max-width: 767px)'
-const DEFAULT_ROOT_MARGIN_DESKTOP = '600px 0px'
+const DEFAULT_ROOT_MARGIN_DESKTOP = '280px 0px'
 const IDLE_STAGGER_MS = 120
 const IDLE_FALLBACK_MS = 1500
 

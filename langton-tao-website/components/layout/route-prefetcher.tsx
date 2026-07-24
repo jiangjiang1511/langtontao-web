@@ -6,7 +6,7 @@ import { onPrefetchHeroReady } from '@/lib/hero-ready'
 import { warmOtherRouteHeroChunks } from '@/lib/route-chunk-prefetch'
 
 const PREFETCH_ROUTES = ['/', '/tao', '/coffee', '/member', '/faq'] as const
-const PREFETCH_START_MS = 300
+const PREFETCH_START_MS = 900
 const PREFETCH_STAGGER_MS = 80
 
 export function RoutePrefetcher() {
