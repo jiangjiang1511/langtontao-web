@@ -134,7 +134,7 @@ export const membershipCommissionMatrix: Record<
   pro: {
     member: { type: 'percent', value: 0.2, note: '分享 20%' },
     plus: { type: 'percent', value: 0.2, note: '分享 20%' },
-    pro: { type: 'percent', value: 0.2, note: '分享 20%' },
+    pro: { type: 'fixed', value: 3000, note: '固定返佣 ¥3,000' },
     'health-checkup': { type: 'percent', value: 0.2, note: '分享 20%' },
     'smart-english': {
       type: 'percent',
