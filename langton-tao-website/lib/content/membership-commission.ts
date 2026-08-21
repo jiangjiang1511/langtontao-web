@@ -118,8 +118,8 @@ export const membershipCommissionMatrix: Record<
 > = {
   member: {
     member: { type: 'fixed', value: 100, note: '分享3个同级即回本' },
-    plus: { type: 'fixed', value: 500 },
-    pro: { type: 'fixed', value: 1500 },
+    plus: { type: 'fixed', value: 200 },
+    pro: { type: 'fixed', value: 300 },
     'health-checkup': { type: 'percent', value: 0.05 },
     'smart-english': { type: 'percent', value: 0.05 },
     'board-referral': null,
@@ -127,7 +127,7 @@ export const membershipCommissionMatrix: Record<
   plus: {
     member: { type: 'fixed', value: 150 },
     plus: { type: 'fixed', value: 1000, note: '分享3个同级即回本' },
-    pro: { type: 'fixed', value: 2000 },
+    pro: { type: 'fixed', value: 1200 },
     'health-checkup': { type: 'percent', value: 0.12 },
     'smart-english': { type: 'percent', value: 0.12 },
     'board-referral': null,
