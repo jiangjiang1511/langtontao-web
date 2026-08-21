@@ -117,46 +117,44 @@ export const membershipCommissionMatrix: Record<
   Record<CommissionProductId, CommissionRule>
 > = {
   member: {
-    member: { type: 'fixed', value: 30, note: '固定返佣 ¥30' },
-    plus: { type: 'fixed', value: 150, note: '固定返佣 ¥150' },
-    pro: { type: 'fixed', value: 450, note: '固定返佣 ¥450' },
-    'health-checkup': { type: 'percent', value: 0.05, note: '分享 5%' },
-    'smart-english': { type: 'percent', value: 0.05, note: '分享 5%' },
+    member: { type: 'fixed', value: 100, note: '分享3个同级即回本' },
+    plus: { type: 'fixed', value: 500 },
+    pro: { type: 'fixed', value: 1500 },
+    'health-checkup': { type: 'percent', value: 0.05 },
+    'smart-english': { type: 'percent', value: 0.05 },
     'board-referral': null,
   },
   plus: {
-    member: { type: 'fixed', value: 100, note: '固定返佣 ¥100' },
-    plus: { type: 'fixed', value: 500, note: '固定返佣 ¥500' },
-    pro: { type: 'fixed', value: 1500, note: '固定返佣 ¥1,500' },
-    'health-checkup': { type: 'percent', value: 0.12, note: '分享 12%' },
-    'smart-english': { type: 'percent', value: 0.12, note: '分享 12%' },
+    member: { type: 'fixed', value: 150 },
+    plus: { type: 'fixed', value: 1000, note: '分享3个同级即回本' },
+    pro: { type: 'fixed', value: 2000 },
+    'health-checkup': { type: 'percent', value: 0.12 },
+    'smart-english': { type: 'percent', value: 0.12 },
     'board-referral': null,
   },
   pro: {
-    member: { type: 'fixed', value: 200, note: '固定返佣 ¥200' },
-    plus: { type: 'fixed', value: 1000, note: '固定返佣 ¥1,000' },
-    pro: { type: 'fixed', value: 3000, note: '固定返佣 ¥3,000' },
-    'health-checkup': { type: 'percent', value: 0.2, note: '分享 20%' },
+    member: { type: 'fixed', value: 200 },
+    plus: { type: 'fixed', value: 1500 },
+    pro: { type: 'fixed', value: 3000, note: '分享3个同级即回本' },
+    'health-checkup': { type: 'percent', value: 0.2 },
     'smart-english': {
       type: 'percent',
       value: 0.5,
       display: '50%+',
-      note: '教育 50%+',
     },
-    'board-referral': { type: 'fixed', value: 5000, note: '引荐奖 ¥5,000' },
+    'board-referral': { type: 'fixed', value: 5000 },
   },
   board: {
-    member: { type: 'percent', value: 0.3, note: '分享 30%' },
-    plus: { type: 'percent', value: 0.3, note: '分享 30%' },
+    member: { type: 'percent', value: 0.3 },
+    plus: { type: 'percent', value: 0.3 },
     pro: {
       type: 'percent',
       value: 0.5,
       display: '50%+',
-      note: 'Pro 50%+',
     },
-    'health-checkup': { type: 'percent', value: 0.3, note: '分享 30%' },
-    'smart-english': { type: 'percent', value: 0.3, note: '分享 30%' },
-    'board-referral': { type: 'percent', value: 0.2, note: '引荐 20%' },
+    'health-checkup': { type: 'percent', value: 0.3 },
+    'smart-english': { type: 'percent', value: 0.3 },
+    'board-referral': { type: 'percent', value: 0.2 },
   },
 }
 
@@ -180,8 +178,8 @@ export function getCommissionRuleLabel(
   productId: CommissionProductId
 ): string {
   const rule = membershipCommissionMatrix[tierId][productId]
-  if (!rule) return '不适用'
-  return rule.note ?? formatCommissionRule(rule)
+  if (!rule?.note) return ''
+  return rule.note
 }
 
 export const membershipCommissionTierLabels = tierColumnLabels

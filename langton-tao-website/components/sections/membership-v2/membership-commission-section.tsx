@@ -103,6 +103,7 @@ export function MembershipCommissionSection() {
                     </td>
                     {membershipCommissionTierOrder.map((tierId) => {
                       const rule = membershipCommissionMatrix[tierId][product.id]
+                      const label = getCommissionRuleLabel(tierId, product.id)
                       return (
                         <td
                           key={tierId}
@@ -114,9 +115,11 @@ export function MembershipCommissionSection() {
                           <p className="font-semibold text-zinc-950">
                             {formatCommissionRule(rule)}
                           </p>
-                          <p className="mt-1 text-[11px] leading-snug text-zinc-500">
-                            {getCommissionRuleLabel(tierId, product.id)}
-                          </p>
+                          {label ? (
+                            <p className="mt-1 text-[11px] leading-snug text-zinc-500">
+                              {label}
+                            </p>
+                          ) : null}
                         </td>
                       )
                     })}
