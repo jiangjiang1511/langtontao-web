@@ -132,9 +132,9 @@ const allTierSections: MembershipTierSection[] = [
         summary:
           '推荐同频家庭加入朗敦道或成交会员与家办产品，按你的档位获得渠道收益——规则公开，可在会员页即时试算。',
         items: [
-          '普通会员分享成交按 5% 分佣',
-          'Plus 按 12% 分佣',
-          'Pro 按 20% 分佣（智能英语等产品 50%+，详见收益计算器）',
+          '会员入会类按固定金额分佣（同级回本参考：会员约 10 单 · Plus 约 6 单 · Pro 约 3 单）',
+          '具体金额见推荐渠道收益总览表，可在会员页即时试算',
+          '智能英语等产品仍按比例分佣（Pro 教育 50%+，详见收益计算器）',
           '核销后次月 10 号前可申请结算',
         ],
         imageSrc: '/membership/partner.svg',
@@ -295,11 +295,11 @@ export const membershipV2FullComparison: ComparisonCategory[] = [
     title: '社群渠道收益',
     rows: [
       {
-        label: '推荐成交按档位分佣（会员 5% · Plus 12% · Pro 20%）',
+        label: '会员入会直推固定分佣（同级示例：会员 ¥30 · Plus ¥500 · Pro ¥3,000）',
         values: {
-          member: '5%',
-          plus: '12%',
-          pro: '20%',
+          member: '¥30',
+          plus: '¥500',
+          pro: '¥3,000',
           board: '30%',
         },
       },

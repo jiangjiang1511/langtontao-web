@@ -37,17 +37,18 @@ export const membershipCommissionSection = {
   eyebrow: 'Partner · 事业合伙人',
   title: '推荐渠道收益总览',
   subtitle: '占位方案 · 细则后续更新',
-  lead: '以下为基于会员、Plus、Pro 与私董会四档的占位渠道收益结构。实际结算以签约协议与 CRM 系统记录为准；Pro 与私董会另享团队分润与管道收入，细则另行说明。',
+  lead: '以下为基于会员、Plus、Pro 与私董会四档的占位渠道收益结构：会员入会类按固定金额结算，其他产品仍可按比例或固定奖结算。实际结算以签约协议与 CRM 系统记录为准；Pro 与私董会另享团队分润与管道收入，细则另行说明。',
   calculatorCta: '打开渠道收益计算器',
   calculatorHint: '选择你的档位与分享产品，即时估算推荐渠道收益；支持生成分享海报与二维码。',
   placeholderNote:
-    '表格数值为占位示例，正式费率与阶梯奖励以朗敦道 MFO 事业合伙人协议为准。',
+    '表格数值为占位示例，正式金额与阶梯奖励以朗敦道 MFO 事业合伙人协议为准。',
 } as const
 
 export const membershipCommissionPayoutModel = [
   {
     title: '直推渠道收益',
-    description: '你直接推荐并成功成交，按对应产品与档位比例或固定金额结算。',
+    description:
+      '你直接推荐并成功成交：会员入会类按档位与产品固定金额结算；教育、体检等其他产品按对应比例或固定奖结算。',
   },
   {
     title: '团队分润',
@@ -116,24 +117,24 @@ export const membershipCommissionMatrix: Record<
   Record<CommissionProductId, CommissionRule>
 > = {
   member: {
-    member: { type: 'percent', value: 0.05, note: '分享 5%' },
-    plus: { type: 'percent', value: 0.05, note: '分享 5%' },
-    pro: { type: 'percent', value: 0.05, note: '分享 5%' },
+    member: { type: 'fixed', value: 30, note: '固定返佣 ¥30' },
+    plus: { type: 'fixed', value: 150, note: '固定返佣 ¥150' },
+    pro: { type: 'fixed', value: 450, note: '固定返佣 ¥450' },
     'health-checkup': { type: 'percent', value: 0.05, note: '分享 5%' },
     'smart-english': { type: 'percent', value: 0.05, note: '分享 5%' },
     'board-referral': null,
   },
   plus: {
-    member: { type: 'percent', value: 0.12, note: '分享 12%' },
-    plus: { type: 'percent', value: 0.12, note: '分享 12%' },
-    pro: { type: 'percent', value: 0.12, note: '分享 12%' },
+    member: { type: 'fixed', value: 100, note: '固定返佣 ¥100' },
+    plus: { type: 'fixed', value: 500, note: '固定返佣 ¥500' },
+    pro: { type: 'fixed', value: 1500, note: '固定返佣 ¥1,500' },
     'health-checkup': { type: 'percent', value: 0.12, note: '分享 12%' },
     'smart-english': { type: 'percent', value: 0.12, note: '分享 12%' },
     'board-referral': null,
   },
   pro: {
-    member: { type: 'percent', value: 0.2, note: '分享 20%' },
-    plus: { type: 'percent', value: 0.2, note: '分享 20%' },
+    member: { type: 'fixed', value: 200, note: '固定返佣 ¥200' },
+    plus: { type: 'fixed', value: 1000, note: '固定返佣 ¥1,000' },
     pro: { type: 'fixed', value: 3000, note: '固定返佣 ¥3,000' },
     'health-checkup': { type: 'percent', value: 0.2, note: '分享 20%' },
     'smart-english': {
